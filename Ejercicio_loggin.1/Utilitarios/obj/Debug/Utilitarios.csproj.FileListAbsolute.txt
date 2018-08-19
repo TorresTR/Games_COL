@@ -1,0 +1,5 @@
+C:\Users\David Torres\Documents\Visual Studio 2017\Ejercicios\Ejercicio_loggin.1\Utilitarios\bin\Debug\Utilitarios.dll
+C:\Users\David Torres\Documents\Visual Studio 2017\Ejercicios\Ejercicio_loggin.1\Utilitarios\bin\Debug\Utilitarios.pdb
+C:\Users\David Torres\Documents\Visual Studio 2017\Ejercicios\Ejercicio_loggin.1\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
+C:\Users\David Torres\Documents\Visual Studio 2017\Ejercicios\Ejercicio_loggin.1\Utilitarios\obj\Debug\Utilitarios.dll
+C:\Users\David Torres\Documents\Visual Studio 2017\Ejercicios\Ejercicio_loggin.1\Utilitarios\obj\Debug\Utilitarios.pdb
