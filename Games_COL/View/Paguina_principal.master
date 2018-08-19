@@ -1,0 +1,76 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Controller/Paguina_principal.master.cs" Inherits="View_Paguina_principal" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Pagina Principal</title>
+    <link href="~/View/Styles/Estilos.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+        .auto-style4 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="form1" runat="server">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item">
+          <asp:Image ID="Image1" runat="server" ImageUrl="~/Img/logo.jpg" />
+      </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Ingresar.aspx">Ingresar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="registro.aspx">Registrarse</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contactenos.aspx">Contactenos</a></li>
+        <li class="nav-item">
+        <a class="nav-link" href="Informacion.aspx">Informacion</a></li>
+    </ul>
+    
+  </div>
+</nav>
+
+    <header>
+        <div id="cabeza">
+
+        <table class="auto-style1">
+            
+            <tr>
+                <div>
+                    <td class="auto-style4" colspan="2">
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder></td>
+        
+    </div>
+            </tr>
+            <tr>
+                <td class="auto-style4" colspan="2">
+                    &nbsp;</td>
+                </table>
+
+    </div>
+
+    </header>
+        
+    
+
+    </form>
+</body>
+</html>
