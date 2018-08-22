@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Controller/MasterUsuario.master.cs" Inherits="View_MasterUsuario" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="~/View/Styles/Estilos.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 50%;
+        }
+    </style>
+    </head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        &nbsp;<asp:Image ID="Image1" runat="server" ImageUrl="~/Img/logo.jpg" />
+&nbsp;<asp:Button ID="BT_inicio" class="btn btn-secondary" runat="server" Text="Inicio" OnClick="BT_inicio_Click" />
+        &nbsp; &nbsp;
+        <asp:Button ID="Button1" class="btn btn-secondary" runat="server" OnClick="BT_crear_port_Click" Text="Crear Post" />
+        &nbsp;&nbsp; 
+         <asp:Button ID="Button2" class="btn btn-secondary" runat="server" Text="PQR" OnClick="BT_PQR_Click" /> 
+        &nbsp;&nbsp;
+        <asp:Button ID="B_solicitud" class="btn btn-secondary" runat="server" Text="Solicitud" OnClick="B_solicitud_Click" />
+        &nbsp;&nbsp;
+        <asp:Button ID="BT_misPost" runat="server" Text="Mis Post"  class="btn btn-secondary" OnClick="BT_misPost_Click"/>
+        &nbsp;&nbsp;&nbsp;
+        <asp:Button ID="BT_comentarios" runat="server" Text="Mis comentarios" class="btn btn-secondary" OnClick="BT_comentarios_Click" />
+        &nbsp;&nbsp;&nbsp;
+        <asp:Button ID="BT_respuestas" runat="server" Text="Respuestas PQR" class="btn btn-secondary" OnClick="BT_respuestas_Click" />
+        &nbsp;&nbsp;&nbsp;
+        <asp:Button ID="BT_verinfo" runat="server" Text="Informacion" class="btn btn-secondary" OnClick="BT_verinfo_Click"  />
+&nbsp;<table class="w-100">
+            <tr>
+                <td class="auto-style1">
+                    <asp:Label ID="LB_nick" runat="server" Text="Nick:"></asp:Label>
+                    <asp:Label ID="LB_nickMuestra" runat="server"></asp:Label>
+                    <br />
+                    <asp:Label ID="LB_puntos" runat="server" Text="Puntos:"></asp:Label>
+                    <asp:Label ID="LB_muestraPuntos" runat="server"></asp:Label>
+                    <br />
+                    <asp:Label ID="LB_rango" runat="server" Text="Rango:"></asp:Label>
+                    <asp:Label ID="LB_muestraRango" runat="server"></asp:Label>
+                    &nbsp;
+                    <asp:Label ID="LB_mensaje" runat="server" Visible="False" ForeColor="Red"></asp:Label>
+                    <br />
+                    <asp:Label ID="LB_rango0" runat="server" Text="Id:" Visible="False"></asp:Label>
+                    <asp:Label ID="LB_muestraID" runat="server" Visible="False"></asp:Label>
+                </td>
+                <td>&nbsp;
+                    <asp:Button ID="BT_cerrar" runat="server" OnClick="BT_cerrar_Click" Text="Cerrar Sesion" CssClass="btn btn-outline-danger"/>
+                    &nbsp;&nbsp; </td>
+            </tr>
+        </table>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

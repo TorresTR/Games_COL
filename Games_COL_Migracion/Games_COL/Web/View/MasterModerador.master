@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Controller/MasterModerador.master.cs" Inherits="View_MasterModerador" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="~/View/Styles/Estilos.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <p>
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Img/logo.jpg" />
+                    <asp:Button ID="BT_crearPost" runat="server" Text="Crear Post" OnClick="BT_crear_port_Click"  class="btn btn-secondary"/>
+                    <asp:Button ID="BT_verPqr" runat="server" Text="Ver PQR" class="btn btn-secondary" OnClick="BT_verPqr_Click"/>
+                    <asp:Button ID="BT_listaUser" runat="server" Text="Listado usuarios" class="btn btn-secondary" OnClick="BT_listaUser_Click"/>
+                    <asp:Button ID="BT_misPost" runat="server" class="btn btn-secondary" OnClick="BT_misPost_Click" Text="Mis Post" />
+                    <asp:Button ID="BT_atencionReportePost" runat="server" Text="Atender Reporte Post" class="btn btn-secondary" OnClick="BT_atencionReportePost_Click" />
+                    <asp:Button ID="BT_reporte_coment" runat="server" Text="Atender Reporte Coment" class="btn btn-secondary" OnClick="BT_reporte_coment_Click"/>
+                    <asp:Button ID="BT_crear_noticia" runat="server" Text="Crear Noticia" class="btn btn-secondary" OnClick="BT_crear_noticia_Click"/>
+                    <asp:Button ID="BT_mi_noticia" runat="server" Text="Mi noticia" class="btn btn-secondary" OnClick="BT_mi_noticia_Click"/>
+                    <asp:Button ID="BT_informacion" runat="server" Text="Informacion" class="btn btn-secondary" OnClick="BT_informacion_Click" />
+                </p>
+                <table class="w-100">
+                    <tr>
+                        <td class="auto-style1">
+                            <asp:Label ID="LB_nick" runat="server" Text="Nick:"></asp:Label>
+                            <asp:Label ID="LB_nickMuestra" runat="server"></asp:Label>
+                            <br />
+                            <asp:Label ID="LB_puntos" runat="server" Text="Puntos:"></asp:Label>
+                            <asp:Label ID="LB_muestraPuntos" runat="server"></asp:Label>
+                            <br />
+                            <asp:Label ID="LB_rango" runat="server" Text="Rango:"></asp:Label>
+                            <asp:Label ID="LB_muestraRango" runat="server"></asp:Label>
+                            <br />
+                            <asp:Label ID="LB_rango0" runat="server" Text="Id:" Visible="False"></asp:Label>
+                            <asp:Label ID="LB_muestraID" runat="server" Visible="False"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Button ID="BT_cerrar" runat="server" OnClick="BT_cerrar_Click" Text="Cerrar Sesion" CssClass="btn btn-outline-danger"/>
+                        </td>
+                    </tr>
+                </table>
+    
+  </div>
+</nav>
+          
+        
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
+
