@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_VerPostCompleto : System.Web.UI.Page
 {
@@ -14,34 +16,24 @@ public partial class View_VerPostCompleto : System.Web.UI.Page
         Response.Cache.SetNoStore();
 
         
-        EDatosCrearPost doc = new EDatosCrearPost();
-        DAOUsuario dac = new DAOUsuario();
+        U_userCrearpost doc = new U_userCrearpost();
+        L_Usercs dac = new L_Usercs();
+        
 
         doc.Id = int.Parse(Request.Params["parametro"]);
-        int dato = int.Parse(Request.Params["parametro"]);
-        DataTable regis = dac.verpag(doc);
+        int x = int.Parse(Request.Params["parametro"]);
 
-        if (regis.Rows.Count > 0)
-        {
-
-            LB_verPost.Text = regis.Rows[0]["contenido"].ToString();
-            LB_autor.Text = regis.Rows[0]["autor"].ToString();
-
-        }
+        doc = dac.postObservador(doc);
 
 
-        DataTable punt = dac.verpuntos(doc);
-        if (punt.Rows.Count > 0)
-        {
-            int puntos = 0, num = 0, tot = 0;
-            puntos = int.Parse(punt.Rows[0]["puntos"].ToString());
-            num = int.Parse(punt.Rows[0]["nump"].ToString());
-            tot = puntos / num;
-            LB_muestraPuntos.Text = tot.ToString(); ;
-        }
+        LB_verPost.Text = doc.Contenido1.ToString();
+        LB_autor.Text = doc.Autor1.ToString();
 
+         
 
-        GV_comentarios.DataSource = dac.ObtenerComent(dato);
+        LB_muestraPuntos.Text = doc.Totpunt.ToString();
+        
+        GV_comentarios.DataSource = dac.obtenerComentario(x);
         GV_comentarios.DataBind();
         
 
@@ -51,7 +43,11 @@ public partial class View_VerPostCompleto : System.Web.UI.Page
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        Response.Redirect("observador.aspx");
+        U_userCrearpost retorno = new U_userCrearpost();
+        L_Usercs data = new L_Usercs();
+
+        retorno = data.retornoObservador();
+        Response.Redirect(retorno.Link);
 
         
     }

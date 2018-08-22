@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
+using Utilitarios;
 
 public partial class View_Observador : System.Web.UI.Page
 {
@@ -31,9 +32,16 @@ public partial class View_Observador : System.Web.UI.Page
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
-        string ID = lblid.Text;
 
-        Response.Redirect("VerPostCompleto.aspx?parametro=" + ID.Trim());
+        L_Usercs data = new L_Usercs();
+        U_user envioObservador = new U_user();
+
+        string x = lblid.Text.ToString();
+
+        envioObservador = data.Vermas(x);
+
+
+        Response.Redirect(envioObservador.Link_observador + envioObservador.ID_vermasObservador1.Trim());
     }
 
     protected void BT_pc_Click(object sender, EventArgs e)
