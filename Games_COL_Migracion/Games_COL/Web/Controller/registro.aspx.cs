@@ -5,14 +5,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_registro : System.Web.UI.Page
 {
-    DAOUsuario archivo = new DAOUsuario();
-    Edatos datos = new Edatos();
-    private String confirma;
+    
+    U_Datos datos = new U_Datos();
+    L_Usercs dat = new L_Usercs();
+    
 
-    DAOUsuario dao = new DAOUsuario();
+    
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -27,7 +30,7 @@ public partial class View_registro : System.Web.UI.Page
         datos.Nick = TB_nick.Text.ToString();
         datos.Pass = TB_pass.Text.ToString();
         datos.Correo = TB_email.Text.ToString();
-        confirma = TB_confirmapass.Text.ToString();
+        datos.Confirma = TB_confirmapass.Text.ToString();
         datos.Puntos = 0;
         datos.Rol = 1;
         datos.Rango = 1;
@@ -35,35 +38,19 @@ public partial class View_registro : System.Web.UI.Page
         datos.Fecha = DateTime.Now;
 
 
-        if (datos.Pass == confirma)
-        {
-
-
-            System.Data.DataTable validez = archivo.validarNick(datos.Nick, datos.Correo);
-            if (int.Parse(validez.Rows[0]["id"].ToString()) > 0)
-            {
-                
-                    archivo.insertarUsuario(datos);
-                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usuario registrado con exito');</script>");
-                    Response.Redirect("Ingresar.aspx");
-                
-            }
-            else
-            {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Nick o correo ya existente');</script>");
-            }
-
-        }
-        else
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Las contraseñas no coinciden');</script>");
-        }
-
+        datos = dat.insertarUsuarionuevo(datos);
+        cm.RegisterClientScriptBlock(this.GetType(), "", datos.Mensaje1);
+        Response.Redirect(datos.Link);
     }
 
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        Response.Redirect("observador.aspx");
+
+        U_user inicio = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        inicio = llamado.irInicio();
+        Response.Redirect(inicio.Link_demas);
     }
 }

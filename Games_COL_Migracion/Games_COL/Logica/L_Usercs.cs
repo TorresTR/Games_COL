@@ -12,6 +12,44 @@ namespace Logica
     public class L_Usercs
     {
 
+        public U_Datos insertarUsuarionuevo(U_Datos datos)
+        {
+
+            D_User dat = new D_User();
+            U_Datos dato = new U_Datos();
+
+            
+
+            if (datos.Pass == datos.Confirma)
+            {
+
+
+                DataTable validez = dat.validarNickusuario(datos);
+                if (int.Parse(validez.Rows[0]["id"].ToString()) > 0)
+                {
+
+                    dat.insertarUsuario(datos);
+                    dato.Mensaje1=  "<script type='text/javascript'>alert('Usuario registrado con exito');</script>";
+                    dato.Link = "Ingresar.aspx";
+
+                }
+                else
+                {
+                    dato.Mensaje1 = "<script type='text/javascript'>alert('Nick o correo ya existente');</script>";
+                    dato.Link = "registo.aspx";
+                }
+
+            }
+            else
+            {
+                dato.Mensaje1= "<script type='text/javascript'>alert('Las contraseñas no coinciden');</script>";
+                dato.Link = "registro.aspx";
+            }
+
+            return dato;
+        }
+
+
         public DataTable obtenerPostObservador() {
 
             D_User datos = new D_User();
@@ -22,6 +60,19 @@ namespace Logica
             return data; 
 
         }
+
+        public U_Sugerencia sugerenciasUsuarios(U_Sugerencia sugere)
+        {
+            D_User dato = new D_User();
+            U_Sugerencia dat = new U_Sugerencia();
+
+            dato.insertarSugerenciaUsuario(sugere);
+            dat.Mensaje = "<script type='text/javascript'>alert('Solicitud registrada con exito');</script>";
+            dat.Link = "observador.aspx";
+
+            return dat;
+        }
+
 
         public U_user Vermas(string x) {
 

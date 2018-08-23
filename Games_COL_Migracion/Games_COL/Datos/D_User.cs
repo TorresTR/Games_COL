@@ -13,6 +13,107 @@ namespace Datos
 {
     public class D_User
     {
+
+        public DataTable insertarSugerenciaUsuario(U_Sugerencia datos)
+        {
+            DataTable Documentos = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.insertar_sugerencia", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Text).Value = datos.Correo;
+                dataAdapter.SelectCommand.Parameters.Add("_contenido", NpgsqlDbType.Text).Value = datos.Sugerencia;
+
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                conection.Open();
+                dataAdapter.Fill(Documentos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Documentos;
+        }
+
+        public DataTable validarNickusuario(U_Datos dat)
+        {
+            DataTable Usuario = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_validar_nick", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_user_name", NpgsqlDbType.Text).Value = dat.Nick;
+                dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Text).Value = dat.Correo;
+
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
+
+        public void insertarUsuario(U_Datos datos)
+        {
+            DataTable archivo = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_insertar_usuario", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                dataAdapter.SelectCommand.Parameters.Add("_nombre", NpgsqlDbType.Text).Value = datos.Nombre;
+                dataAdapter.SelectCommand.Parameters.Add("_nick", NpgsqlDbType.Text).Value = datos.Nick;
+                dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Text).Value = datos.Correo;
+                dataAdapter.SelectCommand.Parameters.Add("_pass", NpgsqlDbType.Text).Value = datos.Pass;
+                dataAdapter.SelectCommand.Parameters.Add("_puntos", NpgsqlDbType.Integer).Value = datos.Puntos;
+                dataAdapter.SelectCommand.Parameters.Add("_rol", NpgsqlDbType.Integer).Value = datos.Rol;
+                dataAdapter.SelectCommand.Parameters.Add("_rango", NpgsqlDbType.Integer).Value = datos.Rango;
+                dataAdapter.SelectCommand.Parameters.Add("_estado", NpgsqlDbType.Integer).Value = datos.Estado;
+                dataAdapter.SelectCommand.Parameters.Add("_fecha", NpgsqlDbType.Date).Value = datos.Fecha;
+
+                conection.Open();
+                dataAdapter.Fill(archivo);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+        }
+
+
+
+
+
         public DataTable ObtenerNoti()
         {
             DataTable Post = new DataTable();
