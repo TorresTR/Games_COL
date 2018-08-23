@@ -10,7 +10,7 @@ using Utilitarios;
 
 public partial class View_VerPostCompleto : System.Web.UI.Page
 {
-    int puntos = 0,num=0,tot=0;
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();

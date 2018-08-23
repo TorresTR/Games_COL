@@ -5,31 +5,29 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class View_Observador_ver_noticia : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.Cache.SetNoStore();
+        U_userCrearpost doc = new U_userCrearpost();
+        L_Usercs dac = new L_Usercs();
 
-
-        EDatosCrearPost doc = new EDatosCrearPost();
-        DAOUsuario dac = new DAOUsuario();
 
         doc.Id = int.Parse(Request.Params["parametro"]);
-        int dato = int.Parse(Request.Params["parametro"]);
-        DataTable regis = dac.verNoticia(doc);
+        int x = int.Parse(Request.Params["parametro"]);
 
-        if (regis.Rows.Count > 0)
-        {
+        doc = dac.postObservadorNoticias(doc);
 
-            LB_verPost.Text = regis.Rows[0]["contenido"].ToString();
-            LB_autor.Text = regis.Rows[0]["autor"].ToString();
 
-        }
+        LB_verPost.Text = doc.Contenido1.ToString();
+        LB_autor.Text = doc.Autor1.ToString();
 
-        GV_comentarios.DataSource = dac.ObtenerComent(dato);
+        GV_comentarios.DataSource = dac.obtenerComentario(x);
         GV_comentarios.DataBind();
+
 
 
     }
@@ -38,7 +36,11 @@ public partial class View_Observador_ver_noticia : System.Web.UI.Page
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        Response.Redirect("observador.aspx");
+        U_userCrearpost retorno = new U_userCrearpost();
+        L_Usercs data = new L_Usercs();
+
+        retorno = data.retornoObservador();
+        Response.Redirect(retorno.Link);
 
 
     }

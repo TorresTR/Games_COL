@@ -33,6 +33,28 @@ namespace Logica
             return dat;
         }
 
+        public U_user verNoticias(string x)
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Observador_ver_noticia.aspx?parametro=";
+            dat.ID_vermasObservador1 = x;
+
+            return dat;
+        }
+
+        public DataTable obtenerPostNoticia()
+        {
+
+            D_User datos = new D_User();
+            DataTable data = new DataTable();
+
+            data = datos.ObtenerNoti();
+
+            return data;
+
+        }
 
         public U_userCrearpost postObservador(U_userCrearpost doc) {
 
@@ -65,15 +87,22 @@ namespace Logica
             return user;
         }
 
-
-        public U_userCrearpost puntosObservador(U_userCrearpost doc)
+        public U_userCrearpost postObservadorNoticias(U_userCrearpost doc)
         {
 
             D_User data = new D_User();
             U_userCrearpost user = new U_userCrearpost();
 
-            
+            DataTable dat = data.verNoticia(doc);
 
+
+            if (dat.Rows.Count > 0)
+            {
+                user.Contenido1 = dat.Rows[0]["contenido"].ToString();
+                user.Autor1 = dat.Rows[0]["autor"].ToString();
+            }
+
+            
             return user;
         }
 
@@ -98,6 +127,69 @@ namespace Logica
             dat.Link = "observador.aspx";
             return dat;
         }
+
+        public U_user  irPC()
+        {
+            U_user dat = new U_user();
+
+            dat.Link_demas = "Observador_pc.aspx";
+            return dat;
+        }
+
+        public U_user irxbox()
+        {
+            U_user dat = new U_user();
+
+            dat.Link_demas = "Observador_xbox.aspx";
+            return dat;
+        }
+
+
+        public U_user irPS()
+        {
+            U_user dat = new U_user();
+
+            dat.Link_demas = "Observar_playstation.aspx";
+            return dat;
+        }
+
+        public U_user irAndroid()
+        {
+            U_user dat = new U_user();
+
+            dat.Link_demas = "Observador_androidt.aspx";
+            return dat;
+        }
+
+
+        public DataTable Busqueda(string busqueda) {
+
+            D_User data = new D_User();
+            U_user bus = new U_user();
+
+            bus.Busqueda_Dato = busqueda;
+            DataTable busq = data.buscarPost(bus);
+
+            DataTable regis = busq;
+
+            int x = regis.Rows.Count;
+
+            if (x == 0)
+            {
+                 bus.Estado = true;
+                bus.Mensaje_Alertaobservador1 = "No existe el post a buscar";
+            }
+            else
+            {
+                bus.Estado = true;
+                bus.Mensaje_Alertaobservador1= "El Resultado de La Busqueda es:";
+
+            }
+
+
+            return busq;
+        }
+
 
     }
 }
