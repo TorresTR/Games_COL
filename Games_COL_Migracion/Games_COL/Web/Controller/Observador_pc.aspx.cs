@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Observador_pc : System.Web.UI.Page
 {
@@ -15,23 +17,7 @@ public partial class View_Observador_pc : System.Web.UI.Page
         LB_resulbusq.Visible = false;
     }
 
-    protected void datalist_command(object sender, DataListCommandEventArgs e)
-    {
-
-        DAOUsuario archivo = new DAOUsuario();
-        EDatosCrearPost datos = new EDatosCrearPost();
-
-        DataTable registro = archivo.Obtenerpsot();
-
-        if (e.CommandName.Equals("vermas"))
-        {
-
-            int res = Convert.ToInt32(DataList1.DataKeys[e.Item.ItemIndex].ToString());
-
-            Response.Redirect("VerPostCompleto.aspx?parametro=" + res);
-        }
-        //            String a = registro.Rows[0]["titulo"].ToString();
-    }
+   
 
 
     protected void BT_vermas_Click(object sender, EventArgs e)
@@ -39,64 +25,92 @@ public partial class View_Observador_pc : System.Web.UI.Page
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
-        string ID = lblid.Text;
 
-        Response.Redirect("VerPostCompleto.aspx?parametro=" + ID.Trim());
+        L_Usercs data = new L_Usercs();
+        U_user envioObservador = new U_user();
+
+        string x = lblid.Text.ToString();
+
+        envioObservador = data.Vermas(x);
+
+
+        Response.Redirect(envioObservador.Link_observador + envioObservador.ID_vermasObservador1.Trim());
     }
 
 
     protected void BT_homre_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Observador.aspx");
+        U_user inicio = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        inicio = llamado.irInicio();
+        Response.Redirect(inicio.Link_demas);
     }
 
     protected void BT_xbox_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Observador_xbox.aspx");
+        U_user xbox = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        xbox = llamado.irxbox();
+        Response.Redirect(xbox.Link_demas);
     }
 
     protected void BT_plasyStation_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Observar_playstation.aspx");
+        U_user PS = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        PS = llamado.irPS();
+        Response.Redirect(PS.Link_demas);
     }
 
     protected void BT_andrioid_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Observador_androidt.aspx");
+        U_user Android = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        Android = llamado.irAndroid();
+        Response.Redirect(Android.Link_demas);
     }
 
-    protected void Button3_Click(object sender, EventArgs e)
-    {
-        DAOUsuario lugar = new DAOUsuario();
-        DataTable datos = lugar.buscarPost(TB_buscador.Text.ToString());
 
-        DL_resultado.DataSource = datos;
+    protected void BT_Buscar_Click(object sender, EventArgs e)
+    {
+        L_Usercs lugar = new L_Usercs();
+
+        U_user dat = new U_user();
+
+        DataTable dato = lugar.Busqueda(TB_buscador.Text.ToString());
+
+        DL_resultado.DataSource = dato;
         DL_resultado.DataBind();
 
-        DataTable regis = datos;
-        int x = regis.Rows.Count;
+        dat = lugar.busquedaMensaje(dato);
 
-        if (x == 0)
-        {
-            LB_resulbusq.Visible = true;
-            LB_resulbusq.Text = "No existe el post a buscar";
-        }
-        else
-        {
-            LB_resulbusq.Visible = true;
-            LB_resulbusq.Text = "El Resultado de La Busqueda es:";
+        LB_resulbusq.Visible = dat.Estado;
+        LB_resulbusq.Text = dat.Mensaje_Alertaobservador1;
 
-        }
+
     }
+
 
 
     protected void BT_verNoticas_Click(object sender, EventArgs e)
     {
+
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
-        string ID = lblid.Text;
 
-        Response.Redirect("Observador_ver_noticia.aspx?parametro=" + ID.Trim());
+        L_Usercs data = new L_Usercs();
+        U_user envioObservador = new U_user();
+
+        string x = lblid.Text.ToString();
+
+        envioObservador = data.verNoticias(x);
+
+
+        Response.Redirect(envioObservador.Link_observador + envioObservador.ID_vermasObservador1.Trim());
     }
 }

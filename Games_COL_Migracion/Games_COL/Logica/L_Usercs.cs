@@ -56,6 +56,18 @@ namespace Logica
 
         }
 
+        public DataTable obtenerPostpc()
+        {
+
+            D_User datos = new D_User();
+            DataTable data = new DataTable();
+
+            data = datos.obtenerPostpc();
+
+            return data;
+
+        }
+
         public U_userCrearpost postObservador(U_userCrearpost doc) {
 
             D_User data = new D_User();
@@ -144,7 +156,13 @@ namespace Logica
             return dat;
         }
 
+        public U_user irInicio()
+        {
+            U_user dat = new U_user();
 
+            dat.Link_demas = "Observador.aspx";
+            return dat;
+        }
         public U_user irPS()
         {
             U_user dat = new U_user();
@@ -170,24 +188,30 @@ namespace Logica
             bus.Busqueda_Dato = busqueda;
             DataTable busq = data.buscarPost(bus);
 
-            DataTable regis = busq;
+            busquedaMensaje(busq);
 
-            int x = regis.Rows.Count;
+            return busq;
+        }
+
+
+        public U_user busquedaMensaje(DataTable busq) {
+
+            U_user bus = new U_user();
+            int x = busq.Rows.Count;
 
             if (x == 0)
             {
-                 bus.Estado = true;
+                bus.Estado = true;
                 bus.Mensaje_Alertaobservador1 = "No existe el post a buscar";
             }
             else
             {
                 bus.Estado = true;
-                bus.Mensaje_Alertaobservador1= "El Resultado de La Busqueda es:";
+                bus.Mensaje_Alertaobservador1 = "El Resultado de La Busqueda es:";
 
             }
 
-
-            return busq;
+            return bus;
         }
 
 

@@ -19,13 +19,7 @@ public partial class View_Observador : System.Web.UI.Page
     }
 
 
-    protected void datalist_command(object sender, DataListCommandEventArgs e)
-    {
-
-        L_Usercs data = new L_Usercs();
-        data.obtenerPostObservador();
-    }
-
+   
 
     protected void BT_vermas_Click(object sender, EventArgs e)
     {
@@ -104,12 +98,16 @@ public partial class View_Observador : System.Web.UI.Page
     protected void BT_Buscar_Click(object sender, EventArgs e)
     {
         L_Usercs lugar = new L_Usercs();
-        DataTable datos = lugar.Busqueda(TB_buscador.Text.ToString());
+    
         U_user dat = new U_user();
 
-        DL_resultado.DataSource = datos;
+        DataTable dato = lugar.Busqueda(TB_buscador.Text.ToString());
+
+        DL_resultado.DataSource = dato;
         DL_resultado.DataBind();
 
+        dat = lugar.busquedaMensaje(dato);
+        
         LB_resulbusq.Visible = dat.Estado;
         LB_resulbusq.Text = dat.Mensaje_Alertaobservador1;
 
