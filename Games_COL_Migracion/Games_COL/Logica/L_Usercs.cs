@@ -68,6 +68,42 @@ namespace Logica
 
         }
 
+        public DataTable obtenerPostps()
+        {
+
+            D_User datos = new D_User();
+            DataTable data = new DataTable();
+
+            data = datos.ObtenerpostPS();
+
+            return data;
+
+        }
+
+        public DataTable obtenerPostxbox()
+        {
+
+            D_User datos = new D_User();
+            DataTable data = new DataTable();
+
+            data = datos.ObtenerpostXbox();
+
+            return data;
+
+        }
+
+        public DataTable obtenerPostandroid()
+        {
+
+            D_User datos = new D_User();
+            DataTable data = new DataTable();
+
+            data = datos.ObtenerpostAndroid();
+
+            return data;
+
+        }
+
         public U_userCrearpost postObservador(U_userCrearpost doc) {
 
             D_User data = new D_User();

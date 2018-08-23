@@ -28,7 +28,7 @@
                             ForeColor="Red" 
                             ValidationExpression="^[A-Za-z0-9_-ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="BT_buscar" runat="server" CssClass="btn btn-outline-info" OnClick="Button3_Click" Text="Buscar" />
+        <asp:Button ID="BT_buscar" runat="server" CssClass="btn btn-outline-info" OnClick="BT_Buscar_Click" Text="Buscar" />
 
     </div>
 
@@ -64,7 +64,7 @@
             <hr />
         </ItemTemplate>
     </asp:DataList>
-                <asp:ObjectDataSource ID="ODS_noticia" runat="server" SelectMethod="ObtenerNoticias" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_noticia" runat="server" SelectMethod="obtenerPostNoticia" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
 
 
 
@@ -130,7 +130,7 @@
             <hr />
         </ItemTemplate>
     </asp:DataList>
-    <asp:ObjectDataSource ID="ODS_treaListaData" runat="server" SelectMethod="ObtenerpsotPS" TypeName="DAOUsuario"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ODS_treaListaData" runat="server" SelectMethod="obtenerPostps" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
 
 
 
