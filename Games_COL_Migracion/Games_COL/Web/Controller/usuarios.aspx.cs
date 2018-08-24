@@ -73,10 +73,11 @@ public partial class View_usuarios : System.Web.UI.Page
         DL_resultado.DataBind();
 
         DataTable regis = datos;
+        LB_busq.Visible = true;
+        LB_busq.Text = buscar.buscar(x);
         int x = regis.Rows.Count;
 
-        LB_busq.Visible = true;
-        LB_busq.Text = buscar.buscar(x); 
+        
 
 
     }
