@@ -12,7 +12,7 @@ public partial class View_Observador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["user_id"] = 1;
+       Session["user_id"] = 1;
         Response.Cache.SetNoStore();
         LB_resulbusq.Visible = false;
 

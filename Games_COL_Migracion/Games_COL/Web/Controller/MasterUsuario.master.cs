@@ -6,68 +6,40 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Datos;
+using Utilitarios;
+using Logica;
 
 public partial class View_MasterUsuario : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+        
+
 
         if (Session["user_id"] == null)
         {
             Response.Redirect("ingresar.aspx");
         }
-        DAOUsuario us = new DAOUsuario();
+        //DAOUsuario us = new DAOUsuario();
+        D_User us = new D_User();
+        L_Usercs log = new L_Usercs();
+        U_Datos dato = new U_Datos();
+        
 
         int b = int.Parse(Request.Params["userid"]);
 
 
         DataTable data = us.CargarUsusarios(b);
+        LB_mensaje.Text= log.ActualizarRango(data, b);
+        DataTable dat = us.CargarUsusarios(b);
+        dato = log.cargaDatos(dat, b);
 
-        if (data.Rows.Count > 0) {
-
-            if (int.Parse(data.Rows[0]["id"].ToString()) == b)
-            {
-                
-                int puntos = int.Parse(data.Rows[0]["puntos"].ToString());
-                if (puntos > 150 && puntos < 300)
-                {
-                    us.actualizarRango(b, 2);
-                }
-                else if (puntos > 300 && puntos < 700)
-                {
-                    us.actualizarRango(b, 3);
-                }
-                else if (puntos > 700 && puntos < 1700)
-                {
-                    us.actualizarRango(b, 4);
-                }
-                else if (puntos > 1700 && puntos < 2700)
-                {
-                    us.actualizarRango(b, 5);
-                }
-                else if (puntos > 2700)
-                {
-                    us.actualizarRango(b, 6);
-                    LB_mensaje.Visible = true;
-                    LB_mensaje.Text = "Puedes solicitar tu ascenso a moderador";
-                }
-                DataTable dat = us.CargarUsusarios(b);
-                if (dat.Rows.Count > 0)
-                {
-
-                    if (int.Parse(dat.Rows[0]["id"].ToString()) == b)
-                    {
-                        LB_nickMuestra.Text = dat.Rows[0]["nick"].ToString();
-                        LB_muestraPuntos.Text = dat.Rows[0]["puntos"].ToString();
-                        LB_muestraRango.Text = dat.Rows[0]["tipo"].ToString();
-                        LB_muestraID.Text = dat.Rows[0]["id"].ToString();
-                        
-                    }
-                }
-            }
-
-        }
+        LB_nickMuestra.Text = dato.Nick;
+        LB_muestraPuntos.Text = dato.Puntos.ToString();
+        LB_muestraRango.Text = dato.Mensaje1;
+        LB_muestraID.Text = dato.Id.ToString();
 
 
     }

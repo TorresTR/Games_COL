@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Datos;
@@ -18,7 +19,7 @@ namespace Logica
             D_User dat = new D_User();
             U_Datos dato = new U_Datos();
 
-            
+
 
             if (datos.Pass == datos.Confirma)
             {
@@ -29,7 +30,7 @@ namespace Logica
                 {
 
                     dat.insertarUsuario(datos);
-                    dato.Mensaje1=  "<script type='text/javascript'>alert('Usuario registrado con exito');</script>";
+                    dato.Mensaje1 = "<script type='text/javascript'>alert('Usuario registrado con exito');</script>";
                     dato.Link = "Ingresar.aspx";
 
                 }
@@ -42,7 +43,7 @@ namespace Logica
             }
             else
             {
-                dato.Mensaje1= "<script type='text/javascript'>alert('Las contraseñas no coinciden');</script>";
+                dato.Mensaje1 = "<script type='text/javascript'>alert('Las contraseñas no coinciden');</script>";
                 dato.Link = "registro.aspx";
             }
 
@@ -57,7 +58,7 @@ namespace Logica
 
             data = datos.obtenerPostobser();
 
-            return data; 
+            return data;
 
         }
 
@@ -201,7 +202,7 @@ namespace Logica
                 user.Autor1 = dat.Rows[0]["autor"].ToString();
             }
 
-            
+
             return user;
         }
 
@@ -227,7 +228,7 @@ namespace Logica
             return dat;
         }
 
-        public U_user  irPC()
+        public U_user irPC()
         {
             U_user dat = new U_user();
 
@@ -265,6 +266,38 @@ namespace Logica
             dat.Link_demas = "Observador_androidt.aspx";
             return dat;
         }
+        public U_user sesion(int rol, int b)
+        {
+
+            U_user dat = new U_user();
+
+            if (rol == 1)
+            {
+                dat.Link_demas = "usuarios.aspx?userid=" + b;
+                return dat;
+            }
+            else
+            {
+                if (rol == 2)
+                {
+                    dat.Link_demas = "Moderador.aspx";
+                    return dat;
+                }
+                else
+                {
+                    if (rol == 3)
+                    {
+                        dat.Link_demas = "Administrador.aspx";
+                        return dat;
+                    }
+                    else
+                    {
+                        dat.Link_demas = "Ingresar.aspx";
+                        return dat;
+                    }
+                }
+            }
+        }
 
 
         public DataTable Busqueda(string busqueda) {
@@ -301,6 +334,175 @@ namespace Logica
             return bus;
         }
 
+        public U_user loggin(DataTable registros)
+        {
+            D_User datos = new D_User();
+            U_user link = new U_user();
+            int rol = int.Parse(registros.Rows[0]["rol"].ToString());
+
+
+            if (registros.Rows.Count > 0)
+            {
+
+                switch (rol)
+                {
+                    case 1:
+                        string nombre = registros.Rows[0]["nombre"].ToString();
+                        //string user = registros.Rows[0]["user_id"].ToString();
+
+                        int b = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
+
+                        U_session datosUsuario = new U_session();
+                        L_mac datosConexion = new L_mac();
+
+                        datosUsuario.UserId = b;
+                        datosUsuario.Ip = datosConexion.ip();
+                        datosUsuario.Mac = datosConexion.mac();
+                        //datosUsuario.Session = Session.SessionID;
+
+                        datos.guardadoSession(datosUsuario);
+                        link = sesion(rol, b);
+                        return link;
+
+                    case 2:
+                        nombre = registros.Rows[0]["nombre"].ToString();
+                        //Session["user_id"] = registros.Rows[0]["user_id"].ToString();
+
+
+                        int bmod = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
+
+                        U_session datosUsuariom = new U_session();
+                        L_mac datosConexionMod = new L_mac();
+
+                        datosUsuariom.UserId = bmod;
+                        datosUsuariom.Ip = datosConexionMod.ip();
+                        datosUsuariom.Mac = datosConexionMod.mac();
+                        //datosUsuariom.Session = Session.SessionID;
+
+                        datos.guardadoSession(datosUsuariom);
+                        link = sesion(rol, bmod);
+                        return link;
+
+                    case 3:
+                        nombre = registros.Rows[0]["nombre"].ToString();
+                        //Session["user_id"] = registros.Rows[0]["user_id"].ToString();
+
+
+                        int badmon = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
+
+                        U_session datosUsuarioad = new U_session();
+                        L_mac datosConexionadmon = new L_mac();
+
+                        datosUsuarioad.UserId = badmon;
+                        datosUsuarioad.Ip = datosConexionadmon.ip();
+                        datosUsuarioad.Mac = datosConexionadmon.mac();
+                        //datosUsuarioad.Session = Session.SessionID;
+
+                        datos.guardadoSession(datosUsuarioad);
+                        link = sesion(rol, badmon);
+                        return link;
+
+                    default:
+                        rol = 0;
+                        link = sesion(rol, 0);
+                        return link;
+                }
+
+            }
+            else
+            {
+                rol = 0;
+                link = sesion(rol, 0);
+                return link;
+            }
+
+        }
+
+        public string ActualizarRango(DataTable data, int b)
+        {
+            string mensaje="";
+            if (data.Rows.Count > 0)
+            {
+                D_User us = new D_User();
+                
+                U_Datos dato = new U_Datos();
+                dato.Id = int.Parse(data.Rows[0]["id"].ToString());
+                
+
+                if (int.Parse(data.Rows[0]["id"].ToString()) == b)
+                {
+
+                    int puntos = int.Parse(data.Rows[0]["puntos"].ToString());
+                    if (puntos > 150 && puntos < 300)
+                    {
+                        dato.Rango = 2;
+                        us.actualizarRango(dato);
+                    }
+                    else if (puntos > 300 && puntos < 700)
+                    {
+                        dato.Rango = 3;
+                        us.actualizarRango(dato);
+                    }
+                    else if (puntos > 700 && puntos < 1700)
+                    {
+                        dato.Rango = 4;
+                        us.actualizarRango(dato);
+                    }
+                    else if (puntos > 1700 && puntos < 2700)
+                    {
+                        dato.Rango = 5;
+                        us.actualizarRango(dato);
+                    }
+                    else if (puntos > 2700)
+                    {
+                        dato.Rango = 6;
+                        us.actualizarRango(dato);
+                        mensaje = "Puedes solicitar tu ascenso a moderador";
+                    }
+                   
+                }
+                return mensaje;
+            }
+            return mensaje;
+
+        }
+
+        public U_Datos cargaDatos(DataTable dat, int b)
+        {
+            U_Datos datos = new U_Datos();
+            if (dat.Rows.Count > 0)
+            {
+               
+
+                if (int.Parse(dat.Rows[0]["id"].ToString()) == b)
+                {
+                    datos.Nick = dat.Rows[0]["nick"].ToString();
+                    datos.Puntos = int.Parse(dat.Rows[0]["puntos"].ToString());
+                    datos.Mensaje1 = dat.Rows[0]["tipo"].ToString();
+                    datos.Id = int.Parse(dat.Rows[0]["id"].ToString());
+
+                }
+                return datos;
+            }
+            else
+            {
+                return datos;
+            }
+        }
+        public String buscar(int x)
+        {
+            string busqueda = "";
+            if (x == 0)
+            {
+                busqueda = "No existe el post a buscar";
+            }
+            else
+            {
+                busqueda = "El Resultado de La Busqueda es:";
+
+            }
+            return busqueda;
+        }
 
     }
 }

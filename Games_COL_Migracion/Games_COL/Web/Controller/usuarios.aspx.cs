@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Datos;
+using Logica;
+using Utilitarios;
 
 public partial class View_usuarios : System.Web.UI.Page
 {
@@ -63,6 +66,7 @@ public partial class View_usuarios : System.Web.UI.Page
     protected void Button3_Click(object sender, EventArgs e)
     {
         DAOUsuario lugar = new DAOUsuario();
+        L_Usercs buscar = new L_Usercs();
         DataTable datos = lugar.buscarPost(TB_buscador.Text.ToString());
 
         DL_resultado.DataSource = datos;
@@ -71,16 +75,8 @@ public partial class View_usuarios : System.Web.UI.Page
         DataTable regis = datos;
         int x = regis.Rows.Count;
 
-        if (x == 0) {
-            LB_busq.Visible = true;
-            LB_busq.Text = "No existe el post a buscar";
-        }
-        else
-        {
-            LB_busq.Visible = true;
-            LB_busq.Text = "El Resultado de La Busqueda es:";
-
-        }
+        LB_busq.Visible = true;
+        LB_busq.Text = buscar.buscar(x); 
 
 
     }

@@ -46,7 +46,7 @@
                     <asp:Label ID="LB_rango" runat="server" Text="Rango:"></asp:Label>
                     <asp:Label ID="LB_muestraRango" runat="server"></asp:Label>
                     &nbsp;
-                    <asp:Label ID="LB_mensaje" runat="server" Visible="False" ForeColor="Red"></asp:Label>
+                    <asp:Label ID="LB_mensaje" runat="server" ForeColor="Red"></asp:Label>
                     <br />
                     <asp:Label ID="LB_rango0" runat="server" Text="Id:" Visible="False"></asp:Label>
                     <asp:Label ID="LB_muestraID" runat="server" Visible="False"></asp:Label>
