@@ -15,8 +15,9 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        
 
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
         if (Session["user_id"] == null)
         {
@@ -26,9 +27,10 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
         D_User us = new D_User();
         L_Usercs log = new L_Usercs();
         U_Datos dato = new U_Datos();
-        
 
-        int b = int.Parse(Request.Params["userid"]);
+
+       
+        int b = int.Parse(obQueryString["userid"].ToString());
 
 
         DataTable data = us.CargarUsusarios(b);
@@ -46,38 +48,50 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
 
     protected void BT_crear_port_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Crear_post.aspx?userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        
+        Response.Redirect("Crear_post.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_PQR_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("usuarios_pqr.aspx?userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        
+        Response.Redirect("usuarios_pqr.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void B_solicitud_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("solicitud_moderador.aspx?userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+       
+        Response.Redirect("solicitud_moderador.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_inicio_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("usuarios.aspx?userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        
+        Response.Redirect("usuarios.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_misPost_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("usuario_miPost.aspx?userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        
+        Response.Redirect("usuario_miPost.aspx?userid=" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_comentarios_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("usuario_comentarios.aspx?userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        
+        Response.Redirect("usuario_comentarios.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
 
@@ -105,14 +119,17 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
 
     protected void BT_respuestas_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("usuarios_Respuestas.aspx?userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        
+        Response.Redirect("usuarios_Respuestas.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_verinfo_Click(object sender, EventArgs e)
     {
-       
-            int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("usuario_informacion.aspx?userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        
+        Response.Redirect("usuario_informacion.aspx?userid=" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }

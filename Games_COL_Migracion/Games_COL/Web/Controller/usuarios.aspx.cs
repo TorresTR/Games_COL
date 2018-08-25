@@ -29,12 +29,20 @@ public partial class View_usuarios : System.Web.UI.Page
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
+
+        QueryString obQueryString = new QueryString();
+        
+
         string ID = lblid.Text;
 
-        int b = int.Parse(Request.Params["userid"]);
 
 
-        Response.Redirect("verCompletoUserregistrado.aspx?parametro=" + ID.Trim() + "&userid=" + b);
+        string b = Request.Params["userid"].ToString();
+
+        obQueryString.Add("parametro", ID);
+        obQueryString.Add("userid", b);
+
+        Response.Redirect("verCompletoUserregistrado.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_pc_Click(object sender, EventArgs e)

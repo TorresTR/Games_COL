@@ -34,12 +34,13 @@ public partial class View_Default : System.Web.UI.Page
         usuario.Pass = TB_Contraseña.Text.ToString();
 
         DataTable registros = datos.loggin(usuario);
-        
+        QueryString obQueryString = new QueryString();
 
         link = user.loggin(registros);
-        int b = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
-        
-        Response.Redirect(link.Link_demas);
+        string b = registros.Rows[0]["user_id"].ToString();
+
+        obQueryString.Add("userid", b);
+        Response.Redirect(link.Link_demas + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 
@@ -57,6 +58,11 @@ public partial class View_Default : System.Web.UI.Page
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        Response.Redirect("observador.aspx");
+        U_userCrearpost retorno = new U_userCrearpost();
+        L_Usercs data = new L_Usercs();
+
+        retorno = data.retornoObservador();
+        Response.Redirect(retorno.Link);
+
     }
 }

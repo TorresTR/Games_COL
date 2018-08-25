@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_verCompletoUserregistrado : System.Web.UI.Page
 {
@@ -19,13 +21,17 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
 
         Response.Cache.SetNoStore();
 
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+
         EDatosCrearPost doc = new EDatosCrearPost();
         EDatosComenatrio comenta = new EDatosComenatrio();
         DAOUsuario dac = new DAOUsuario();
 
-        int comparador_idpost = int.Parse(Request.Params["parametro"]);
-        int comparador_iduser = int.Parse(Request.Params["userid"]);
-        
+        int comparador_idpost = int.Parse(obQueryString["parametro"].ToString());
+        int comparador_iduser = int.Parse(obQueryString["userid"].ToString());
+
         DataTable regisval = dac.obtenerpuntsval(comparador_iduser);
 
         DataTable data = dac.ObtenerInteraccion(comparador_iduser);
@@ -42,8 +48,8 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
 
 
             ClientScriptManager cm = this.ClientScript;
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        int dato = int.Parse(Request.Params["parametro"]);
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        int dato = int.Parse(obQueryString["userid"].ToString());
 
 
 
@@ -70,7 +76,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
 
 
 
-        int b = int.Parse(Request.Params["userid"]);
+        int b = int.Parse(obQueryString["userid"].ToString());
         DataTable regis2 = dac.obtenerUss(b);
         String x = regis2.Rows[0]["nick"].ToString();
         String z = regis.Rows[0]["autor"].ToString();

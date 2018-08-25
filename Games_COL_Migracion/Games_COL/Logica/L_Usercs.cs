@@ -79,7 +79,7 @@ namespace Logica
 
             U_user dat = new U_user();
 
-            dat.Link_observador = "VerPostCompleto.aspx?parametro=";
+            dat.Link_observador = "VerPostCompleto.aspx";
             dat.ID_vermasObservador1 = x;
 
             return dat;
@@ -90,7 +90,7 @@ namespace Logica
 
             U_user dat = new U_user();
 
-            dat.Link_observador = "Observador_ver_noticia.aspx?parametro=";
+            dat.Link_observador = "Observador_ver_noticia.aspx";
             dat.ID_vermasObservador1 = x;
 
             return dat;
@@ -273,7 +273,7 @@ namespace Logica
 
             if (rol == 1)
             {
-                dat.Link_demas = "usuarios.aspx?userid=" + b;
+                dat.Link_demas = "usuarios.aspx";
                 return dat;
             }
             else

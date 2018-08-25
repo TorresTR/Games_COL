@@ -14,14 +14,15 @@ public partial class View_VerPostCompleto : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        
         U_userCrearpost doc = new U_userCrearpost();
         L_Usercs dac = new L_Usercs();
         
 
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        int x = int.Parse(Request.Params["parametro"]);
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        int x = int.Parse(obQueryString["parametro"].ToString());
 
         doc = dac.postObservador(doc);
 
