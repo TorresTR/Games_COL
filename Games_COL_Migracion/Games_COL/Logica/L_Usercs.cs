@@ -504,5 +504,93 @@ namespace Logica
             return busqueda;
         }
 
+
+        public DataTable obtenerInteraccion(int x)
+        {
+
+            D_User data = new D_User();
+            U_userCrearpost id = new U_userCrearpost();
+
+            id.Id = x;
+
+            DataTable iter = data.ObtenerInteraccion(id);
+
+            return iter;
+        }
+
+        public U_Interaccion validarInteraccion(U_Interaccion inter)
+        {
+
+
+            if (inter.Iteraccion == 10)
+            {
+                
+                inter.Estado = false;
+                inter.Mensaje = "Numero maximo de interacciones por dia  alcanzado";
+            }
+            else {
+                inter.Contador = inter.Contador + 1;
+                inter.Estado = true;
+            }
+
+                return inter;
+        }
+
+        public DataTable obtenerUsercrear(int x)
+        {
+
+            D_User data = new D_User();
+            U_userCrearpost id = new U_userCrearpost();
+
+            id.Id = x;
+
+            DataTable iter = data.obtenerUsercrear(id);
+
+            return iter;
+        }
+
+        public void actualizarpuntoUser(int b,int x)
+        {
+
+            D_User data = new D_User();
+            U_Interaccion id = new U_Interaccion();
+
+            id.Id = b;
+            id.Puntos = x;
+
+            DataTable iter = data.actualizarpuntoUser(id);
+
+           
+        }
+
+        public void insertarPost(U_userCrearpost datos)
+        {
+
+            D_User data = new D_User();
+             data.insertarPost(datos);
+
+
+        }
+
+
+        public U_user retornoUsuario()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "usuarios.aspx?userid=";
+            return dat;
+        }
+
+        public DataTable retornoDDL()
+        {
+
+
+            D_User llamar = new D_User();
+
+            DataTable dat = llamar.ObtenerDdl();
+            return dat;
+        }
+
     }
 }

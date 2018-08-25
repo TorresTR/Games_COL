@@ -1950,6 +1950,7 @@ public class DAOUsuario
         return Usuario;
     }
 
+
     public DataTable ObtenerInteraccion(Int32 dato)
     {
         DataTable Post = new DataTable();

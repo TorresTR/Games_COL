@@ -23,6 +23,7 @@ namespace Utilitarios
         private String totpunt;
         private String link;
         private Int32 Comentarios;
+        
 
         public string Titulo { get => titulo; set => titulo = value; }
         public string Autor1 { get => Autor; set => Autor = value; }
