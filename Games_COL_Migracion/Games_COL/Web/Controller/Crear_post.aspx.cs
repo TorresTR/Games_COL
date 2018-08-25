@@ -103,6 +103,6 @@ public partial class View_Crear_post : System.Web.UI.Page
         L_Usercs data = new L_Usercs();
         U_user link = new U_user();
         link = data.retornoUsuario();
-        Response.Redirect(link.Link_observador + L_encriptadoDesencriptado.DecryptQueryString(obQueryString));
+        Response.Redirect(link.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }

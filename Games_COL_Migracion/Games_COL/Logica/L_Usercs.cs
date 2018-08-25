@@ -578,7 +578,7 @@ namespace Logica
 
             U_user dat = new U_user();
 
-            dat.Link_observador = "usuarios.aspx?userid=";
+            dat.Link_observador = "usuarios.aspx";
             return dat;
         }
 
