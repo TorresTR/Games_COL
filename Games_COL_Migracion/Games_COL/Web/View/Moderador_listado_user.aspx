@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <td>
-                <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_usuarios" BorderColor="White" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both">
+                <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_usuarios" BorderColor="White" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" OnSelectedIndexChanged="DataList1_SelectedIndexChanged">
                     <ItemTemplate>
                         <table class="w-100">
                             <caption>

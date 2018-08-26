@@ -14,6 +14,101 @@ namespace Datos
     public class D_User
     {
 
+        public DataTable eliminarUsuario(U_user dato)
+        {
+            DataTable Post = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_eliminar_usuario", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = dato.Id;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                conection.Open();
+                dataAdapter.Fill(Post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return Post;
+
+        }
+
+        public DataTable ObtenerPqrdatatable()
+        {
+            DataTable Post = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_obtener_pqr", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+
+                conection.Open();
+                dataAdapter.Fill(Post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Post;
+        }
+
+        public void insertarPQR(U_Datospqr datos)
+        {
+            DataTable Documentos = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.insertar_pqr", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                dataAdapter.SelectCommand.Parameters.Add("_asunto", NpgsqlDbType.Text).Value = datos.Asunto;
+                dataAdapter.SelectCommand.Parameters.Add("_estado", NpgsqlDbType.Integer).Value = datos.Id_pqrestado;
+                dataAdapter.SelectCommand.Parameters.Add("_contenido", NpgsqlDbType.Text).Value = datos.Contenido;
+                dataAdapter.SelectCommand.Parameters.Add("_fecha", NpgsqlDbType.Date).Value = datos.Fecha;
+                dataAdapter.SelectCommand.Parameters.Add("_id_user", NpgsqlDbType.Integer).Value = datos.Id_user;
+
+
+
+                conection.Open();
+                dataAdapter.Fill(Documentos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+        }
+
 
         public DataTable ObtenerDdl()
         {

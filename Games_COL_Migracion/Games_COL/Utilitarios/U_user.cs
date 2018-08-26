@@ -15,6 +15,7 @@ namespace Utilitarios
         private String busqueda_Dato;
         private bool estado;
         private String Mensaje_Alertaobservador;
+        private Int32 id;
 
         public string ID_vermasObservador1 { get => ID_vermasObservador; set => ID_vermasObservador = value; }
         public string Link_observador { get => link_observador; set => link_observador = value; }
@@ -22,5 +23,6 @@ namespace Utilitarios
         public string Busqueda_Dato { get => busqueda_Dato; set => busqueda_Dato = value; }
         public bool Estado { get => estado; set => estado = value; }
         public string Mensaje_Alertaobservador1 { get => Mensaje_Alertaobservador; set => Mensaje_Alertaobservador = value; }
+        public int Id { get => id; set => id = value; }
     }
 }

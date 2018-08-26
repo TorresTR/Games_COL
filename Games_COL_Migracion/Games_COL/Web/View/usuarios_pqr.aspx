@@ -73,7 +73,7 @@
                 <asp:DropDownList ID="DDL_tipoSolicitud" runat="server" DataSourceID="ODS_obtenerpqr" DataTextField="estado" DataValueField="id_pqrestados" CssClass="btn btn-primary dropdown-toggle" ValidationGroup="1">
                 </asp:DropDownList>
                 <asp:RangeValidator ID="RV_tiposolicitud" runat="server" ErrorMessage="*" ForeColor="Red" MaximumValue="4" MinimumValue="2" ControlToValidate="DDL_tipoSolicitud" ValidationGroup="1"></asp:RangeValidator>
-                <asp:ObjectDataSource ID="ODS_obtenerpqr" runat="server" SelectMethod="Obtenerpqr" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_obtenerpqr" runat="server" SelectMethod="retornoPqrData" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
             </td>
         </tr>
         <tr>

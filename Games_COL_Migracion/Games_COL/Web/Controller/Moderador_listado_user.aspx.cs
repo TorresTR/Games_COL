@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Default : System.Web.UI.Page
 {
@@ -66,9 +68,11 @@ public partial class View_Default : System.Web.UI.Page
 
 
 
+        L_Usercs dac = new L_Usercs();
+        U_user data = new U_user();
 
-        DAOUsuario dac = new DAOUsuario();
-        dac.eliminarUsuario(h);
+        data.Id = h;
+        dac.eliminarUsermoderador(data);
 
         Response.Redirect("Moderador_listado_user.aspx?userid=" + b);
     }
@@ -78,4 +82,6 @@ public partial class View_Default : System.Web.UI.Page
         int b = int.Parse(Request.Params["userid"]);
         Response.Redirect("Moderador_listado_user.aspx?userid=" + b);
     }
+
+   
 }

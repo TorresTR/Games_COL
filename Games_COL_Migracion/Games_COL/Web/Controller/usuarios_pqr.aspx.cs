@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_usuarios_pqr : System.Web.UI.Page
 {
@@ -14,11 +16,14 @@ public partial class View_usuarios_pqr : System.Web.UI.Page
 
     protected void BT_envio_Click(object sender, EventArgs e)
     {
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        EDatospqr pqr = new EDatospqr();
-        DAOUsuario dao = new DAOUsuario();
 
-        int b = int.Parse(Request.Params["userid"]);
+        U_Datospqr pqr = new U_Datospqr();
+        L_Usercs dao = new L_Usercs();
+
+        int b = int.Parse(obQueryString["userid"].ToString());
 
         DateTime dt = DateTime.Now;
 
@@ -28,15 +33,27 @@ public partial class View_usuarios_pqr : System.Web.UI.Page
         pqr.Fecha = dt;
         pqr.Id_user = b;
 
-        dao.insertarPQR(pqr);
+        dao.insertarPqr(pqr);
+
+        U_user retorno = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        retorno = llamado.retornoUsuario();
+        Response.Redirect(retorno.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
         
-        Response.Redirect("usuarios.aspx?userid=" + b);
 
     }
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("usuarios.aspx?userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        U_user retorno = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        retorno = llamado.retornoUsuario();
+        Response.Redirect(retorno.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
     }
 }

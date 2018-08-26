@@ -592,5 +592,35 @@ namespace Logica
             return dat;
         }
 
+        public void insertarPqr(U_Datospqr pqr)
+        {
+
+
+            D_User llamar = new D_User();
+
+            llamar.insertarPQR(pqr);
+           
+        }
+
+        public DataTable retornoPqrData()
+        {
+
+
+            D_User llamar = new D_User();
+
+            DataTable dat = llamar.ObtenerPqrdatatable();
+            return dat;
+        }
+
+        public void eliminarUsermoderador(U_user pqr)
+        {
+
+
+            D_User llamar = new D_User();
+
+            llamar.eliminarUsuario(pqr);
+
+        }
+
     }
 }
