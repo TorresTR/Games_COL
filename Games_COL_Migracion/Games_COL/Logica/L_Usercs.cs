@@ -612,14 +612,26 @@ namespace Logica
             return dat;
         }
 
-        public void eliminarUsermoderador(U_user pqr)
+        public DataTable Listarusermoder()
         {
 
 
             D_User llamar = new D_User();
 
-            llamar.eliminarUsuario(pqr);
+            DataTable dat = llamar.ListarUsuarios();
+            return dat;
+        }
+        public void eliminarUsermoderador(int  h)
+        {
 
+
+            D_User llamar = new D_User();
+            U_user data = new U_user();
+
+            data.Id = h;
+            llamar.eliminarUsuario(data);
+
+            
         }
 
     }

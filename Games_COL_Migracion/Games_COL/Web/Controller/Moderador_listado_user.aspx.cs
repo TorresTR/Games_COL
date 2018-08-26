@@ -70,9 +70,9 @@ public partial class View_Default : System.Web.UI.Page
 
         L_Usercs dac = new L_Usercs();
         U_user data = new U_user();
-
-        data.Id = h;
-        dac.eliminarUsermoderador(data);
+       
+       
+        dac.eliminarUsermoderador(h);
 
         Response.Redirect("Moderador_listado_user.aspx?userid=" + b);
     }

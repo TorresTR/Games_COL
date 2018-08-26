@@ -16,7 +16,8 @@
         </tr>
         <tr>
             <td>
-                <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_usuarios" BorderColor="White" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" OnSelectedIndexChanged="DataList1_SelectedIndexChanged">
+                <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_usuarios" BorderColor="White" Font-Bold="True" Font-Italic="False" Font-Overline="False" 
+                    Font-Strikeout="False" Font-Underline="False" GridLines="Both" >
                     <ItemTemplate>
                         <table class="w-100">
                             <caption>
@@ -63,7 +64,7 @@
                         </table>
                     </ItemTemplate>
                 </asp:DataList>
-                <asp:ObjectDataSource ID="ODS_usuarios" runat="server" SelectMethod="ListarUsuarios" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_usuarios" runat="server" SelectMethod="Listarusermoder" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
             </td>
             <td>&nbsp;</td>
         </tr>
