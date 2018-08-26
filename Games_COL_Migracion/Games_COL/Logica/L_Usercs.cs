@@ -504,6 +504,16 @@ namespace Logica
             return busqueda;
         }
 
+        public U_user ingresar()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "ingresar.aspx";
+
+            return dat;
+        }
+
 
         public DataTable obtenerInteraccion(int x)
         {

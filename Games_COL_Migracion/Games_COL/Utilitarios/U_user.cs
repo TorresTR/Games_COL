@@ -16,6 +16,7 @@ namespace Utilitarios
         private bool estado;
         private String Mensaje_Alertaobservador;
         private Int32 id;
+        private string session;
 
         public string ID_vermasObservador1 { get => ID_vermasObservador; set => ID_vermasObservador = value; }
         public string Link_observador { get => link_observador; set => link_observador = value; }
@@ -24,5 +25,6 @@ namespace Utilitarios
         public bool Estado { get => estado; set => estado = value; }
         public string Mensaje_Alertaobservador1 { get => Mensaje_Alertaobservador; set => Mensaje_Alertaobservador = value; }
         public int Id { get => id; set => id = value; }
+        public string Session { get => session; set => session = value; }
     }
 }
