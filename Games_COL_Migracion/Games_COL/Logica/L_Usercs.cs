@@ -51,7 +51,8 @@ namespace Logica
         }
 
 
-        public DataTable obtenerPostObservador() {
+        public DataTable obtenerPostObservador()
+        {
 
             D_User datos = new D_User();
             DataTable data = new DataTable();
@@ -75,7 +76,8 @@ namespace Logica
         }
 
 
-        public U_user Vermas(string x) {
+        public U_user Vermas(string x)
+        {
 
             U_user dat = new U_user();
 
@@ -156,7 +158,8 @@ namespace Logica
 
         }
 
-        public U_userCrearpost postObservador(U_userCrearpost doc) {
+        public U_userCrearpost postObservador(U_userCrearpost doc)
+        {
 
             D_User data = new D_User();
             U_userCrearpost user = new U_userCrearpost();
@@ -300,7 +303,8 @@ namespace Logica
         }
 
 
-        public DataTable Busqueda(string busqueda) {
+        public DataTable Busqueda(string busqueda)
+        {
 
             D_User data = new D_User();
             U_user bus = new U_user();
@@ -314,7 +318,8 @@ namespace Logica
         }
 
 
-        public U_user busquedaMensaje(DataTable busq) {
+        public U_user busquedaMensaje(DataTable busq)
+        {
 
             U_user bus = new U_user();
             int x = busq.Rows.Count;
@@ -420,14 +425,14 @@ namespace Logica
 
         public string ActualizarRango(DataTable data, int b)
         {
-            string mensaje="";
+            string mensaje = "";
             if (data.Rows.Count > 0)
             {
                 D_User us = new D_User();
-                
+
                 U_Datos dato = new U_Datos();
                 dato.Id = int.Parse(data.Rows[0]["id"].ToString());
-                
+
 
                 if (int.Parse(data.Rows[0]["id"].ToString()) == b)
                 {
@@ -459,11 +464,49 @@ namespace Logica
                         us.actualizarRango(dato);
                         mensaje = "Puedes solicitar tu ascenso a moderador";
                     }
-                   
+
                 }
                 return mensaje;
             }
             return mensaje;
+
+        }
+
+        public void ActualizarRangoM(DataTable data, int b)
+        {
+
+            if (data.Rows.Count > 0)
+            {
+                D_User us = new D_User();
+
+                U_Datos dato = new U_Datos();
+                dato.Id = int.Parse(data.Rows[0]["id"].ToString());
+
+
+                if (int.Parse(data.Rows[0]["id"].ToString()) == b)
+                {
+
+                    int puntos = int.Parse(data.Rows[0]["puntos"].ToString());
+                    if (puntos > 3700 && puntos < 5800)
+                    {
+                        dato.Rango = 7;
+                        us.actualizarRango(dato);
+                    }
+                    else if (puntos > 5800 && puntos < 7900)
+                    {
+                        dato.Rango = 8;
+                        us.actualizarRango(dato);
+                    }
+                    else if (puntos > 7900)
+                    {
+                        dato.Rango = 9;
+                        us.actualizarRango(dato);
+                    }
+
+                }
+
+            }
+
 
         }
 
@@ -472,7 +515,7 @@ namespace Logica
             U_Datos datos = new U_Datos();
             if (dat.Rows.Count > 0)
             {
-               
+
 
                 if (int.Parse(dat.Rows[0]["id"].ToString()) == b)
                 {
@@ -519,11 +562,11 @@ namespace Logica
         {
 
             D_User data = new D_User();
-            U_userCrearpost id = new U_userCrearpost();
+            U_userCrearpost id1 = new U_userCrearpost();
 
-            id.Id = x;
+            int Id = x;
 
-            DataTable iter = data.ObtenerInteraccion(id);
+            DataTable iter = data.ObtenerInteraccion(Id);
 
             return iter;
         }
@@ -534,16 +577,17 @@ namespace Logica
 
             if (inter.Iteraccion == 10)
             {
-                
+
                 inter.Estado = false;
                 inter.Mensaje = "Numero maximo de interacciones por dia  alcanzado";
             }
-            else {
+            else
+            {
                 inter.Contador = inter.Contador + 1;
                 inter.Estado = true;
             }
 
-                return inter;
+            return inter;
         }
 
         public DataTable obtenerUsercrear(int x)
@@ -559,7 +603,7 @@ namespace Logica
             return iter;
         }
 
-        public void actualizarpuntoUser(int b,int x)
+        public void actualizarpuntoUser(int b, int x)
         {
 
             D_User data = new D_User();
@@ -570,14 +614,14 @@ namespace Logica
 
             DataTable iter = data.actualizarpuntoUser(id);
 
-           
+
         }
 
         public void insertarPost(U_userCrearpost datos)
         {
 
             D_User data = new D_User();
-             data.insertarPost(datos);
+            data.insertarPost(datos);
 
 
         }
@@ -609,7 +653,7 @@ namespace Logica
             D_User llamar = new D_User();
 
             llamar.insertarPQR(pqr);
-           
+
         }
 
         public DataTable retornoPqrData()
@@ -631,7 +675,7 @@ namespace Logica
             DataTable dat = llamar.ListarUsuarios();
             return dat;
         }
-        public void eliminarUsermoderador(int  h)
+        public void eliminarUsermoderador(int h)
         {
 
 
@@ -641,8 +685,55 @@ namespace Logica
             data.Id = h;
             llamar.eliminarUsuario(data);
 
-            
+
         }
 
+        public Boolean comparaPropioP(DataTable regisval, int comparador_idpost, int comparador_iduser)
+        {
+            Boolean estado = true;
+            foreach (DataRow fila in regisval.Rows)
+            {
+                string valor = fila["id_usuario"].ToString();
+                string valor_post = fila["id_post"].ToString();
+
+                if (comparador_idpost == int.Parse(valor_post) && comparador_iduser == int.Parse(valor))
+                {
+                    estado = false;
+
+                }
+            }
+            return estado;
+
+        }
+
+        public Boolean compara(string z, string x)
+        {
+            Boolean estado = true;
+            if (z == x)
+            {
+                estado = false;
+            }
+            return estado;
+        }
+        public U_userCrearpost comp(DataTable regis)
+        {
+            U_userCrearpost dat = new U_userCrearpost();
+            if (regis.Rows.Count > 0)
+            {
+                dat.Contenido1 = regis.Rows[0]["contenido"].ToString();
+                dat.Autor1 = regis.Rows[0]["autor"].ToString();
+            }
+            return dat;
+        }
+        public U_userCrearpost promedioPunt(DataTable punt)
+        {
+            U_userCrearpost puntos = new U_userCrearpost();
+            if (punt.Rows.Count > 0)
+            {
+                puntos.PuntosA = int.Parse(punt.Rows[0]["puntos"].ToString());
+                puntos.Nump = int.Parse(punt.Rows[0]["nump"].ToString());
+            }
+            return puntos;
+        }
     }
 }

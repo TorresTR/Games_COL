@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
+using Datos;
 
 public partial class View_verCompletoUserregistrado : System.Web.UI.Page
 {
@@ -24,10 +25,12 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-
-        EDatosCrearPost doc = new EDatosCrearPost();
+        U_userCrearpost doc = new U_userCrearpost();
+       // EDatosCrearPost doc = new EDatosCrearPost();
         EDatosComenatrio comenta = new EDatosComenatrio();
-        DAOUsuario dac = new DAOUsuario();
+        L_Usercs log = new L_Usercs();
+        D_User dac = new D_User();
+        //DAOUsuario dac = new DAOUsuario();
 
         int comparador_idpost = int.Parse(obQueryString["parametro"].ToString());
         int comparador_iduser = int.Parse(obQueryString["userid"].ToString());
@@ -36,18 +39,20 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
 
         DataTable data = dac.ObtenerInteraccion(comparador_iduser);
         int inter = int.Parse(data.Rows[0]["id"].ToString());
+        U_Interaccion inte = new U_Interaccion();
+        inte.Iteraccion = inter;
+        inte = log.validarInteraccion(inte);
 
-        if (inter == 10)
-        {
-            LB_mensaje.Text = "Maximo numero de interacciones por dia alcanzado";
-            TB_comentarios.Visible = false;
-            LB_comentar.Visible = false;
-            BT_comentar.Visible = false;
-            UpdatePanel1.Visible = false;
-        }
+        
+        LB_mensaje.Text = inte.Mensaje;
+        TB_comentarios.Visible = inte.Estado;
+        LB_comentar.Visible = inte.Estado;
+        BT_comentar.Visible = inte.Estado;
+        UpdatePanel1.Visible = inte.Estado;
+       
 
 
-            ClientScriptManager cm = this.ClientScript;
+        ClientScriptManager cm = this.ClientScript;
         doc.Id = int.Parse(obQueryString["parametro"].ToString());
         int dato = int.Parse(obQueryString["userid"].ToString());
 
@@ -58,22 +63,10 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         int contadordatos = regisval.Rows.Count;
         int contcolum = regisval.Columns.Count;
 
-
-        foreach (DataRow fila in regisval.Rows)
-        {
-            string valor = fila["id_usuario"].ToString();
-            string valor_post = fila["id_post"].ToString();
-
-            if (comparador_idpost == int.Parse(valor_post) && comparador_iduser == int.Parse(valor))
-            {
-                UpdatePanel1.Visible = false;
-
-            }
-        }
-
-
-
-
+        Boolean estado = log.comparaPropioP(regisval, comparador_idpost, comparador_iduser);
+       
+       
+        UpdatePanel1.Visible = estado;
 
 
         int b = int.Parse(obQueryString["userid"].ToString());
@@ -84,34 +77,32 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
 
         BT_reporte.Visible = true;
 
-
-        if (z == x)
-        {
-            BT_reporte.Visible = false;
-            UpdatePanel1.Visible = false;
-        }
+        Boolean est = log.compara(z, x);
+        
+        BT_reporte.Visible = est;
+        UpdatePanel1.Visible = est;
 
 
 
+        U_userCrearpost datos = new U_userCrearpost();
 
-        if (regis.Rows.Count > 0)
-        {
+        datos = log.comp(regis);
+        
+        LB_muestraPag.Text = datos.Contenido1;
+        LB_autor.Text = datos.Autor1;
 
-            LB_muestraPag.Text = regis.Rows[0]["contenido"].ToString();
-            LB_autor.Text = regis.Rows[0]["autor"].ToString();
-
-        }
+        
         
         DataTable punt = dac.verpuntos(doc);
-        if (punt.Rows.Count > 0)
-        {
-            puntos = int.Parse(punt.Rows[0]["puntos"].ToString());
-            num = int.Parse(punt.Rows[0]["nump"].ToString());
-            tot = puntos / num;
-            LB_motrarPuntos.Text = tot.ToString();
-        }
 
-        GV_comentariosuser.DataSource = dac.ObtenerComent(dato);
+        datos = log.promedioPunt(punt);
+        puntos = datos.PuntosA;
+        num = datos.Nump;
+        tot = puntos / num;
+        LB_motrarPuntos.Text = tot.ToString();
+        
+        datos.Comentarios1 = dato;
+        GV_comentariosuser.DataSource = dac.ObtenerComent(datos);
         GV_comentariosuser.DataBind();
       
 

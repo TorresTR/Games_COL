@@ -272,7 +272,7 @@ namespace Datos
             return Usuario;
         }
 
-        public DataTable ObtenerInteraccion(U_userCrearpost dato)
+        public DataTable ObtenerInteraccion(int dato)
         {
             DataTable Post = new DataTable();
             NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -895,5 +895,62 @@ namespace Datos
             return Usuario;
         }
 
+        public DataTable obtenerpuntsval(Int32 id)
+        {
+            DataTable Usuario = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_obtener_puntuacionvalida", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = id;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
+
+        public DataTable obtenerUss(Int32 id)
+        {
+            DataTable Usuario = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_obtener_usuario_puntosact", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = id;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
     }
 }
