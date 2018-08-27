@@ -5,8 +5,10 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using Datos;
 using Utilitarios;
+
 
 namespace Logica
 {
@@ -735,5 +737,83 @@ namespace Logica
             }
             return puntos;
         }
+
+        public U_userCrearpost puntosBoton(DataTable punt, int inter,U_userCrearpost puntot)
+        {
+            int val, pun;
+            if (inter < 10)
+            {
+                inter = inter + 1;
+                if (puntot.Nick != puntot.Autor1)
+                {
+
+                    String d = punt.Rows[0]["id"].ToString();
+
+                    if (puntot.Id == int.Parse(d))
+                    {
+
+                        String a = punt.Rows[0]["puntos"].ToString();
+
+                        val = int.Parse(a);
+                        val = val + 1;
+
+                        String puntosA = punt.Rows[0]["puntosautor"].ToString();
+                        pun = int.Parse(puntosA);
+                        pun = pun + 1;
+
+
+                        puntot.Puntos = val;
+                        puntot.Interacciones = inter;
+                        puntot.PuntosA = pun;
+
+                        
+                    }
+
+
+                }
+            }
+            return puntot;
+        }
+
+        public string comentar(int inter, U_comentarios coment)
+        {
+            string mensaje = "";
+            D_User dac = new D_User();
+            if (inter < 10)
+            {
+                inter = inter + 1;
+                coment.Interaccion = inter;
+                dac.insertarComentarios(coment);
+                DataTable regis = dac.obtenerUss(coment.Id_user);
+                int x = int.Parse(regis.Rows[0]["puntos"].ToString());
+                x = x + 1;
+
+                dac.actualizarpuntoUser(coment.Id_user, x);
+            }
+            else
+            {
+                mensaje = "Numero maximo de interacciones por dia alcanzado";
+            }
+            return mensaje;
+        }
+
+        public int gridview(GridViewCommandEventArgs e, GridViewRow row)
+        {
+            int x=0;
+            if (e.CommandName == "reportar")
+            {
+
+                
+                Label id_pregunta = (Label)row.FindControl("Label1");
+                int id_preg = Convert.ToInt32(id_pregunta.Text);
+
+                x = id_preg;
+                
+               
+
+            }
+            return x;
+        }
+
     }
 }
