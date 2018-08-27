@@ -4,15 +4,15 @@ C:\Users\David\Documents\Visual Studio 2017\Proyecto\Games_COL_ultimaversion\Gam
 C:\Users\David\Documents\Visual Studio 2017\Proyecto\Games_COL_ultimaversion\Games_COL\Utilitarios\obj\Debug\Utilitarios.dll
 C:\Users\David\Documents\Visual Studio 2017\Proyecto\Games_COL_ultimaversion\Games_COL\Utilitarios\obj\Debug\Utilitarios.pdb
 C:\Users\David\Documents\Visual Studio 2017\Proyecto\Games_COL_ultimaversion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\bin\Debug\Utilitarios.dll
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\bin\Debug\Utilitarios.pdb
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.dll
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.pdb
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\bin\Debug\Utilitarios.dll
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\bin\Debug\Utilitarios.pdb
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.dll
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.pdb
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\bin\Debug\Utilitarios.dll
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\bin\Debug\Utilitarios.pdb
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.dll
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.pdb
