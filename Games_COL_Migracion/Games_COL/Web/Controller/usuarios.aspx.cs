@@ -26,18 +26,19 @@ public partial class View_usuarios : System.Web.UI.Page
 
     protected void BT_vermas_Click(object sender, EventArgs e)
     {
+        
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
 
-        QueryString obQueryString = new QueryString();
-        
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
         string ID = lblid.Text;
 
 
 
-        string b = Request.Params["userid"].ToString();
+        string b = obQueryString["userid"].ToString();
 
         obQueryString.Add("parametro", ID);
         obQueryString.Add("userid", b);
