@@ -520,7 +520,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         string z = x.ToString();
         obQueryString.Add("idcoment", z);
         obQueryString.Add("userid", q);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        //obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
         Response.Redirect("usuario_reportar_coment.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 

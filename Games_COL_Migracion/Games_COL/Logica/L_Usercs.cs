@@ -814,6 +814,37 @@ namespace Logica
             }
             return x;
         }
+        public U_Interaccion solicitudModer(U_Datos datos, System.Data.DataTable validez)
+        {
+            D_User dao = new D_User();
+            U_Interaccion inter = new U_Interaccion();
+            
+            if (int.Parse(validez.Rows[0]["puntos"].ToString()) >= 3700)
+            {
+                dao.insertarSolicitud(datos);
+                inter.Mensaje = "Solicitud enviada con exito";
+                inter.Estado = false;
+            }
+            else
+            {
+                inter.Mensaje = "No cuenta con los requisitos necesarios para realizar la solicitud";
+                inter.Estado = false;
+            }
+            return inter;
+        }
+
+        public U_Datospqr pqr(DataTable regis)
+        {
+            U_Datospqr pqr = new U_Datospqr();
+            if (regis.Rows.Count > 0)
+            {
+
+                pqr.Contenido = regis.Rows[0]["contenido"].ToString();
+                pqr.Autor = regis.Rows[0]["autor"].ToString();
+
+            }
+            return pqr;
+        }
 
     }
 }

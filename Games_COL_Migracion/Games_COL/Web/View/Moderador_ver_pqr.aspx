@@ -45,7 +45,7 @@
                         <br />
                     </ItemTemplate>
                 </asp:DataList>
-                <asp:ObjectDataSource ID="ODS_pqr" runat="server" SelectMethod="Obtenerpqrmoderador" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_pqr" runat="server" SelectMethod="Obtenerpqrmoderador" TypeName="Datos.D_User"></asp:ObjectDataSource>
             </td>
         </tr>
         <tr>

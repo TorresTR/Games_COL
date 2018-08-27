@@ -19,6 +19,7 @@ namespace Utilitarios
         private DateTime fecha_respuesta;
         private Int32 id_pqr;
         private Int32 estado_respuesta;
+        private string autor;
 
         public string Asunto { get => asunto; set => asunto = value; }
         public string Contenido { get => contenido; set => contenido = value; }
@@ -30,5 +31,6 @@ namespace Utilitarios
         public DateTime Fecha_respuesta { get => fecha_respuesta; set => fecha_respuesta = value; }
         public int Id_pqr { get => id_pqr; set => id_pqr = value; }
         public int Estado_respuesta { get => estado_respuesta; set => estado_respuesta = value; }
+        public string Autor { get => autor; set => autor = value; }
     }
 }
