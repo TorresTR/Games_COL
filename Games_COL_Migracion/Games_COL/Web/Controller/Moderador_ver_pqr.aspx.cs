@@ -30,6 +30,7 @@ public partial class View_Moderador_ver_pqr : System.Web.UI.Page
         Label lblid = (Label)item.FindControl("LB_muestraId");
         string ID = lblid.Text;
 
+
         obQueryString.Add("parametro", ID);
         obQueryString.Add("userid", b);
         
