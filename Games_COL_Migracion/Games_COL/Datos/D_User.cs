@@ -14,6 +14,38 @@ namespace Datos
     public class D_User
     {
 
+        public DataTable ObtenerComentariouserreporte(U_comentarios dato)
+        {
+            DataTable Post = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_obtener_Coment1", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = dato.Id;
+
+
+
+                conection.Open();
+                dataAdapter.Fill(Post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return Post;
+
+        }
+
         public DataTable ListarUsuarios()
         {
 

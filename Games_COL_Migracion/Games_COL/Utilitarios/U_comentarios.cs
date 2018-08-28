@@ -15,6 +15,7 @@ namespace Utilitarios
         private Int32 id_user;
         private int interaccion;
         private DateTime fecha;
+        private String coment;
 
         public string Conetinido1 { get => Conetinido; set => Conetinido = value; }
         public int Id_post { get => id_post; set => id_post = value; }
@@ -22,5 +23,6 @@ namespace Utilitarios
         public int Id_user { get => id_user; set => id_user = value; }
         public int Interaccion { get => interaccion; set => interaccion = value; }
         public DateTime Fecha { get => fecha; set => fecha = value; }
+        public string Coment { get => coment; set => coment = value; }
     }
 }

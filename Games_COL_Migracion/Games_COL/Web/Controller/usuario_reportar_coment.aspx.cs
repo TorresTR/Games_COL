@@ -5,28 +5,30 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         ClientScriptManager cm = this.ClientScript;
-        EDatosCrearPost doc = new EDatosCrearPost();
-        DAOUsuario dac = new DAOUsuario();
+        U_comentarios doc = new U_comentarios();
+        L_Usercs dac = new L_Usercs();
+        
+        int c = int.Parse(obQueryString["idcoment"].ToString());
+        int u = int.Parse(obQueryString["userid"].ToString());
 
-        int c = int.Parse(Request.Params["idcoment"]);
-        int u = int.Parse(Request.Params["userid"]);
+        doc = dac.ObtenerComentarioreportar(c);
 
-        DataTable regis = dac.ObtenerComent1(c);
 
-        int contcolum = regis.Columns.Count;
-
-        int p = int.Parse(regis.Rows[0]["id"].ToString());
-        if (c == int.Parse(regis.Rows[0]["id"].ToString()))
-        {
-            LB_Id_comentario.Text = regis.Rows[0]["comentarios"].ToString();
-        }
+        LB_Id_comentario.Text = doc.Coment;
+        
     }
 
     protected void BT_reportar_Click(object sender, EventArgs e)

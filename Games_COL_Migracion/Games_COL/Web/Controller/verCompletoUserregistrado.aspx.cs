@@ -27,7 +27,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
 
         U_userCrearpost doc = new U_userCrearpost();
        // EDatosCrearPost doc = new EDatosCrearPost();
-        EDatosComenatrio comenta = new EDatosComenatrio();
+       // EDatosComenatrio comenta = new EDatosComenatrio();
         L_Usercs log = new L_Usercs();
         D_User dac = new D_User();
         //DAOUsuario dac = new DAOUsuario();
@@ -101,17 +101,15 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         LB_motrarPuntos.Text = tot.ToString();
 
         datos.Comentarios1 = dato;
-        GV_comentariosuser.DataSource = dac.ObtenerComent(datos);
+        GV_comentariosuser.DataSource = log.obtenerComentario(comparador_idpost);
         GV_comentariosuser.DataBind();
-      
+
 
 
     }
 
     protected void Bt_uno_Click(object sender, EventArgs e)
     {
-
-
         ClientScriptManager cm = this.ClientScript;
         D_User dac = new D_User();
         U_userCrearpost puntot = new U_userCrearpost();
@@ -122,29 +120,30 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         int bn = int.Parse(obQueryString["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(Request.Params["parametro"]);
-        puntot.Id_user = int.Parse(Request.Params["userid"]);
+        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
+        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        Int32 v = int.Parse(Request.Params["parametro"]);
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        Int32 v = int.Parse(obQueryString["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
 
         DataTable regis2 = dac.obtenerUss(b);
-        
+
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
         puntot.Autor1 = regis.Rows[0]["autor"].ToString();
-        
+
         DataTable data = dac.ObtenerInteraccion(b);
         int inter = int.Parse(data.Rows[0]["id"].ToString());
 
-        
+        L_Usercs llamado = new L_Usercs();
 
-        dac.guardaPuntos(puntot);
-              
+        llamado.puntosBoton(punt, inter, puntot);
+
+
 
 
         int z = int.Parse(obQueryString["parametro"].ToString());
@@ -154,9 +153,10 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
 
-         x = x + 1;
+        x = x + 1;
 
-        
+
+
 
 
         dac.actualizarpuntoUser(b, x);
@@ -169,9 +169,13 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         obQueryString.Add("userid", ui);
 
 
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("verCompletoUserregistrado.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        dat = llamar.redirigirCompletousuarioregistrado();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 
@@ -187,13 +191,13 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         int bn = int.Parse(obQueryString["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(Request.Params["parametro"]);
-        puntot.Id_user = int.Parse(Request.Params["userid"]);
+        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
+        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        Int32 v = int.Parse(Request.Params["parametro"]);
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        Int32 v = int.Parse(obQueryString["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
@@ -206,9 +210,10 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         DataTable data = dac.ObtenerInteraccion(b);
         int inter = int.Parse(data.Rows[0]["id"].ToString());
 
+        L_Usercs llamado = new L_Usercs();
 
-
-        dac.guardaPuntos(puntot);
+        llamado.puntosBoton(punt ,inter,puntot);
+        
 
 
 
@@ -234,9 +239,14 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         obQueryString.Add("parametro", par);
         obQueryString.Add("userid", ui);
 
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+       
 
-        Response.Redirect("verCompletoUserregistrado.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        dat = llamar.redirigirCompletousuarioregistrado();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 
@@ -252,13 +262,13 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         int bn = int.Parse(obQueryString["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(Request.Params["parametro"]);
-        puntot.Id_user = int.Parse(Request.Params["userid"]);
+        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
+        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        Int32 v = int.Parse(Request.Params["parametro"]);
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        Int32 v = int.Parse(obQueryString["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
@@ -271,9 +281,10 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         DataTable data = dac.ObtenerInteraccion(b);
         int inter = int.Parse(data.Rows[0]["id"].ToString());
 
+        L_Usercs llamado = new L_Usercs();
 
+        llamado.puntosBoton(punt, inter, puntot);
 
-        dac.guardaPuntos(puntot);
 
 
 
@@ -299,10 +310,14 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         obQueryString.Add("parametro", par);
         obQueryString.Add("userid", ui);
 
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("verCompletoUserregistrado.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        dat = llamar.redirigirCompletousuarioregistrado();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 
@@ -318,13 +333,13 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         int bn = int.Parse(obQueryString["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(Request.Params["parametro"]);
-        puntot.Id_user = int.Parse(Request.Params["userid"]);
+        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
+        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        Int32 v = int.Parse(Request.Params["parametro"]);
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        Int32 v = int.Parse(obQueryString["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
@@ -335,15 +350,16 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         puntot.Autor1 = regis.Rows[0]["autor"].ToString();
 
         DataTable data = dac.ObtenerInteraccion(b);
-        int inter = int.Parse(obQueryString["parametro"].ToString());
+        int inter = int.Parse(data.Rows[0]["id"].ToString());
+
+        L_Usercs llamado = new L_Usercs();
+
+        llamado.puntosBoton(punt, inter, puntot);
 
 
 
-        dac.guardaPuntos(puntot);
 
-
-
-        int z = int.Parse(Request.Params["parametro"]);
+        int z = int.Parse(obQueryString["parametro"].ToString());
 
 
         DataTable regis3 = dac.obtenerUss(b);
@@ -365,9 +381,14 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         obQueryString.Add("parametro", par);
         obQueryString.Add("userid", ui);
 
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("verCompletoUserregistrado.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        dat = llamar.redirigirCompletousuarioregistrado();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
 
     }
@@ -384,13 +405,13 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         int bn = int.Parse(obQueryString["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(Request.Params["parametro"]);
-        puntot.Id_user = int.Parse(Request.Params["userid"]);
+        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
+        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        Int32 v = int.Parse(Request.Params["parametro"]);
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        Int32 v = int.Parse(obQueryString["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
@@ -403,9 +424,10 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         DataTable data = dac.ObtenerInteraccion(b);
         int inter = int.Parse(data.Rows[0]["id"].ToString());
 
+        L_Usercs llamado = new L_Usercs();
 
+        llamado.puntosBoton(punt, inter, puntot);
 
-        dac.guardaPuntos(puntot);
 
 
 
@@ -431,10 +453,14 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         obQueryString.Add("parametro", par);
         obQueryString.Add("userid", ui);
 
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("verCompletoUserregistrado.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        dat = llamar.redirigirCompletousuarioregistrado();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 
@@ -468,9 +494,14 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         string z = obQueryString["parametro"].ToString();
         obQueryString.Add("parametro", z);
         obQueryString.Add("userid", q);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        
 
-        Response.Redirect("verCompletoUserregistrado.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        dat = llamar.redirigirCompletousuarioregistrado();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 
@@ -494,9 +525,14 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         string z = obQueryString["parametro"].ToString();
         obQueryString.Add("parametro", z);
         obQueryString.Add("userid", q);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        
 
-        Response.Redirect("usuarios_reportar_post.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        L_Usercs data = new L_Usercs();
+        U_user dat = new U_user();
+
+        dat = data.reporteUsuariopost();
+
+        Response.Redirect( dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
     
@@ -546,9 +582,14 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         obQueryString.Add("parametro", z);
         obQueryString.Add("userid", q);
         obQueryString.Add("idcoment", IdRecogido);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        
 
-        Response.Redirect("usuario_reportar_coment.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        L_Usercs data = new L_Usercs();
+        U_user dat = new U_user();
+
+        dat = data.reporteUsuariocoment();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
 
     }

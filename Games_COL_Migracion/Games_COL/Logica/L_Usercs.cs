@@ -53,6 +53,26 @@ namespace Logica
         }
 
 
+        public U_comentarios ObtenerComentarioreportar(int c)
+        {
+            U_comentarios dat = new U_comentarios();
+            D_User dac = new D_User();
+
+            dat.Id = c;
+            DataTable regis = dac.ObtenerComentariouserreporte(dat);
+
+            int contcolum = regis.Columns.Count;
+
+            int p = int.Parse(regis.Rows[0]["id"].ToString());
+            if (c == int.Parse(regis.Rows[0]["id"].ToString()))
+            {
+                 dat.Coment = regis.Rows[0]["comentarios"].ToString();
+            }
+
+            return dat;
+        }
+
+
         public DataTable obtenerPostObservador()
         {
 
@@ -77,6 +97,106 @@ namespace Logica
             return dat;
         }
 
+        public U_user reporteUsuariocoment()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "usuario_reportar_coment.aspx";
+
+
+            return dat;
+        }
+
+
+        public U_user verCompletousuarioRegistrado()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "verCompletoUserregistrado.aspx";
+
+
+            return dat;
+        }
+
+        public U_user volverUsuariosRegistrado()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "usuarios.aspx";
+
+
+            return dat;
+        }
+
+        public U_user irPCusuarioregistrado()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "usuarios_pc.aspx";
+
+
+            return dat;
+        }
+
+        public U_user irXboxusuarioregistrado()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "usuarios_xbox.aspx";
+
+
+            return dat;
+        }
+
+        public U_user irPSusuarioregistrado()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "usuarios_playstation.aspx";
+
+
+            return dat;
+        }
+
+        public U_user irAndroidusuarioregistrado()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "usuarios_android.aspx";
+
+
+            return dat;
+        }
+
+        public U_user reporteUsuariopost()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "usuarios_reportar_post.aspx";
+            
+
+            return dat;
+        }
+
+        public U_user usuarioVernoticia()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "usuarios_ver_noticias.aspx";
+
+
+            return dat;
+        }
+
 
         public U_user Vermas(string x)
         {
@@ -95,6 +215,28 @@ namespace Logica
             U_user dat = new U_user();
 
             dat.Link_observador = "Observador_ver_noticia.aspx";
+            dat.ID_vermasObservador1 = x;
+
+            return dat;
+        }
+
+        public U_user redirigirCompletousuarioregistrado()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "verCompletoUserregistrado.aspx";
+            
+
+            return dat;
+        }
+
+        public U_user verNoticiasusuariosregistrados(string x)
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "usuarios_ver_noticias.aspx";
             dat.ID_vermasObservador1 = x;
 
             return dat;
@@ -211,6 +353,7 @@ namespace Logica
             return user;
         }
 
+        
 
         public DataTable obtenerComentario(int x)
         {
@@ -740,6 +883,10 @@ namespace Logica
 
         public U_userCrearpost puntosBoton(DataTable punt, int inter,U_userCrearpost puntot)
         {
+
+
+            D_User dac = new D_User();
+
             int val, pun;
             if (inter < 10)
             {
@@ -771,6 +918,8 @@ namespace Logica
 
 
                 }
+
+                dac.guardaPuntos(puntot);
             }
             return puntot;
         }

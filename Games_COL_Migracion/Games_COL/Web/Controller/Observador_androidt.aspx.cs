@@ -27,13 +27,18 @@ public partial class View_Observador_androidt : System.Web.UI.Page
 
         L_Usercs data = new L_Usercs();
         U_user envioObservador = new U_user();
+        QueryString obQueryString = new QueryString();
+
 
         string x = lblid.Text.ToString();
 
+
         envioObservador = data.Vermas(x);
 
+        obQueryString.Add("parametro", envioObservador.ID_vermasObservador1);
 
-        Response.Redirect(envioObservador.Link_observador + envioObservador.ID_vermasObservador1.Trim());
+
+        Response.Redirect(envioObservador.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
 
@@ -100,12 +105,15 @@ public partial class View_Observador_androidt : System.Web.UI.Page
 
         L_Usercs data = new L_Usercs();
         U_user envioObservador = new U_user();
+        QueryString obQueryString = new QueryString();
+
 
         string x = lblid.Text.ToString();
 
         envioObservador = data.verNoticias(x);
 
+        obQueryString.Add("parametro", envioObservador.ID_vermasObservador1.Trim());
 
-        Response.Redirect(envioObservador.Link_observador + envioObservador.ID_vermasObservador1.Trim());
+        Response.Redirect(envioObservador.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }
