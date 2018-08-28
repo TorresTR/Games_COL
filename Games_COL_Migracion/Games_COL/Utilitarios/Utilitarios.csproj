@@ -44,6 +44,7 @@
     <Compile Include="U_comentarios.cs" />
     <Compile Include="U_Datos.cs" />
     <Compile Include="U_Datospqr.cs" />
+    <Compile Include="U_Datosreporte.cs" />
     <Compile Include="U_Interaccion.cs" />
     <Compile Include="U_logueo.cs" />
     <Compile Include="U_session.cs" />

@@ -73,6 +73,17 @@ namespace Logica
         }
 
 
+        public void insertarPostaReportar(U_Datosreporte dat)
+        {
+
+            D_User datos = new D_User();
+
+            datos.insertarreporte(dat);
+        }
+
+
+
+
         public DataTable obtenerPostObservador()
         {
 
@@ -107,6 +118,9 @@ namespace Logica
 
             return dat;
         }
+
+
+        
 
 
         public U_user verCompletousuarioRegistrado()
@@ -231,6 +245,36 @@ namespace Logica
             return dat;
         }
 
+        public U_user obtenerPostparareportar(int c)
+        {
+            D_User dac = new D_User();
+            U_user mensaje = new U_user();
+
+            DataTable regis = dac.obtenerPostobser();
+
+            int contcolum = regis.Columns.Count;
+
+
+            for (int i = 0; i <= contcolum; i++)
+            {
+
+
+                if (regis.Rows.Count > 0)
+                {
+                    if (c == int.Parse(regis.Rows[i]["id"].ToString()))
+                    {
+                         mensaje.Mensaje_Alertaobservador1 = regis.Rows[i]["titulo"].ToString();
+                    }
+
+
+                }
+            }
+
+            return mensaje;
+        }
+
+
+
         public U_user verNoticiasusuariosregistrados(string x)
         {
 
@@ -353,7 +397,33 @@ namespace Logica
             return user;
         }
 
-        
+
+
+        public void  insertarComentarioReportado(U_comentarios x)
+        {
+
+            D_User data = new D_User();
+
+            data.insertarreporteComentariosUser(x);
+
+            
+        }
+
+
+
+        public DataTable obtenerComentario1(int x)
+        {
+
+            D_User data = new D_User();
+            U_comentarios comentario = new U_comentarios();
+
+            comentario.Id = x;
+
+            DataTable punt = data.ObtenerComent1(comentario);
+
+            return punt;
+        }
+
 
         public DataTable obtenerComentario(int x)
         {

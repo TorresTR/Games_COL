@@ -512,8 +512,17 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int b = int.Parse(obQueryString["userid"].ToString());
-        Response.Redirect("usuarios.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        string z = obQueryString["userid"].ToString();
+
+
+        obQueryString.Add("userid", z);
+
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        dat = llamado.volverUsuariosRegistrado();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 
@@ -557,8 +566,12 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         obQueryString.Add("idcoment", z);
         obQueryString.Add("userid", q);
         //obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        L_Usercs data = new L_Usercs();
+        U_user dat = new U_user();
 
-        Response.Redirect("usuario_reportar_coment.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        dat = data.reporteUsuariocoment();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
 
 
@@ -573,12 +586,15 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         GV_comentariosuser.SelectedIndex = row.RowIndex;
         int fila = row.RowIndex;
 
-        string IdRecogido = ((Label)row.Cells[fila].FindControl("Label1")).Text;
+        
 
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
         string q = obQueryString["userid"].ToString();
         string z = obQueryString["parametro"].ToString();
+
+        string IdRecogido = ((Label)row.Cells[fila].FindControl("Label1")).Text.ToString();
+
         obQueryString.Add("parametro", z);
         obQueryString.Add("userid", q);
         obQueryString.Add("idcoment", IdRecogido);
