@@ -52,6 +52,8 @@
         <tr>
             <td class="auto-style4" colspan="2">
                 <asp:Button ID="BT_cambiar_contraseña" runat="server" OnClick="BT_cambiar_contraseña_Click" Text="Cambiar" CssClass="btn btn-outline-warning" ValidationGroup="1" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="LB_mensaje" runat="server" ForeColor="Red"></asp:Label>
             </td>
         </tr>
     </table>

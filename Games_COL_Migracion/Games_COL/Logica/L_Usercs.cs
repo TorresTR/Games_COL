@@ -1065,5 +1065,95 @@ namespace Logica
             return pqr;
         }
 
+        public string Token(System.Data.DataTable validez)
+        {
+
+            D_User dao = new D_User();
+            string men = "";
+            if (int.Parse(validez.Rows[0]["id"].ToString()) > 0)
+            {
+                U_token token = new U_token();
+                //EUserToken token = new EUserToken();
+                token.Id = int.Parse(validez.Rows[0]["id"].ToString());
+                token.Nombre = validez.Rows[0]["nombre"].ToString();
+                token.User_name = validez.Rows[0]["nick"].ToString();
+                token.Estado = int.Parse(validez.Rows[0]["estado"].ToString());
+                token.Correo = validez.Rows[0]["correo"].ToString();
+                token.Fecha = DateTime.Now.ToFileTimeUtc();
+
+
+                String userToken = encriptar(JsonConvert.SerializeObject(token));
+                dao.almacenarToken(userToken, token.Id);
+
+                D_correo correo = new D_correo();
+
+
+                String mensaje = "su link de acceso es: " + "http://localhost:53070/View/Recuperar_contra.aspx?" + userToken;
+                correo.enviarCorreo(token.Correo, userToken, mensaje);
+
+                men = "Su nueva contraseña ha sido enviada a su correo";
+            }
+            else if (int.Parse(validez.Rows[0]["id"].ToString()) == -2)
+            {
+                men = "Ya extsite un token, por favor verifique su correo.";
+            }
+            else
+            {
+                men = "El usurio digitado no existe";
+            }
+            return men;
+        }
+
+        public DataTable genera(string valida)
+        {
+            D_User dao = new D_User();
+            DataTable validez = dao.generarToken(valida);
+            return validez;
+        }
+
+        private string encriptar(string input)
+        {
+            SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
+
+            byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+            byte[] hashedBytes = provider.ComputeHash(inputBytes);
+
+            StringBuilder output = new StringBuilder();
+
+            for (int i = 0; i < hashedBytes.Length; i++)
+                output.Append(hashedBytes[i].ToString("x2").ToLower());
+
+            return output.ToString();
+        }
+
+        public U_token validaToken(int a, string var)
+        {
+            U_token inicio = new U_token();
+            if (a > 0)
+            {
+
+                D_User user = new D_User();
+                DataTable info = user.obtenerUsusarioToken(var);
+
+                if (int.Parse(info.Rows[0][0].ToString()) == -1)
+
+                    inicio.Nombre = "El Token es invalido. Genere uno nuevo";
+
+                else if (int.Parse(info.Rows[0][0].ToString()) == -1)
+                    inicio.Nombre = "El Token esta vencido. Genere uno nuevo";
+                else
+                    inicio.Id = int.Parse(info.Rows[0][0].ToString());
+            }
+            return inicio;
+
+
+        }
+
+        public void contraseña(U_Datos eUser)
+        {
+            D_User user = new D_User();
+            user.actualziarContrasena(eUser);
+        }
+
     }
 }
