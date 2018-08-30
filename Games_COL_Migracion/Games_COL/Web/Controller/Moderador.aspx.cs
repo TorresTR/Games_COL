@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Moderador : System.Web.UI.Page
 {
@@ -14,87 +16,103 @@ public partial class View_Moderador : System.Web.UI.Page
         LB_busq.Visible = false;
     }
 
-    protected void datalist_command(object sender, DataListCommandEventArgs e)
-    {
-
-        DAOUsuario archivo = new DAOUsuario();
-        EDatosCrearPost datos = new EDatosCrearPost();
-
-        DataTable registro = archivo.Obtenerpsot();
-
-        if (e.CommandName.Equals("vermas"))
-        {
-
-            int res = Convert.ToInt32(DataList1.DataKeys[e.Item.ItemIndex].ToString());
-
-            Response.Redirect("Moderador_verCompleto.aspx?parametro=" + res);
-        }
-    }
-
+   
 
     protected void BT_vermas_Click(object sender, EventArgs e)
     {
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
+
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         string ID = lblid.Text;
 
-        int b = int.Parse(Request.Params["userid"]);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        string b = obQueryString["userid"].ToString();
+
+        obQueryString.Add("parametro", ID);
+        obQueryString.Add("userid", b);
+        dat = llamado.verCompletoModerRegistrado();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
 
-        Response.Redirect("Moderador_verCompleto.aspx?parametro=" + ID.Trim() + "&userid=" + b);
     }
 
     protected void BT_pc_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Moderador_pc.aspx?userid=" + b);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        dat = llamado.irPCModerador();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        
     }
 
     protected void BT_xbox_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Moderador_xbox.aspx?userid=" + b);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        dat = llamado.irXboxModerador();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_ps_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Moderador_playstation.aspx?userid=" + b);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        dat = llamado.irPSModerador();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_android_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Moderador_android.aspx?userid=" + b);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        dat = llamado.irAndroidModerador();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
 
 
 
 
-    protected void Button3_Click(object sender, EventArgs e)
+    protected void BT_Buscar_Click(object sender, EventArgs e)
     {
-        DAOUsuario lugar = new DAOUsuario();
-        DataTable datos = lugar.buscarPost(TB_buscador.Text.ToString());
+        L_Usercs lugar = new L_Usercs();
 
-        DL_resultado.DataSource = datos;
+        U_user dat = new U_user();
+
+        DataTable dato = lugar.Busqueda(TB_buscador.Text.ToString());
+
+        DL_resultado.DataSource = dato;
         DL_resultado.DataBind();
 
-        DataTable regis = datos;
-        int x = regis.Rows.Count;
+        dat = lugar.busquedaMensaje(dato);
 
-        if (x == 0)
-        {
-            LB_busq.Visible = true;
-            LB_busq.Text = "No existe el post a buscar";
-        }
-        else
-        {
-            LB_busq.Visible = true;
-            LB_busq.Text = "El Resultado de La Busqueda es:";
+        LB_busq.Visible = dat.Estado;
+        LB_busq.Text = dat.Mensaje_Alertaobservador1;
 
-        }
+
     }
 
     protected void BT_verNoticas_Click(object sender, EventArgs e)
@@ -102,9 +120,24 @@ public partial class View_Moderador : System.Web.UI.Page
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
-        string ID = lblid.Text;
-        int b = int.Parse(Request.Params["userid"]);
 
-        Response.Redirect("Moderador_ver_noticias.aspx?parametro=" + ID.Trim()+"&userid="+b);
+        L_Usercs data = new L_Usercs();
+        U_user envioObservador = new U_user();
+
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+
+        string x = lblid.Text.ToString();
+        string b = obQueryString["userid"].ToString();
+
+        envioObservador = data.verNoticiaModerador(x);
+
+        obQueryString.Add("parametro", envioObservador.ID_vermasObservador1.Trim());
+        obQueryString.Add("userid", b);
+
+        Response.Redirect(envioObservador.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
+
+    
 }

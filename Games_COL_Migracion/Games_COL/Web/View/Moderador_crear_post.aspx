@@ -41,7 +41,9 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td colspan="2">&nbsp;</td>
+            <td colspan="2" class="text-center">
+                <asp:Label ID="LB_mensaje" runat="server" ForeColor="Red"></asp:Label>
+            </td>
         </tr>
         <tr>
             <td class="auto-style3">
@@ -71,7 +73,7 @@
                     <asp:ListItem Value="0">---selecione---</asp:ListItem>
              
                 </asp:DropDownList>
-                <asp:ObjectDataSource ID="ODS_etiquetas" runat="server" SelectMethod="ObtenerDdl" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_etiquetas" runat="server" SelectMethod="retornoDDL" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
                 <asp:RangeValidator ID="RV_DDLetiquetas" runat="server" ControlToValidate="DDL_etiquetas" ErrorMessage="*" ForeColor="Red" MaximumValue="5" MinimumValue="2" ValidationGroup="1"></asp:RangeValidator>
             </td>
         </tr>

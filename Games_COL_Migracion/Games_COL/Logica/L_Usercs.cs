@@ -52,6 +52,10 @@ namespace Logica
         }
 
 
+      
+
+
+
         public U_userCrearpost eliminarMiscomentarios(U_userCrearpost dato)
         {
 
@@ -279,6 +283,26 @@ namespace Logica
 
         }
 
+        public U_userCrearpost obtenerPostObservadorreportadomoder(U_userCrearpost doct)
+        {
+
+            D_User datos = new D_User();
+            DataTable data = new DataTable();
+            U_userCrearpost doc = new U_userCrearpost();
+
+            data = datos.verpag(doct);
+
+            if (data.Rows.Count > 0) {
+
+                doc.Contenido1 = data.Rows[0]["contenido"].ToString();
+                doc.Autor1 = data.Rows[0]["autor"].ToString();
+
+            }
+
+            return doc;
+
+        }
+
         public U_Sugerencia sugerenciasUsuarios(U_Sugerencia sugere)
         {
             D_User dato = new D_User();
@@ -290,6 +314,288 @@ namespace Logica
 
             return dat;
         }
+
+
+        public void insertarNoticias(U_userCrearpost h)
+        {
+
+            D_User dat = new D_User();
+
+            dat.insertarNoticias(h);
+
+
+        }
+
+
+        public DataTable minoticiagv(int h)
+        {
+
+            D_User dat = new D_User();
+            U_userCrearpost data = new U_userCrearpost();
+
+            data.Id = h;
+            DataTable fun = dat.ObtenermisNoticia(data);
+
+            return fun;
+        }
+
+
+
+        public void bloquearComent(int h)
+        {
+
+            D_User dat = new D_User();
+            U_user dato = new U_user();
+
+            dato.Id = h;
+
+            dat.bloquearComentario(dato);
+
+
+        }
+
+        public DataTable listadoModerador(DataTable informacion) {
+
+            DataRow fila;  
+            D_User persona = new D_User();
+            
+
+            DataTable intermedio = persona.ListarUsuariosR();
+
+            for (int i = 0; i < intermedio.Rows.Count; i++)
+            {
+                fila = informacion.NewRow();
+
+                fila["Nick"] = intermedio.Rows[i]["nick"].ToString();
+                fila["Puntos"] = int.Parse(intermedio.Rows[i]["puntos"].ToString());
+                fila["Rango"] = intermedio.Rows[i]["tipo"].ToString();
+
+
+
+                informacion.Rows.Add(fila);
+            }
+
+            return informacion;
+        }
+
+
+        public U_user verCompletoModerRegistrado()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_verCompleto.aspx";
+
+
+            return dat;
+        }
+
+        public U_user irPCModerador()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_pc.aspx";
+
+
+            return dat;
+        }
+
+        public U_user irXboxModerador()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_xbox.aspx";
+
+
+            return dat;
+        }
+
+        public U_user irPSModerador()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_playstation.aspx";
+
+
+            return dat;
+        }
+
+        public U_user irAndroidModerador()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_android.aspx";
+
+
+            return dat;
+        }
+
+        public U_user irHomeModerador()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador.aspx";
+
+
+            return dat;
+        }
+
+
+        public U_user verNoticiaModerador(string x)
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_ver_noticias.aspx";
+            dat.ID_vermasObservador1 = x;
+
+            return dat;
+        }
+
+        public U_user redirigirCompletoModerador()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_verCompleto.aspx";
+
+
+            return dat;
+        }
+
+        public U_user reporteModerpost()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_reportar_post.aspx";
+
+
+            return dat;
+        }
+
+        public U_user reporteModercoment()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_reportar_coment.aspx";
+
+
+            return dat;
+        }
+
+        public U_user ModeradorEditarMispost()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_editar.aspx";
+            return dat;
+        }
+
+        public U_user ModeradorMispost()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_miPost.aspx";
+            return dat;
+        }
+
+
+        public U_user vermasPostreportadomoder()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_verMasPostReportado.aspx";
+            return dat;
+        }
+
+        public U_user recargarationpost()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_atencion_bloquer_post.aspx";
+            return dat;
+        }
+
+        public U_user moderadoradmincoment()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_admin_coment.aspx";
+            return dat;
+        }
+
+        public void eliminarminoticia(int x)
+        {
+
+            U_userCrearpost dat = new U_userCrearpost();
+            D_User llamado = new D_User();
+
+            dat.Id = x;
+            llamado.eliminarNoticia(dat);
+
+
+        }
+
+        public void actualizarmoderPostreportado(Int32 id_post,Int32 user_bloqueador ,Int32 estado_bloqueo,Int32 respuesta)
+        {
+
+            U_actualizarBloqueo dat = new U_actualizarBloqueo();
+            D_User llamado = new D_User();
+
+            dat.Id_post = id_post;
+            dat.User_bloqueador = user_bloqueador;
+            dat.Estado_bloqueo = estado_bloqueo;
+            dat.Respuesta = respuesta;
+
+            llamado.actualizarBloqueo(dat);
+
+           
+        }
+
+
+        public U_user recargaminoticia()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_editar_Noticia.aspx";
+
+
+            return dat;
+        }
+
+        public void actualizaModernoticia (U_userCrearpost post)
+        {
+
+            D_User llamado = new D_User();
+
+            llamado.actualizarNoticia(post);
+
+        }
+
+        public U_user recargapgnotimoder()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Moderador_miNoticia.aspx";
+
+
+            return dat;
+        }
+
 
         public U_user reporteUsuariocoment()
         {
@@ -354,8 +660,7 @@ namespace Logica
 
             return dat;
         }
-
-
+        
         public U_user verCompletousuarioRegistrado()
         {
 
@@ -497,6 +802,7 @@ namespace Logica
                     if (c == int.Parse(regis.Rows[i]["id"].ToString()))
                     {
                          mensaje.Mensaje_Alertaobservador1 = regis.Rows[i]["titulo"].ToString();
+                        break;
                     }
 
 

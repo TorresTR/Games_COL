@@ -27,29 +27,16 @@ public partial class View_Default : System.Web.UI.Page
 
     protected InfoR_moderador ObtenerInforme()
     {
-        DataRow fila;  //dr
+      
         DataTable informacion = new DataTable(); //dt
         InfoR_moderador datos = new InfoR_moderador();
         
 
         informacion = datos.Tables["Usuarios"];
 
-        DAOUsuario persona = new DAOUsuario();
+        L_Usercs persona = new L_Usercs();
 
-        DataTable intermedio = persona.ListarUsuariosR();
-
-        for (int i = 0; i < intermedio.Rows.Count; i++)
-        {
-            fila = informacion.NewRow();
-
-            fila["Nick"] = intermedio.Rows[i]["nick"].ToString();
-            fila["Puntos"] = int.Parse(intermedio.Rows[i]["puntos"].ToString());
-            fila["Rango"] = intermedio.Rows[i]["tipo"].ToString();
-            
-
-
-            informacion.Rows.Add(fila);
-        }
+        persona.listadoModerador(informacion);
 
         return datos;
     }
@@ -63,8 +50,10 @@ public partial class View_Default : System.Web.UI.Page
         string ID = lblid.Text;
         int h = int.Parse(ID);
 
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int b = int.Parse(Request.Params["userid"]);
+        int b = int.Parse(obQueryString["userid"].ToString());
 
 
 
@@ -74,13 +63,17 @@ public partial class View_Default : System.Web.UI.Page
        
         dac.eliminarUsermoderador(h);
 
-        Response.Redirect("Moderador_listado_user.aspx?userid=" + b);
+      ;
+
+        Response.Redirect("Moderador_listado_user.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Moderador_listado_user.aspx?userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        Response.Redirect("Moderador_listado_user.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
    

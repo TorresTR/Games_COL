@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
+using Datos;
 
 public partial class View_Moderador_verCompleto : System.Web.UI.Page
 {
@@ -16,24 +19,40 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-
         Response.Cache.SetNoStore();
 
-        EDatosCrearPost doc = new EDatosCrearPost();
-        EDatosComenatrio comenta = new EDatosComenatrio();
-        DAOUsuario dac = new DAOUsuario();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int comparador_idpost = int.Parse(Request.Params["parametro"]);
-        int comparador_iduser = int.Parse(Request.Params["userid"]);
+        U_userCrearpost doc = new U_userCrearpost();
+
+        L_Usercs log = new L_Usercs();
+        D_User dac = new D_User();
+
+
+        int comparador_idpost = int.Parse(obQueryString["parametro"].ToString());
+        int comparador_iduser = int.Parse(obQueryString["userid"].ToString());
 
         DataTable regisval = dac.obtenerpuntsval(comparador_iduser);
 
+        DataTable data = dac.ObtenerInteraccion(comparador_iduser);
+        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        U_Interaccion inte = new U_Interaccion();
+        inte.Iteraccion = inter;
+        inte = log.validarInteraccion(inte);
+
+
+        LB_mensaje.Text = inte.Mensaje;
+        TB_comentarios.Visible = inte.Estado;
+        LB_comentar.Visible = inte.Estado;
+        BT_comentar.Visible = inte.Estado;
+        UpdatePanel1.Visible = inte.Estado;
 
 
 
         ClientScriptManager cm = this.ClientScript;
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        int dato = int.Parse(Request.Params["parametro"]);
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        int dato = int.Parse(obQueryString["userid"].ToString());
 
 
 
@@ -42,112 +61,94 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         int contadordatos = regisval.Rows.Count;
         int contcolum = regisval.Columns.Count;
 
+        Boolean estado = log.comparaPropioP(regisval, comparador_idpost, comparador_iduser);
 
-        foreach (DataRow fila in regisval.Rows)
-        {
-            string valor = fila["id_usuario"].ToString();
-            string valor_post = fila["id_post"].ToString();
 
-            if (comparador_idpost == int.Parse(valor_post) && comparador_iduser == int.Parse(valor))
-            {
-                UpdatePanel1.Visible = false;
+        UpdatePanel1.Visible = estado;
 
-            }
-        }
 
-        int b = int.Parse(Request.Params["userid"]);
+        int b = int.Parse(obQueryString["userid"].ToString());
         DataTable regis2 = dac.obtenerUss(b);
         String x = regis2.Rows[0]["nick"].ToString();
         String z = regis.Rows[0]["autor"].ToString();
 
-        if (z == x)
-        {
 
-            UpdatePanel1.Visible = false;
-        }
+        BT_reporte.Visible = true;
 
-        if (regis.Rows.Count > 0)
-        {
+        Boolean est = log.compara(z, x);
 
-            LB_muestraPag.Text = regis.Rows[0]["contenido"].ToString();
-            LB_autor.Text = regis.Rows[0]["autor"].ToString();
+        BT_reporte.Visible = est;
+        UpdatePanel1.Visible = est;
 
-        }
+
+
+        U_userCrearpost datos = new U_userCrearpost();
+
+        datos = log.comp(regis);
+
+        LB_muestraPag.Text = datos.Contenido1;
+        LB_autor.Text = datos.Autor1;
+
 
 
         DataTable punt = dac.verpuntos(doc);
-        if (punt.Rows.Count > 0)
-        {
-            LB_motrarPuntos.Text = punt.Rows[0]["puntos"].ToString();
-        }
+        datos = log.promedioPunt(punt);
+        puntos = datos.PuntosA;
+        num = datos.Nump;
+        tot = puntos / num;
+        LB_motrarPuntos.Text = tot.ToString();
 
-        GV_comentariosuser.DataSource = dac.ObtenerComent(dato);
+        datos.Comentarios1 = dato;
+        GV_comentariosuser.DataSource = log.obtenerComentario(comparador_idpost);
         GV_comentariosuser.DataBind();
+
+
     }
 
     protected void Bt_uno_Click(object sender, EventArgs e)
     {
-
-
         ClientScriptManager cm = this.ClientScript;
-        DAOUsuario dac = new DAOUsuario();
-        EDatosCrearPost puntot = new EDatosCrearPost();
+        D_User dac = new D_User();
+        U_userCrearpost puntot = new U_userCrearpost();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int b = int.Parse(Request.Params["userid"]);
-        int bn = int.Parse(Request.Params["parametro"]);
+        int b = int.Parse(obQueryString["userid"].ToString());
+        int bn = int.Parse(obQueryString["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(Request.Params["parametro"]);
+        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
+        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
+        puntot.Fecha = dt;
 
-
-        EDatosCrearPost doc = new EDatosCrearPost();
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        Int32 v = int.Parse(Request.Params["parametro"]);
+        U_userCrearpost doc = new U_userCrearpost();
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        Int32 v = int.Parse(obQueryString["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
 
         DataTable regis2 = dac.obtenerUss(b);
-        String o = regis2.Rows[0]["nick"].ToString();
-        String p = regis.Rows[0]["autor"].ToString();
+
+        puntot.Nick = regis2.Rows[0]["nick"].ToString();
+        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+
+        DataTable data = dac.ObtenerInteraccion(b);
+        int inter = int.Parse(data.Rows[0]["id"].ToString());
+
+        L_Usercs llamado = new L_Usercs();
+
+        llamado.puntosBoton(punt, inter, puntot);
 
 
-        if (o != p)
-        {
-
-            String d = punt.Rows[0]["id"].ToString();
-
-            if (v == int.Parse(d))
-            {
-
-                String a = punt.Rows[0]["puntos"].ToString();
-
-                val = int.Parse(a);
-                val = val + 1;
-
-                String puntosA = punt.Rows[0]["puntosautor"].ToString();
-                pun = int.Parse(puntosA);
-                pun = pun + 1;
 
 
-                puntot.Puntos = val;
-
-                puntot.PuntosA = pun;
-
-                dac.guardaPuntos(puntot);
-            }
-
-
-        }
-
-
-        int z = int.Parse(Request.Params["parametro"]);
+        int z = int.Parse(obQueryString["parametro"].ToString());
 
 
         DataTable regis3 = dac.obtenerUss(b);
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
-
 
         x = x + 1;
 
@@ -158,72 +159,68 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
+        string ui = obQueryString["userid"].ToString();
+        string par = obQueryString["parametro"].ToString();
 
-        Response.Redirect("Moderador_verCompleto.aspx?parametro=" + z + "&userid=" + b);
+        obQueryString.Add("parametro", par);
+        obQueryString.Add("userid", ui);
+
+
+
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        dat = llamar.redirigirCompletoModerador();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        
 
     }
 
     protected void BT_dos_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        DAOUsuario dac = new DAOUsuario();
-        EDatosCrearPost puntot = new EDatosCrearPost();
+        D_User dac = new D_User();
+        U_userCrearpost puntot = new U_userCrearpost();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int b = int.Parse(Request.Params["userid"]);
-        int bn = int.Parse(Request.Params["parametro"]);
+        int b = int.Parse(obQueryString["userid"].ToString());
+        int bn = int.Parse(obQueryString["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(Request.Params["parametro"]);
+        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
+        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
+        puntot.Fecha = dt;
 
-
-        EDatosCrearPost doc = new EDatosCrearPost();
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        Int32 v = int.Parse(Request.Params["parametro"]);
+        U_userCrearpost doc = new U_userCrearpost();
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        Int32 v = int.Parse(obQueryString["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
 
         DataTable regis2 = dac.obtenerUss(b);
-        String o = regis2.Rows[0]["nick"].ToString();
-        String p = regis.Rows[0]["autor"].ToString();
+
+        puntot.Nick = regis2.Rows[0]["nick"].ToString();
+        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+
+        DataTable data = dac.ObtenerInteraccion(b);
+        int inter = int.Parse(data.Rows[0]["id"].ToString());
+
+        L_Usercs llamado = new L_Usercs();
+
+        llamado.puntosBoton(punt, inter, puntot);
 
 
-        if (o != p)
-        {
-
-            String d = punt.Rows[0]["id"].ToString();
-
-            if (v == int.Parse(d))
-            {
-
-                String a = punt.Rows[0]["puntos"].ToString();
-
-                val = int.Parse(a);
-                val = val + 2;
-
-                String puntosA = punt.Rows[0]["puntosautor"].ToString();
-                pun = int.Parse(puntosA);
-                pun = pun + 2;
 
 
-                puntot.Puntos = val;
-
-                puntot.PuntosA = pun;
-
-                dac.guardaPuntos(puntot);
-            }
-
-
-        }
-
-
-        int z = int.Parse(Request.Params["parametro"]);
+        int z = int.Parse(obQueryString["parametro"].ToString());
 
 
         DataTable regis3 = dac.obtenerUss(b);
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
-
 
         x = x + 1;
 
@@ -234,72 +231,68 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
+        string ui = obQueryString["userid"].ToString();
+        string par = obQueryString["parametro"].ToString();
 
-        Response.Redirect("Moderador_verCompleto.aspx?parametro=" + z + "&userid=" + b);
+        obQueryString.Add("parametro", par);
+        obQueryString.Add("userid", ui);
+
+
+
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        dat = llamar.redirigirCompletoModerador();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
 
     }
 
     protected void BT_tres_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        DAOUsuario dac = new DAOUsuario();
-        EDatosCrearPost puntot = new EDatosCrearPost();
+        D_User dac = new D_User();
+        U_userCrearpost puntot = new U_userCrearpost();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int b = int.Parse(Request.Params["userid"]);
-        int bn = int.Parse(Request.Params["parametro"]);
+        int b = int.Parse(obQueryString["userid"].ToString());
+        int bn = int.Parse(obQueryString["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(Request.Params["parametro"]);
+        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
+        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
+        puntot.Fecha = dt;
 
-
-        EDatosCrearPost doc = new EDatosCrearPost();
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        Int32 v = int.Parse(Request.Params["parametro"]);
+        U_userCrearpost doc = new U_userCrearpost();
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        Int32 v = int.Parse(obQueryString["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
 
         DataTable regis2 = dac.obtenerUss(b);
-        String o = regis2.Rows[0]["nick"].ToString();
-        String p = regis.Rows[0]["autor"].ToString();
+
+        puntot.Nick = regis2.Rows[0]["nick"].ToString();
+        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+
+        DataTable data = dac.ObtenerInteraccion(b);
+        int inter = int.Parse(data.Rows[0]["id"].ToString());
+
+        L_Usercs llamado = new L_Usercs();
+
+        llamado.puntosBoton(punt, inter, puntot);
 
 
-        if (o != p)
-        {
-
-            String d = punt.Rows[0]["id"].ToString();
-
-            if (v == int.Parse(d))
-            {
-
-                String a = punt.Rows[0]["puntos"].ToString();
-
-                val = int.Parse(a);
-                val = val + 3;
-
-                String puntosA = punt.Rows[0]["puntosautor"].ToString();
-                pun = int.Parse(puntosA);
-                pun = pun + 3;
 
 
-                puntot.Puntos = val;
-
-                puntot.PuntosA = pun;
-
-                dac.guardaPuntos(puntot);
-            }
-
-
-        }
-
-
-        int z = int.Parse(Request.Params["parametro"]);
+        int z = int.Parse(obQueryString["parametro"].ToString());
 
 
         DataTable regis3 = dac.obtenerUss(b);
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
-
 
         x = x + 1;
 
@@ -310,72 +303,67 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
+        string ui = obQueryString["userid"].ToString();
+        string par = obQueryString["parametro"].ToString();
 
-        Response.Redirect("Moderador_verCompleto.aspx?parametro=" + z + "&userid=" + b);
+        obQueryString.Add("parametro", par);
+        obQueryString.Add("userid", ui);
+
+
+
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        dat = llamar.redirigirCompletoModerador();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 
     protected void BT_cuatro_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        DAOUsuario dac = new DAOUsuario();
-        EDatosCrearPost puntot = new EDatosCrearPost();
+        D_User dac = new D_User();
+        U_userCrearpost puntot = new U_userCrearpost();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int b = int.Parse(Request.Params["userid"]);
-        int bn = int.Parse(Request.Params["parametro"]);
+        int b = int.Parse(obQueryString["userid"].ToString());
+        int bn = int.Parse(obQueryString["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(Request.Params["parametro"]);
+        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
+        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
+        puntot.Fecha = dt;
 
-
-        EDatosCrearPost doc = new EDatosCrearPost();
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        Int32 v = int.Parse(Request.Params["parametro"]);
+        U_userCrearpost doc = new U_userCrearpost();
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        Int32 v = int.Parse(obQueryString["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
 
         DataTable regis2 = dac.obtenerUss(b);
-        String o = regis2.Rows[0]["nick"].ToString();
-        String p = regis.Rows[0]["autor"].ToString();
+
+        puntot.Nick = regis2.Rows[0]["nick"].ToString();
+        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+
+        DataTable data = dac.ObtenerInteraccion(b);
+        int inter = int.Parse(data.Rows[0]["id"].ToString());
+
+        L_Usercs llamado = new L_Usercs();
+
+        llamado.puntosBoton(punt, inter, puntot);
 
 
-        if (o != p)
-        {
-
-            String d = punt.Rows[0]["id"].ToString();
-
-            if (v == int.Parse(d))
-            {
-
-                String a = punt.Rows[0]["puntos"].ToString();
-
-                val = int.Parse(a);
-                val = val + 4;
-
-                String puntosA = punt.Rows[0]["puntosautor"].ToString();
-                pun = int.Parse(puntosA);
-                pun = pun + 4;
 
 
-                puntot.Puntos = val;
-
-                puntot.PuntosA = pun;
-
-                dac.guardaPuntos(puntot);
-            }
-
-
-        }
-
-
-        int z = int.Parse(Request.Params["parametro"]);
+        int z = int.Parse(obQueryString["parametro"].ToString());
 
 
         DataTable regis3 = dac.obtenerUss(b);
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
-
 
         x = x + 1;
 
@@ -386,72 +374,67 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
+        string ui = obQueryString["userid"].ToString();
+        string par = obQueryString["parametro"].ToString();
 
-        Response.Redirect("Moderador_verCompleto.aspx?parametro=" + z + "&userid=" + b);
+        obQueryString.Add("parametro", par);
+        obQueryString.Add("userid", ui);
+
+
+
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        dat = llamar.redirigirCompletoModerador();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 
     protected void BT_cinco_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        DAOUsuario dac = new DAOUsuario();
-        EDatosCrearPost puntot = new EDatosCrearPost();
+        D_User dac = new D_User();
+        U_userCrearpost puntot = new U_userCrearpost();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int b = int.Parse(Request.Params["userid"]);
-        int bn = int.Parse(Request.Params["parametro"]);
+        int b = int.Parse(obQueryString["userid"].ToString());
+        int bn = int.Parse(obQueryString["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(Request.Params["parametro"]);
+        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
+        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
+        puntot.Fecha = dt;
 
-
-        EDatosCrearPost doc = new EDatosCrearPost();
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        Int32 v = int.Parse(Request.Params["parametro"]);
+        U_userCrearpost doc = new U_userCrearpost();
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        Int32 v = int.Parse(obQueryString["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
 
         DataTable regis2 = dac.obtenerUss(b);
-        String o = regis2.Rows[0]["nick"].ToString();
-        String p = regis.Rows[0]["autor"].ToString();
+
+        puntot.Nick = regis2.Rows[0]["nick"].ToString();
+        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+
+        DataTable data = dac.ObtenerInteraccion(b);
+        int inter = int.Parse(data.Rows[0]["id"].ToString());
+
+        L_Usercs llamado = new L_Usercs();
+
+        llamado.puntosBoton(punt, inter, puntot);
 
 
-        if (o != p)
-        {
-
-            String d = punt.Rows[0]["id"].ToString();
-
-            if (v == int.Parse(d))
-            {
-
-                String a = punt.Rows[0]["puntos"].ToString();
-
-                val = int.Parse(a);
-                val = val + 5;
-
-                String puntosA = punt.Rows[0]["puntosautor"].ToString();
-                pun = int.Parse(puntosA);
-                pun = pun + 5;
 
 
-                puntot.Puntos = val;
-
-                puntot.PuntosA = pun;
-
-                dac.guardaPuntos(puntot);
-            }
-
-
-        }
-
-
-        int z = int.Parse(Request.Params["parametro"]);
+        int z = int.Parse(obQueryString["parametro"].ToString());
 
 
         DataTable regis3 = dac.obtenerUss(b);
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
-
 
         x = x + 1;
 
@@ -462,8 +445,20 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
+        string ui = obQueryString["userid"].ToString();
+        string par = obQueryString["parametro"].ToString();
 
-        Response.Redirect("Moderador_verCompleto.aspx?parametro=" + z + "&userid=" + b);
+        obQueryString.Add("parametro", par);
+        obQueryString.Add("userid", ui);
+
+
+
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        dat = llamar.redirigirCompletoModerador();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 
@@ -471,28 +466,42 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
     protected void BT_comentar_Click(object sender, EventArgs e)
     {
 
-        EDatosComenatrio coment = new EDatosComenatrio();
-        DAOUsuario dac = new DAOUsuario();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        L_Usercs log = new L_Usercs();
+        U_comentarios coment = new U_comentarios();
+        D_User dac = new D_User();
 
 
-
+        int b = int.Parse(obQueryString["userid"].ToString());
+        DateTime dt = DateTime.Now;
+        coment.Fecha = dt;
         coment.Conetinido1 = TB_comentarios.Text.ToString();
-        coment.Id_post = int.Parse(Request.Params["parametro"]);
-        coment.Id_user = int.Parse(Request.Params["userid"]);
+        coment.Id_post = int.Parse(obQueryString["parametro"].ToString());
+        coment.Id_user = int.Parse(obQueryString["userid"].ToString());
 
-        dac.insertarComentarios(coment);
-        int b = int.Parse(Request.Params["userid"]);
+        DataTable data = dac.ObtenerInteraccion(b);
+        int inter = int.Parse(data.Rows[0]["id"].ToString());
+
+        string mensaje = log.comentar(inter, coment);
+
+        LB_mensaje.Text = mensaje;
 
 
-        DataTable regis = dac.obtenerUss(b);
-        int x = int.Parse(regis.Rows[0]["puntos"].ToString());
-        x = x + 1;
 
-        dac.actualizarpuntoUser(b, x);
+        string q = obQueryString["userid"].ToString();
+        string z = obQueryString["parametro"].ToString();
+        obQueryString.Add("parametro", z);
+        obQueryString.Add("userid", q);
 
-        int q = int.Parse(Request.Params["userid"]);
-        int z = int.Parse(Request.Params["parametro"]);
-        Response.Redirect("verCompletoUserregistrado.aspx?parametro=" + z + "&userid=" + q);
+
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        dat = llamar.redirigirCompletoModerador();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
 
     }
 
@@ -500,8 +509,20 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Moderador.aspx?userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        string z = obQueryString["userid"].ToString();
+
+
+        obQueryString.Add("userid", z);
+
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        dat = llamado.irHomeModerador();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
   
@@ -516,17 +537,46 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         GV_comentariosuser.SelectedIndex = row.RowIndex;
         int fila = row.RowIndex;
 
-        int h = int.Parse(Request.Params["parametro"]);
-        int b = int.Parse(Request.Params["userid"]);
-        string IdRecogido = ((Label)row.Cells[fila].FindControl("Label1")).Text;
 
-        Response.Redirect("Moderador_reportar_coment.aspx?userid=" + b + "&idcoment=" + IdRecogido + "&parametro=" + h);
+
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        string q = obQueryString["userid"].ToString();
+        string z = obQueryString["parametro"].ToString();
+
+        string IdRecogido = ((Label)row.Cells[fila].FindControl("Label1")).Text.ToString();
+
+        obQueryString.Add("parametro", z);
+        obQueryString.Add("userid", q);
+        obQueryString.Add("idcoment", IdRecogido);
+
+
+        L_Usercs data = new L_Usercs();
+        U_user dat = new U_user();
+
+        dat = data.reporteModercoment();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        
     }
+    
 
     protected void BT_reporte_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        int h = int.Parse(Request.Params["parametro"]);
-        Response.Redirect("Moderador_reportar_post.aspx?parametro=" + h + "&userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        string q = obQueryString["userid"].ToString();
+        string z = obQueryString["parametro"].ToString();
+        obQueryString.Add("parametro", z);
+        obQueryString.Add("userid", q);
+
+
+        L_Usercs data = new L_Usercs();
+        U_user dat = new U_user();
+
+        dat = data.reporteModerpost();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        
     }
 }

@@ -104,7 +104,7 @@
             <tr>
                 <td class="auto-style5" colspan="2">
                     <asp:Label ID="LB_comentar" runat="server" Text="Comentar:"></asp:Label>
-                    <asp:TextBox ID="TB_comentarios" runat="server" Height="79px" TextMode="MultiLine" Width="224px" MaxLength="50" ValidationGroup="1"></asp:TextBox>
+                    <asp:TextBox ID="TB_comentarios" runat="server" Height="79px" TextMode="MultiLine" Width="224px" MaxLength="50" ValidationGroup="1" ></asp:TextBox>
                      <asp:RequiredFieldValidator ID="RFV_comentar" runat="server" ControlToValidate="TB_comentarios" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                      <asp:RegularExpressionValidator ID="REV_max" runat="server"
                     ControlToValidate="TB_comentarios" 
@@ -134,7 +134,7 @@
                             <td>
                                 &nbsp;</td>
                             <td class="auto-style4">
-                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id" OnRowCommand="GridView_RowCommand" AutoGenerateColumns="False" >
+                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id" AutoGenerateColumns="False" >
                                     <Columns>
                                         <asp:TemplateField HeaderText="Reportar">
                                             <ItemTemplate>

@@ -63,7 +63,7 @@ public partial class View_usuario_editar : System.Web.UI.Page
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int a = int.Parse(obQueryString["parametro"].ToString());
+        int a = int.Parse(obQueryString["userid"].ToString());
 
         string dat = a.ToString();
         obQueryString.Add("userid", dat);

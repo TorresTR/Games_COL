@@ -26,11 +26,10 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
         U_userCrearpost doc = new U_userCrearpost();
-       // EDatosCrearPost doc = new EDatosCrearPost();
-       // EDatosComenatrio comenta = new EDatosComenatrio();
+      
         L_Usercs log = new L_Usercs();
         D_User dac = new D_User();
-        //DAOUsuario dac = new DAOUsuario();
+        
 
         int comparador_idpost = int.Parse(obQueryString["parametro"].ToString());
         int comparador_iduser = int.Parse(obQueryString["userid"].ToString());
@@ -224,7 +223,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
 
-        x = x + 2;
+        x = x + 1;
 
 
 
@@ -295,7 +294,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
 
-        x = x + 3;
+        x = x + 1;
 
 
 
@@ -366,7 +365,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
 
-        x = x + 4;
+        x = x + 1;
 
 
 
@@ -438,7 +437,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
 
-        x = x + 5;
+        x = x + 1;
 
 
 
@@ -544,39 +543,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         Response.Redirect( dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
-    
-    
    
-     protected void GridView_RowCommand(Object sender, GridViewCommandEventArgs e) {
-
-        int index = Convert.ToInt32(e.CommandArgument);
-        GridViewRow row = GV_comentariosuser.Rows[index];
-        L_Usercs log = new L_Usercs();
-       
-           
-        Label id_pregunta = (Label)row.FindControl("Label1");
-        int id_preg = Convert.ToInt32(id_pregunta.Text);
-        x = log.gridview(e,row);
-        
-
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        string q = obQueryString["userid"].ToString();
-        string z = x.ToString();
-        obQueryString.Add("idcoment", z);
-        obQueryString.Add("userid", q);
-        //obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        L_Usercs data = new L_Usercs();
-        U_user dat = new U_user();
-
-        dat = data.reporteUsuariocoment();
-
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
-
-
-
-    }
-
     protected void BT_reportar_Click(object sender, EventArgs e)
     {
 
@@ -610,5 +577,6 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
 
     }
 
-    
+
+
 }

@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
 
+
 public partial class View_usuario_miPost : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -34,6 +35,7 @@ public partial class View_usuario_miPost : System.Web.UI.Page
             InfoR_usuario reporte = ObtenerInforme();
             CRS_reporte_usuario.ReportDocument.SetDataSource(reporte);
             CRV_reporteUsuario.ReportSource = CRS_reporte_usuario;
+            
         }
         catch (Exception)
         {
@@ -133,6 +135,11 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
         dat = llamado.volverUsuariosRegistrado();
+
+        int b = int.Parse(obQueryString["userid"].ToString());
+        string data = b.ToString();
+        obQueryString.Add("userid", data);
+
 
         Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
