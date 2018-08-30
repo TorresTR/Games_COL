@@ -1169,6 +1169,7 @@ public class DAOUsuario
     }
 
 
+
     public DataTable ObtenermisPost(Int32 dato)
     {
         DataTable Post = new DataTable();

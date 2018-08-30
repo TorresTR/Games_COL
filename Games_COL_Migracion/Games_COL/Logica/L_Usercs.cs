@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using Datos;
+using Newtonsoft.Json;
 using Utilitarios;
 
 
@@ -14,6 +15,188 @@ namespace Logica
 {
     public class L_Usercs
     {
+
+        public void actualizarMispost(U_userCrearpost dato)
+        {
+
+            D_User llamado = new D_User();
+
+            llamado.actualizarMipost(dato);
+
+
+        }
+
+        public DataTable misPostcomentados(U_misPost dato)
+        {
+
+            D_User llamado = new D_User();
+
+            DataTable regis= llamado.ObtenerPostE(dato);
+
+            return regis;
+        }
+
+        public U_respuestasPqr misRespuestaspqr(int dato)
+        {
+
+            D_User llamado = new D_User();
+            U_respuestasPqr dat = new U_respuestasPqr();
+
+            dat.Id_respuesta = dato;
+
+            DataTable regis = llamado.ObtenerVerRes(dat);
+
+            dat.Respuesta = regis.Rows[0]["respuesta"].ToString();
+
+            return dat;
+        }
+
+
+        public U_userCrearpost eliminarMiscomentarios(U_userCrearpost dato)
+        {
+
+            D_User llamado = new D_User();
+            U_userCrearpost dat = new U_userCrearpost();
+
+            DataTable regis = llamado.verpag(dato);
+
+            if (regis.Rows.Count > 0)
+            {
+                dat.Contenido1= regis.Rows[0]["contenido"].ToString();
+                dat.Autor1 = regis.Rows[0]["autor"].ToString();
+            }
+
+            return dat;
+        }
+
+
+
+        public DataTable dataEliminarcoment(int dato1,int dato2)
+        {
+
+            D_User llamado = new D_User();
+            U_misPost  dat = new U_misPost();
+
+            dat.Dato1 = dato1;
+            dat.Dato2 = dato2;
+
+            DataTable regis = llamado.ObtenerComentUS(dat);
+
+           
+            return regis;
+        }
+
+
+        public void dataEliminarcomentaction(int dato1)
+        {
+
+            D_User llamado = new D_User();
+            U_misPost dat = new U_misPost();
+
+            dat.Dato1 = dato1;
+            
+
+            DataTable regis = llamado.EliminarComent(dat);
+
+
+          
+        }
+
+        public DataTable eliminarMiscomentariospuntos(U_userCrearpost dato)
+        {
+
+            D_User llamado = new D_User();
+
+            DataTable punt = llamado.verpuntos(dato);
+
+            return punt;
+        }
+
+        public DataTable respuestaPqr(U_respuestasPqr dato)
+        {
+
+            D_User llamado = new D_User();
+
+            DataTable punt = llamado.ObtenerRespuesta(dato);
+
+            return punt;
+        }
+
+
+        public U_misPost VerMisdatosaeditar(U_misPost dato)
+        {
+
+            D_User llamado = new D_User();
+            U_misPost infor = new U_misPost();
+           
+
+            DataTable regis = llamado.verEditar(dato);
+
+            if (regis.Rows.Count > 0)
+            {
+
+                infor.Contenido = regis.Rows[0]["contenido"].ToString();
+                infor.Autor = regis.Rows[0]["autor"].ToString();
+                infor.EstadoCK = false;
+                infor.EstadoBT = false;
+            }
+            
+
+            return infor;
+        }
+
+
+
+        public void eliminarMipost(U_misPost dato) {
+
+            D_User llamado = new D_User();
+
+            llamado.eliminarMiPost(dato);
+        }
+
+
+        public DataTable misPostCristal(DataTable informacion,int dato)
+        {
+
+            D_User data = new D_User();
+            U_misPost mio = new U_misPost();
+
+            DataRow fila;
+
+            mio.Id_mipost = dato;
+            DataTable intermedio = data.ObtenerPostR(mio);
+
+            for (int i = 0; i < intermedio.Rows.Count; i++)
+            {
+                fila = informacion.NewRow();
+
+                fila["Titulo"] = intermedio.Rows[i]["titulo"].ToString();
+                fila["Fecha"] = intermedio.Rows[i]["fecha"].ToString();
+                fila["Estado"] = intermedio.Rows[i]["estado"].ToString();
+                fila["Etiqueta"] = intermedio.Rows[i]["etiqueta"].ToString();
+
+
+                informacion.Rows.Add(fila);
+            }
+
+            return informacion;
+           
+        }
+
+
+
+        public DataTable misPost(U_misPost mio) {
+
+            D_User data = new D_User();
+
+            DataTable mioresul = data.ObtenermisPost(mio);
+
+            return mioresul;
+        }
+
+
+
+
 
         public U_Datos insertarUsuarionuevo(U_Datos datos)
         {
@@ -119,8 +302,58 @@ namespace Logica
             return dat;
         }
 
+        public U_user editarMispost()
+        {
 
-        
+            U_user dat = new U_user();
+
+            dat.Link_observador = "usuario_editar.aspx";
+            return dat;
+        }
+
+        public U_user redireccionComentariot()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Usuario_comentarios.aspx";
+
+
+            return dat;
+        }
+
+        public U_user redireccionMisrespuestaspqr()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "usuario_verRespuestas.aspx";
+
+
+            return dat;
+        }
+
+        public U_user redireccionMiscoment()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Usuario_misComents.aspx";
+
+
+            return dat;
+        }
+
+        public U_user redireccionMispost()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "usuario_miPost.aspx";
+
+
+            return dat;
+        }
 
 
         public U_user verCompletousuarioRegistrado()

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Default : System.Web.UI.Page
 {
@@ -13,58 +15,70 @@ public partial class View_Default : System.Web.UI.Page
         Response.Cache.SetNoStore();
 
 
-        EDatosCrearPost doc = new EDatosCrearPost();
-        EDatosComenatrio comenta = new EDatosComenatrio();
-        DAOUsuario dac = new DAOUsuario();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        U_userCrearpost doc = new U_userCrearpost();
+              L_Usercs dac = new L_Usercs();
         ClientScriptManager cm = this.ClientScript;
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        int dato = int.Parse(Request.Params["parametro"]);
-        int dato2 = int.Parse(Request.Params["userid"]);
+
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        int dato = int.Parse(obQueryString["parametro"].ToString());
+        int dato2 = int.Parse(obQueryString["userid"].ToString());
 
 
-        DataTable regis = dac.verpag(doc);
+       doc =  dac.eliminarMiscomentarios(doc);
 
+        LB_muestraPag.Text = doc.Contenido1;
+        LB_autor.Text = doc.Autor1;
 
-
-
-        if (regis.Rows.Count > 0)
-        {
-
-            LB_muestraPag.Text = regis.Rows[0]["contenido"].ToString();
-            LB_autor.Text = regis.Rows[0]["autor"].ToString();
-
-        }
-
-
-        DataTable punt = dac.verpuntos(doc);
+        //dac.eliminarMiscomentariospuntos(doc);
        
 
-        GV_comentariosuser.DataSource = dac.ObtenerComentUS(dato,dato2);
+        GV_comentariosuser.DataSource = dac.dataEliminarcoment(dato,dato2);
         GV_comentariosuser.DataBind();
     }
 
     protected void BT_eliminar_Click(object sender, EventArgs e)
     {
-        DAOUsuario dac = new DAOUsuario();
+        L_Usercs dac = new L_Usercs();
         Button bt = (Button)sender;
         TableCell tableCell = (TableCell)bt.Parent;
         GridViewRow row = (GridViewRow)tableCell.Parent;
         GV_comentariosuser.SelectedIndex = row.RowIndex;
         int fila = row.RowIndex;
 
-        int h = int.Parse(Request.Params["parametro"]);
-        int b = int.Parse(Request.Params["userid"]);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        int h = int.Parse(obQueryString["parametro"].ToString());
+        int b = int.Parse(obQueryString["userid"].ToString());
         int IdRecogido = int.Parse(((Label)row.Cells[fila].FindControl("Label1")).Text);
 
+
+        dac.dataEliminarcomentaction(IdRecogido);
+
+        U_user data = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        data = llamado.redireccionMiscoment();
+
+        Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
         
-        dac.EliminarComent(IdRecogido);
-        Response.Redirect("Usuario_misComents.aspx?parametro=" + h + "&userid=" + b);
 
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Usuario_comentarios.aspx?userid=" + b);
+
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        U_user data = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        data = llamado.redireccionComentariot();
+
+        Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }

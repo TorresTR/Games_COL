@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_usuario_miPost : System.Web.UI.Page
 {
@@ -12,13 +14,21 @@ public partial class View_usuario_miPost : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-        DAOUsuario dac = new DAOUsuario();
+
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        U_misPost mio = new U_misPost();
+        L_Usercs dac = new L_Usercs();
 
 
-        int dato = int.Parse(Request.Params["userid"]);
+        int dato = int.Parse(obQueryString["userid"].ToString());
 
-        GV_miPost.DataSource = dac.ObtenermisPost(dato);
+        mio.Id_mipost = dato;
+
+        GV_miPost.DataSource = dac.misPost(mio);
         GV_miPost.DataBind();
+
         try
         {
             InfoR_usuario reporte = ObtenerInforme();
@@ -34,29 +44,20 @@ public partial class View_usuario_miPost : System.Web.UI.Page
 
     protected InfoR_usuario ObtenerInforme()
     {
-        DataRow fila;  //dr
+          //dr
         DataTable informacion = new DataTable(); //dt
         InfoR_usuario datos = new InfoR_usuario();
-        int dato = int.Parse(Request.Params["userid"]);
+
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        int dato = int.Parse(obQueryString["userid"].ToString());
 
         informacion = datos.Tables["Post"];
 
-        DAOUsuario persona = new DAOUsuario();
+        L_Usercs persona = new L_Usercs();
 
-        DataTable intermedio = persona.ObtenerPostR(dato);
-
-        for (int i = 0; i < intermedio.Rows.Count; i++)
-        {
-            fila = informacion.NewRow();
-
-            fila["Titulo"] = intermedio.Rows[i]["titulo"].ToString();
-            fila["Fecha"] = intermedio.Rows[i]["fecha"].ToString();
-            fila["Estado"] = intermedio.Rows[i]["estado"].ToString();
-            fila["Etiqueta"] = intermedio.Rows[i]["etiqueta"].ToString();
-
-
-            informacion.Rows.Add(fila);
-        }
+        persona.misPostCristal(informacion,dato);
 
         return datos;
     }
@@ -70,11 +71,24 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         GV_miPost.SelectedIndex = row.RowIndex;
         int fila = row.RowIndex;
 
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int b = int.Parse(Request.Params["userid"]);
+
+        int b = int.Parse(obQueryString["userid"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
 
-        Response.Redirect("usuario_editar.aspx?userid=" + b + "&parametro=" + IdRecogido);
+        string dat = b.ToString(); 
+
+        obQueryString.Add("parametro", IdRecogido);
+        obQueryString.Add("userid", dat);
+
+        U_user data = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        data = llamado.editarMispost();
+
+        Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_eliminar_Click(object sender, EventArgs e)
@@ -85,21 +99,41 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         GV_miPost.SelectedIndex = row.RowIndex;
         int fila = row.RowIndex;
 
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int b = int.Parse(Request.Params["userid"]);
+
+        int b = int.Parse(obQueryString["userid"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
 
         int x = int.Parse(IdRecogido);
 
-        DAOUsuario dac = new DAOUsuario();
-        dac.eliminarMiPost(x);
+        L_Usercs dac = new L_Usercs();
+        U_misPost dato = new U_misPost();
 
-        Response.Redirect("usuario_miPost.aspx?userid=" + b );
+        dato.Id_mipost = x;
+
+        dac.eliminarMipost(dato);
+
+
+
+        U_user data = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        data = llamado.redireccionMispost();
+
+        Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("usuarios.aspx?userid=" + b);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        dat = llamado.volverUsuariosRegistrado();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }

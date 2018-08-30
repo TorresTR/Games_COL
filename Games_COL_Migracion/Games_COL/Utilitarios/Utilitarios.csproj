@@ -47,8 +47,11 @@
     <Compile Include="U_Datosreporte.cs" />
     <Compile Include="U_Interaccion.cs" />
     <Compile Include="U_logueo.cs" />
+    <Compile Include="U_misPost.cs" />
+    <Compile Include="U_respuestasPqr.cs" />
     <Compile Include="U_session.cs" />
     <Compile Include="U_Sugerencia.cs" />
+    <Compile Include="U_token.cs" />
     <Compile Include="U_user.cs" />
     <Compile Include="U_userCrearpost.cs" />
   </ItemGroup>

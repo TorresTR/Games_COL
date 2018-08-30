@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_usuario_editar : System.Web.UI.Page
 {
@@ -12,31 +14,40 @@ public partial class View_usuario_editar : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-        DAOUsuario dac = new DAOUsuario();
-        int a =  int.Parse(Request.Params["parametro"]);
 
-        DataTable regis = dac.verEditar(a);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        if (regis.Rows.Count > 0)
-        {
 
-            LB_muestraContenido.Text = regis.Rows[0]["contenido"].ToString();
-            LB_verAutor.Text = regis.Rows[0]["autor"].ToString();
-            Ck_editar.Visible = false;
-            BT_editar.Visible = false;
-        }
+        L_Usercs dac = new L_Usercs();
+        U_misPost dato = new U_misPost();
+        
+        int a = int.Parse(obQueryString["parametro"].ToString());
+
+
+        dato.Id_mipost = a;
+
+        dato = dac.VerMisdatosaeditar(dato);
+
+        LB_muestraContenido.Text= dato.Contenido;
+        LB_verAutor.Text=dato.Autor;
+        Ck_editar.Visible=dato.EstadoCK;
+        BT_editar.Visible=dato.EstadoBT;
 
     }
 
     protected void BT_editar_Click(object sender, EventArgs e)
     {
-        DAOUsuario dac = new DAOUsuario();
-        EDatosCrearPost post = new EDatosCrearPost();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        post.Id = int.Parse(Request.Params["parametro"]);
+        L_Usercs dac = new L_Usercs();
+        U_userCrearpost post = new U_userCrearpost();
+
+        post.Id = int.Parse(obQueryString["parametro"].ToString());
         post.Contenido1 = Ck_editar.Text.ToString();
 
-        dac.actualizarMipost(post);
+        dac.actualizarMispost(post);
 
     }
 
@@ -49,7 +60,20 @@ public partial class View_usuario_editar : System.Web.UI.Page
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        int a = int.Parse(Request.Params["userid"]);
-        Response.Redirect("usuario_miPost.aspx?userid=" + a);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        int a = int.Parse(obQueryString["parametro"].ToString());
+
+        string dat = a.ToString();
+        obQueryString.Add("userid", dat);
+
+        U_user data = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        data = llamado.editarMispost();
+
+
+        Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }

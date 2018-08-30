@@ -21,9 +21,6 @@ public partial class View_usuarios : System.Web.UI.Page
         LB_busq.Visible = false;
     }
 
-    
-
-
     protected void BT_vermas_Click(object sender, EventArgs e)
     {
         

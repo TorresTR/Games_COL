@@ -83,7 +83,7 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
         
-        Response.Redirect("usuario_miPost.aspx?userid=" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect("usuario_miPost.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_comentarios_Click(object sender, EventArgs e)
@@ -130,6 +130,6 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
         
-        Response.Redirect("usuario_informacion.aspx?userid=" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect("usuario_informacion.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }
