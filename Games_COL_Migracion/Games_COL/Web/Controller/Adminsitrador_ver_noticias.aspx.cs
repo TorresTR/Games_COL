@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
 
 public partial class View_Adminsitrador_ver_noticias : System.Web.UI.Page
 {
@@ -12,23 +14,23 @@ public partial class View_Adminsitrador_ver_noticias : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        EDatosCrearPost doc = new EDatosCrearPost();
-        DAOUsuario dac = new DAOUsuario();
+        U_userCrearpost doc = new U_userCrearpost();
+        L_Usercs dac = new L_Usercs();
 
-        doc.Id = int.Parse(Request.Params["parametro"]);
-        int dato = int.Parse(Request.Params["parametro"]);
-        DataTable regis = dac.verNoticia(doc);
 
-        if (regis.Rows.Count > 0)
-        {
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        int x = int.Parse(obQueryString["parametro"].ToString());
 
-            LB_verPost.Text = regis.Rows[0]["contenido"].ToString();
-            LB_autor.Text = regis.Rows[0]["autor"].ToString();
+        doc = dac.postObservadorNoticias(doc);
 
-        }
 
-        GV_comentarios.DataSource = dac.ObtenerComent(dato);
+        LB_verPost.Text = doc.Contenido1.ToString();
+        LB_autor.Text = doc.Autor1.ToString();
+
+        GV_comentarios.DataSource = dac.obtenerComentario(x);
         GV_comentarios.DataBind();
 
 
@@ -38,8 +40,14 @@ public partial class View_Adminsitrador_ver_noticias : System.Web.UI.Page
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Administrador.aspx?userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        dat = llamado.retornoAdmin();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 }

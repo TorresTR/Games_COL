@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
 
 public partial class View_Administrador_noticia : System.Web.UI.Page
 {
@@ -19,10 +21,13 @@ public partial class View_Administrador_noticia : System.Web.UI.Page
 
     protected void BT_guardar_Click(object sender, EventArgs e)
     {
-        EDatosCrearPost datos_creartPost = new EDatosCrearPost();
-        DAOUsuario data_userPost = new DAOUsuario();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int b = int.Parse(Request.Params["userid"]);
+        U_userCrearpost datos_creartPost = new U_userCrearpost();
+        L_Usercs data_userPost = new L_Usercs();
+
+        int b = int.Parse(obQueryString["userid"].ToString());
         int g = 1;
         DateTime dt = DateTime.Now;
 
@@ -36,15 +41,22 @@ public partial class View_Administrador_noticia : System.Web.UI.Page
 
         TB_titulo.Text = "";
         Ckeditor1.Text = "";
-        Response.Redirect("Administrador.aspx?userid=" + b);
+        U_user link = new U_user();
+        link = data_userPost.retornoAdmin();
+        Response.Redirect(link.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         TB_titulo.Text = "";
         Ckeditor1.Text = "";
-        Response.Redirect("Administrador.aspx?userid=" + b);
+        L_Usercs data = new L_Usercs();
+        U_user link = new U_user();
+        link = data.retornoAdmin();
+        Response.Redirect(link.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }

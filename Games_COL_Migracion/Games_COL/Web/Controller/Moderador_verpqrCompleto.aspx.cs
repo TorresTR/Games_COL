@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
-using Datos;
 using Utilitarios;
 
 public partial class View_Moderador_verpqrCompleto : System.Web.UI.Page
@@ -17,15 +16,14 @@ public partial class View_Moderador_verpqrCompleto : System.Web.UI.Page
 
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        D_User user = new D_User();
         U_Datospqr respuesa = new U_Datospqr();
         L_Usercs logica = new L_Usercs();
 
         respuesa.Id_pqr = int.Parse(obQueryString["parametro"].ToString());
 
-        
 
-        DataTable regis = user.verpqr(respuesa);
+
+        DataTable regis = logica.pqr(respuesa);
         respuesa = logica.pqr(regis);
 
         LB_muestraPag.Text = respuesa.Contenido;
@@ -37,7 +35,7 @@ public partial class View_Moderador_verpqrCompleto : System.Web.UI.Page
     {
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        D_User user = new D_User();
+        L_Usercs user = new L_Usercs();
         U_Datospqr respuesa = new U_Datospqr();
 
 
@@ -52,7 +50,7 @@ public partial class View_Moderador_verpqrCompleto : System.Web.UI.Page
         respuesa.Id_pqr = q;
         respuesa.Estado_respuesta = a;
 
-        user.actualizarPQR(respuesa);
+        user.actualizarpqr(respuesa);
         string par = q.ToString();
         string ui = b.ToString();
         obQueryString.Add("parametro", par);

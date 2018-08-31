@@ -4,41 +4,51 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using Logica;
+using Utilitarios;
 using System.Web.UI.WebControls;
 
 public partial class View_Administrador_editar_noticia : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
         Response.Cache.SetNoStore();
 
-        DAOUsuario dac = new DAOUsuario();
-        int a = int.Parse(Request.Params["parametro"]);
+        U_userCrearpost doc = new U_userCrearpost();
+        L_Usercs dac = new L_Usercs();
 
-        DataTable regis = dac.verNoticia(a);
 
-        if (regis.Rows.Count > 0)
-        {
+        doc.Id = int.Parse(obQueryString["parametro"].ToString());
+        int x = int.Parse(obQueryString["userid"].ToString());
 
-            LB_muestraContenido.Text = regis.Rows[0]["contenido"].ToString();
-            LB_verAutor.Text = regis.Rows[0]["autor"].ToString();
-            Ck_editar.Visible = false;
-            BT_editar.Visible = false;
-        }
+        doc = dac.postObservadorNoticias(doc);
+
+        LB_muestraContenido.Text = doc.Contenido1.ToString();
+        LB_verAutor.Text = doc.Autor1.ToString();
+        Ck_editar.Visible = false;
+        BT_editar.Visible = false;
+
 
     }
 
     protected void BT_editar_Click(object sender, EventArgs e)
     {
-        DAOUsuario dac = new DAOUsuario();
-        EDatosCrearPost post = new EDatosCrearPost();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        post.Id = int.Parse(Request.Params["parametro"]);
-        int b = int.Parse(Request.Params["userid"]);
+        L_Usercs dac = new L_Usercs();
+        U_userCrearpost post = new U_userCrearpost();
+        U_user link = new U_user();
+
+        post.Id = int.Parse(obQueryString["parametro"].ToString());
         post.Contenido1 = Ck_editar.Text.ToString();
 
-        dac.actualizarNoticia(post);
-        Response.Redirect("Administrador_miNoticia.aspx?userid=" + b);
+        dac.actualizaModernoticia(post);
+        link = dac.miNoticia();
+
+        Response.Redirect(link.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 
@@ -51,7 +61,14 @@ public partial class View_Administrador_editar_noticia : System.Web.UI.Page
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        int a = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Administrador_miNoticia.aspx?userid=" + a);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        dat = llamado.miNoticia();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
     }
 }

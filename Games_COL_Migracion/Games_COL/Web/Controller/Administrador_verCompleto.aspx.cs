@@ -17,7 +17,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
     int puntos_total = 0;
     int val, pun;
 
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Load(object sender, EventArgs e) 
     {
 
 

@@ -13,7 +13,7 @@ public partial class View_Administrador_verMasPostReportado : System.Web.UI.Page
         Response.Cache.SetNoStore();
 
         DAOUsuario dac = new DAOUsuario();
-        EDatosCrearPost doc = new EDatosCrearPost();
+        EDatosCrearPost doc = new EDatosCrearPost(); 
 
         doc.Id = int.Parse(Request.Params["parametro"]);
 

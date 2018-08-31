@@ -1063,7 +1063,7 @@ namespace Datos
             return Documentos;
         }
 
-        public DataTable ignorarpqr(Int32 dato)
+        public DataTable ignorarpqr(U_Datospqr dato)
         {
             DataTable Post = new DataTable();
             NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -1071,7 +1071,7 @@ namespace Datos
             try
             {
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.ignorar_pqr", conection);
-                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = dato;
+                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = dato.Id_pqr;
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
@@ -2251,5 +2251,191 @@ namespace Datos
 
         }
 
+        public DataTable actualizarUser(U_Datos user)
+        {
+            DataTable Post = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_actualizar_usuario", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = user.Id;
+                dataAdapter.SelectCommand.Parameters.Add("_nombre", NpgsqlDbType.Text).Value = user.Nombre;
+                dataAdapter.SelectCommand.Parameters.Add("_nick", NpgsqlDbType.Text).Value = user.Nick;
+                dataAdapter.SelectCommand.Parameters.Add("_puntos", NpgsqlDbType.Integer).Value = user.Puntos;
+                dataAdapter.SelectCommand.Parameters.Add("_rango", NpgsqlDbType.Integer).Value = user.Rango;
+                dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Text).Value = user.Correo;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+
+
+                conection.Open();
+                dataAdapter.Fill(Post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return Post;
+
+        }
+
+        public DataTable ListarUsuariosAdmin()
+        {
+
+            DataTable usuarios = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_listar_usuarios_admin", conection);
+
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                conection.Open();
+                dataAdapter.Fill(usuarios);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return usuarios;
+
+        }
+
+        public DataTable ListarModeradoresAdmin()
+        {
+
+            DataTable usuarios = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_listar_moderadores_admin", conection);
+
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                conection.Open();
+                dataAdapter.Fill(usuarios);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return usuarios;
+
+        }
+
+        public DataTable ListarAdministradoresAdmin()
+        {
+
+            DataTable usuarios = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_listar_Administradores_admin", conection);
+
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                conection.Open();
+                dataAdapter.Fill(usuarios);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return usuarios;
+
+        }
+        public DataTable Ascenso(int id)
+        {
+            DataTable Usuario = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_ascender", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = id;
+
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
+        public DataTable IgnorarSolicitud(int id)
+        {
+            DataTable Usuario = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_ignorar_solicitud", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = id;
+
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
+
+       
     }
 }

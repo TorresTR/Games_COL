@@ -21,7 +21,7 @@ public partial class View_Moderador_editar_Noticia : System.Web.UI.Page
 
 
         doc.Id = int.Parse(obQueryString["parametro"].ToString());
-        int x = int.Parse(obQueryString["parametro"].ToString());
+        int x = int.Parse(obQueryString["userid"].ToString());
 
         doc = dac.postObservadorNoticias(doc);
 

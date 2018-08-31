@@ -51,10 +51,12 @@ public partial class View_Moderador_ver_pqr : System.Web.UI.Page
         string ID = lblid.Text;
         Int32 id = int.Parse(lblid.Text);
         int b = int.Parse(q);
+        U_Datospqr pqr = new U_Datospqr();
+        pqr.Id_pqr = id;
         D_User user = new D_User();
 
 
-        user.ignorarpqr(id);
+        user.ignorarpqr(pqr);
         Response.Redirect("Moderador_ver_pqr.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
 

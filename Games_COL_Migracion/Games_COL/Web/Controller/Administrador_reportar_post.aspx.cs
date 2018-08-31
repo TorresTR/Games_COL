@@ -1,42 +1,32 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
 
 public partial class View_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
         Response.Cache.SetNoStore();
-        ClientScriptManager cm = this.ClientScript;
-        EDatosCrearPost doc = new EDatosCrearPost();
-        DAOUsuario dac = new DAOUsuario();
 
-        int c = int.Parse(Request.Params["parametro"]);
-        int u = int.Parse(Request.Params["userid"]);
-        DataTable regis = dac.Obtenerpsot();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int contcolum = regis.Columns.Count;
+        U_user doc = new U_user();
+        L_Usercs dac = new L_Usercs();
 
+        int c = int.Parse(obQueryString["parametro"].ToString());
+        int u = int.Parse(obQueryString["userid"].ToString());
 
-        for (int i = 0; i <= contcolum; i++)
-        {
+        doc = dac.obtenerPostparareportar(c);
 
-
-            if (regis.Rows.Count > 0)
-            {
-                if (c == int.Parse(regis.Rows[i]["id"].ToString()))
-                {
-                    LB_tituloReportar.Text = regis.Rows[i]["titulo"].ToString();
-                }
-
-
-            }
-        }
-
+        LB_tituloReportar.Text = doc.Mensaje_Alertaobservador1;
 
 
     }
@@ -44,17 +34,19 @@ public partial class View_Default : System.Web.UI.Page
     protected void BT_enviarReporte_Click(object sender, EventArgs e)
     {
 
-        ClientScriptManager cm = this.ClientScript;
-        EDatosreporte reporte = new EDatosreporte();
-        DAOUsuario envio = new DAOUsuario();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int b = int.Parse(Request.Params["parametro"]);
+        U_Datosreporte reporte = new U_Datosreporte();
+        L_Usercs envio = new L_Usercs();
+
+        int b = int.Parse(obQueryString["parametro"].ToString());
         DateTime dt = DateTime.Now;
 
-        int u = int.Parse(Request.Params["userid"]);
+        int u = int.Parse(obQueryString["userid"].ToString());
 
 
-        DataTable regis = envio.Obtenerpsot();
+        DataTable regis = envio.obtenerPostObservador();
 
 
         reporte.Id_post_reportado = b;
@@ -62,15 +54,36 @@ public partial class View_Default : System.Web.UI.Page
         reporte.Fecha_reporte = dt;
         reporte.User_reportador = u;
 
-        envio.insertarreporte(reporte);
+        envio.insertarPostaReportar(reporte);
+        string z = b.ToString();
+        string q = u.ToString();
 
-        Response.Redirect("Administrador_verCompleto.aspx?parametro=" + b + "&userid=" + u);
+        obQueryString.Add("parametro", z);
+        obQueryString.Add("userid", q);
+
+        L_Usercs data = new L_Usercs();
+        U_user dat = new U_user();
+
+        dat = data.redirigirCompletoAdmin();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["parametro"]);
-        int u = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Administrador_verCompleto.aspx?parametro=" + b + "&userid=" + u);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        string z = obQueryString["userid"].ToString();
+
+
+        obQueryString.Add("userid", z);
+
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+
+        dat = llamado.retornoAdmin();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }

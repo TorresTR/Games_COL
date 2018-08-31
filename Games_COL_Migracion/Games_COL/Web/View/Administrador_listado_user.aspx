@@ -83,7 +83,7 @@
                         </table>
                     </ItemTemplate>
                 </asp:DataList>
-                <asp:ObjectDataSource ID="ODS_usuarios" runat="server" SelectMethod="ListarUsuariosAdmin" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_usuarios" runat="server" SelectMethod="listarUserAdmin" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
             </td>
         </tr>
         <tr>
@@ -155,7 +155,7 @@
                         </table>
                     </ItemTemplate>
                 </asp:DataList>
-                <asp:ObjectDataSource ID="ODS_usuarios0" runat="server" SelectMethod="ListarModeradoresAdmin" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_usuarios0" runat="server" SelectMethod="listarModerAdmin" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
             </td>
         </tr>
         <tr>
@@ -213,7 +213,7 @@
                         </table>
                     </ItemTemplate>
                 </asp:DataList>
-                <asp:ObjectDataSource ID="ODS_usuarios1" runat="server" SelectMethod="ListarAdministradoresAdmin" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_usuarios1" runat="server" SelectMethod="listarAdministradoresAdmin" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
             </td>
         </tr>
         <tr>

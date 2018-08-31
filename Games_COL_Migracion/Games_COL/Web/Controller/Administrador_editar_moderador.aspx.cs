@@ -12,18 +12,20 @@ public partial class View_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
         Response.Cache.SetNoStore();
 
         L_Usercs dac = new L_Usercs();
-        int a = int.Parse(Request.Params["parametro"]);
+        int a = int.Parse(obQueryString["parametro"].ToString());
 
         DataTable regis = dac.verUser(a);
         U_Datos moder = dac.datosModerador(regis);
         
-            LB_id.Text = moder.Id;
+            LB_id.Text = moder.Id.ToString();
             LB_nombre.Text = moder.Nombre;
             LB_nick.Text = moder.Nick;
-            LB_puntos.Text = moder.Puntos;
+            LB_puntos.Text = moder.Puntos.ToString();
             LB_rango.Text = moder.Confirma;
             LB_correo.Text = moder.Correo;
 
@@ -35,13 +37,16 @@ public partial class View_Default : System.Web.UI.Page
             TB_correo.Visible = moder.Bin;
 
         }
-    }
+    
 
     protected void BT_guardar_Click(object sender, EventArgs e)
     {
-        DAOUsuario dac = new DAOUsuario();
-        Edatos user = new Edatos();
-        int b = int.Parse(Request.Params["userid"]);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        L_Usercs dac = new L_Usercs();
+        U_Datos user = new U_Datos();
+        int b = int.Parse(obQueryString["userid"].ToString());
 
         user.Id = int.Parse(LB_id.Text.ToString());
         user.Nombre = TB_nombre.Text.ToString();
@@ -49,16 +54,23 @@ public partial class View_Default : System.Web.UI.Page
         user.Puntos = int.Parse(TB_puntos.Text.ToString());
         user.Rango = int.Parse(DDL_rango.SelectedValue.ToString());
         user.Correo = TB_correo.Text.ToString();
-
+        U_user dat = new U_user();
 
         dac.actualizarUser(user);
-        Response.Redirect("Administrador_listado_user.aspx?userid=" + b);
+        dat = dac.listadoUser();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Administrador_listado_user.aspx?userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        U_user dat = new U_user();
+        L_Usercs dac = new L_Usercs();
+        dat = dac.listadoUser();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_editar_Click(object sender, EventArgs e)
@@ -75,4 +87,5 @@ public partial class View_Default : System.Web.UI.Page
         DDL_rango.Visible = true;
         TB_correo.Visible = true;
     }
+
 }

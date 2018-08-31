@@ -133,7 +133,7 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("Administrador_solicitudest.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect("Administrador_solicitudes.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_crear_noticia_Click(object sender, EventArgs e)

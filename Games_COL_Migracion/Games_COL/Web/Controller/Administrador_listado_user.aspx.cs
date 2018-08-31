@@ -104,6 +104,7 @@ public partial class View_Administrador_listado_user : System.Web.UI.Page
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
+
         dat = llamado.retornoAdmin();
 
         Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());

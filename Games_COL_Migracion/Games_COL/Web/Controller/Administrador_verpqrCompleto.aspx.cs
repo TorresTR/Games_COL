@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Administrador_verpqrCompleto : System.Web.UI.Page
 {
@@ -12,32 +14,32 @@ public partial class View_Administrador_verpqrCompleto : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-        DAOUsuario user = new DAOUsuario();
-        EDatospqr respuesa = new EDatospqr();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        U_Datospqr respuesa = new U_Datospqr();
+        L_Usercs logica = new L_Usercs();
 
-        respuesa.Id_pqr = int.Parse(Request.Params["parametro"]);
-
-
-
-        DataTable regis = user.verpqr(respuesa);
-
-        if (regis.Rows.Count > 0)
-        {
-
-            LB_muestraPag.Text = regis.Rows[0]["contenido"].ToString();
-            LB_autor.Text = regis.Rows[0]["autor"].ToString();
+        respuesa.Id_pqr = int.Parse(obQueryString["parametro"].ToString());
 
 
-        }
+
+        DataTable regis = logica.pqr(respuesa);
+        respuesa = logica.pqr(regis);
+
+        LB_muestraPag.Text = respuesa.Contenido;
+        LB_autor.Text = respuesa.Autor;
     }
 
     protected void BT_responder_Click(object sender, EventArgs e)
     {
-        DAOUsuario user = new DAOUsuario();
-        EDatospqr respuesa = new EDatospqr();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        L_Usercs user = new L_Usercs();
+        U_Datospqr respuesa = new U_Datospqr();
 
-        int b = int.Parse(Request.Params["userid"]);
-        int q = int.Parse(Request.Params["parametro"]);
+
+        int b = int.Parse(obQueryString["userid"].ToString());
+        int q = int.Parse(obQueryString["parametro"].ToString());
         int a = 1;
         DateTime dt = DateTime.Now;
 
@@ -47,14 +49,23 @@ public partial class View_Administrador_verpqrCompleto : System.Web.UI.Page
         respuesa.Id_pqr = q;
         respuesa.Estado_respuesta = a;
 
-        user.actualizarPQR(respuesa);
-        Response.Redirect("Administrador_ver_pqr.aspx?parametro=" + q + "&userid=" + b);
+        user.actualizarpqr(respuesa);
+        string par = q.ToString();
+        string ui = b.ToString();
+        obQueryString.Add("parametro", par);
+        obQueryString.Add("userid", ui);
+        Response.Redirect("Administrador_ver_pqr.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
     }
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        int c = int.Parse(Request.Params["parametro"]);
-        Response.Redirect("Administrador_ver_pqr.aspx?parametro=" + c + "&userid=" + b);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        string q = obQueryString["userid"].ToString();
+        string z = obQueryString["parametro"].ToString();
+        obQueryString.Add("parametro", z);
+        obQueryString.Add("userid", q);
+        Response.Redirect("Administrador_ver_pqr.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }

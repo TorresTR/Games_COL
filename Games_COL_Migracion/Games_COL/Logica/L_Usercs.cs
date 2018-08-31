@@ -31,7 +31,7 @@ namespace Logica
 
             D_User llamado = new D_User();
 
-            DataTable regis= llamado.ObtenerPostE(dato);
+            DataTable regis = llamado.ObtenerPostE(dato);
 
             return regis;
         }
@@ -52,7 +52,7 @@ namespace Logica
         }
 
 
-      
+
 
 
 
@@ -66,7 +66,7 @@ namespace Logica
 
             if (regis.Rows.Count > 0)
             {
-                dat.Contenido1= regis.Rows[0]["contenido"].ToString();
+                dat.Contenido1 = regis.Rows[0]["contenido"].ToString();
                 dat.Autor1 = regis.Rows[0]["autor"].ToString();
             }
 
@@ -75,18 +75,18 @@ namespace Logica
 
 
 
-        public DataTable dataEliminarcoment(int dato1,int dato2)
+        public DataTable dataEliminarcoment(int dato1, int dato2)
         {
 
             D_User llamado = new D_User();
-            U_misPost  dat = new U_misPost();
+            U_misPost dat = new U_misPost();
 
             dat.Dato1 = dato1;
             dat.Dato2 = dato2;
 
             DataTable regis = llamado.ObtenerComentUS(dat);
 
-           
+
             return regis;
         }
 
@@ -98,12 +98,12 @@ namespace Logica
             U_misPost dat = new U_misPost();
 
             dat.Dato1 = dato1;
-            
+
 
             DataTable regis = llamado.EliminarComent(dat);
 
 
-          
+
         }
 
         public DataTable eliminarMiscomentariospuntos(U_userCrearpost dato)
@@ -132,7 +132,7 @@ namespace Logica
 
             D_User llamado = new D_User();
             U_misPost infor = new U_misPost();
-           
+
 
             DataTable regis = llamado.verEditar(dato);
 
@@ -144,14 +144,15 @@ namespace Logica
                 infor.EstadoCK = false;
                 infor.EstadoBT = false;
             }
-            
+
 
             return infor;
         }
 
 
 
-        public void eliminarMipost(U_misPost dato) {
+        public void eliminarMipost(U_misPost dato)
+        {
 
             D_User llamado = new D_User();
 
@@ -159,7 +160,7 @@ namespace Logica
         }
 
 
-        public DataTable misPostCristal(DataTable informacion,int dato)
+        public DataTable misPostCristal(DataTable informacion, int dato)
         {
 
             D_User data = new D_User();
@@ -184,12 +185,13 @@ namespace Logica
             }
 
             return informacion;
-           
+
         }
 
 
 
-        public DataTable misPost(U_misPost mio) {
+        public DataTable misPost(U_misPost mio)
+        {
 
             D_User data = new D_User();
 
@@ -253,7 +255,7 @@ namespace Logica
             int p = int.Parse(regis.Rows[0]["id"].ToString());
             if (c == int.Parse(regis.Rows[0]["id"].ToString()))
             {
-                 dat.Coment = regis.Rows[0]["comentarios"].ToString();
+                dat.Coment = regis.Rows[0]["comentarios"].ToString();
             }
 
             return dat;
@@ -292,7 +294,8 @@ namespace Logica
 
             data = datos.verpag(doct);
 
-            if (data.Rows.Count > 0) {
+            if (data.Rows.Count > 0)
+            {
 
                 doc.Contenido1 = data.Rows[0]["contenido"].ToString();
                 doc.Autor1 = data.Rows[0]["autor"].ToString();
@@ -354,11 +357,12 @@ namespace Logica
 
         }
 
-        public DataTable listadoModerador(DataTable informacion) {
+        public DataTable listadoModerador(DataTable informacion)
+        {
 
-            DataRow fila;  
+            DataRow fila;
             D_User persona = new D_User();
-            
+
 
             DataTable intermedio = persona.ListarUsuariosR();
 
@@ -548,7 +552,7 @@ namespace Logica
 
         }
 
-        public void actualizarmoderPostreportado(Int32 id_post,Int32 user_bloqueador ,Int32 estado_bloqueo,Int32 respuesta)
+        public void actualizarmoderPostreportado(Int32 id_post, Int32 user_bloqueador, Int32 estado_bloqueo, Int32 respuesta)
         {
 
             U_actualizarBloqueo dat = new U_actualizarBloqueo();
@@ -561,7 +565,7 @@ namespace Logica
 
             llamado.actualizarBloqueo(dat);
 
-           
+
         }
 
 
@@ -576,7 +580,7 @@ namespace Logica
             return dat;
         }
 
-        public void actualizaModernoticia (U_userCrearpost post)
+        public void actualizaModernoticia(U_userCrearpost post)
         {
 
             D_User llamado = new D_User();
@@ -660,7 +664,7 @@ namespace Logica
 
             return dat;
         }
-        
+
         public U_user verCompletousuarioRegistrado()
         {
 
@@ -733,7 +737,7 @@ namespace Logica
             U_user dat = new U_user();
 
             dat.Link_observador = "usuarios_reportar_post.aspx";
-            
+
 
             return dat;
         }
@@ -778,7 +782,7 @@ namespace Logica
             U_user dat = new U_user();
 
             dat.Link_observador = "verCompletoUserregistrado.aspx";
-            
+
 
             return dat;
         }
@@ -801,7 +805,7 @@ namespace Logica
                 {
                     if (c == int.Parse(regis.Rows[i]["id"].ToString()))
                     {
-                         mensaje.Mensaje_Alertaobservador1 = regis.Rows[i]["titulo"].ToString();
+                        mensaje.Mensaje_Alertaobservador1 = regis.Rows[i]["titulo"].ToString();
                         break;
                     }
 
@@ -938,14 +942,14 @@ namespace Logica
 
 
 
-        public void  insertarComentarioReportado(U_comentarios x)
+        public void insertarComentarioReportado(U_comentarios x)
         {
 
             D_User data = new D_User();
 
             data.insertarreporteComentariosUser(x);
 
-            
+
         }
 
 
@@ -1490,7 +1494,7 @@ namespace Logica
             return puntos;
         }
 
-        public U_userCrearpost puntosBoton(DataTable punt, int inter,U_userCrearpost puntot)
+        public U_userCrearpost puntosBoton(DataTable punt, int inter, U_userCrearpost puntot)
         {
 
 
@@ -1522,7 +1526,7 @@ namespace Logica
                         puntot.Interacciones = inter;
                         puntot.PuntosA = pun;
 
-                        
+
                     }
 
 
@@ -1557,17 +1561,17 @@ namespace Logica
 
         public int gridview(GridViewCommandEventArgs e, GridViewRow row)
         {
-            int x=0;
+            int x = 0;
             if (e.CommandName == "reportar")
             {
 
-                
+
                 Label id_pregunta = (Label)row.FindControl("Label1");
                 int id_preg = Convert.ToInt32(id_pregunta.Text);
 
                 x = id_preg;
-                
-               
+
+
 
             }
             return x;
@@ -1576,7 +1580,7 @@ namespace Logica
         {
             D_User dao = new D_User();
             U_Interaccion inter = new U_Interaccion();
-            
+
             if (int.Parse(validez.Rows[0]["puntos"].ToString()) >= 3700)
             {
                 dao.insertarSolicitud(datos);
@@ -1817,7 +1821,7 @@ namespace Logica
             D_User llamar = new D_User();
 
             llamar.eliminarUsuario(h);
-           
+
         }
 
         public U_user reporteUser()
@@ -1884,7 +1888,7 @@ namespace Logica
         public void bloquearPost(int h, int b, int x, int z)
         {
             D_User data = new D_User();
-            data.actualizarBloqueo(h,b,x,z);
+            data.actualizarBloqueo(h, b, x, z);
         }
 
         public U_user atencionBloquearPost()
@@ -1929,7 +1933,175 @@ namespace Logica
             regis = data.VerUser(id);
             return regis;
         }
+
+        public void actualizarUser(U_Datos usuario)
+        {
+            D_User user = new D_User();
+            user.actualizarUser(usuario);
+
+        }
+        public U_user listadoUser()
+        {
+            U_user dat = new U_user();
+            dat.Link_observador = "Administrador_listado_user.aspx";
+            return dat;
+        }
+        public U_user miNoticia()
+        {
+            U_user dat = new U_user();
+            dat.Link_observador = "Administrador_miNoticia.aspx";
+            return dat;
+        }
+        public void listarUsuariosAdmin()
+        {
+            D_User user = new D_User();
+            user.ListarUsuariosAdmin();
+
+        }
+        public void listarModeradoresAdmin()
+        {
+            D_User user = new D_User();
+            user.ListarModeradoresAdmin();
+
+        }
+        public void listarAdmin()
+        {
+            D_User user = new D_User();
+            user.ListarAdministradoresAdmin();
+
+        }
+
+
+        public U_user recargaminoticiaAdmin()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_editar_Noticia.aspx";
+
+
+            return dat;
+        }
+        public U_user recargapgnotiAdmin()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_miNoticia.aspx";
+
+
+            return dat;
+        }
+
+        public U_user AdminEditarMispost()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_editar.aspx";
+            return dat;
+        }
+        public U_user AdminMispost()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_miPost.aspx";
+            return dat;
+        }
+
+        public void reporteAdministrador(DataTable intermedio,DataTable informacion)
+        {
+            DataRow fila;
+            for (int i = 0; i<intermedio.Rows.Count; i++)
+            {
+                fila = informacion.NewRow();
+
+                fila["Nick"] = intermedio.Rows[i]["nick"].ToString();
+                fila["Puntos"] = int.Parse(intermedio.Rows[i]["puntos"].ToString());
+                fila["Rango"] = intermedio.Rows[i]["tipo"].ToString();
+
+
+
+                informacion.Rows.Add(fila);
+            }
+        }
+
+        public DataTable listarAdministradoresAdmin()
+        {
+            D_User user = new D_User();
+            DataTable admin = user.ListarAdministradoresAdmin();
+            return admin;
+        }
+        public DataTable listarModerAdmin()
+        {
+            D_User user = new D_User();
+            DataTable admin = user.ListarModeradoresAdmin();
+            return admin;
+        }
+        public DataTable listarUserAdmin()
+        {
+            D_User user = new D_User();
+            DataTable admin = user.ListarUsuariosAdmin();
+            return admin;
+        }
+        public void Ascenso(int h)
+        {
+            D_User ascenso = new D_User();
+            ascenso.Ascenso(h);
+        }
+
+        public void ignorarAscenso(int h)
+        {
+            D_User ascenso = new D_User();
+            ascenso.IgnorarSolicitud(h);
+        }
+        public U_user listaAscenso()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_solicitudes.aspx";
+            return dat;
+        }
+
+        public U_user verPQRCompleto()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_verpqrCompleto.aspx";
+            return dat;
+        }
+        public void ignorarPQR(U_Datospqr id)
+        {
+            D_User ascenso = new D_User();
+            ascenso.ignorarpqr(id);
+        }
+        public U_user verPQR()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_ver_pqr.aspx";
+            return dat;
+        }
+        public DataTable pqr(U_Datospqr respuesta)
+        {
+            DataTable tabla = new DataTable();
+            D_User data = new D_User();
+            tabla = data.verpqr(respuesta);
+            return tabla;
+        }
+        public void actualizarpqr(U_Datospqr respuesta)
+        {
+ 
+            D_User data = new D_User();
+            data.actualizarPQR(respuesta);
+
+        }
+
     }
 
-  
+
 }

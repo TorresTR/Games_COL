@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
 
 public partial class View_Administrador_miNoticia : System.Web.UI.Page
 {
@@ -11,18 +13,24 @@ public partial class View_Administrador_miNoticia : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-        DAOUsuario dac = new DAOUsuario();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        L_Usercs dac = new L_Usercs();
 
 
-        int dato = int.Parse(Request.Params["userid"]);
+        int dato = int.Parse(obQueryString["userid"].ToString());
 
-        GV_miPost.DataSource = dac.ObtenermisNoticia(dato);
+        GV_miPost.DataSource = dac.minoticiagv(dato);
         GV_miPost.DataBind();
 
     }
 
     protected void BT_editar_Click(object sender, EventArgs e)
     {
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         Button bt = (Button)sender;
         TableCell tableCell = (TableCell)bt.Parent;
         GridViewRow row = (GridViewRow)tableCell.Parent;
@@ -30,14 +38,28 @@ public partial class View_Administrador_miNoticia : System.Web.UI.Page
         int fila = row.RowIndex;
 
 
-        int b = int.Parse(Request.Params["userid"]);
+        int b = int.Parse(obQueryString["userid"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
 
-        Response.Redirect("Administrador_editar_Noticia.aspx?userid=" + b + "&parametro=" + IdRecogido);
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        string c = b.ToString();
+        obQueryString.Add("parametro", IdRecogido);
+        obQueryString.Add("userid", c);
+
+        dat = llamar.recargaminoticiaAdmin();
+
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+     
     }
 
     protected void BT_eliminar_Click(object sender, EventArgs e)
     {
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         Button bt = (Button)sender;
         TableCell tableCell = (TableCell)bt.Parent;
         GridViewRow row = (GridViewRow)tableCell.Parent;
@@ -45,20 +67,35 @@ public partial class View_Administrador_miNoticia : System.Web.UI.Page
         int fila = row.RowIndex;
 
 
-        int b = int.Parse(Request.Params["userid"]);
+        int b = int.Parse(obQueryString["userid"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
 
         int x = int.Parse(IdRecogido);
 
-        DAOUsuario dac = new DAOUsuario();
-        dac.eliminarNoticia(x);
+        L_Usercs dac = new L_Usercs();
+        dac.eliminarminoticia(x);
 
+        U_user dat = new U_user();
+        L_Usercs llamar = new L_Usercs();
+
+        string c = b.ToString();
+        obQueryString.Add("parametro", IdRecogido);
+        obQueryString.Add("userid", c);
+
+        dat = llamar.recargapgnotiAdmin();
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
         Response.Redirect("Administrador_miNoticia.aspx?userid=" + b);
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Administrador.aspx?userid=" + b);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        dat = llamado.retornoAdmin();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }
