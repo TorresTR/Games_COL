@@ -1810,7 +1810,7 @@ namespace Logica
 
             U_user dat = new U_user();
 
-            dat.Link_observador = "Administrador_editar_usuarior.aspx";
+            dat.Link_observador = "Administrador_editar_usuario.aspx";
             return dat;
         }
 
