@@ -45,8 +45,7 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
 
     protected void BT_crear_port_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Administrador_crear_post.aspx?userid=" + b);
+        
 
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
@@ -58,8 +57,7 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
 
     protected void BT_verPqr_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Administrador_ver_pqr.aspx?userid=" + b);
+       
 
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
@@ -69,8 +67,7 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
 
     protected void BT_listaUser_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Administrador_listado_user.aspx?userid=" + b);
+ 
 
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
@@ -90,8 +87,7 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
     protected void BT_atencionReportePost_Click(object sender, EventArgs e)
     {
 
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Administrador_atencion_bloquer_post.aspx?userid=" + b);
+     
 
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);

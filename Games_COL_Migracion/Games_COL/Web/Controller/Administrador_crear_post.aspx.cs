@@ -1,16 +1,41 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Administrador_crear_post : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         Response.Cache.SetNoStore();
+        L_Usercs dac = new L_Usercs();
+        int b = int.Parse(obQueryString["userid"].ToString());
+        DataTable data = dac.obtenerInteraccion(b);
+        U_Interaccion iter = new U_Interaccion();
+
+        iter.Iteraccion = int.Parse(data.Rows[0]["id"].ToString());
+
+        iter = dac.validarInteraccion(iter);
+
+
+        LB_tiitulo.Visible = iter.Estado;
+        TB_titulo.Visible = iter.Estado;
+        LB_etiqueta.Visible = iter.Estado;
+        DDL_etiquetas.Visible = iter.Estado;
+        Ckeditor1.Visible = iter.Estado;
+        LB_Contenido.Visible = iter.Estado;
+        BT_guardar.Visible = iter.Estado;
+        BT_vistaPrevia.Visible = iter.Estado;
+        //LB_mensaje.Text = iter.Mensaje;
     }
 
     protected void BT_vistaPrevia_Click(object sender, EventArgs e)
@@ -20,51 +45,63 @@ public partial class View_Administrador_crear_post : System.Web.UI.Page
 
     protected void BT_guardar_Click(object sender, EventArgs e)
     {
-        EDatosCrearPost datos_creartPost = new EDatosCrearPost();
-        DAOUsuario data_userPost = new DAOUsuario();
+        U_userCrearpost datos_creartPost = new U_userCrearpost();
+        L_Usercs data_userPost = new L_Usercs();
 
-        int b = int.Parse(Request.Params["userid"]);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        int b = int.Parse(obQueryString["userid"].ToString());
 
-        DataTable regis = data_userPost.obtenerUss(b);
+
+        DataTable regis = data_userPost.obtenerUsercrear(b);
 
         int x = int.Parse(regis.Rows[0]["puntos"].ToString());
 
+
         DateTime dt = DateTime.Now;
-
         ClientScriptManager cm = this.ClientScript;
-        DataTable data = data_userPost.ObtenerInteraccion(b);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
-        if (inter < 10)
-        {
-            inter = inter + 1;
-            datos_creartPost.Titulo = TB_titulo.Text.ToString();
-            datos_creartPost.Contenido1 = Ckeditor1.Text.ToString();
-            datos_creartPost.Fecha = dt;
-            datos_creartPost.Id_user = b;
-            datos_creartPost.Id_etiqueta = int.Parse(DDL_etiquetas.SelectedValue.ToString());
-            datos_creartPost.Interacciones = inter;
+        DataTable data = data_userPost.obtenerInteraccion(b);
 
-            x = x + 1;
+        U_Interaccion iter = new U_Interaccion();
 
-            data_userPost.actualizarpuntoUser(b, x);
-            data_userPost.insertarPost(datos_creartPost);
-        }
-        else
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Numero maximo de interacciones por dia alcanzado');</script>");
-        }
+        iter.Iteraccion = int.Parse(data.Rows[0]["id"].ToString());
+
+        iter = data_userPost.validarInteraccion(iter);
+
+        datos_creartPost.Titulo = TB_titulo.Text.ToString();
+        datos_creartPost.Contenido1 = Ckeditor1.Text.ToString();
+        datos_creartPost.Fecha = dt;
+        datos_creartPost.Id_user = b;
+        datos_creartPost.Id_etiqueta = int.Parse(DDL_etiquetas.SelectedValue.ToString());
+        datos_creartPost.Interacciones = iter.Contador;
+
+        x = x + 1;
+
+        data_userPost.actualizarpuntoUser(b, x);
+        data_userPost.insertarPost(datos_creartPost);
+
+        cm.RegisterClientScriptBlock(this.GetType(), "", iter.Mensaje);
+
+
 
 
         TB_titulo.Text = "";
         Ckeditor1.Text = "";
-        Response.Redirect("Administrador.aspx?userid=" + b);
+        U_user link = new U_user();
+        link = data_userPost.retornoAdmin();
+        Response.Redirect(link.Link_observador + b);
     }
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         TB_titulo.Text = "";
         Ckeditor1.Text = "";
-        Response.Redirect("Administrador.aspx?userid=" + b);
+        L_Usercs data = new L_Usercs();
+        U_user link = new U_user();
+        link = data.retornoAdmin();
+        Response.Redirect(link.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }

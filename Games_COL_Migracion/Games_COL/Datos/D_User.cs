@@ -2125,5 +2125,131 @@ namespace Datos
             return Usuario;
         }
 
+        public DataTable eliminarUsuario(Int32 dato)
+        {
+            DataTable Post = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_eliminar_usuario", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = dato;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                conection.Open();
+                dataAdapter.Fill(Post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return Post;
+
+        }
+
+        public DataTable bloquearComentario(int id)
+        {
+            DataTable Usuario = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_bloquear_comentario", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_id_comentario", NpgsqlDbType.Integer).Value = id;
+
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
+
+        public void actualizarBloqueo(Int32 id_post, Int32 user_bloqueador, Int32 estado_bloqueo, Int32 respuesta)
+        {
+            DataTable Documentos = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.actualizar_estado_bloqueo", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                dataAdapter.SelectCommand.Parameters.Add("_id_post", NpgsqlDbType.Integer).Value = id_post;
+                dataAdapter.SelectCommand.Parameters.Add("_id_user_bloqueador", NpgsqlDbType.Integer).Value = user_bloqueador;
+                dataAdapter.SelectCommand.Parameters.Add("_estado_bloqueo", NpgsqlDbType.Integer).Value = estado_bloqueo;
+                dataAdapter.SelectCommand.Parameters.Add("_respuesta", NpgsqlDbType.Integer).Value = respuesta;
+
+
+
+                conection.Open();
+                dataAdapter.Fill(Documentos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+        }
+
+        public DataTable VerUser(Int32 dato)
+        {
+            DataTable Post = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_ver_usuarios", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = dato;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+
+
+                conection.Open();
+                dataAdapter.Fill(Post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return Post;
+
+        }
+
     }
 }

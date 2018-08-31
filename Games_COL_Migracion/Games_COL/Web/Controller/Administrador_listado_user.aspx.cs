@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
 
 public partial class View_Administrador_listado_user : System.Web.UI.Page
 {
@@ -15,21 +17,31 @@ public partial class View_Administrador_listado_user : System.Web.UI.Page
 
     protected void BT_editar_Click(object sender, EventArgs e)
     {
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        L_Usercs log = new L_Usercs();
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
         string ID = lblid.Text;
         int h = int.Parse(ID);
+        U_user dat = new U_user();
 
-
-        int b = int.Parse(Request.Params["userid"]);
+        string ui = obQueryString["userid"].ToString();
         
 
-        Response.Redirect("Administrador_editar_usuario.aspx?userid=" + b + "&parametro=" + h);
+        obQueryString.Add("parametro", ID);
+        obQueryString.Add("userid", ui);
+
+        dat = log.editarListadoAdmin();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_eliminar_Click(object sender, EventArgs e)
     {
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
@@ -37,38 +49,63 @@ public partial class View_Administrador_listado_user : System.Web.UI.Page
         int h = int.Parse(ID);
 
 
-        int b = int.Parse(Request.Params["userid"]);
+        
         
 
        
 
-        DAOUsuario dac = new DAOUsuario();
-        dac.eliminarUsuario(h);
+        L_Usercs dac = new L_Usercs();
+        U_user dat = dac.retornoAdmin();
 
-        Response.Redirect("Administrador_listado_user.aspx?userid=" + b);
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_reporUser_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Administrador_reporteUser.aspx?userid=" + b);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        dat = llamado.reporteUser();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
     }
 
     protected void BT_reporModer_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Administrador_reporte_Moder.aspx?userid=" + b);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        dat = llamado.reporteModer();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_reporAdmin_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Administrador_reporte_admin.aspx?userid=" + b);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        dat = llamado.reporteAdmin();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        int b = int.Parse(Request.Params["userid"]);
-        Response.Redirect("Administrador.aspx?userid=" + b);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+        dat = llamado.retornoAdmin();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }

@@ -1694,5 +1694,242 @@ namespace Logica
             user.actualziarContrasena(eUser);
         }
 
+        public U_user verCompletoAdmin()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_verCompleto.aspx";
+
+
+            return dat;
+        }
+
+        public U_user irXboxAdmin()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_xbox.aspx";
+
+
+            return dat;
+        }
+
+        public U_user irPCAdmin()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_pcc.aspx";
+
+
+            return dat;
+        }
+        public U_user irPSAdmin()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_playstation.aspx";
+
+
+            return dat;
+        }
+
+        public U_user irAndroidAdmin()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_android.aspx";
+
+
+            return dat;
+        }
+
+        public U_user verNoticiasAdmin(string x)
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Adminsitrador_ver_noticias.aspx";
+            dat.ID_vermasObservador1 = x;
+
+            return dat;
+        }
+
+        public U_user redirigirCompletoAdmin()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_verCompleto.aspx";
+
+
+            return dat;
+        }
+
+        public U_user reporteAdminpost()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_reportar_post.aspx";
+
+
+            return dat;
+        }
+
+        public U_user reporteAdmincoment()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_reportar_coment.aspx";
+
+
+            return dat;
+        }
+
+        public U_user retornoAdmin()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador.aspx";
+            return dat;
+        }
+
+        public U_user editarListadoAdmin()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_editar_usuarior.aspx";
+            return dat;
+        }
+
+        public void eliminarUsuario(int h)
+        {
+
+
+            D_User llamar = new D_User();
+
+            llamar.eliminarUsuario(h);
+           
+        }
+
+        public U_user reporteUser()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_reporteUser.aspx";
+
+
+            return dat;
+        }
+
+        public U_user reporteModer()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_reporte_Moder.aspx";
+
+
+            return dat;
+        }
+
+        public U_user reporteAdmin()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_reporte_admin.aspx";
+
+
+            return dat;
+        }
+
+        public void bloquearComentario(int h)
+        {
+            D_User data = new D_User();
+            data.bloquearComentario(h);
+        }
+
+        public U_user administrarComentario()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_admin_coment.aspx";
+
+
+            return dat;
+        }
+
+        public U_user verPostRepor()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_verMasPostReportado.aspx";
+
+
+            return dat;
+        }
+
+        public void bloquearPost(int h, int b, int x, int z)
+        {
+            D_User data = new D_User();
+            data.actualizarBloqueo(h,b,x,z);
+        }
+
+        public U_user atencionBloquearPost()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_atencion_bloquer_post.aspx";
+
+
+            return dat;
+        }
+
+        public U_user administrarMiPost()
+        {
+            U_user dat = new U_user();
+            dat.Link_observador = "Administrador_miPost.aspx";
+            return dat;
+        }
+
+        public U_Datos datosModerador(DataTable regis)
+        {
+            U_Datos moder = new U_Datos();
+            if (regis.Rows.Count > 0)
+            {
+                moder.Id = int.Parse(regis.Rows[0]["id"].ToString());
+                moder.Nombre = regis.Rows[0]["nombre"].ToString();
+                moder.Nick = regis.Rows[0]["nick"].ToString();
+                moder.Puntos = int.Parse(regis.Rows[0]["puntos"].ToString());
+                moder.Confirma = regis.Rows[0]["tipo"].ToString();
+                moder.Correo = regis.Rows[0]["correo"].ToString();
+                moder.Bin = false;
+
+
+            }
+            return moder;
+        }
+        public DataTable verUser(int id)
+        {
+            DataTable regis = new DataTable();
+            D_User data = new D_User();
+            regis = data.VerUser(id);
+            return regis;
+        }
     }
+
+  
 }

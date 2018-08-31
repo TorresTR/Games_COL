@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
 
 public partial class View_Administrador_atencion_bloquer_post : System.Web.UI.Page
 {
@@ -17,42 +19,60 @@ public partial class View_Administrador_atencion_bloquer_post : System.Web.UI.Pa
     {
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
-        Label lblid = (Label)item.FindControl("LB_idPost");
+        Label lblid = (Label)item.FindControl("LB_id");
+
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         string ID = lblid.Text;
 
-        int b = int.Parse(Request.Params["userid"]);
+        U_user dat = new U_user();
+        L_Usercs llamado = new L_Usercs();
 
+        string b = obQueryString["userid"].ToString();
 
-        Response.Redirect("Administrador_verMasPostReportado.aspx?parametro=" + ID.Trim() + "&userid=" + b);
+        obQueryString.Add("parametro", ID);
+        obQueryString.Add("userid", b);
+        dat = llamado.verPostRepor();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void BT_bloquear_Click(object sender, EventArgs e)
     {
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_idPost");
         string ID = lblid.Text;
 
-        int b = int.Parse(Request.Params["userid"]);
+        int b = int.Parse(obQueryString["userid"].ToString(););
         int x = 2;
         int h = int.Parse(ID);
         int z = 1;
 
-        DAOUsuario dac = new DAOUsuario();
+        L_Usercs dac = new L_Usercs();
 
-        dac.actualizarBloqueo(h, b, x, z);
+        dac.bloquearPost(h, b, x, z);
 
-        int t = int.Parse(Request.Params["userid"]);
+        
 
 
-        Response.Redirect("Administrador_atencion_bloquer_post.aspx?userid=" + t);
+        U_user dat = dac.atencionBloquearPost();
+
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void Bt_volver_Click(object sender, EventArgs e)
     {
-        int t = int.Parse(Request.Params["userid"]);
 
+        QueryString obQueryString = new QueryString(Request.QueryString);
+        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        L_Usercs dac = new L_Usercs();
+        U_user dat = dac.retornoAdmin();
 
-        Response.Redirect("Administrador.aspx?userid=" + t);
+        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
     }
 }

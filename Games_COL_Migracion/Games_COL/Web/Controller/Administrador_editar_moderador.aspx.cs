@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Default : System.Web.UI.Page
 {
@@ -12,26 +14,25 @@ public partial class View_Default : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-        DAOUsuario dac = new DAOUsuario();
+        L_Usercs dac = new L_Usercs();
         int a = int.Parse(Request.Params["parametro"]);
 
-        DataTable regis = dac.VerUser(a);
+        DataTable regis = dac.verUser(a);
+        U_Datos moder = dac.datosModerador(regis);
+        
+            LB_id.Text = moder.Id;
+            LB_nombre.Text = moder.Nombre;
+            LB_nick.Text = moder.Nick;
+            LB_puntos.Text = moder.Puntos;
+            LB_rango.Text = moder.Confirma;
+            LB_correo.Text = moder.Correo;
 
-        if (regis.Rows.Count > 0)
-        {
-            LB_id.Text = regis.Rows[0]["id"].ToString();
-            LB_nombre.Text = regis.Rows[0]["nombre"].ToString();
-            LB_nick.Text = regis.Rows[0]["nick"].ToString();
-            LB_puntos.Text = regis.Rows[0]["puntos"].ToString();
-            LB_rango.Text = regis.Rows[0]["tipo"].ToString();
-            LB_correo.Text = regis.Rows[0]["correo"].ToString();
-
-            BT_guardar.Visible = false;
-            TB_nombre.Visible = false;
-            TB_nick.Visible = false;
-            TB_puntos.Visible = false;
-            DDL_rango.Visible = false;
-            TB_correo.Visible = false;
+            BT_guardar.Visible = moder.Bin;
+            TB_nombre.Visible = moder.Bin;
+            TB_nick.Visible = moder.Bin;
+            TB_puntos.Visible = moder.Bin;
+            DDL_rango.Visible = moder.Bin;
+            TB_correo.Visible = moder.Bin;
 
         }
     }

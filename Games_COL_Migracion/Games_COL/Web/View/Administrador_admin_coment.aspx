@@ -11,6 +11,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    &nbsp;<br />
+    <asp:Label ID="LB_mensaje" runat="server" ForeColor="Red"></asp:Label>
     <asp:DataList ID="DL_coment" runat="server" DataSourceID="ODS_reporte_comentarios" Width="448px">
         <ItemTemplate>
             <table class="w-100">
