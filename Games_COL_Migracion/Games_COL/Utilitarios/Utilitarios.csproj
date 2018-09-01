@@ -44,6 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InforR_administrador.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InforR_administrador.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="InfoR_moderador.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InfoR_moderador.xsd</DependentUpon>
+    </Compile>
     <Compile Include="InfoR_usuario.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,6 +79,28 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="InforR_administrador.xsc">
+      <DependentUpon>InforR_administrador.xsd</DependentUpon>
+    </None>
+    <None Include="InforR_administrador.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InforR_administrador.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="InforR_administrador.xss">
+      <DependentUpon>InforR_administrador.xsd</DependentUpon>
+    </None>
+    <None Include="InfoR_moderador.xsc">
+      <DependentUpon>InfoR_moderador.xsd</DependentUpon>
+    </None>
+    <None Include="InfoR_moderador.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InfoR_moderador.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="InfoR_moderador.xss">
+      <DependentUpon>InfoR_moderador.xsd</DependentUpon>
+    </None>
     <None Include="InfoR_usuario.xsc">
       <DependentUpon>InfoR_usuario.xsd</DependentUpon>
     </None>

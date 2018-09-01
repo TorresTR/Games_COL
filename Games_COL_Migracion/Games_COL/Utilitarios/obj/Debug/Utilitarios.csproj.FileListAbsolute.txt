@@ -32,3 +32,4 @@ C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utili
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\bin\Debug\stdole.dll
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csproj.CopyComplete
+C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
