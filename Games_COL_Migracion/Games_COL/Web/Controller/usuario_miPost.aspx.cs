@@ -20,6 +20,7 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
         U_misPost mio = new U_misPost();
+
         L_Usercs dac = new L_Usercs();
 
 
@@ -32,8 +33,9 @@ public partial class View_usuario_miPost : System.Web.UI.Page
 
         try
         {
-            InfoR_usuario reporte = ObtenerInforme();
-            CRS_reporte_usuario.ReportDocument.SetDataSource(reporte);
+           InfoR_usuario info = new InfoR_usuario(); 
+            info = ObtenerInforme();
+            CRS_reporte_usuario.ReportDocument.SetDataSource(info);
             CRV_reporteUsuario.ReportSource = CRS_reporte_usuario;
             
         }

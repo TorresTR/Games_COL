@@ -47,21 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InforR_administrador.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InforR_administrador.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="InfoR_moderador.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InfoR_moderador.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="InfoR_usuario.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InfoR_usuario.xsd</DependentUpon>
-    </Compile>
     <Compile Include="L_encriptadoDesencriptado.cs" />
     <Compile Include="L_mac.cs" />
     <Compile Include="L_Usercs.cs" />
@@ -77,41 +62,6 @@
       <Project>{4f86464a-0c31-4cd8-988e-bb1da0718618}</Project>
       <Name>Utilitarios</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="InforR_administrador.xsc">
-      <DependentUpon>InforR_administrador.xsd</DependentUpon>
-    </None>
-    <None Include="InforR_administrador.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>InforR_administrador.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="InforR_administrador.xss">
-      <DependentUpon>InforR_administrador.xsd</DependentUpon>
-    </None>
-    <None Include="InfoR_moderador.xsc">
-      <DependentUpon>InfoR_moderador.xsd</DependentUpon>
-    </None>
-    <None Include="InfoR_moderador.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>InfoR_moderador.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="InfoR_moderador.xss">
-      <DependentUpon>InfoR_moderador.xsd</DependentUpon>
-    </None>
-    <None Include="InfoR_usuario.xsc">
-      <DependentUpon>InfoR_usuario.xsd</DependentUpon>
-    </None>
-    <None Include="InfoR_usuario.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>InfoR_usuario.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="InfoR_usuario.xss">
-      <DependentUpon>InfoR_usuario.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
