@@ -2010,21 +2010,29 @@ namespace Logica
             return dat;
         }
 
-        public void reporteAdministrador(DataTable intermedio,DataTable informacion)
+        public DataTable reporteAdministrador(DataTable inter, DataTable informacion)
         {
-            DataRow fila;
-            for (int i = 0; i<intermedio.Rows.Count; i++)
+            DataRow fila  ;
+            D_User user = new D_User();
+           
+
+
+            for (int i = 0; i<inter.Rows.Count; i++)
             {
                 fila = informacion.NewRow();
 
-                fila["Nick"] = intermedio.Rows[i]["nick"].ToString();
-                fila["Puntos"] = int.Parse(intermedio.Rows[i]["puntos"].ToString());
-                fila["Rango"] = intermedio.Rows[i]["tipo"].ToString();
+                fila["Nick"] = inter.Rows[i]["nick"].ToString();
+                fila["Puntos"] = int.Parse(inter.Rows[i]["puntos"].ToString());
+                fila["Rango"] = inter.Rows[i]["tipo"].ToString();
 
 
 
                 informacion.Rows.Add(fila);
             }
+
+                return informacion;
+
+            
         }
 
         public DataTable listarAdministradoresAdmin()

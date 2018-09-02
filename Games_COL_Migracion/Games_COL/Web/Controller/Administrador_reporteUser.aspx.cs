@@ -31,11 +31,11 @@ public partial class View_Administrador_reporteUser : System.Web.UI.Page
         DataTable informacion = new DataTable(); //dt
         InforR_administrador datos = new InforR_administrador();
         L_Usercs persona = new L_Usercs();
-
-        informacion = datos.Tables["Admin"];
+        DataTable inter = persona.listarUserAdmin();
+        informacion = datos.Tables["User"];
 
         DataTable intermedio = persona.listarUserAdmin();
-        persona.reporteAdministrador(intermedio, informacion);
+        persona.reporteAdministrador(inter, informacion);
 
 
         return datos;

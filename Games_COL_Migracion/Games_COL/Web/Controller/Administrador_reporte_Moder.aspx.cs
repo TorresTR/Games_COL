@@ -27,18 +27,18 @@ public partial class View_Administrador_reporte_Moder : System.Web.UI.Page
 
     protected InforR_administrador ObtenerInforme()
     {
-        DataRow fila;  //dr
+
         DataTable informacion = new DataTable(); //dt
         InforR_administrador datos = new InforR_administrador();
         L_Usercs persona = new L_Usercs();
+        DataTable inter = persona.listarModerAdmin();
+        informacion = datos.Tables["Moderador"];
 
-        informacion = datos.Tables["Admin"];
-
-        DataTable intermedio = persona.listarModerAdmin();
-        persona.reporteAdministrador(intermedio, informacion);
+        persona.reporteAdministrador(inter, informacion);
 
 
         return datos;
+
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
