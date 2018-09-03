@@ -82,6 +82,7 @@ public partial class View_Moderador_miNoticia : System.Web.UI.Page
         obQueryString.Add("parametro", IdRecogido);
         obQueryString.Add("userid", c);
 
+
         dat = llamar.recargapgnotimoder();
         Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
         
