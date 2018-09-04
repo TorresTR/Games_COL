@@ -18,17 +18,23 @@ public partial class View_MasterModerador : System.Web.UI.MasterPage
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        if (Session["user_id"] == null)
-        {
-            Response.Redirect("ingresar.aspx");
-        }
-
         D_User us = new D_User();
         L_Usercs log = new L_Usercs();
         U_Datos dato = new U_Datos();
 
+        try
+        {
+            dato.Sesion = Session["user_id"].ToString();
+            dato = log.validarCerrarsesion(dato);
+            dato.Sesion = Session["user_id"].ToString();
+        }
+        catch (Exception)
+        {
 
-
+            dato = log.validarCerrarsesion(dato);
+            Response.Redirect(dato.Link);
+        }
+        
         int b = int.Parse(obQueryString["userid"].ToString());
 
 
@@ -103,25 +109,20 @@ public partial class View_MasterModerador : System.Web.UI.MasterPage
 
     protected void BT_cerrar_Click(object sender, EventArgs e)
     {
-        Session["user_id"] = null;
-        Session["nombre"] = null;
-
-
-
-
-
-        D_User dc = new D_User();
-        U_user inicio = new U_user();
-        L_Usercs llamado = new L_Usercs();
+        L_Usercs dac = new L_Usercs();
         U_user datos = new U_user();
+        U_Datos val = new U_Datos();
 
-        inicio.Session = Session.SessionID;
-        dc.cerrarSession(datos);
+        datos.Session = Session.SessionID;
+        datos = dac.cerrarse(datos);
+
+        Session["user_id"] = null;
 
 
+        val.Sesion = null;
+        dac.validarCerrarsesion(val);
 
-        inicio = llamado.ingresar();
-        Response.Redirect(inicio.Link_demas);
+        Response.Redirect(datos.Link_observador);
     }
 
     protected void BT_crear_noticia_Click(object sender, EventArgs e)

@@ -32,11 +32,14 @@ public partial class View_Default : System.Web.UI.Page
         L_Usercs user = new L_Usercs();
         usuario.Nick = TB_UserName.Text.ToString();
         usuario.Pass = TB_Contraseña.Text.ToString();
-
+        string a = Session.SessionID;
+        
         DataTable registros = datos.loggin(usuario);
+        Session["user_id"] = registros.Rows[0]["user_id"].ToString();
+        string sesion = Session["user_id"].ToString();
         QueryString obQueryString = new QueryString();
 
-        link = user.loggin(registros);
+        link = user.loggin(registros, sesion,a);
         string b = registros.Rows[0]["user_id"].ToString();
 
         obQueryString.Add("userid", b);

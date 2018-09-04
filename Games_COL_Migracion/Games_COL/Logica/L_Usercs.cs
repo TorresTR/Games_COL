@@ -16,6 +16,31 @@ namespace Logica
     public class L_Usercs
     {
 
+
+        public U_user cerrarse(U_user datos) {
+
+            D_User llamada = new D_User();
+            U_user link = new U_user();
+
+            llamada.cerrarSession(datos);
+
+            link.Link_observador = "Ingresar.aspx";
+
+            return link; 
+        }
+
+        public U_Datos validarCerrarsesion(U_Datos sesion) {
+
+            U_Datos llamado = new U_Datos();
+
+            if (sesion.Sesion == null)
+            {
+                llamado.Link = "Ingresar.aspx";
+            }
+            
+            return llamado;
+        }
+
         public void actualizarMispost(U_userCrearpost dato)
         {
 
@@ -1097,7 +1122,7 @@ namespace Logica
             return bus;
         }
 
-        public U_user loggin(DataTable registros)
+        public U_user loggin(DataTable registros,string sesi,string a)
         {
             D_User datos = new D_User();
             U_user link = new U_user();
@@ -1111,7 +1136,7 @@ namespace Logica
                 {
                     case 1:
                         string nombre = registros.Rows[0]["nombre"].ToString();
-                        //string user = registros.Rows[0]["user_id"].ToString();
+                        string user = registros.Rows[0]["user_id"].ToString();
 
                         int b = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
 
@@ -1121,7 +1146,7 @@ namespace Logica
                         datosUsuario.UserId = b;
                         datosUsuario.Ip = datosConexion.ip();
                         datosUsuario.Mac = datosConexion.mac();
-                        //datosUsuario.Session = Session.SessionID;
+                        datosUsuario.Session = a;
 
                         datos.guardadoSession(datosUsuario);
                         link = sesion(rol, b);
@@ -1129,7 +1154,7 @@ namespace Logica
 
                     case 2:
                         nombre = registros.Rows[0]["nombre"].ToString();
-                        //Session["user_id"] = registros.Rows[0]["user_id"].ToString();
+                        sesi = registros.Rows[0]["user_id"].ToString();
 
 
                         int bmod = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
@@ -1140,7 +1165,7 @@ namespace Logica
                         datosUsuariom.UserId = bmod;
                         datosUsuariom.Ip = datosConexionMod.ip();
                         datosUsuariom.Mac = datosConexionMod.mac();
-                        //datosUsuariom.Session = Session.SessionID;
+                        datosUsuariom.Session = a;
 
                         datos.guardadoSession(datosUsuariom);
                         link = sesion(rol, bmod);
@@ -1148,7 +1173,7 @@ namespace Logica
 
                     case 3:
                         nombre = registros.Rows[0]["nombre"].ToString();
-                        //Session["user_id"] = registros.Rows[0]["user_id"].ToString();
+                        sesi = registros.Rows[0]["user_id"].ToString();
 
 
                         int badmon = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
@@ -1159,7 +1184,7 @@ namespace Logica
                         datosUsuarioad.UserId = badmon;
                         datosUsuarioad.Ip = datosConexionadmon.ip();
                         datosUsuarioad.Mac = datosConexionadmon.mac();
-                        //datosUsuarioad.Session = Session.SessionID;
+                        datosUsuarioad.Session = a;
 
                         datos.guardadoSession(datosUsuarioad);
                         link = sesion(rol, badmon);

@@ -14,6 +14,8 @@ namespace Datos
     public class D_User
     {
 
+      
+
         public DataTable actualizarNoticia(U_userCrearpost post)
         {
             DataTable Post = new DataTable();

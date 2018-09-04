@@ -10,5 +10,6 @@ public partial class View_Paguina_principal : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+        
     }
 }

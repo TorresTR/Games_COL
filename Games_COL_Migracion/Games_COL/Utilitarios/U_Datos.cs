@@ -24,6 +24,7 @@ namespace Utilitarios
         private String link;
         private String confirma;
         private Boolean bin;
+        private String sesion;
 
         public string Nombre { get => nombre; set => nombre = value; }
         public string Nick { get => nick; set => nick = value; }
@@ -41,5 +42,6 @@ namespace Utilitarios
         public string Link { get => link; set => link = value; }
         public string Confirma { get => confirma; set => confirma = value; }
         public bool Bin { get => bin; set => bin = value; }
+        public string Sesion { get => sesion; set => sesion = value; }
     }
 }
