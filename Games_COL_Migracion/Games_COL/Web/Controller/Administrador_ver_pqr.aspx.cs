@@ -25,7 +25,7 @@ public partial class View_Administrador_ver_pqr : System.Web.UI.Page
         Label lblid = (Label)item.FindControl("LB_muestraId");
         string ID = lblid.Text;
 
-        int b = int.Parse(Request.Params["userid"]);
+        int b = int.Parse(obQueryString["userid"].ToString());
 
         string ui = b.ToString();
         string par = ID;
@@ -51,7 +51,7 @@ public partial class View_Administrador_ver_pqr : System.Web.UI.Page
         Label lblid = (Label)item.FindControl("LB_muestraId");
         string ID = lblid.Text;
         Int32 id = int.Parse(lblid.Text);
-        int b = int.Parse(Request.Params["userid"]);
+        int b = int.Parse(obQueryString["userid"].ToString());
 
         L_Usercs user = new L_Usercs();
         U_Datospqr pqr = new U_Datospqr();

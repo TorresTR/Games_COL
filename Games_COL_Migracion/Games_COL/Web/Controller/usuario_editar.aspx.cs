@@ -71,7 +71,7 @@ public partial class View_usuario_editar : System.Web.UI.Page
         U_user data = new U_user();
         L_Usercs llamado = new L_Usercs();
 
-        data = llamado.editarMispost();
+        data = llamado.redireccionMispost();
 
 
         Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());

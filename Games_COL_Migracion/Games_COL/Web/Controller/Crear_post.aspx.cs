@@ -83,13 +83,11 @@ public partial class View_Crear_post : System.Web.UI.Page
             cm.RegisterClientScriptBlock(this.GetType(), "",iter.Mensaje);
        
 
-        
-
         TB_titulo.Text = "";
         Ckeditor1.Text = "";
         U_user link = new U_user();
         link = data_userPost.retornoUsuario();
-        Response.Redirect( link.Link_observador + b);
+        Response.Redirect( link.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
     }
 

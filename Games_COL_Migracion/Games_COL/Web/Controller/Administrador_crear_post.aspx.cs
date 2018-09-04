@@ -89,7 +89,7 @@ public partial class View_Administrador_crear_post : System.Web.UI.Page
         Ckeditor1.Text = "";
         U_user link = new U_user();
         link = data_userPost.retornoAdmin();
-        Response.Redirect(link.Link_observador + b);
+        Response.Redirect(link.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 
     protected void B_volver_Click(object sender, EventArgs e)

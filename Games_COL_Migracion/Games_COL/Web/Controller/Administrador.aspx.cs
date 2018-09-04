@@ -89,7 +89,7 @@ public partial class View_Administrador : System.Web.UI.Page
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        dat = llamado.irAndroid();
+        dat = llamado.irAndroidAdmin();
 
         Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 

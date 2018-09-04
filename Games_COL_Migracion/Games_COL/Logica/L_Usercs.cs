@@ -1750,7 +1750,7 @@ namespace Logica
 
             U_user dat = new U_user();
 
-            dat.Link_observador = "Administrador_pcc.aspx";
+            dat.Link_observador = "Administrador_pc.aspx";
 
 
             return dat;
