@@ -28,6 +28,7 @@
                     ErrorMessage="*" 
                     ForeColor="Red" 
                     ValidationExpression="^[A-Za-z0-9 ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="RFV_nombre" runat="server" ControlToValidate="TB_nombre" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -43,6 +44,7 @@
                     ErrorMessage="*" 
                     ForeColor="Red" 
                     ValidationExpression="^[A-Za-z0-9 ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="RFV_nombre0" runat="server" ControlToValidate="TB_nick" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -59,6 +61,7 @@
                     ErrorMessage="*" 
                     ForeColor="Red" 
                     ValidationExpression="^[0-9]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="RFV_nombre1" runat="server" ControlToValidate="TB_puntos" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -73,7 +76,7 @@
                 </asp:DropDownList>
                 &nbsp;
                 <asp:RequiredFieldValidator ID="RFV_rango" runat="server" ControlToValidate="DDL_rango" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                <asp:ObjectDataSource ID="ODS_rangoU" runat="server" SelectMethod="obtenerRangoUser" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_rangoU" runat="server" SelectMethod="obtenerRangoUser" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
             </td>
         </tr>
         <tr>

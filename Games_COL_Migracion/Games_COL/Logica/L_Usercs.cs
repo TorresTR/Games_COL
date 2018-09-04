@@ -2133,6 +2133,14 @@ namespace Logica
             data.actualizarPQR(respuesta);
 
         }
+        public DataTable obtenerRangoUser()
+        {
+
+            D_User data = new D_User();
+            DataTable rango = data.obtenerRangoUser();
+            return rango;
+
+        }
 
     }
 

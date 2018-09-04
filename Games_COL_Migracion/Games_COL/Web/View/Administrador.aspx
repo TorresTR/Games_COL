@@ -64,7 +64,7 @@
         </ItemTemplate>
     </asp:DataList>
                 <br />
-                <asp:ObjectDataSource ID="ODS_noticas" runat="server" SelectMethod="ObtenerNoticias" TypeName="DAOUsuario"></asp:ObjectDataSource></td>
+                <asp:ObjectDataSource ID="ODS_noticas" runat="server" SelectMethod="obtenerPostNoticia" TypeName="Logica.L_Usercs"></asp:ObjectDataSource></td>
             <td>
                 
                 <asp:Label ID="LB_busq" runat="server"></asp:Label>
@@ -130,7 +130,7 @@
             <br />
         </ItemTemplate>
     </asp:DataList>
-    <asp:ObjectDataSource ID="ODS_datauser" runat="server" SelectMethod="Obtenerpsot" TypeName="DAOUsuario"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ODS_datauser" runat="server" SelectMethod="obtenerPostObservador" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
             </td>
             <td>
                 &nbsp;</td>
