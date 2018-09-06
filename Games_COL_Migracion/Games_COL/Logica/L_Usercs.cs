@@ -866,6 +866,19 @@ namespace Logica
 
         }
 
+
+        public DataTable obtenerSolicitudAmoder()
+        {
+
+            D_User datos = new D_User();
+            DataTable data = new DataTable();
+
+            data = datos.ObtenerSolicitudes();
+
+            return data;
+
+        }
+
         public DataTable obtenerPostpc()
         {
 

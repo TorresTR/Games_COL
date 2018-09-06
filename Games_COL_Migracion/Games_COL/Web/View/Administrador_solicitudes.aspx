@@ -67,7 +67,7 @@
                         </table>
                     </ItemTemplate>
                 </asp:DataList>
-                <asp:ObjectDataSource ID="ODS_solicitudes" runat="server" SelectMethod="ObtenerSolicitudes" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_solicitudes" runat="server" SelectMethod="obtenerSolicitudAmoder" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
             </td>
         </tr>
         <tr>

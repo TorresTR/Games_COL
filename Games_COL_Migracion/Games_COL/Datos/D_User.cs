@@ -14,7 +14,34 @@ namespace Datos
     public class D_User
     {
 
-      
+        public DataTable ObtenerSolicitudes()
+        {
+            DataTable Post = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_obtener_solicitudes_usuarios", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                conection.Open();
+                dataAdapter.Fill(Post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return Post;
+
+        }
 
         public DataTable actualizarNoticia(U_userCrearpost post)
         {
