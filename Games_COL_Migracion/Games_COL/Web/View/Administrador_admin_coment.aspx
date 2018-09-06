@@ -44,7 +44,7 @@
     </asp:DataList>
     <br />
 &nbsp;
-    <asp:ObjectDataSource ID="ODS_reporte_comentarios" runat="server" SelectMethod="ObtenerComentRepor" TypeName="DAOUsuario"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ODS_reporte_comentarios" runat="server" SelectMethod="obtenercomnetReport" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
     <asp:Button ID="Bt_volver" runat="server" CssClass="btn btn-outline-info" OnClick="Bt_volver_Click" Text="Volver" />
 </asp:Content>
 

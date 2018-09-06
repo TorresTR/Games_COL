@@ -879,6 +879,30 @@ namespace Logica
 
         }
 
+        public DataTable obtenerpostReport()
+        {
+
+            D_User datos = new D_User();
+            DataTable data = new DataTable();
+
+            data = datos.ObtenerpsotReportados();
+
+            return data;
+
+        }
+
+        public DataTable obtenercomnetReport()
+        {
+
+            D_User datos = new D_User();
+            DataTable data = new DataTable();
+
+            data = datos.ObtenerComentRepor();
+
+            return data;
+
+        }
+
         public DataTable obtenerPostpc()
         {
 

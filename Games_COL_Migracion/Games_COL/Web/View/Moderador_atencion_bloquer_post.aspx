@@ -60,7 +60,7 @@
             <br />
         </ItemTemplate>
     </asp:DataList>
-            <asp:ObjectDataSource ID="ODS_obtenerPostReportados" runat="server" SelectMethod="ObtenerpsotReportados" TypeName="DAOUsuario"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="ODS_obtenerPostReportados" runat="server" SelectMethod="obtenerpostReport" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
         </div>
 
             </td>
