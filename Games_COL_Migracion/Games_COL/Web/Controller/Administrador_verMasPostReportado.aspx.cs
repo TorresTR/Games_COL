@@ -49,7 +49,7 @@ public partial class View_Administrador_verMasPostReportado : System.Web.UI.Page
         U_user data = new U_user();
         L_Usercs llamado = new L_Usercs();
 
-        data = llamado.reporteAdminpost();
+        data = llamado.admindbloauearpost();
         Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
     }
 }

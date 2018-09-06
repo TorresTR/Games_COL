@@ -1919,6 +1919,17 @@ namespace Logica
             return dat;
         }
 
+        public U_user admindbloauearpost()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_atencion_bloquer_post.aspx";
+
+
+            return dat;
+        }
+
         public void bloquearComentario(int h)
         {
             D_User data = new D_User();

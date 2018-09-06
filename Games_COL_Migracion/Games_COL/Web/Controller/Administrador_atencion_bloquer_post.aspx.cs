@@ -17,25 +17,27 @@ public partial class View_Administrador_atencion_bloquer_post : System.Web.UI.Pa
 
     protected void BT_vermas_Click(object sender, EventArgs e)
     {
-        Button btn = (Button)sender;
-        DataListItem item = (DataListItem)btn.NamingContainer;
-        Label lblid = (Label)item.FindControl("LB_id");
-
         QueryString obQueryString = new QueryString(Request.QueryString);
         obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
+        Button btn = (Button)sender;
+        DataListItem item = (DataListItem)btn.NamingContainer;
+        Label lblid = (Label)item.FindControl("LB_idPost");
         string ID = lblid.Text;
 
-        U_user dat = new U_user();
+        int b = int.Parse(obQueryString["userid"].ToString());
+
+        string dat = b.ToString();
+        obQueryString.Add("userid", dat);
+        obQueryString.Add("parametro", ID);
+
+        U_user data = new U_user();
         L_Usercs llamado = new L_Usercs();
 
-        string b = obQueryString["userid"].ToString();
+        data = llamado.verPostRepor();
+        Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
 
-        obQueryString.Add("parametro", ID);
-        obQueryString.Add("userid", b);
-        dat = llamado.verPostRepor();
-
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        
     }
 
     protected void BT_bloquear_Click(object sender, EventArgs e)
