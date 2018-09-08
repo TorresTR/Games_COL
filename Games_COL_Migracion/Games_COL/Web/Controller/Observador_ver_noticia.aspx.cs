@@ -12,15 +12,13 @@ public partial class View_Observador_ver_noticia : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
+        
         U_userCrearpost doc = new U_userCrearpost();
         L_Usercs dac = new L_Usercs();
 
 
-        doc.Id = int.Parse(obQueryString["parametro"].ToString());
-        int x = int.Parse(obQueryString["parametro"].ToString());
+        doc.Id = int.Parse(Session["parametro"].ToString());
+        int x = int.Parse(Session["parametro"].ToString());
 
         doc = dac.postObservadorNoticias(doc);
 

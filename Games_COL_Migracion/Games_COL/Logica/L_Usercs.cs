@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using Datos;
 using Newtonsoft.Json;
 using Utilitarios;
@@ -1621,23 +1617,7 @@ namespace Logica
             return mensaje;
         }
 
-        public int gridview(GridViewCommandEventArgs e, GridViewRow row)
-        {
-            int x = 0;
-            if (e.CommandName == "reportar")
-            {
-
-
-                Label id_pregunta = (Label)row.FindControl("Label1");
-                int id_preg = Convert.ToInt32(id_pregunta.Text);
-
-                x = id_preg;
-
-
-
-            }
-            return x;
-        }
+      
         public U_Interaccion solicitudModer(U_Datos datos, System.Data.DataTable validez)
         {
             D_User dao = new D_User();

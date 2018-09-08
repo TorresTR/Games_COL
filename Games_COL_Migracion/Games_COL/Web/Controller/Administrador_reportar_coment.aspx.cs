@@ -14,15 +14,13 @@ public partial class View_Default : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
         ClientScriptManager cm = this.ClientScript;
         U_comentarios doc = new U_comentarios();
         L_Usercs dac = new L_Usercs();
 
-        int c = int.Parse(obQueryString["idcoment"].ToString());
-        int u = int.Parse(obQueryString["userid"].ToString());
+        int c = int.Parse(Session["IdRecogido"].ToString());
+        int u = int.Parse(Session["user_id"].ToString());
 
         doc = dac.ObtenerComentarioreportar(c);
 
@@ -32,18 +30,17 @@ public partial class View_Default : System.Web.UI.Page
 
     protected void BT_reportar_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+       
 
         ClientScriptManager cm = this.ClientScript;
         U_comentarios reporte = new U_comentarios();
         L_Usercs envio = new L_Usercs();
 
-        int b = int.Parse(obQueryString["idcoment"].ToString());
-        int p = int.Parse(obQueryString["parametro"].ToString());
+        int b = int.Parse(Session["IdRecogido"].ToString());
+        int p = int.Parse(Session["parametro"].ToString());
         DateTime dt = DateTime.Now;
 
-        int u = int.Parse(obQueryString["userid"].ToString());
+        int u = int.Parse(Session["user_id"].ToString());
 
 
         DataTable regis = envio.obtenerComentario1(b);
@@ -56,36 +53,29 @@ public partial class View_Default : System.Web.UI.Page
 
         envio.insertarComentarioReportado(reporte);
 
-        string ID = obQueryString["parametro"].ToString();
-        string z = obQueryString["userid"].ToString();
+        string ID = Session["parametro"].ToString();
+        string z = Session["user_id"].ToString();
 
-        obQueryString.Add("parametro", ID);
-        obQueryString.Add("userid", z);
-
+       
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
 
         dat = llamado.redirigirCompletoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
 
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
-        string z = obQueryString["userid"].ToString();
-
-
-        obQueryString.Add("userid", z);
+       
+       
 
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
 
         dat = llamado.retornoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
     }
 }

@@ -15,14 +15,13 @@ public partial class View_Default : System.Web.UI.Page
 
         Response.Cache.SetNoStore();
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        
 
         U_user doc = new U_user();
         L_Usercs dac = new L_Usercs();
 
-        int c = int.Parse(obQueryString["parametro"].ToString());
-        int u = int.Parse(obQueryString["userid"].ToString());
+        int c = int.Parse(Session["parametro"].ToString());
+        int u = int.Parse(Session["user_id"].ToString());
 
         doc = dac.obtenerPostparareportar(c);
 
@@ -34,16 +33,14 @@ public partial class View_Default : System.Web.UI.Page
     protected void BT_enviarReporte_Click(object sender, EventArgs e)
     {
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
+        
         U_Datosreporte reporte = new U_Datosreporte();
         L_Usercs envio = new L_Usercs();
 
-        int b = int.Parse(obQueryString["parametro"].ToString());
+        int b = int.Parse(Session["parametro"].ToString());
         DateTime dt = DateTime.Now;
 
-        int u = int.Parse(obQueryString["userid"].ToString());
+        int u = int.Parse(Session["user_id"].ToString());
 
 
         DataTable regis = envio.obtenerPostObservador();
@@ -58,32 +55,23 @@ public partial class View_Default : System.Web.UI.Page
         string z = b.ToString();
         string q = u.ToString();
 
-        obQueryString.Add("parametro", z);
-        obQueryString.Add("userid", q);
-
         L_Usercs data = new L_Usercs();
         U_user dat = new U_user();
 
         dat = data.redirigirCompletoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
-        string z = obQueryString["userid"].ToString();
-
-
-        obQueryString.Add("userid", z);
+       
 
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
 
         dat = llamado.retornoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
     }
 }

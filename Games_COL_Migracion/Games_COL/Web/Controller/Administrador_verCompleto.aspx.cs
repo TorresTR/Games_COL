@@ -23,15 +23,13 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         Response.Cache.SetNoStore();
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
+        
         U_userCrearpost doc = new U_userCrearpost();
         L_Usercs log = new L_Usercs();
         D_User dac = new D_User();
 
-        int comparador_idpost = int.Parse(obQueryString["parametro"].ToString());
-        int comparador_iduser = int.Parse(obQueryString["userid"].ToString());
+        int comparador_idpost = int.Parse(Session["parametro"].ToString());
+        int comparador_iduser = int.Parse(Session["user_id"].ToString());
 
         DataTable regisval = dac.obtenerpuntsval(comparador_iduser);
 
@@ -51,8 +49,8 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
 
         ClientScriptManager cm = this.ClientScript;
-        doc.Id = int.Parse(obQueryString["parametro"].ToString());
-        int dato = int.Parse(obQueryString["userid"].ToString());
+        doc.Id = int.Parse(Session["parametro"].ToString());
+        int dato = int.Parse(Session["user_id"].ToString());
 
 
 
@@ -67,7 +65,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         UpdatePanel1.Visible = estado;
 
 
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
         DataTable regis2 = dac.obtenerUss(b);
         String x = regis2.Rows[0]["nick"].ToString();
         String z = regis.Rows[0]["autor"].ToString();
@@ -113,20 +111,19 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
         D_User dac = new D_User();
         U_userCrearpost puntot = new U_userCrearpost();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        
 
-        int b = int.Parse(obQueryString["userid"].ToString());
-        int bn = int.Parse(obQueryString["parametro"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
+        int bn = int.Parse(Session["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
-        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
+        puntot.Id = int.Parse(Session["parametro"].ToString());
+        puntot.Id_user = int.Parse(Session["user_id"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
-        doc.Id = int.Parse(obQueryString["parametro"].ToString());
-        Int32 v = int.Parse(obQueryString["parametro"].ToString());
+        doc.Id = int.Parse(Session["parametro"].ToString());
+        Int32 v = int.Parse(Session["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
@@ -146,7 +143,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
 
 
-        int z = int.Parse(obQueryString["parametro"].ToString());
+        int z = int.Parse(Session["parametro"].ToString());
 
 
         DataTable regis3 = dac.obtenerUss(b);
@@ -162,11 +159,10 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
-        string ui = obQueryString["userid"].ToString();
-        string par = obQueryString["parametro"].ToString();
+        string ui = Session["user_id"].ToString();
+        string par = Session["parametro"].ToString();
 
-        obQueryString.Add("parametro", par);
-        obQueryString.Add("userid", ui);
+       
 
 
 
@@ -175,7 +171,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         dat = llamar.redirigirCompletoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
 
     }
 
@@ -184,20 +180,19 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
         D_User dac = new D_User();
         U_userCrearpost puntot = new U_userCrearpost();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+       
 
-        int b = int.Parse(obQueryString["userid"].ToString());
-        int bn = int.Parse(obQueryString["parametro"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
+        int bn = int.Parse(Session["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
-        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
+        puntot.Id = int.Parse(Session["parametro"].ToString());
+        puntot.Id_user = int.Parse(Session["user_id"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
-        doc.Id = int.Parse(obQueryString["parametro"].ToString());
-        Int32 v = int.Parse(obQueryString["parametro"].ToString());
+        doc.Id = int.Parse(Session["parametro"].ToString());
+        Int32 v = int.Parse(Session["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
@@ -217,7 +212,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
 
 
-        int z = int.Parse(obQueryString["parametro"].ToString());
+        int z = int.Parse(Session["parametro"].ToString());
 
 
         DataTable regis3 = dac.obtenerUss(b);
@@ -233,20 +228,16 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
-        string ui = obQueryString["userid"].ToString();
-        string par = obQueryString["parametro"].ToString();
+        string ui = Session["user_id"].ToString();
+        string par = Session["parametro"].ToString();
 
-        obQueryString.Add("parametro", par);
-        obQueryString.Add("userid", ui);
-
-
-
+    
         U_user dat = new U_user();
         L_Usercs llamar = new L_Usercs();
 
         dat = llamar.redirigirCompletoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
     }
 
     protected void BT_tres_Click(object sender, EventArgs e)
@@ -254,20 +245,19 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
         D_User dac = new D_User();
         U_userCrearpost puntot = new U_userCrearpost();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+       
 
-        int b = int.Parse(obQueryString["userid"].ToString());
-        int bn = int.Parse(obQueryString["parametro"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
+        int bn = int.Parse(Session["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
-        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
+        puntot.Id = int.Parse(Session["parametro"].ToString());
+        puntot.Id_user = int.Parse(Session["user_id"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
-        doc.Id = int.Parse(obQueryString["parametro"].ToString());
-        Int32 v = int.Parse(obQueryString["parametro"].ToString());
+        doc.Id = int.Parse(Session["parametro"].ToString());
+        Int32 v = int.Parse(Session["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
@@ -287,7 +277,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
 
 
-        int z = int.Parse(obQueryString["parametro"].ToString());
+        int z = int.Parse(Session["parametro"].ToString());
 
 
         DataTable regis3 = dac.obtenerUss(b);
@@ -303,20 +293,17 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
-        string ui = obQueryString["userid"].ToString();
-        string par = obQueryString["parametro"].ToString();
+        string ui = Session["user_id"].ToString();
+        string par = Session["parametro"].ToString();
 
-        obQueryString.Add("parametro", par);
-        obQueryString.Add("userid", ui);
-
-
+      
 
         U_user dat = new U_user();
         L_Usercs llamar = new L_Usercs();
 
         dat = llamar.redirigirCompletoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
 
     }
 
@@ -325,20 +312,19 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
         D_User dac = new D_User();
         U_userCrearpost puntot = new U_userCrearpost();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+       
 
-        int b = int.Parse(obQueryString["userid"].ToString());
-        int bn = int.Parse(obQueryString["parametro"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
+        int bn = int.Parse(Session["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
-        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
+        puntot.Id = int.Parse(Session["parametro"].ToString());
+        puntot.Id_user = int.Parse(Session["user_id"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
-        doc.Id = int.Parse(obQueryString["parametro"].ToString());
-        Int32 v = int.Parse(obQueryString["parametro"].ToString());
+        doc.Id = int.Parse(Session["parametro"].ToString());
+        Int32 v = int.Parse(Session["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
@@ -358,7 +344,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
 
 
-        int z = int.Parse(obQueryString["parametro"].ToString());
+        int z = int.Parse(Session["parametro"].ToString());
 
 
         DataTable regis3 = dac.obtenerUss(b);
@@ -374,20 +360,16 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
-        string ui = obQueryString["userid"].ToString();
-        string par = obQueryString["parametro"].ToString();
+        string ui = Session["user_id"].ToString();
+        string par = Session["parametro"].ToString();
 
-        obQueryString.Add("parametro", par);
-        obQueryString.Add("userid", ui);
-
-
-
+     
         U_user dat = new U_user();
         L_Usercs llamar = new L_Usercs();
 
         dat = llamar.redirigirCompletoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
 
     }
 
@@ -396,20 +378,19 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
         D_User dac = new D_User();
         U_userCrearpost puntot = new U_userCrearpost();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+       
 
-        int b = int.Parse(obQueryString["userid"].ToString());
-        int bn = int.Parse(obQueryString["parametro"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
+        int bn = int.Parse(Session["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
-        puntot.Id = int.Parse(obQueryString["parametro"].ToString());
-        puntot.Id_user = int.Parse(obQueryString["userid"].ToString());
+        puntot.Id = int.Parse(Session["parametro"].ToString());
+        puntot.Id_user = int.Parse(Session["user_id"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
-        doc.Id = int.Parse(obQueryString["parametro"].ToString());
-        Int32 v = int.Parse(obQueryString["parametro"].ToString());
+        doc.Id = int.Parse(Session["parametro"].ToString());
+        Int32 v = int.Parse(Session["parametro"].ToString());
 
         DataTable regis = dac.verpag(doc);
 
@@ -429,7 +410,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
 
 
-        int z = int.Parse(obQueryString["parametro"].ToString());
+        int z = int.Parse(Session["parametro"].ToString());
 
 
         DataTable regis3 = dac.obtenerUss(b);
@@ -445,20 +426,17 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
-        string ui = obQueryString["userid"].ToString();
-        string par = obQueryString["parametro"].ToString();
+        string ui = Session["user_id"].ToString();
+        string par = Session["parametro"].ToString();
 
-        obQueryString.Add("parametro", par);
-        obQueryString.Add("userid", ui);
-
-
+      
 
         U_user dat = new U_user();
         L_Usercs llamar = new L_Usercs();
 
         dat = llamar.redirigirCompletoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
 
     }
 
@@ -466,19 +444,18 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
     protected void BT_comentar_Click(object sender, EventArgs e)
     {
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+       
         L_Usercs log = new L_Usercs();
         U_comentarios coment = new U_comentarios();
         D_User dac = new D_User();
 
 
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
         DateTime dt = DateTime.Now;
         coment.Fecha = dt;
         coment.Conetinido1 = TB_comentarios.Text.ToString();
-        coment.Id_post = int.Parse(obQueryString["parametro"].ToString());
-        coment.Id_user = int.Parse(obQueryString["userid"].ToString());
+        coment.Id_post = int.Parse(Session["parametro"].ToString());
+        coment.Id_user = int.Parse(Session["user_id"].ToString());
 
         DataTable data = dac.ObtenerInteraccion(b);
         int inter = int.Parse(data.Rows[0]["id"].ToString());
@@ -489,18 +466,14 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
 
 
-        string q = obQueryString["userid"].ToString();
-        string z = obQueryString["parametro"].ToString();
-        obQueryString.Add("parametro", z);
-        obQueryString.Add("userid", q);
-
-
+       
+        
         U_user dat = new U_user();
         L_Usercs llamar = new L_Usercs();
 
         dat = llamar.redirigirCompletoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
 
     }
 
@@ -508,30 +481,24 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+        
 
-        int b = int.Parse(obQueryString["userid"].ToString());
-        Response.Redirect("Administrador.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        
+        Response.Redirect("Administrador.aspx" );
 
     }
 
     protected void BT_reporte_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        string q = obQueryString["userid"].ToString();
-        string z = obQueryString["parametro"].ToString();
-        obQueryString.Add("parametro", z);
-        obQueryString.Add("userid", q);
-
+        
+       
 
         L_Usercs data = new L_Usercs();
         U_user dat = new U_user();
 
         dat = data.reporteAdminpost();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
     }
 
 
@@ -548,13 +515,10 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         string IdRecogido = ((Label)row.Cells[fila].FindControl("Label1")).Text;
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        string q = obQueryString["userid"].ToString();
-        string z = obQueryString["parametro"].ToString();
-        obQueryString.Add("parametro", z);
-        obQueryString.Add("userid", q);
-        obQueryString.Add("idcoment", IdRecogido);
+        
+       
+        Session["IdRecogido"] = IdRecogido;
+        
 
 
         L_Usercs data = new L_Usercs();
@@ -562,7 +526,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         dat = data.reporteAdmincoment();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
     }
 
 

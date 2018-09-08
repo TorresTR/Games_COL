@@ -28,7 +28,7 @@ public partial class View_Observar_playstation : System.Web.UI.Page
 
         L_Usercs data = new L_Usercs();
         U_user envioObservador = new U_user();
-        QueryString obQueryString = new QueryString();
+       
 
 
         string x = lblid.Text.ToString();
@@ -36,10 +36,10 @@ public partial class View_Observar_playstation : System.Web.UI.Page
 
         envioObservador = data.Vermas(x);
 
-        obQueryString.Add("parametro", envioObservador.ID_vermasObservador1);
+        Session["parametro"] = x;
 
 
-        Response.Redirect(envioObservador.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(envioObservador.Link_observador);
     }
 
 
@@ -107,15 +107,15 @@ public partial class View_Observar_playstation : System.Web.UI.Page
 
         L_Usercs data = new L_Usercs();
         U_user envioObservador = new U_user();
-        QueryString obQueryString = new QueryString();
+        
 
 
         string x = lblid.Text.ToString();
 
         envioObservador = data.verNoticias(x);
 
-        obQueryString.Add("parametro", envioObservador.ID_vermasObservador1.Trim());
+        Session["parametro"] = x;
 
-        Response.Redirect(envioObservador.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(envioObservador.Link_observador);
     }
 }
