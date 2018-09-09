@@ -30,7 +30,7 @@ public partial class View_Default : System.Web.UI.Page
         int b = int.Parse(Session["user_id"].ToString());
         int h = int.Parse(ID);
 
-        dato.bloquearComent(h);
+        dato.eliminarComent(h);
 
         U_user data = new U_user();
         L_Usercs llamado = new L_Usercs();

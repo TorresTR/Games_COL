@@ -26,7 +26,7 @@ public partial class View_Administrador_admin_coment : System.Web.UI.Page
         string ID = lblid.Text;
         int h = int.Parse(ID);
 
-        dato.bloquearComentario(h);
+        dato.eliminarComent(h);
         LB_mensaje.Text = "Comentario Bloqueado";
 
         U_user dat = dato.administrarComentario();

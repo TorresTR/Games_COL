@@ -27,7 +27,7 @@ namespace Logica
 
             llamada.cerrarSession(datos);
 
-            link.Link_observador = "Observador.aspx";
+            link.Link_observador = "Ingresar.aspx";
 
             return link; 
         }
@@ -38,7 +38,7 @@ namespace Logica
 
             if (sesion.Sesion == null)
             {
-                llamado.Link = "Observador.aspx";
+                llamado.Link = "Ingresar.aspx";
             }
             
             return llamado;
@@ -384,6 +384,18 @@ namespace Logica
 
 
         }
+        public void eliminarComent(int h)
+        {
+
+            D_User dat = new D_User();
+            U_user dato = new U_user();
+
+            dato.Id = h;
+
+            dat.eliminarComentario(dato);
+
+
+        }
 
         public DataTable listadoModerador(DataTable informacion)
         {
@@ -595,7 +607,13 @@ namespace Logica
 
 
         }
-
+        public void bloquear_Post(int h)
+        {
+            D_User datos = new D_User();
+            U_actualizarBloqueo bloqueo = new U_actualizarBloqueo();
+            bloqueo.Id_post = h;
+            datos.bloqueoPost(bloqueo);
+        }
 
         public U_user recargaminoticia()
         {
@@ -1162,12 +1180,12 @@ namespace Logica
             return bus;
         }
 
-        public U_user loggin(DataTable registros,string sesi,string a)
+        public U_user loggin(DataTable registros,string a)
         {
             D_User datos = new D_User();
             U_user link = new U_user();
             int rol = int.Parse(registros.Rows[0]["rol"].ToString());
-
+            string sesi;
 
             if (registros.Rows.Count > 0)
             {

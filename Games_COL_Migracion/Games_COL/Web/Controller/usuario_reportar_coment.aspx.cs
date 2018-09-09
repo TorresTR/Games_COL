@@ -33,6 +33,7 @@ public partial class View_Default : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
         U_comentarios reporte = new U_comentarios();
         L_Usercs envio = new L_Usercs();
+        U_user coment = new U_user();
 
         int b = int.Parse(Session["IdRecogido"].ToString());
         int p = int.Parse(Session["parametro"].ToString());
@@ -48,8 +49,9 @@ public partial class View_Default : System.Web.UI.Page
         reporte.Contenido1 = TB_motivoR.Text.ToString();
         reporte.Fecha = dt;
         reporte.Id_user = u;
-
+        
         envio.insertarComentarioReportado(reporte);
+        envio.bloquearComent(b);
 
         string ID = Session["parametro"].ToString();
         string z = Session["user_id"].ToString();

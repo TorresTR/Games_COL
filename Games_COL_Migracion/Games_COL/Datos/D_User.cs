@@ -270,6 +270,34 @@ namespace Datos
             return Usuario;
         }
 
+        public DataTable eliminarComentario(U_user id)
+        {
+            DataTable Usuario = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_eliminar_comentario", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_id_comentario", NpgsqlDbType.Integer).Value = id.Id;
+
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
+
         public void actualizarBloqueo(U_actualizarBloqueo data)
         {
             DataTable Documentos = new DataTable();
@@ -287,6 +315,36 @@ namespace Datos
                 dataAdapter.SelectCommand.Parameters.Add("_respuesta", NpgsqlDbType.Integer).Value = data.Respuesta;
 
 
+
+                conection.Open();
+                dataAdapter.Fill(Documentos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+        }
+
+        public void bloqueoPost(U_actualizarBloqueo data)
+        {
+            DataTable Documentos = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.bloqueo_post", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                dataAdapter.SelectCommand.Parameters.Add("_id_post", NpgsqlDbType.Integer).Value = data.Id_post;
 
                 conection.Open();
                 dataAdapter.Fill(Documentos);

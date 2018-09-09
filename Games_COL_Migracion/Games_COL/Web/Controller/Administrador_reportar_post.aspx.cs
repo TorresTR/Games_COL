@@ -52,13 +52,12 @@ public partial class View_Default : System.Web.UI.Page
         reporte.User_reportador = u;
 
         envio.insertarPostaReportar(reporte);
-        string z = b.ToString();
-        string q = u.ToString();
+        envio.bloquear_Post(b);
 
         L_Usercs data = new L_Usercs();
         U_user dat = new U_user();
 
-        dat = data.redirigirCompletoAdmin();
+        dat = data.retornoAdmin();
 
         Response.Redirect(dat.Link_observador );
     }

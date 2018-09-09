@@ -52,6 +52,7 @@ public partial class View_Default : System.Web.UI.Page
         reporte.Id_user = u;
 
         envio.insertarComentarioReportado(reporte);
+        envio.bloquearComent(b);
 
         string ID = Session["parametro"].ToString();
         string z = Session["user_id"].ToString();

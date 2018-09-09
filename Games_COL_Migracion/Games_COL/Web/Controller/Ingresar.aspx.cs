@@ -38,11 +38,11 @@ public partial class View_Default : System.Web.UI.Page
         
         DataTable registros = datos.loggin(usuario);
         llamado.Sesion = registros.Rows[0]["user_id"].ToString();
-        string sesion = Session["user_id"].ToString();
+        //string sesion = Session["user_id"].ToString();
 
         Session["user_id"] = llamado.Sesion;
 
-        link = user.loggin(registros, sesion,a);
+        link = user.loggin(registros,a);
         
 
         Response.Redirect(link.Link_demas);

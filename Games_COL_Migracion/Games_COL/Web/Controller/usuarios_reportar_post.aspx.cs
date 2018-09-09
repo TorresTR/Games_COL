@@ -53,6 +53,7 @@ public partial class View_usuarios_reportar_post : System.Web.UI.Page
 
         envio.insertarPostaReportar(reporte);
 
+        envio.bloquear_Post(b);
 
         L_Usercs data = new L_Usercs();
         U_user dat = new U_user();
