@@ -1602,6 +1602,180 @@ namespace Logica
             return puntot;
         }
 
+
+        public U_userCrearpost puntosBotonDos(DataTable punt, int inter, U_userCrearpost puntot)
+        {
+
+
+            D_User dac = new D_User();
+
+            int val, pun;
+            if (inter < 10)
+            {
+                inter = inter + 1;
+                if (puntot.Nick != puntot.Autor1)
+                {
+
+                    String d = punt.Rows[0]["id"].ToString();
+
+                    if (puntot.Id == int.Parse(d))
+                    {
+
+                        String a = punt.Rows[0]["puntos"].ToString();
+
+                        val = int.Parse(a);
+                        val = val + 2;
+
+                        String puntosA = punt.Rows[0]["puntosautor"].ToString();
+                        pun = int.Parse(puntosA);
+                        pun = pun + 1;
+
+
+                        puntot.Puntos = val;
+                        puntot.Interacciones = inter;
+                        puntot.PuntosA = pun;
+
+
+                    }
+
+
+                }
+
+                dac.guardaPuntos(puntot);
+            }
+            return puntot;
+        }
+
+
+        public U_userCrearpost puntosBotonTres(DataTable punt, int inter, U_userCrearpost puntot)
+        {
+
+
+            D_User dac = new D_User();
+
+            int val, pun;
+            if (inter < 10)
+            {
+                inter = inter + 1;
+                if (puntot.Nick != puntot.Autor1)
+                {
+
+                    String d = punt.Rows[0]["id"].ToString();
+
+                    if (puntot.Id == int.Parse(d))
+                    {
+
+                        String a = punt.Rows[0]["puntos"].ToString();
+
+                        val = int.Parse(a);
+                        val = val + 3;
+
+                        String puntosA = punt.Rows[0]["puntosautor"].ToString();
+                        pun = int.Parse(puntosA);
+                        pun = pun + 1;
+
+
+                        puntot.Puntos = val;
+                        puntot.Interacciones = inter;
+                        puntot.PuntosA = pun;
+
+
+                    }
+
+
+                }
+
+                dac.guardaPuntos(puntot);
+            }
+            return puntot;
+        }
+
+        public U_userCrearpost puntosBotonCuatro(DataTable punt, int inter, U_userCrearpost puntot)
+        {
+
+
+            D_User dac = new D_User();
+
+            int val, pun;
+            if (inter < 10)
+            {
+                inter = inter + 1;
+                if (puntot.Nick != puntot.Autor1)
+                {
+
+                    String d = punt.Rows[0]["id"].ToString();
+
+                    if (puntot.Id == int.Parse(d))
+                    {
+
+                        String a = punt.Rows[0]["puntos"].ToString();
+
+                        val = int.Parse(a);
+                        val = val + 4;
+
+                        String puntosA = punt.Rows[0]["puntosautor"].ToString();
+                        pun = int.Parse(puntosA);
+                        pun = pun + 1;
+
+
+                        puntot.Puntos = val;
+                        puntot.Interacciones = inter;
+                        puntot.PuntosA = pun;
+
+
+                    }
+
+
+                }
+
+                dac.guardaPuntos(puntot);
+            }
+            return puntot;
+        }
+
+        public U_userCrearpost puntosBotonCinco(DataTable punt, int inter, U_userCrearpost puntot)
+        {
+
+
+            D_User dac = new D_User();
+
+            int val, pun;
+            if (inter < 10)
+            {
+                inter = inter + 1;
+                if (puntot.Nick != puntot.Autor1)
+                {
+
+                    String d = punt.Rows[0]["id"].ToString();
+
+                    if (puntot.Id == int.Parse(d))
+                    {
+
+                        String a = punt.Rows[0]["puntos"].ToString();
+
+                        val = int.Parse(a);
+                        val = val + 5;
+
+                        String puntosA = punt.Rows[0]["puntosautor"].ToString();
+                        pun = int.Parse(puntosA);
+                        pun = pun + 1;
+
+
+                        puntot.Puntos = val;
+                        puntot.Interacciones = inter;
+                        puntot.PuntosA = pun;
+
+
+                    }
+
+
+                }
+
+                dac.guardaPuntos(puntot);
+            }
+            return puntot;
+        }
+
         public string comentar(int inter, U_comentarios coment)
         {
             string mensaje = "";

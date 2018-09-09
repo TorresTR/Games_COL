@@ -207,7 +207,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         L_Usercs llamado = new L_Usercs();
 
-        llamado.puntosBoton(punt, inter, puntot);
+        llamado.puntosBotonDos(punt, inter, puntot);
 
 
 
@@ -219,7 +219,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
 
-        x = x + 2;
+        x = x + 1;
 
 
 
@@ -272,7 +272,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         L_Usercs llamado = new L_Usercs();
 
-        llamado.puntosBoton(punt, inter, puntot);
+        llamado.puntosBotonTres(punt, inter, puntot);
 
 
 
@@ -284,7 +284,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
 
-        x = x + 3;
+        x = x + 1;
 
 
 
@@ -339,7 +339,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         L_Usercs llamado = new L_Usercs();
 
-        llamado.puntosBoton(punt, inter, puntot);
+        llamado.puntosBotonCuatro(punt, inter, puntot);
 
 
 
@@ -351,7 +351,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
 
-        x = x + 4;
+        x = x + 1;
 
 
 
@@ -405,7 +405,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         L_Usercs llamado = new L_Usercs();
 
-        llamado.puntosBoton(punt, inter, puntot);
+        llamado.puntosBotonCinco(punt, inter, puntot);
 
 
 
@@ -417,7 +417,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
 
-        x = x + 5;
+        x = x + 1;
 
 
 
