@@ -249,20 +249,20 @@ namespace Logica
                 {
 
                     dat.insertarUsuario(datos);
-                    dato.Mensaje1 = "<script type='text/javascript'>alert('Usuario registrado con exito');</script>";
+                    dato.Mensaje1 = "Usuario registrado con exito";
                     dato.Link = "Ingresar.aspx";
 
                 }
                 else
                 {
-                    dato.Mensaje1 = "<script type='text/javascript'>alert('Nick o correo ya existente');</script>";
-                    dato.Link = "registo.aspx";
+                    dato.Mensaje1 = "Nick o correo ya existente";
+                    dato.Link = "registro.aspx";
                 }
 
             }
             else
             {
-                dato.Mensaje1 = "<script type='text/javascript'>alert('Las contraseñas no coinciden');</script>";
+                dato.Mensaje1 = "Las contraseñas no coinciden";
                 dato.Link = "registro.aspx";
             }
 

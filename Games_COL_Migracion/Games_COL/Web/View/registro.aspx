@@ -119,7 +119,8 @@
                 </tr>
                 <tr>
                     <td class="auto-style3" colspan="2">
-                        &nbsp;</td>
+                        <asp:Label ID="LB_mensaje" runat="server" ForeColor="Red"></asp:Label>
+                    </td>
                 </tr>
                 <tr>
                     <td class="auto-style2" colspan="2">

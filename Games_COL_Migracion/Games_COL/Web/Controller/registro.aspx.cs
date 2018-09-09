@@ -40,7 +40,8 @@ public partial class View_registro : System.Web.UI.Page
 
         datos = dat.insertarUsuarionuevo(datos);
         cm.RegisterClientScriptBlock(this.GetType(), "", datos.Mensaje1);
-        Response.Redirect(datos.Link);
+        LB_mensaje.Text = datos.Mensaje1.ToString();
+
     }
 
 
