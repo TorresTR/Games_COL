@@ -28,69 +28,59 @@ public partial class View_usuarios : System.Web.UI.Page
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
         string ID = lblid.Text;
 
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
 
-        string b = obQueryString["userid"].ToString();
+        string b = Session["user_id"].ToString();
+        Session["parametro"] = ID;
 
-        obQueryString.Add("parametro", ID);
-        obQueryString.Add("userid", b);
         dat = llamado.verCompletousuarioRegistrado();
 
-        Response.Redirect( dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect( dat.Link_observador );
     }
 
     protected void BT_pc_Click(object sender, EventArgs e)
     {
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
         dat = llamado.irPCusuarioregistrado();
         
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
     }
 
     protected void BT_xbox_Click(object sender, EventArgs e)
     {
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
         dat = llamado.irXboxusuarioregistrado();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
     }
 
     protected void BT_ps_Click(object sender, EventArgs e)
     {
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         dat = llamado.irPSusuarioregistrado();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
     }
 
     protected void BT_android_Click(object sender, EventArgs e)
     {
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         dat = llamado.irAndroidusuarioregistrado();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
     }
 
 
@@ -124,19 +114,16 @@ public partial class View_usuarios : System.Web.UI.Page
         L_Usercs data = new L_Usercs();
         U_user envioObservador = new U_user();
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+ 
 
 
         string x = lblid.Text.ToString();
-        string b = obQueryString["userid"].ToString();
-
+        string b = Session["user_id"].ToString();
+        Session["parametro"] = x;
         envioObservador = data.verNoticiasusuariosregistrados(x);
 
-        obQueryString.Add("parametro", envioObservador.ID_vermasObservador1.Trim());
-        obQueryString.Add("userid", b);
 
-        Response.Redirect(envioObservador.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(envioObservador.Link_observador );
     }
 
     

@@ -16,15 +16,12 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         Response.Cache.SetNoStore();
 
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
         U_misPost mio = new U_misPost();
 
         L_Usercs dac = new L_Usercs();
 
 
-        int dato = int.Parse(obQueryString["userid"].ToString());
+        int dato = int.Parse(Session["user_id"].ToString());
 
         mio.Id_mipost = dato;
 
@@ -52,10 +49,7 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         DataTable informacion = new DataTable(); //dt
         InfoR_usuario datos = new InfoR_usuario();
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
-        int dato = int.Parse(obQueryString["userid"].ToString());
+        int dato = int.Parse(Session["user_id"].ToString());
 
         informacion = datos.Tables["Post"];
 
@@ -75,24 +69,19 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         GV_miPost.SelectedIndex = row.RowIndex;
         int fila = row.RowIndex;
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
+        Session["IdRecogido"] = IdRecogido;
+         string dat = b.ToString(); 
 
-        string dat = b.ToString(); 
-
-        obQueryString.Add("parametro", IdRecogido);
-        obQueryString.Add("userid", dat);
 
         U_user data = new U_user();
         L_Usercs llamado = new L_Usercs();
 
         data = llamado.editarMispost();
 
-        Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(data.Link_observador);
     }
 
     protected void BT_eliminar_Click(object sender, EventArgs e)
@@ -103,11 +92,8 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         GV_miPost.SelectedIndex = row.RowIndex;
         int fila = row.RowIndex;
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
 
         int x = int.Parse(IdRecogido);
@@ -126,23 +112,22 @@ public partial class View_usuario_miPost : System.Web.UI.Page
 
         data = llamado.redireccionMispost();
 
-        Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(data.Link_observador);
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         dat = llamado.volverUsuariosRegistrado();
 
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
         string data = b.ToString();
-        obQueryString.Add("userid", data);
 
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
+        Response.Redirect(dat.Link_observador);
     }
 }

@@ -17,9 +17,8 @@ public partial class View_Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        string b = obQueryString["userid"].ToString();
+
+        string b = Session["user_id"].ToString();
 
 
     }
@@ -27,20 +26,17 @@ public partial class View_Default : System.Web.UI.Page
     protected void B_volver_Click(object sender, EventArgs e)
     {
         
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        string q = obQueryString["userid"].ToString();
-        Response.Redirect("usuarios.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        string q = Session["user_id"].ToString();
+        Response.Redirect("usuarios.aspx" );
 
     }
 
     protected void B_solicitud_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         ClientScriptManager cm = this.ClientScript;
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
         L_Usercs log = new L_Usercs();
 
         

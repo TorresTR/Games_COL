@@ -14,15 +14,13 @@ public partial class View_Moderador_ver_noticias : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
         U_userCrearpost doc = new U_userCrearpost();
         L_Usercs dac = new L_Usercs();
 
 
-        doc.Id = int.Parse(obQueryString["parametro"].ToString());
-        int x = int.Parse(obQueryString["parametro"].ToString());
+        doc.Id = int.Parse(Session["parametro"].ToString());
+        int x = int.Parse(Session["parametro"].ToString());
 
         doc = dac.postObservadorNoticias(doc);
 
@@ -41,20 +39,16 @@ public partial class View_Moderador_ver_noticias : System.Web.UI.Page
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        string z = obQueryString["userid"].ToString();
+        string z = Session["user_id"].ToString();
 
-
-        obQueryString.Add("userid", z);
 
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
 
         dat = llamado.irHomeModerador();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
 
     }
 }

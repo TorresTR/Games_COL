@@ -14,14 +14,11 @@ public partial class View_usuario_verRespuestas : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
 
         L_Usercs dac = new L_Usercs();
         U_respuestasPqr doc = new U_respuestasPqr();
 
-        int dato = int.Parse(obQueryString["idresp"].ToString());
+        int dato = int.Parse(Session["IdRecogido"].ToString());
 
              doc   =   dac.misRespuestaspqr(dato);
 
@@ -30,14 +27,13 @@ public partial class View_usuario_verRespuestas : System.Web.UI.Page
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
 
         dat = llamado.volverUsuariosRegistrado();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
     }
 }

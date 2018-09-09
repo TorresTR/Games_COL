@@ -12,6 +12,13 @@ namespace Logica
     public class L_Usercs
     {
 
+        public DataTable obtenerPQRadmin()
+        {
+            DataTable prueba = new DataTable();
+            D_User pqr = new D_User();
+            prueba = pqr.Obtenerpqrmoderador();
+            return prueba;
+        }
 
         public U_user cerrarse(U_user datos) {
 
@@ -20,7 +27,7 @@ namespace Logica
 
             llamada.cerrarSession(datos);
 
-            link.Link_observador = "Ingresar.aspx";
+            link.Link_observador = "Observador.aspx";
 
             return link; 
         }
@@ -31,7 +38,7 @@ namespace Logica
 
             if (sesion.Sesion == null)
             {
-                llamado.Link = "Ingresar.aspx";
+                llamado.Link = "Observador.aspx";
             }
             
             return llamado;

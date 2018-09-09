@@ -14,12 +14,11 @@ public partial class View_Administrador_verpqrCompleto : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         U_Datospqr respuesa = new U_Datospqr();
         L_Usercs logica = new L_Usercs();
 
-        respuesa.Id_pqr = int.Parse(obQueryString["parametro"].ToString());
+        respuesa.Id_pqr = int.Parse(Session["parametro"].ToString());
 
 
 
@@ -32,14 +31,13 @@ public partial class View_Administrador_verpqrCompleto : System.Web.UI.Page
 
     protected void BT_responder_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+ 
         L_Usercs user = new L_Usercs();
         U_Datospqr respuesa = new U_Datospqr();
 
 
-        int b = int.Parse(obQueryString["userid"].ToString());
-        int q = int.Parse(obQueryString["parametro"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
+        int q = int.Parse(Session["parametro"].ToString());
         int a = 1;
         DateTime dt = DateTime.Now;
 
@@ -52,20 +50,17 @@ public partial class View_Administrador_verpqrCompleto : System.Web.UI.Page
         user.actualizarpqr(respuesa);
         string par = q.ToString();
         string ui = b.ToString();
-        obQueryString.Add("parametro", par);
-        obQueryString.Add("userid", ui);
-        Response.Redirect("Administrador_ver_pqr.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
+        Response.Redirect("Administrador_ver_pqr.aspx");
 
     }
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        string q = obQueryString["userid"].ToString();
-        string z = obQueryString["parametro"].ToString();
-        obQueryString.Add("parametro", z);
-        obQueryString.Add("userid", q);
-        Response.Redirect("Administrador_ver_pqr.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+      
+        string q = Session["user_id"].ToString();
+        string z = Session["parametro"].ToString();
+
+        Response.Redirect("Administrador_ver_pqr.aspx" );
     }
 }

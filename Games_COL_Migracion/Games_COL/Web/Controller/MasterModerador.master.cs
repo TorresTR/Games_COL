@@ -15,8 +15,7 @@ public partial class View_MasterModerador : System.Web.UI.MasterPage
     {
         Response.Cache.SetNoStore();
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         D_User us = new D_User();
         L_Usercs log = new L_Usercs();
@@ -35,7 +34,7 @@ public partial class View_MasterModerador : System.Web.UI.MasterPage
             Response.Redirect(dato.Link);
         }
         
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
 
 
         DataTable data = us.CargarUsusarios(b);
@@ -55,10 +54,9 @@ public partial class View_MasterModerador : System.Web.UI.MasterPage
     protected void BT_crear_port_Click(object sender, EventArgs e)
     {
         
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("Moderador_crear_post.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
+        Response.Redirect("Moderador_crear_post.aspx");
     }
 
 
@@ -66,45 +64,38 @@ public partial class View_MasterModerador : System.Web.UI.MasterPage
     protected void BT_verPqr_Click(object sender, EventArgs e)
     {
         
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("Moderador_ver_pqr.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect("Moderador_ver_pqr.aspx");
     }
 
     protected void BT_listaUser_Click(object sender, EventArgs e)
     {
         
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("Moderador_listado_user.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
+        Response.Redirect("Moderador_listado_user.aspx");
     }
 
     protected void BT_misPost_Click(object sender, EventArgs e)
     {
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("Moderador_miPost.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect("Moderador_miPost.aspx" );
 
     }
 
     protected void BT_atencionReportePost_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("Moderador_atencion_bloquer_post.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
+        Response.Redirect("Moderador_atencion_bloquer_post.aspx" );
     }
 
     protected void BT_reporte_coment_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("Moderador_admin_coment.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
+        Response.Redirect("Moderador_admin_coment.aspx");
     }
 
     protected void BT_cerrar_Click(object sender, EventArgs e)
@@ -127,25 +118,20 @@ public partial class View_MasterModerador : System.Web.UI.MasterPage
 
     protected void BT_crear_noticia_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("Moderador_noticia.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect("Moderador_noticia.aspx" );
     }
 
     protected void BT_mi_noticia_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("Moderador_miNoticia.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect("Moderador_miNoticia.aspx" );
     }
 
     protected void BT_informacion_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("Moderador_informacion.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
+        Response.Redirect("Moderador_informacion.aspx" );
     }
 }

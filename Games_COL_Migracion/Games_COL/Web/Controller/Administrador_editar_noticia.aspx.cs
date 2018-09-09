@@ -12,16 +12,15 @@ public partial class View_Administrador_editar_noticia : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+       
         Response.Cache.SetNoStore();
 
         U_userCrearpost doc = new U_userCrearpost();
         L_Usercs dac = new L_Usercs();
 
 
-        doc.Id = int.Parse(obQueryString["parametro"].ToString());
-        int x = int.Parse(obQueryString["userid"].ToString());
+        doc.Id = int.Parse(Session["parametro"].ToString());
+        int x = int.Parse(Session["user_id"].ToString());
 
         doc = dac.postObservadorNoticias(doc);
 
@@ -35,20 +34,19 @@ public partial class View_Administrador_editar_noticia : System.Web.UI.Page
 
     protected void BT_editar_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         L_Usercs dac = new L_Usercs();
         U_userCrearpost post = new U_userCrearpost();
         U_user link = new U_user();
 
-        post.Id = int.Parse(obQueryString["parametro"].ToString());
+        post.Id = int.Parse(Session["parametro"].ToString());
         post.Contenido1 = Ck_editar.Text.ToString();
 
         dac.actualizaModernoticia(post);
         link = dac.miNoticia();
 
-        Response.Redirect(link.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(link.Link_observador);
 
     }
 
@@ -63,12 +61,11 @@ public partial class View_Administrador_editar_noticia : System.Web.UI.Page
     {
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         dat = llamado.miNoticia();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
 
     }
 }

@@ -18,11 +18,10 @@ public partial class View_Moderador_informacion : System.Web.UI.Page
     {
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         dat = llamado.irHomeModerador();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
     }
 }

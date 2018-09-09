@@ -14,17 +14,13 @@ public partial class View_Default : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
         U_userCrearpost doc = new U_userCrearpost();
-              L_Usercs dac = new L_Usercs();
+        L_Usercs dac = new L_Usercs();
         ClientScriptManager cm = this.ClientScript;
 
-        doc.Id = int.Parse(obQueryString["parametro"].ToString());
-        int dato = int.Parse(obQueryString["parametro"].ToString());
-        int dato2 = int.Parse(obQueryString["userid"].ToString());
+        doc.Id = int.Parse(Session["parametro"].ToString());
+        int dato = int.Parse(Session["parametro"].ToString());
+        int dato2 = int.Parse(Session["user_id"].ToString());
 
 
        doc =  dac.eliminarMiscomentarios(doc);
@@ -48,11 +44,8 @@ public partial class View_Default : System.Web.UI.Page
         GV_comentariosuser.SelectedIndex = row.RowIndex;
         int fila = row.RowIndex;
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
-        int h = int.Parse(obQueryString["parametro"].ToString());
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int h = int.Parse(Session["parametro"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
         int IdRecogido = int.Parse(((Label)row.Cells[fila].FindControl("Label1")).Text);
 
 
@@ -63,7 +56,7 @@ public partial class View_Default : System.Web.UI.Page
 
         data = llamado.redireccionMiscoment();
 
-        Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(data.Link_observador );
         
 
     }
@@ -71,14 +64,11 @@ public partial class View_Default : System.Web.UI.Page
     protected void BT_volver_Click(object sender, EventArgs e)
     {
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
         U_user data = new U_user();
         L_Usercs llamado = new L_Usercs();
 
         data = llamado.redireccionComentariot();
 
-        Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(data.Link_observador);
     }
 }

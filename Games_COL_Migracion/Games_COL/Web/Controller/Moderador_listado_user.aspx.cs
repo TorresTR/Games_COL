@@ -50,10 +50,8 @@ public partial class View_Default : System.Web.UI.Page
         string ID = lblid.Text;
         int h = int.Parse(ID);
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
 
 
 
@@ -63,17 +61,16 @@ public partial class View_Default : System.Web.UI.Page
        
         dac.eliminarUsermoderador(h);
 
-      ;
+      
 
-        Response.Redirect("Moderador_listado_user.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect("Moderador_listado_user.aspx" );
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        Response.Redirect("Moderador_listado_user.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+
+        Response.Redirect("Moderador_listado_user.aspx" );
     }
 
    

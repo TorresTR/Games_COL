@@ -16,14 +16,12 @@ public partial class View_usuarios_pqr : System.Web.UI.Page
 
     protected void BT_envio_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
 
         U_Datospqr pqr = new U_Datospqr();
         L_Usercs dao = new L_Usercs();
 
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
 
         DateTime dt = DateTime.Now;
 
@@ -39,21 +37,20 @@ public partial class View_usuarios_pqr : System.Web.UI.Page
         L_Usercs llamado = new L_Usercs();
 
         retorno = llamado.retornoUsuario();
-        Response.Redirect(retorno.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(retorno.Link_observador);
         
 
     }
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         U_user retorno = new U_user();
         L_Usercs llamado = new L_Usercs();
 
         retorno = llamado.retornoUsuario();
-        Response.Redirect(retorno.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(retorno.Link_observador );
 
     }
 }

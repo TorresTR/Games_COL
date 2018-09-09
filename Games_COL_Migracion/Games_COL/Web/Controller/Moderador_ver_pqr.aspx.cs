@@ -22,29 +22,22 @@ public partial class View_Moderador_ver_pqr : System.Web.UI.Page
     protected void BT_resolver_Click(object sender, EventArgs e)
     {
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        string b = obQueryString["userid"].ToString();
+        string b = Session["user_id"].ToString();
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_muestraId");
         string ID = lblid.Text;
-
-
-        obQueryString.Add("parametro", ID);
-        obQueryString.Add("userid", b);
+        Session["IdRecogido"] = ID;
         
 
-        Response.Redirect("Moderador_verpqrCompleto.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect("Moderador_verpqrCompleto.aspx" );
 
 
     }
 
     protected void BT_ignorar_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        string q = obQueryString["userid"].ToString();
+        string q = Session["user_id"].ToString();
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_muestraId");
@@ -57,16 +50,14 @@ public partial class View_Moderador_ver_pqr : System.Web.UI.Page
 
 
         user.ignorarpqr(pqr);
-        Response.Redirect("Moderador_ver_pqr.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect("Moderador_ver_pqr.aspx");
 
 
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        Response.Redirect("Moderador.aspx" + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect("Moderador.aspx");
 
       
     }

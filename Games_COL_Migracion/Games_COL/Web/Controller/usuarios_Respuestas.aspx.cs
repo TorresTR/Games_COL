@@ -14,15 +14,12 @@ public partial class View_usuarios_Respuestas : System.Web.UI.Page
         Response.Cache.SetNoStore();
 
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
         L_Usercs dac = new L_Usercs();
         U_respuestasPqr dat = new U_respuestasPqr();
 
         
 
-        int dato = int.Parse(obQueryString["userid"].ToString());
+        int dato = int.Parse(Session["user_id"].ToString());
 
         dat.Id_respuesta = dato;
 
@@ -33,8 +30,6 @@ public partial class View_usuarios_Respuestas : System.Web.UI.Page
     protected void BT_reportar_Click(object sender, EventArgs e)
     {
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
         Button bt = (Button)sender;
         TableCell tableCell = (TableCell)bt.Parent;
@@ -43,33 +38,30 @@ public partial class View_usuarios_Respuestas : System.Web.UI.Page
         int fila = row.RowIndex;
 
       
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("Label1")).Text;
 
-        string x = b.ToString();
-        obQueryString.Add("idresp", IdRecogido);
-        obQueryString.Add("userid", x);
+        Session["IdRecogido"] = IdRecogido;
 
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
 
         dat = llamado.redireccionMisrespuestaspqr();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
         
 
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
 
         dat = llamado.volverUsuariosRegistrado();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
     }
 }

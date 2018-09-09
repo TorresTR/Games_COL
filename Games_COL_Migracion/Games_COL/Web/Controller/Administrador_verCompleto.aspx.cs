@@ -464,8 +464,6 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         LB_mensaje.Text = mensaje;
 
-
-
        
         
         U_user dat = new U_user();

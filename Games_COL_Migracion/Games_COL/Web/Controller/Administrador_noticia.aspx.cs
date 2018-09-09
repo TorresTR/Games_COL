@@ -21,13 +21,12 @@ public partial class View_Administrador_noticia : System.Web.UI.Page
 
     protected void BT_guardar_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         U_userCrearpost datos_creartPost = new U_userCrearpost();
         L_Usercs data_userPost = new L_Usercs();
 
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
         int g = 1;
         DateTime dt = DateTime.Now;
 
@@ -43,20 +42,19 @@ public partial class View_Administrador_noticia : System.Web.UI.Page
         Ckeditor1.Text = "";
         U_user link = new U_user();
         link = data_userPost.retornoAdmin();
-        Response.Redirect(link.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(link.Link_observador );
 
     }
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+ 
 
         TB_titulo.Text = "";
         Ckeditor1.Text = "";
         L_Usercs data = new L_Usercs();
         U_user link = new U_user();
         link = data.retornoAdmin();
-        Response.Redirect(link.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(link.Link_observador);
     }
 }

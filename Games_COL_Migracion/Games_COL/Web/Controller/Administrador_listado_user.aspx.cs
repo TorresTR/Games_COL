@@ -17,8 +17,7 @@ public partial class View_Administrador_listado_user : System.Web.UI.Page
 
     protected void BT_editar_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         L_Usercs log = new L_Usercs();
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
@@ -27,21 +26,18 @@ public partial class View_Administrador_listado_user : System.Web.UI.Page
         int h = int.Parse(ID);
         U_user dat = new U_user();
 
-        string ui = obQueryString["userid"].ToString();
-        
+        string ui = Session["user_id"].ToString();
+        Session["parametro"] = ID;
 
-        obQueryString.Add("parametro", ID);
-        obQueryString.Add("userid", ui);
 
         dat = log.editarListadoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
     }
 
     protected void BT_eliminar_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+       
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
@@ -57,19 +53,18 @@ public partial class View_Administrador_listado_user : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
         U_user dat = dac.retornoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
     }
 
     protected void BT_reporUser_Click(object sender, EventArgs e)
     {
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         dat = llamado.reporteUser();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
 
     }
 
@@ -77,36 +72,31 @@ public partial class View_Administrador_listado_user : System.Web.UI.Page
     {
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         dat = llamado.reporteModer();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
     }
 
     protected void BT_reporAdmin_Click(object sender, EventArgs e)
     {
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+ 
 
         dat = llamado.reporteAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
 
         dat = llamado.retornoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
     }
 }

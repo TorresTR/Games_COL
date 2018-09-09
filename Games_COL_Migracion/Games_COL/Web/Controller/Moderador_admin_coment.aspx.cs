@@ -18,8 +18,6 @@ public partial class View_Default : System.Web.UI.Page
     protected void BT_bloquear_Click(object sender, EventArgs e)
     {
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
         L_Usercs dato = new L_Usercs();
        
@@ -28,7 +26,8 @@ public partial class View_Default : System.Web.UI.Page
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
         string ID = lblid.Text;
-        int b = int.Parse(obQueryString["userid"].ToString());
+        Session["IdRecogido"] = ID;
+        int b = int.Parse(Session["user_id"].ToString());
         int h = int.Parse(ID);
 
         dato.bloquearComent(h);
@@ -37,25 +36,23 @@ public partial class View_Default : System.Web.UI.Page
         L_Usercs llamado = new L_Usercs();
 
         data = llamado.moderadoradmincoment();
-        Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(data.Link_observador);
         
     }
 
     protected void Bt_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int t = int.Parse(obQueryString["userid"].ToString());
+        int t = int.Parse(Session["user_id"].ToString());
 
         string dat = t.ToString();
-        obQueryString.Add("userid", dat);
+
 
 
         U_user data = new U_user();
         L_Usercs llamado = new L_Usercs();
 
         data = llamado.irHomeModerador();
-        Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(data.Link_observador);
     }
 }

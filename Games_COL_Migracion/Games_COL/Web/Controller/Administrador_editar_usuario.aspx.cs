@@ -13,12 +13,10 @@ public partial class View_Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
         Response.Cache.SetNoStore();
 
         L_Usercs dac = new L_Usercs();
-        int a = int.Parse(obQueryString["parametro"].ToString());
+        int a = int.Parse(Session["parametro"].ToString());
 
         DataTable regis = dac.verUser(a);
         U_Datos moder = dac.datosModerador(regis);
@@ -40,12 +38,11 @@ public partial class View_Default : System.Web.UI.Page
 
     protected void BT_guardar_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         L_Usercs dac = new L_Usercs();
         U_Datos user = new U_Datos();
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
 
         user.Id = int.Parse(LB_id.Text.ToString());
         user.Nombre = TB_nombre.Text.ToString();
@@ -58,19 +55,18 @@ public partial class View_Default : System.Web.UI.Page
         dac.actualizarUser(user);
         dat = dac.listadoUser();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
 
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         U_user dat = new U_user();
         L_Usercs dac = new L_Usercs();
         dat = dac.listadoUser();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
     }
 
     protected void BT_editar_Click(object sender, EventArgs e)

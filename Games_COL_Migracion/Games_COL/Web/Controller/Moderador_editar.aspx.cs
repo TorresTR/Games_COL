@@ -16,14 +16,10 @@ public partial class View_Moderador_editar : System.Web.UI.Page
         Response.Cache.SetNoStore();
 
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-
-
         L_Usercs dac = new L_Usercs();
         U_misPost dato = new U_misPost();
 
-        int a = int.Parse(obQueryString["parametro"].ToString());
+        int a = int.Parse(Session["parametro"].ToString());
 
 
         dato.Id_mipost = a;
@@ -39,13 +35,12 @@ public partial class View_Moderador_editar : System.Web.UI.Page
 
     protected void BT_editar_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
 
         L_Usercs dac = new L_Usercs();
         U_userCrearpost post = new U_userCrearpost();
 
-        post.Id = int.Parse(obQueryString["parametro"].ToString());
+        post.Id = int.Parse(Session["parametro"].ToString());
         post.Contenido1 = Ck_editar.Text.ToString();
 
         dac.actualizarMispost(post);
@@ -61,13 +56,11 @@ public partial class View_Moderador_editar : System.Web.UI.Page
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
 
-        int a = int.Parse(obQueryString["userid"].ToString());
+        int a = int.Parse(Session["user_id"].ToString());
 
         string dat = a.ToString();
-        obQueryString.Add("userid", dat);
+
 
         U_user data = new U_user();
         L_Usercs llamado = new L_Usercs();
@@ -75,7 +68,7 @@ public partial class View_Moderador_editar : System.Web.UI.Page
         data = llamado.ModeradorMispost();
 
 
-        Response.Redirect(data.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(data.Link_observador );
        
     }
 }

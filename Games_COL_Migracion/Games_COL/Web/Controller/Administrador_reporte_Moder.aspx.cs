@@ -43,13 +43,12 @@ public partial class View_Administrador_reporte_Moder : System.Web.UI.Page
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
 
         dat = llamado.listadoUser();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
     }
 }

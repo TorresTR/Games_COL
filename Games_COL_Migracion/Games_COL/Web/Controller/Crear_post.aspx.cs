@@ -12,12 +12,12 @@ public partial class View_Crear_post : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
+
 
         Response.Cache.SetNoStore();
         L_Usercs dac = new L_Usercs();
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
         DataTable data = dac.obtenerInteraccion(b);
         U_Interaccion iter = new U_Interaccion();
 
@@ -48,9 +48,8 @@ public partial class View_Crear_post : System.Web.UI.Page
         U_userCrearpost datos_creartPost = new U_userCrearpost();
         L_Usercs data_userPost = new L_Usercs();
 
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        int b = int.Parse(obQueryString["userid"].ToString());
+ 
+        int b = int.Parse(Session["user_id"].ToString());
 
 
         DataTable regis = data_userPost.obtenerUsercrear(b);
@@ -87,20 +86,18 @@ public partial class View_Crear_post : System.Web.UI.Page
         Ckeditor1.Text = "";
         U_user link = new U_user();
         link = data_userPost.retornoUsuario();
-        Response.Redirect( link.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect( link.Link_observador );
 
     }
 
     protected void B_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
-        
+ 
         TB_titulo.Text = "";
         Ckeditor1.Text = "";
         L_Usercs data = new L_Usercs();
         U_user link = new U_user();
         link = data.retornoUsuario();
-        Response.Redirect(link.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(link.Link_observador);
     }
 }

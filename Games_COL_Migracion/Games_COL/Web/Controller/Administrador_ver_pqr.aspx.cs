@@ -18,40 +18,37 @@ public partial class View_Administrador_ver_pqr : System.Web.UI.Page
 
     protected void BT_resolver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_muestraId");
         string ID = lblid.Text;
-
-        int b = int.Parse(obQueryString["userid"].ToString());
+        Session["parametro"] = ID;
+        int b = int.Parse(Session["user_id"].ToString());
 
         string ui = b.ToString();
         string par = ID;
 
-        obQueryString.Add("parametro", ID);
-        obQueryString.Add("userid", ui);
+
         U_user dat = new U_user();
         L_Usercs llamar = new L_Usercs();
 
         dat = llamar.verPQRCompleto();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador );
 
  
     }
 
     protected void BT_ignorar_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_muestraId");
         string ID = lblid.Text;
         Int32 id = int.Parse(lblid.Text);
-        int b = int.Parse(obQueryString["userid"].ToString());
+        int b = int.Parse(Session["user_id"].ToString());
 
         L_Usercs user = new L_Usercs();
         U_Datospqr pqr = new U_Datospqr();
@@ -65,19 +62,18 @@ public partial class View_Administrador_ver_pqr : System.Web.UI.Page
 
         dat = llamar.verPQR();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        QueryString obQueryString = new QueryString(Request.QueryString);
-        obQueryString = L_encriptadoDesencriptado.DecryptQueryString(obQueryString);
+
         U_user dat = new U_user();
         L_Usercs llamar = new L_Usercs();
 
         dat = llamar.retornoAdmin();
 
-        Response.Redirect(dat.Link_observador + L_encriptadoDesencriptado.EncryptQueryString(obQueryString).ToString());
+        Response.Redirect(dat.Link_observador);
 
     }
 }
