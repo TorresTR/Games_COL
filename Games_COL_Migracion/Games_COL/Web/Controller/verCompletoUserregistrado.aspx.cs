@@ -372,6 +372,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         D_User dac = new D_User();
         U_userCrearpost puntot = new U_userCrearpost();
 
+
         int b = int.Parse(Session["user_id"].ToString());
         int bn = int.Parse(Session["parametro"].ToString());
         DataTable punt = dac.ObtenerPuntos(bn);
@@ -420,6 +421,9 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         dac.ValidarPuntuacion(b, z);
         string ui = Session["user_id"].ToString();
         string par = Session["parametro"].ToString();
+
+
+
 
 
         U_user dat = new U_user();

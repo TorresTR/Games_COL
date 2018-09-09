@@ -19,7 +19,7 @@ public partial class View_Moderador_editar : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
         U_misPost dato = new U_misPost();
 
-        int a = int.Parse(Session["parametro"].ToString());
+        int a = int.Parse(Session["IdRecogido"].ToString());
 
 
         dato.Id_mipost = a;
@@ -40,7 +40,7 @@ public partial class View_Moderador_editar : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
         U_userCrearpost post = new U_userCrearpost();
 
-        post.Id = int.Parse(Session["parametro"].ToString());
+        post.Id = int.Parse(Session["IdRecogido"].ToString());
         post.Contenido1 = Ck_editar.Text.ToString();
 
         dac.actualizarMispost(post);
