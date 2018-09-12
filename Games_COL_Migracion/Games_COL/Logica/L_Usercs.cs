@@ -996,7 +996,7 @@ namespace Logica
                 int puntos = 0, num = 0, tot = 0;
                 puntos = int.Parse(punt.Rows[0]["puntos"].ToString());
                 num = int.Parse(punt.Rows[0]["nump"].ToString());
-                tot = puntos / num;
+                tot = puntos;
                 user.Totpunt = tot.ToString();
             }
 
