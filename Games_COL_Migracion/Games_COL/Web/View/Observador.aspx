@@ -20,10 +20,10 @@
 
                (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
 
-               (keyCode >= 96 && keyCode <= 105) || keyCode == 32)
+            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
 
     }               
-
+        
 
 
 
@@ -49,7 +49,7 @@
     <table class="w-100">
         <tr>
             <td class="auto-style6">
-                <asp:DataList ID="DataList2" runat="server" DataSourceID="ODS_noticia" >
+                <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticia" >
         <ItemTemplate>
             <br />
             <table class="table-active">
@@ -114,7 +114,7 @@
             </tr>
         <tr>
             <td class="auto-style6">
-    <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_dataobs">
+    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_dataobs">
         <ItemTemplate>
             <br />
             <table class="table-active">

@@ -32,11 +32,13 @@
         </tr>
         <tr>
             <td colspan="2">
-                <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_solicitudes">
+                <asp:DataList ID="DL_solicitudes" runat="server" DataSourceID="ODS_solicitudes">
                     <ItemTemplate>
                         <table class="w-100">
                             <tr>
-                                <td class="auto-style3"><strong><span class="auto-style5">Id usuario</span></strong>:</td>
+                                <td class="auto-style3"><strong><span class="auto-style5">
+                                    <asp:Label ID="LB_titUsuario" runat="server" Text=" Id Usuario:"></asp:Label>
+&nbsp;</span></strong></td>
                                 <td>
                                     <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id_user") %>'></asp:Label>
                                 </td>
@@ -48,13 +50,16 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style4"><strong>Puntos:</strong></td>
+                                <td class="auto-style4"><strong>
+                                    <asp:Label ID="LB_titPuntos" runat="server" Text="Puntos:"></asp:Label>
+                                    </strong></td>
                                 <td class="auto-style2">
                                     <asp:Label ID="LB_puntos" runat="server" Text='<%# Bind("puntos") %>'></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style6"><strong>Nick:</strong></td>
+                                <td class="auto-style6"><strong>Nick:<asp:Label ID="LB_titNick" runat="server" Text="Nick:"></asp:Label>
+                                    </strong></td>
                                 <td>
                                     <asp:Label ID="LB_nick" runat="server" Text='<%# Bind("nick") %>'></asp:Label>
                                 </td>

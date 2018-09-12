@@ -37,7 +37,7 @@
         <table class="auto-style1">
             <tr>
                 <td class="auto-style6">
-                <asp:DataList ID="DataList2" runat="server" DataSourceID="ODS_noticia" >
+                <asp:DataList ID="DL_niticias" runat="server" DataSourceID="ODS_noticia" >
         <ItemTemplate>
             <br />
             <table class="table-active">
@@ -103,7 +103,7 @@
             </tr>
             <tr>
                 <td class="auto-style6">
-                    <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_treaListaData">
+                    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_treaListaData">
         <ItemTemplate>
             <br />
             <table class="auto-style1">

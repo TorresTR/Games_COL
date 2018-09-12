@@ -5,19 +5,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table class="w-100">
         <tr>
-            <td class="text-center" colspan="2">REPORTAR COMENTARIOS</td>
+            <td class="text-center" colspan="2">&nbsp;<asp:Label ID="LB_titulo" runat="server" Text="REPORTAR COMENTARIOS"></asp:Label>
+            </td>
         </tr>
         <tr>
             <td colspan="2">&nbsp;</td>
         </tr>
         <tr>
-            <td class="text-right">Comentario a reportar: </td>
+            <td class="text-right">
+                <asp:Label ID="LB_titComent" runat="server" Text="Comentario a reportar:"></asp:Label>
+&nbsp;</td>
             <td>
                 <asp:Label ID="LB_Id_comentario" runat="server"></asp:Label>
             </td>
         </tr>
         <tr>
-            <td class="text-center" colspan="2">Motivo:</td>
+            <td class="text-center" colspan="2">&nbsp;<asp:Label ID="LB_motivo" runat="server" Text="Motivo:"></asp:Label>
+            </td>
         </tr>
         <tr>
             <td class="text-center" colspan="2">

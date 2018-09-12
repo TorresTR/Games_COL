@@ -7,7 +7,8 @@
     <table class="w-100">
     <tr>
 
-        <td class="text-center" colspan="2">POST EN LOS QUE COMENTASTE</td>
+        <td class="text-center" colspan="2">&nbsp;<asp:Label ID="LB_titulo" runat="server" Text="POST EN LOS QUE COMENTASTE"></asp:Label>
+        </td>
     </tr>
     <tr>
         <td colspan="2">&nbsp;</td>

@@ -14,7 +14,7 @@
     <table class="w-100">
         <tr>
             <td class="auto-style4">
-                <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_pqr">
+                <asp:DataList ID="DL_verPQR" runat="server" DataSourceID="ODS_pqr">
                     <ItemTemplate>
                         <table class="w-100">
                             <tr>

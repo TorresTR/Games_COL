@@ -30,7 +30,8 @@
             </tr>
             <tr>
                 <td class="jumbotron">
-                    <h2>Autor:</h2>
+                    <h2>&nbsp;<asp:Label ID="LB_titAutor" runat="server" Text="Autor:"></asp:Label>
+                    </h2>
                     <h3>
                         <asp:Label ID="LB_autor" runat="server"></asp:Label>
                     </h3>
@@ -39,7 +40,9 @@
             </tr>
             <tr>
                 <td class="jumbotron">
-                    <h2>Contenido:</h2>
+                    <h2>
+                        <asp:Label ID="LB_titCont" runat="server" Text="Contenido:"></asp:Label>
+                    </h2>
                     <h3>
                         <asp:Label ID="LB_verPost" runat="server"></asp:Label>
                     </h3>

@@ -16,7 +16,9 @@
             <td colspan="3">&nbsp;</td>
         </tr>
         <tr>
-            <td>Nombre:</td>
+            <td>
+                <asp:Label ID="LB_titNombre" runat="server" Text="Nombre:"></asp:Label>
+            </td>
             <td>
                 <asp:Label ID="LB_nombre" runat="server"></asp:Label>
             </td>
@@ -32,7 +34,9 @@
             </td>
         </tr>
         <tr>
-            <td>Nick:</td>
+            <td>
+                <asp:Label ID="LB_titNick" runat="server" Text="Nick:"></asp:Label>
+            </td>
             <td>
                 <asp:Label ID="LB_nick" runat="server"></asp:Label>
             </td>
@@ -48,7 +52,9 @@
             </td>
         </tr>
         <tr>
-            <td>Puntos:</td>
+            <td>
+                <asp:Label ID="LB_titPuntos" runat="server" Text="Puntos"></asp:Label>
+            </td>
             <td>
                 <asp:Label ID="LB_puntos" runat="server"></asp:Label>
             </td>
@@ -65,7 +71,9 @@
             </td>
         </tr>
         <tr>
-            <td>Rango:<br />
+            <td>
+                <asp:Label ID="LB_titRango" runat="server" Text="Rango:"></asp:Label>
+                <br />
                 <asp:Label ID="LB_id" runat="server" Visible="False"></asp:Label>
             </td>
             <td>&nbsp;
@@ -80,7 +88,9 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style2">Correo:</td>
+            <td class="auto-style2">
+                <asp:Label ID="LB_titCorreo" runat="server" Text="Correo:"></asp:Label>
+            </td>
             <td class="auto-style2">
                 <asp:Label ID="LB_correo" runat="server"></asp:Label>
             </td>

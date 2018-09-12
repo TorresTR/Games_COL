@@ -19,7 +19,7 @@
                 
         <div>
             <div class="text-center">
-            <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_obtenerPostReportados" CssClass="auto-style3" Width="400px">
+            <asp:DataList ID="DL_postBloqueado" runat="server" DataSourceID="ODS_obtenerPostReportados" CssClass="auto-style3" Width="400px">
         <ItemTemplate>
             <br />
             <table class="w-100">

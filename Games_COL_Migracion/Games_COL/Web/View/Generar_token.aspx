@@ -22,7 +22,7 @@
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style2">
-                        <asp:Label ID="Label1" runat="server" Text="Digite su nick:"></asp:Label>
+                        <asp:Label ID="LB_digiteNick" runat="server" Text="Digite su nick:"></asp:Label>
                         <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="valitar_confirmapasss"
                             runat="server" 

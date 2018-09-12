@@ -16,6 +16,10 @@
         .auto-style4 {
             text-align: center;
         }
+        .auto-style5 {
+            text-align: center;
+            height: 26px;
+        }
     </style>
 </head>
 <body>
@@ -33,15 +37,24 @@
           <asp:Image ID="Image1" runat="server" ImageUrl="~/Img/logo.jpg" />
       </li>
         <li class="nav-item">
-            <a class="nav-link" href="Ingresar.aspx">Ingresar</a>
-      </li>
+            <a class="nav-link" href="Ingresar.aspx">
+            <asp:HyperLink ID="HL_ingresar" runat="server" NavigateUrl="Ingresar.aspx">Ingresar</asp:HyperLink>
+            </a></li>
       <li class="nav-item">
-        <a class="nav-link" href="registro.aspx">Registrarse</a>
+        <a class="nav-link" href="registro.aspx">
+          <asp:HyperLink ID="HL_registro" runat="server" NavigateUrl="registro.aspx">Registrarse</asp:HyperLink>
+          </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="contactenos.aspx">Contactenos</a></li>
         <li class="nav-item">
-        <a class="nav-link" href="Informacion.aspx">Informacion</a></li>
+            <a class="nav-link" href="registro.aspx">
+            <asp:HyperLink ID="HL_contacto" runat="server" NavigateUrl="contactenos.aspx">Contactenos</asp:HyperLink>
+            </a>
+      </li>
+        <li class="nav-item">
+            <a class="nav-link" href="registro.aspx">
+            <asp:HyperLink ID="HL_informacion" runat="server" NavigateUrl="Informacion.aspx">Informacion</asp:HyperLink>
+            </a>&nbsp;
+      </li>
     </ul>
     
   </div>
@@ -54,7 +67,7 @@
             
             <tr>
                 <div>
-                    <td class="auto-style4" colspan="2">
+                    <td class="auto-style5" colspan="2">
                     <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder></td>
         

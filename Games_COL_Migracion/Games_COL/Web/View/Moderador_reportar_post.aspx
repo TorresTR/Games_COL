@@ -10,7 +10,7 @@
         </tr>
         <tr>
             <td class="text-right">
-                <asp:Label ID="LB_titilo" runat="server" Text="Post a reportar:"></asp:Label>
+                <asp:Label ID="LB_titulo" runat="server" Text="Post a reportar:"></asp:Label>
             </td>
             <td>
                 <asp:Label ID="LB_tituloReportar" runat="server"></asp:Label>

@@ -15,7 +15,8 @@
         <ItemTemplate>
             <table class="w-100">
                 <tr>
-                    <td class="auto-style2">Comentario: </td>
+                    <td class="auto-style2">&nbsp;<asp:Label ID="LB_titComent" runat="server" Text="Comentario:"></asp:Label>
+                    </td>
                     <td class="auto-style3">
                         <asp:Label ID="LB_comentario" runat="server" Text='<%# Bind("comentario") %>'></asp:Label>
                         <br />
@@ -26,13 +27,15 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">Motivo del reporte:</td>
+                    <td class="auto-style2"><asp:Label ID="LB_titMotivo" runat="server" Text="Motivo del reporte"></asp:Label>
+                    </td>
                     <td class="auto-style3">
                         <asp:Label ID="LB_motivo" runat="server" Text='<%# Bind("contenido") %>'></asp:Label>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">Usuario que reporto:</td>
+                    <td class="auto-style2"><asp:Label ID="LB_titUsuario" runat="server" Text="Usario que reporto"></asp:Label>
+                    </td>
                     <td class="auto-style3">
                         <asp:Label ID="LB_user" runat="server" Text='<%# Bind("nick") %>'></asp:Label>
                     </td>

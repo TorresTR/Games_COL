@@ -20,7 +20,7 @@
                 
                 
         <div>
-            <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_obtenerPostReportados" CssClass="auto-style3" Width="362px">
+            <asp:DataList ID="DL_PostReport" runat="server" DataSourceID="ODS_obtenerPostReportados" CssClass="auto-style3" Width="362px">
         <ItemTemplate>
             <br />
             <table class="auto-style4">

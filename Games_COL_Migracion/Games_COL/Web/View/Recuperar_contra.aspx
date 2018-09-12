@@ -15,7 +15,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table class="auto-style1">
         <tr>
-            <td class="auto-style5" colspan="2">Restablecer Contraseña</td>
+            <td class="auto-style5" colspan="2">&nbsp;<asp:Label ID="LB_titulo" runat="server" Text="Recuperar contraeña"></asp:Label>
+            </td>
         </tr>
         <tr>
             <td class="auto-style7">

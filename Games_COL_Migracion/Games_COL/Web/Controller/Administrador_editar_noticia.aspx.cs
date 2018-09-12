@@ -68,4 +68,6 @@ public partial class View_Administrador_editar_noticia : System.Web.UI.Page
         Response.Redirect(dat.Link_observador);
 
     }
+
+  
 }

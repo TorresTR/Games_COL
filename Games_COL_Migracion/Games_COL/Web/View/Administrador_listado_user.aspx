@@ -17,7 +17,8 @@
     <table class="w-100">
         <tr>
             <td class="text-center">
-                USUARIOS</td>
+                <asp:Label ID="LB_titUusarios" runat="server" Text="USUARIOS"></asp:Label>
+            </td>
         </tr>
         <tr>
             <td>
@@ -28,33 +29,43 @@
                                 <h1>
                                     <tr>
                                         <b>
-                                        <td>Nombre:<asp:Label ID="LB_id" runat="server" Text='<%# Eval("id") %>' Visible="False"></asp:Label>
+                                        <td>
+                                            <asp:Label ID="LB_titNombre" runat="server" Text="Nombre:"></asp:Label>
+                                            <asp:Label ID="LB_id" runat="server" Text='<%# Eval("id") %>' Visible="False"></asp:Label>
                                         </td>
                                         <td>
                                             <asp:Label ID="LB_nombre" runat="server" Text='<%# Bind("nombre") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp;&nbsp;</td>
-                                        <td>Nick:</td>
+                                        <td>
+                                            <asp:Label ID="LB_titNick" runat="server" Text="Nick:"></asp:Label>
+                                        </td>
                                         </b>
                                         <td>
                                             <asp:Label ID="LB_nick" runat="server" Text='<%# Bind("nick") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp;&nbsp;</td>
                                         <b>
-                                        <td>Puntos:</td>
+                                        <td>
+                                            <asp:Label ID="LB_titPuntos" runat="server" Text="Puntos:"></asp:Label>
+                                        </td>
                                         </b>
                                         <td>
                                             <asp:Label ID="LB_puntos" runat="server" Text='<%# Bind("puntos") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp;</td>
                                         <b>
-                                        <td>Rango:</td>
+                                        <td>
+                                            <asp:Label ID="LB_titRango" runat="server" Text="Rango:"></asp:Label>
+                                        </td>
                                         </b>
                                         <td>
                                             <asp:Label ID="LB_rango" runat="server" Text='<%# Bind("tipo") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp; </td>
-                                        <td class="auto-style2">Correo: </td>
+                                        <td class="auto-style2">
+                                            <asp:Label ID="LB_titCorreo" runat="server" Text="Correo:"></asp:Label>
+                                        </td>
                                         <td>
                                             <asp:Label ID="LB_correo" runat="server" Text='<%# Bind("correo") %>'></asp:Label>
                                         </td>
@@ -78,6 +89,21 @@
                                         <td>&nbsp;</td>
                                         <td>&nbsp;</td>
                                     </tr>
+                                    <caption>
+                                        <h1></h1>
+                                    </caption>
+                                    <caption>
+                                        <h1></h1>
+                                    </caption>
+                                    <caption>
+                                        <h1></h1>
+                                    </caption>
+                                    <caption>
+                                        <h1></h1>
+                                    </caption>
+                                    <caption>
+                                        <h1></h1>
+                                    </caption>
                                 </h1>
                             </caption>
                         </table>
@@ -93,40 +119,50 @@
         <tr>
             <td>
                 <br />
-                <asp:DataList ID="DL_usuarios0" runat="server" BorderColor="White" DataSourceID="ODS_usuarios0" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both">
+                <asp:DataList ID="DL_moder" runat="server" BorderColor="White" DataSourceID="ODS_usuarios0" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both">
                     <ItemTemplate>
                         <table class="w-100">
                             <caption>
                                 <h1>
                                     <tr>
                                         <b>
-                                        <td>Nombre:<asp:Label ID="LB_id" runat="server" Text='<%# Eval("id") %>' Visible="False"></asp:Label>
+                                        <td>
+                                            <asp:Label ID="LB_titNombre" runat="server" Text="Nombre:"></asp:Label>
+                                            <asp:Label ID="LB_id" runat="server" Text='<%# Eval("id") %>' Visible="False"></asp:Label>
                                         </td>
                                         <td>
                                             <asp:Label ID="LB_nombre" runat="server" Text='<%# Bind("nombre") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp;&nbsp;</td>
-                                        <td>Nick:</td>
+                                        <td>
+                                            <asp:Label ID="LB_titNick" runat="server" Text="Nick:"></asp:Label>
+                                        </td>
                                         </b>
                                         <td>
                                             <asp:Label ID="LB_nick" runat="server" Text='<%# Bind("nick") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp;&nbsp;</td>
                                         <b>
-                                        <td>Puntos:</td>
+                                        <td>
+                                            <asp:Label ID="LB_titPuntos" runat="server" Text="Puntos:"></asp:Label>
+                                        </td>
                                         </b>
                                         <td>
                                             <asp:Label ID="LB_puntos" runat="server" Text='<%# Bind("puntos") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp;</td>
                                         <b>
-                                        <td>Rango:</td>
+                                        <td>
+                                            <asp:Label ID="LB_titRango" runat="server" Text="Rango:"></asp:Label>
+                                        </td>
                                         </b>
                                         <td>
                                             <asp:Label ID="LB_rango" runat="server" Text='<%# Bind("tipo") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp; </td>
-                                        <td class="auto-style2">Correo: </td>
+                                        <td class="auto-style2">
+                                            <asp:Label ID="LB_titCorreo" runat="server" Text="Correo:"></asp:Label>
+                                        </td>
                                         <td>
                                             <asp:Label ID="LB_correo" runat="server" Text='<%# Bind("correo") %>'></asp:Label>
                                         </td>
@@ -150,6 +186,12 @@
                                         <td>&nbsp;</td>
                                         <td>&nbsp;</td>
                                     </tr>
+                                    <caption>
+                                        <h1></h1>
+                                    </caption>
+                                    <caption>
+                                        <h1></h1>
+                                    </caption>
                                 </h1>
                             </caption>
                         </table>
@@ -167,49 +209,63 @@
                 <asp:DataList ID="DL_admin" runat="server" BorderColor="White" DataSourceID="ODS_usuarios1" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both">
                     <ItemTemplate>
                         <table class="w-100">
-                            <tr>
-                                <caption>
-                                    <h1><b>
-                                        <td>Nombre:</td>
+                            <caption>
+                                <h1>
+                                    <tr>
+                                        <b>
+                                        <td>
+                                            <asp:Label ID="LB_titNombre" runat="server" Text="Nombre:"></asp:Label>
+                                        </td>
                                         <td>
                                             <asp:Label ID="LB_nombre" runat="server" Text='<%# Bind("nombre") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp;&nbsp;</td>
-                                        <td>Nick:</td>
+                                        <td>
+                                            <asp:Label ID="LB_titNick" runat="server" Text="Nick:"></asp:Label>
+                                        </td>
                                         </b>
                                         <td>
                                             <asp:Label ID="LB_nick" runat="server" Text='<%# Bind("nick") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp;&nbsp;</td>
                                         <b>
-                                        <td>Puntos:</td>
+                                        <td>
+                                            <asp:Label ID="LB_titPuntos" runat="server" Text="Puntos:"></asp:Label>
+                                        </td>
                                         </b>
                                         <td>
                                             <asp:Label ID="LB_puntos" runat="server" Text='<%# Bind("puntos") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp;</td>
                                         <b>
-                                        <td>Rango:</td>
+                                        <td>
+                                            <asp:Label ID="LB_titRango" runat="server" Text="Rango:"></asp:Label>
+                                        </td>
                                         </b>
                                         <td>
                                             <asp:Label ID="LB_rango" runat="server" Text='<%# Bind("tipo") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp; </td>
-                                        <td>Correo: </td>
+                                        <td>
+                                            <asp:Label ID="LB_titCorreo" runat="server" Text="Correo:"></asp:Label>
+&nbsp;</td>
                                         <td>
                                             <asp:Label ID="LB_correo" runat="server" Text='<%# Bind("correo") %>'></asp:Label>
                                         </td>
                                         <caption>
                                             <h1></h1>
                                         </caption>
-                                    </h1>
-                                </caption>
-                            </tr>
-                            <tr>
-                                <td colspan="14">
-                                <hr />
-                                    &nbsp; &nbsp;</td>
-                            </tr>
+                                        <caption>
+                                            <h1></h1>
+                                        </caption>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="14">
+                                            <hr />
+                                            &nbsp; &nbsp;</td>
+                                    </tr>
+                                </h1>
+                            </caption>
                         </table>
                     </ItemTemplate>
                 </asp:DataList>

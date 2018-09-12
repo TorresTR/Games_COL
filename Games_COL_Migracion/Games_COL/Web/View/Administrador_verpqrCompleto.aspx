@@ -28,7 +28,9 @@
             <tr class="jumbotron">
                 
                 <td class="auto-style3">
-                    <h2>Autor:</h2>
+                    <h2>
+                        <asp:Label ID="LB_titAutor" runat="server" Text="Autor:"></asp:Label>
+                    </h2>
                     <h3 class="display-3">
                     <asp:Label ID="LB_autor" runat="server"></asp:Label>
                         </h3>
@@ -43,7 +45,9 @@
             <tr>
                 
                 <td class="auto-style3">
-                    <h2>Contenido:</h2>
+                    <h2>
+                        <asp:Label ID="LB_titContenido" runat="server" Text="Contenido:"></asp:Label>
+                    </h2>
                     <h4>
                     <asp:Label ID="LB_muestraPag" runat="server"></asp:Label>
                     </h4>

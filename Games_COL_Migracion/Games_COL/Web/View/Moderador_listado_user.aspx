@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <td>
-                <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_usuarios" BorderColor="White" Font-Bold="True" Font-Italic="False" Font-Overline="False" 
+                <asp:DataList ID="DL_usuarios" runat="server" DataSourceID="ODS_usuarios" BorderColor="White" Font-Bold="True" Font-Italic="False" Font-Overline="False" 
                     Font-Strikeout="False" Font-Underline="False" GridLines="Both" >
                     <ItemTemplate>
                         <table class="w-100">
@@ -24,7 +24,10 @@
                                 <h1>
                                     <tr>
                                         <b>
-                                        <td>Nick:<asp:Label ID="LB_id" runat="server" Text='<%# Eval("id") %>'></asp:Label>
+                                        <td>
+                                            <asp:Label ID="LB_titNick" runat="server" Text="Nick:"></asp:Label>
+                                            <br />
+                                            <asp:Label ID="LB_id" runat="server" Text='<%# Eval("id") %>' Visible="False"></asp:Label>
                                         </td>
                                         </b>
                                         <td>
@@ -32,14 +35,18 @@
                                         </td>
                                         <td>&nbsp;&nbsp;</td>
                                         <b>
-                                        <td>Puntos:</td>
+                                        <td><b>
+                                            <asp:Label ID="LB_titPuntos" runat="server" Text="Puntos:"></asp:Label>
+                                            </b></td>
                                         </b>
                                         <td>
                                             <asp:Label ID="LB_puntos" runat="server" Text='<%# Bind("puntos") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp;</td>
                                         <b>
-                                        <td>Rango:</td>
+                                        <td><b>
+                                            <asp:Label ID="LB_titRango" runat="server" Text="Rango:"></asp:Label>
+                                            </b></td>
                                         </b>
                                         <td>
                                             <asp:Label ID="LB_rango" runat="server" Text='<%# Bind("tipo") %>'></asp:Label>
@@ -59,6 +66,9 @@
                                             <hr />
                                         </td>
                                     </tr>
+                                    <caption>
+                                        <h1></h1>
+                                    </caption>
                                 </h1>
                             </caption>
                         </table>

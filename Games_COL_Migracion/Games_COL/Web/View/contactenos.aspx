@@ -30,7 +30,9 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td colspan="2">En este espacio es donde se puden enviar las dudas que se tengan o cualquien inquietud a los Administradores solamente ingresa el correo y tu duda</td>
+            <td colspan="2">
+                <asp:Label ID="LB_titulo" runat="server" Text="En este espacio es donde se puden enviar las dudas que se tengan o cualquien inquietud a los Administradores solamente ingresa el correo y tu duda"></asp:Label>
+            </td>
         </tr>
         <tr>
             <td class="auto-style5">&nbsp;</td>
@@ -65,7 +67,7 @@
         </tr>
         <tr>
             <td class="auto-style4" colspan="2">
-                <asp:TextBox ID="TB_sugerencias" runat="server" Height="154px" TextMode="MultiLine" Width="381px" ValidationGroup="1" MaxLength="70"></asp:TextBox>
+                <asp:TextBox ID="TB_sugerencias" runat="server" Height="154px" TextMode="MultiLine" Width="381px" ValidationGroup="1" MaxLength="70" ></asp:TextBox>
 
             </td>
         </tr>

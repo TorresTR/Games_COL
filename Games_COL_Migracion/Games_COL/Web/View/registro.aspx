@@ -36,7 +36,7 @@
             <table align="center" class="table-active">
                 <tr>
                     <td class="auto-style2" colspan="2"><h2>
-                        <asp:Label ID="Label1" runat="server" Text="Registro"></asp:Label>
+                        <asp:Label ID="LB_titulo" runat="server" Text="Registro"></asp:Label>
                         </h2>
                     </td>
                 </tr>
@@ -45,7 +45,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        <asp:Label ID="Label2" runat="server" Text="Nombre:"></asp:Label>
+                        <asp:Label ID="LB_nombre" runat="server" Text="Nombre:"></asp:Label>
                     </td>
                     <td class="auto-style5">
                         <asp:TextBox ID="TB_nombre" runat="server" ValidationGroup="1" MaxLength="30"></asp:TextBox>
@@ -60,7 +60,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        <asp:Label ID="Label3" runat="server" Text="Nick:"></asp:Label>
+                        <asp:Label ID="LB_nick" runat="server" Text="Nick:"></asp:Label>
                     </td>
                     <td class="auto-style5">
                         <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12"></asp:TextBox>
@@ -75,7 +75,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style4">
-                        <asp:Label ID="Label4" runat="server" Text="Correo:"></asp:Label>
+                        <asp:Label ID="LB_correo" runat="server" Text="Correo:"></asp:Label>
                     </td>
                     <td class="auto-style6">
                         <asp:TextBox ID="TB_email" runat="server" TextMode="Email" Width="179px" ValidationGroup="1" MaxLength="50"></asp:TextBox>
@@ -88,7 +88,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        <asp:Label ID="Label5" runat="server" Text="Contraseña:"></asp:Label>
+                        <asp:Label ID="LB_contra" runat="server" Text="Contraseña:"></asp:Label>
                     </td>
                     <td class="auto-style5">
                         <asp:TextBox ID="TB_pass" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12"></asp:TextBox>
@@ -104,7 +104,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        <asp:Label ID="Label7" runat="server" Text="Connfirme contraseña:"></asp:Label>
+                        <asp:Label ID="LB_confirma" runat="server" Text="Connfirme contraseña:"></asp:Label>
                     </td>
                     <td class="auto-style5">
                         <asp:TextBox ID="TB_confirmapass" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12"></asp:TextBox>

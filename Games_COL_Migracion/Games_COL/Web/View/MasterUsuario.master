@@ -21,9 +21,9 @@
         &nbsp;<asp:Image ID="Image1" runat="server" ImageUrl="~/Img/logo.jpg" />
 &nbsp;<asp:Button ID="BT_inicio" class="btn btn-secondary" runat="server" Text="Inicio" OnClick="BT_inicio_Click" />
         &nbsp; &nbsp;
-        <asp:Button ID="Button1" class="btn btn-secondary" runat="server" OnClick="BT_crear_port_Click" Text="Crear Post" />
+        <asp:Button ID="BT_crearPost" class="btn btn-secondary" runat="server" OnClick="BT_crear_port_Click" Text="Crear Post" />
         &nbsp;&nbsp; 
-         <asp:Button ID="Button2" class="btn btn-secondary" runat="server" Text="PQR" OnClick="BT_PQR_Click" /> 
+         <asp:Button ID="BT_PQR" class="btn btn-secondary" runat="server" Text="PQR" OnClick="BT_PQR_Click" /> 
         &nbsp;&nbsp;
         <asp:Button ID="B_solicitud" class="btn btn-secondary" runat="server" Text="Solicitud" OnClick="B_solicitud_Click" />
         &nbsp;&nbsp;

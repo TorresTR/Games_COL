@@ -15,7 +15,9 @@
     <table class="auto-style1">
         <tr>
             <td colspan="2">
-                <h2 class="auto-style4">Ingresar</h2>
+                <h2 class="auto-style4">
+                    <asp:Label ID="LB_ingresar" runat="server" Text="Ingresar"></asp:Label>
+                </h2>
             </td>
         </tr>
         <tr>
@@ -48,7 +50,7 @@
         </tr>
         <tr>
             <td colspan="2" class="auto-style4">
-                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/View/Generar_token.aspx">Olvido su contraseña?</asp:HyperLink>
+                <asp:HyperLink ID="HL_recuperar" runat="server" NavigateUrl="~/View/Generar_token.aspx">Olvido su contraseña?</asp:HyperLink>
             </td>
         </tr>
         <tr>

@@ -8,13 +8,15 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td>Autor:&nbsp;
-                    <asp:Label ID="LB_autor" runat="server"></asp:Label>
+            <td>
+                <asp:Label ID="LB_titAutor" runat="server" Text="Autor:"></asp:Label>
+&nbsp;<asp:Label ID="LB_autor" runat="server"></asp:Label>
                         </td>
         </tr>
         <tr>
-            <td>Contenido:&nbsp;
-                    <asp:Label ID="LB_muestraPag" runat="server"></asp:Label>
+            <td>
+                <asp:Label ID="LB_titContenido" runat="server" Text="Contenido:"></asp:Label>
+&nbsp;<asp:Label ID="LB_muestraPag" runat="server"></asp:Label>
                     </td>
         </tr>
         <tr>
