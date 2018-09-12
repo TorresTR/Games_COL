@@ -12,6 +12,21 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+    <script type="text/javascript">
+        function isAlphaNumeric(keyCode)
+
+    {
+
+        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
+
+               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
+
+            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
+
+    }               
+    </script>
+
     <table class="auto-style1">
         <tr>
             <td colspan="2">
@@ -25,11 +40,12 @@
                 <asp:Label ID="L_UserName" runat="server" Text="Nick:"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="TB_UserName" runat="server" CssClass="exampleInputPassword1" ValidationGroup="1" MaxLength="12"></asp:TextBox>
+                <asp:TextBox ID="TB_UserName" runat="server" CssClass="exampleInputPassword1" ValidationGroup="1" MaxLength="12" onkeyup = "keyUP(event.keyCode)" 
+            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RFV_username" runat="server" ControlToValidate="TB_UserName" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="validator_username" 
                     runat="server" ControlToValidate="TB_UserName" 
-                    ErrorMessage="*Ingrese solo letras Y Numeros" 
+                    ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[A-Za-z0-9_-ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
                 
             </td>
@@ -39,11 +55,12 @@
                 <asp:Label ID="L_contraseña" runat="server" Text="Contraseña:"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="TB_Contraseña" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12"></asp:TextBox>
+                <asp:TextBox ID="TB_Contraseña" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12" onkeyup = "keyUP(event.keyCode)" 
+            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RFV_Contraseña" runat="server" ControlToValidate="TB_Contraseña" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="Validator_contra" 
                     runat="server" ControlToValidate="TB_Contraseña"
-                    ErrorMessage="*Ingrese solo letras Y Numeros" 
+                    ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[A-Za-z0-9_-ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
                 
             </td>

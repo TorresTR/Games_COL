@@ -17,13 +17,32 @@
     </style>
 </head>
 <body>
+
+     <script type="text/javascript">
+        function isAlphaNumeric(keyCode)
+
+    {
+
+        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
+
+               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
+
+            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
+
+
+        }       
+
+        //onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"
+    </script>
+
     <form id="form1" runat="server">
         <div>
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style2">
                         <asp:Label ID="LB_digiteNick" runat="server" Text="Digite su nick:"></asp:Label>
-                        <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12"></asp:TextBox>
+                        <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12"
+                            onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="valitar_confirmapasss"
                             runat="server" 
                             ControlToValidate="TB_nick" 

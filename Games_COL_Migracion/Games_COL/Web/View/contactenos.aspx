@@ -15,6 +15,19 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <script type="text/javascript">
+        function isAlphaNumeric(keyCode)
+
+    {
+
+        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
+
+               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
+
+            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
+
+    }               
+    </script>
     <table class="auto-style1">
         <tr>
             <td class="auto-style5">&nbsp;</td>
@@ -43,7 +56,8 @@
                 <asp:Label ID="LB_correo" runat="server" Text="Correo:"></asp:Label>
             </td>
             <td class="auto-style7">
-                <asp:TextBox ID="TB_correo" runat="server" TextMode="Email" Width="206px" ValidationGroup="1" MaxLength="50"></asp:TextBox>
+                <asp:TextBox ID="TB_correo" runat="server" TextMode="Email" Width="206px" ValidationGroup="1" MaxLength="50" onkeyup = "keyUP(event.keyCode)" 
+            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
 
                 <asp:RequiredFieldValidator ID="RFV_correo" runat="server" ControlToValidate="TB_correo" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
             </td>
@@ -55,19 +69,20 @@
             <td class="auto-style7">
                 <asp:RegularExpressionValidator ID="validator_sugerencias" runat="server"
                     ControlToValidate="TB_sugerencias" 
-                    ErrorMessage="*Ingrese solo Letras y Numeros" 
+                    ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
                  <asp:RequiredFieldValidator ID="RFV_sugerencias" runat="server" ControlToValidate="TB_sugerencias"
                      ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="REV_max" runat="server"
                     ControlToValidate="TB_sugerencias" 
-                    ErrorMessage="*Ingrese el maximo de caracteres 150" 
+                    ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[\s\S]{0,150}$" ValidationGroup="1"></asp:RegularExpressionValidator>
                 </td>
         </tr>
         <tr>
             <td class="auto-style4" colspan="2">
-                <asp:TextBox ID="TB_sugerencias" runat="server" Height="154px" TextMode="MultiLine" Width="381px" ValidationGroup="1" MaxLength="70" ></asp:TextBox>
+                <asp:TextBox ID="TB_sugerencias" runat="server" Height="154px" TextMode="MultiLine" Width="381px" ValidationGroup="1" MaxLength="70" onkeyup = "keyUP(event.keyCode)" 
+            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
 
             </td>
         </tr>

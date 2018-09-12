@@ -41,9 +41,9 @@
                 <CKEditor:CKEditorControl ID="Ck_editar" BasePath="/ckeditor/" runat="server" BackColor="Black" ValidationGroup="1" OnTextChanged="Ck_editar_TextChanged" ></CKEditor:CKEditorControl>
                  <asp:RegularExpressionValidator ID="REV_max" runat="server"
                     ControlToValidate="Ck_editar" 
-                    ErrorMessage="*Ingrese el maximo de caracteres 5000" 
+                    ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[\s\S]{0,5000}$" ValidationGroup="1"></asp:RegularExpressionValidator>
-                <asp:RequiredFieldValidator ID="RFV_Contenido" runat="server" ControlToValidate="Ck_editar" ErrorMessage="* Ingrese un Contenido no puede ir vacio" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RFV_Contenido" runat="server" ControlToValidate="Ck_editar" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>

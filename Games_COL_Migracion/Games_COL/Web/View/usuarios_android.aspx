@@ -13,6 +13,20 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+     <script type="text/javascript">
+        function isAlphaNumeric(keyCode)
+
+    {
+
+        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
+
+               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
+
+            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
+
+    }               
+    </script>
+
     <div>
 
         &nbsp;&nbsp;
@@ -22,10 +36,11 @@
         <asp:Button ID="BT_ps" runat="server" Text="PlayStation" OnClick="BT_ps_Click" CssClass="btn btn-secondary" />&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TB_buscador" runat="server" MaxLength="20" ></asp:TextBox>
+        <asp:TextBox ID="TB_buscador" runat="server" MaxLength="20" onkeyup = "keyUP(event.keyCode)" 
+            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;" ></asp:TextBox>
         <asp:RegularExpressionValidator ID="validatorBusq" runat="server"
                     ControlToValidate="TB_buscador" 
-                    ErrorMessage="*Ingrese solo letras Y Numeros" 
+                    ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ñÑ]*$"></asp:RegularExpressionValidator>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="BT_buscar" runat="server" CssClass="btn btn-outline-info" OnClick="BT_Buscar_Click" Text="Buscar" />

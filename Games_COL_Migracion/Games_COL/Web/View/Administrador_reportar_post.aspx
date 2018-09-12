@@ -28,18 +28,35 @@
             </td>
             <td>&nbsp;</td>
         </tr>
+          <script type="text/javascript">
+        function isAlphaNumeric(keyCode)
+
+    {
+
+        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
+
+               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
+
+            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
+
+
+        }       
+
+        //onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"
+    </script>
         <tr>
             <td class="text-center" colspan="2">
-                <asp:TextBox ID="TB_reporte" runat="server" Height="166px" TextMode="MultiLine" Width="404px" ValidationGroup="1" MaxLength="60"></asp:TextBox>
+                <asp:TextBox ID="TB_reporte" runat="server" Height="166px" 
+                    TextMode="MultiLine" Width="404px" ValidationGroup="1" MaxLength="60" onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                 <asp:RegularExpressionValidator ID="validator_reporte" 
                     runat="server" 
                     ControlToValidate="TB_reporte" 
-                    ErrorMessage="*Ingrese solo Letras y Numeros" 
+                    ErrorMessage="*" 
                     ForeColor="Red" 
                     ValidationExpression="^[A-Za-z0-9 ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
                 <asp:RegularExpressionValidator ID="REV_max" runat="server"
                     ControlToValidate="TB_reporte" 
-                    ErrorMessage="*Ingrese el maximo de caracteres 60" 
+                    ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[\s\S]{0,60}$" ValidationGroup="1"></asp:RegularExpressionValidator>
                 <asp:RequiredFieldValidator ID="RFV_reportecontent" runat="server" ControlToValidate="TB_reporte" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
             </td>

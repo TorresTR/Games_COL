@@ -31,6 +31,21 @@
         </style>
 </head>
 <body>
+
+     <script type="text/javascript">
+        function isAlphaNumeric(keyCode)
+
+    {
+
+        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
+
+               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
+
+            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
+
+    }               
+    </script>
+
     <form id="form1" runat="server">
         <div>
             <table align="center" class="table-active">
@@ -48,12 +63,13 @@
                         <asp:Label ID="LB_nombre" runat="server" Text="Nombre:"></asp:Label>
                     </td>
                     <td class="auto-style5">
-                        <asp:TextBox ID="TB_nombre" runat="server" ValidationGroup="1" MaxLength="30"></asp:TextBox>
+                        <asp:TextBox ID="TB_nombre" runat="server" ValidationGroup="1" MaxLength="30" onkeyup = "keyUP(event.keyCode)" 
+            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RFV_nombre" runat="server" ControlToValidate="TB_nombre" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="validator_nombre"
                             runat="server" 
                             ControlToValidate="TB_nombre" 
-                            ErrorMessage="*Solo letras" 
+                            ErrorMessage="*" 
                             ForeColor="Red" 
                             ValidationExpression="^[A-Za-z ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
                     </td>
@@ -63,12 +79,13 @@
                         <asp:Label ID="LB_nick" runat="server" Text="Nick:"></asp:Label>
                     </td>
                     <td class="auto-style5">
-                        <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12"></asp:TextBox>
+                        <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12" onkeyup = "keyUP(event.keyCode)" 
+            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RFV_nick" runat="server" ControlToValidate="TB_nick" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="validator_nick"
                             runat="server" 
                             ControlToValidate="TB_nick" 
-                            ErrorMessage="*no validos" 
+                            ErrorMessage="*" 
                             ForeColor="Red" 
                             ValidationExpression="^[A-Za-z0-9_-ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
                     </td>
@@ -78,9 +95,10 @@
                         <asp:Label ID="LB_correo" runat="server" Text="Correo:"></asp:Label>
                     </td>
                     <td class="auto-style6">
-                        <asp:TextBox ID="TB_email" runat="server" TextMode="Email" Width="179px" ValidationGroup="1" MaxLength="50"></asp:TextBox>
+                        <asp:TextBox ID="TB_email" runat="server" TextMode="Email" Width="179px" ValidationGroup="1" MaxLength="50" onkeyup = "keyUP(event.keyCode)" 
+            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;" ></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RFV_correo" runat="server" 
-                            ControlToValidate="TB_email" ErrorMessage="*necesario" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
+                            ControlToValidate="TB_email" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                        
                     &nbsp;
                        
@@ -91,12 +109,13 @@
                         <asp:Label ID="LB_contra" runat="server" Text="Contraseña:"></asp:Label>
                     </td>
                     <td class="auto-style5">
-                        <asp:TextBox ID="TB_pass" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12"></asp:TextBox>
+                        <asp:TextBox ID="TB_pass" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12" onkeyup = "keyUP(event.keyCode)" 
+            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RFV_contraseña" runat="server" ControlToValidate="TB_pass" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                          <asp:RegularExpressionValidator ID="valitar_contra"
                             runat="server" 
                             ControlToValidate="TB_pass" 
-                            ErrorMessage="*no valido" 
+                            ErrorMessage="*" 
                             ForeColor="Red" 
                             ValidationExpression="^[A-Za-z0-9_-ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
                         
@@ -107,12 +126,13 @@
                         <asp:Label ID="LB_confirma" runat="server" Text="Connfirme contraseña:"></asp:Label>
                     </td>
                     <td class="auto-style5">
-                        <asp:TextBox ID="TB_confirmapass" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12"></asp:TextBox>
+                        <asp:TextBox ID="TB_confirmapass" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12" onkeyup = "keyUP(event.keyCode)" 
+            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RFV_confirmapass" runat="server" ControlToValidate="TB_confirmapass" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="valitar_confirmapasss"
                             runat="server" 
                             ControlToValidate="TB_confirmapass" 
-                            ErrorMessage="*no valido" 
+                            ErrorMessage="*" 
                             ForeColor="Red" 
                             ValidationExpression="^[A-Za-z0-9_-ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
                     </td>

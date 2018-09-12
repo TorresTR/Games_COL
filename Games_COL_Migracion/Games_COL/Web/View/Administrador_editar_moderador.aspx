@@ -10,6 +10,23 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <script type="text/javascript">
+        function isAlphaNumeric(keyCode)
+
+    {
+
+        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
+
+               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
+
+            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
+
+
+        }       
+
+        //onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"
+    </script>
+
     <table class="w-100">
         <tr>
             <td colspan="3">&nbsp;</td>
@@ -25,7 +42,7 @@
                 <asp:Label ID="LB_nombre" runat="server"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="TB_nombre" runat="server" ValidationGroup="1" MaxLength="30"></asp:TextBox>
+                <asp:TextBox ID="TB_nombre" runat="server" ValidationGroup="1" MaxLength="30" onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                 <asp:RegularExpressionValidator ID="validator_reporte" 
                     runat="server" 
                     ControlToValidate="TB_nombre" 
@@ -43,7 +60,7 @@
                 <asp:Label ID="LB_nick" runat="server"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12"></asp:TextBox>
+                <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12" onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                 <asp:RegularExpressionValidator ID="REV_nick" 
                     runat="server" 
                     ControlToValidate="TB_nick" 
@@ -61,7 +78,7 @@
                 <asp:Label ID="LB_puntos" runat="server"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="TB_puntos" runat="server" ValidationGroup="1" MaxLength="5"></asp:TextBox>
+                <asp:TextBox ID="TB_puntos" runat="server" ValidationGroup="1" MaxLength="5" onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                 <asp:RegularExpressionValidator ID="REV_puntos" 
                     runat="server" 
                     ControlToValidate="TB_puntos" 
@@ -96,7 +113,7 @@
                 <asp:Label ID="LB_correo" runat="server"></asp:Label>
             </td>
             <td class="auto-style2">
-                <asp:TextBox ID="TB_correo" runat="server" MaxLength="50" TextMode="Email"></asp:TextBox>
+                <asp:TextBox ID="TB_correo" runat="server" MaxLength="50" TextMode="Email" onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RFV_correo" runat="server" ControlToValidate="TB_correo" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
             </td>
         </tr>

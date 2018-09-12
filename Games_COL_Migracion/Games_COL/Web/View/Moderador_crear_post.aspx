@@ -50,12 +50,29 @@
                 <asp:Label ID="LB_tiitulo" runat="server" Text="Titulo:"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="TB_titulo" runat="server" Width="307px" ValidationGroup="1" MaxLength="20"></asp:TextBox>
+                 <script type="text/javascript">
+        function isAlphaNumeric(keyCode)
+
+    {
+
+        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
+
+               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
+
+            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
+
+
+        }       
+
+        //onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"
+    </script>
+                <asp:TextBox ID="TB_titulo" runat="server" Width="307px" ValidationGroup="1" MaxLength="20"
+                   onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;" ></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RFV_titulo" runat="server" ControlToValidate="TB_titulo"
                     ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="validator_titulo" runat="server"
                     ControlToValidate="TB_titulo" 
-                    ErrorMessage="*Ingrese solo letras Y Numeros" 
+                    ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
                 
             </td>
@@ -81,10 +98,10 @@
             <td colspan="2">
                 <asp:Label ID="LB_Contenido" runat="server" Text="Contenido:"></asp:Label>
                 <asp:RequiredFieldValidator ID="RFV_Contenido" runat="server" ControlToValidate="Ckeditor1"
-                    ErrorMessage="* Ingrese un Contenido no puede ir vacio" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
+                    ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                  <asp:RegularExpressionValidator ID="REV_max" runat="server"
                     ControlToValidate="Ckeditor1" 
-                    ErrorMessage="*Ingrese el maximo de caracteres 5000" 
+                    ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[\s\S]{0,5000}$" ValidationGroup="1"></asp:RegularExpressionValidator>
             </td>
         </tr>

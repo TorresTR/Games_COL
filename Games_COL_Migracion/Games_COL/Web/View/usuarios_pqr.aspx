@@ -43,6 +43,20 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+    <script type="text/javascript">
+        function isAlphaNumeric(keyCode)
+
+    {
+
+        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
+
+               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
+
+            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
+
+    }               
+    </script>
     <table class="auto-style2">
         <tr>
             <td class="auto-style6"></td>
@@ -53,11 +67,12 @@
                 <asp:Label ID="LB_aunto" runat="server" Text="Asunto:"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="TB_asunto" runat="server" Width="261px" ValidationGroup="1" MaxLength="20" min="10"></asp:TextBox>
+                <asp:TextBox ID="TB_asunto" runat="server" Width="261px" ValidationGroup="1" MaxLength="20" min="10" onkeyup = "keyUP(event.keyCode)" 
+            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RFV_asunto" runat="server" ControlToValidate="TB_asunto" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="validator_asunto" runat="server"
                     ControlToValidate="TB_asunto" 
-                    ErrorMessage="*Ingrese solo letras Y Numeros" 
+                    ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
             </td>
         </tr>
@@ -88,17 +103,18 @@
                 <asp:RequiredFieldValidator ID="RFV_contenido" runat="server" ControlToValidate="TB_solicitud" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="REV_solicitud" runat="server"
                     ControlToValidate="TB_solicitud" 
-                    ErrorMessage="*Ingrese solo letras Y Numeros" 
+                    ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ¿?!¡ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
                 <asp:RegularExpressionValidator ID="REV_max" runat="server"
                     ControlToValidate="TB_solicitud" 
-                    ErrorMessage="*Ingrese el maximo de caracteres 150" 
+                    ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[\s\S]{0,150}$" ValidationGroup="1"></asp:RegularExpressionValidator>
             </td>
         </tr>
         <tr>
             <td class="auto-style11" colspan="2">
-                <asp:TextBox ID="TB_solicitud" runat="server" Height="200px" TextMode="MultiLine" Width="500px" ValidationGroup="1" MaxLength="150" ></asp:TextBox>
+                <asp:TextBox ID="TB_solicitud" runat="server" Height="200px" TextMode="MultiLine" Width="500px" ValidationGroup="1" MaxLength="150" onkeyup = "keyUP(event.keyCode)" 
+            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
 
             </td>
         </tr>

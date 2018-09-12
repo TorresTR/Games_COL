@@ -23,10 +23,6 @@
             (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
 
     }               
-        
-
-
-
     </script>
     <div class="jumbotron">
         &nbsp;&nbsp;

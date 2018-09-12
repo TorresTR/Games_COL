@@ -25,9 +25,26 @@
                 <asp:Label ID="LB_titMotivo" runat="server" Text="Motivo:"></asp:Label>
             </td>
         </tr>
+        <script type="text/javascript">
+        function isAlphaNumeric(keyCode)
+
+    {
+
+        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
+
+               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
+
+            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
+
+
+        }       
+
+        //onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"
+    </script>
         <tr>
             <td class="text-center" colspan="2">
-                <asp:TextBox ID="TB_motivoR" runat="server" Height="151px" Width="281px" MaxLength="60" ValidationGroup="1"></asp:TextBox>
+                <asp:TextBox ID="TB_motivoR" runat="server" Height="151px" Width="281px" 
+                    MaxLength="60" ValidationGroup="1" onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
                 <asp:RegularExpressionValidator ID="validator_reporte" 
                     runat="server" 
                     ControlToValidate="TB_motivoR" 
