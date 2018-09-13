@@ -71,7 +71,7 @@
                         <br />
                     </td>
                     <td>
-                        <asp:Button ID="BT_verNoticas" runat="server" CssClass="btn btn-outline-danger" OnClick="BT_verNoticas_Click" Text="Ver mas" />
+                        <asp:Button ID="BT_verNoticias" runat="server" CssClass="btn btn-outline-danger" OnClick="BT_verNoticas_Click" Text="Ver mas" />
                     </td>
                 </tr>
             </table>
