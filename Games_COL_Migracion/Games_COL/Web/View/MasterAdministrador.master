@@ -23,7 +23,7 @@
       <div class="collapse navbar-collapse" id="navbarColor02">
           <p>
               <asp:Image ID="Image1" runat="server" ImageUrl="~/Img/logo.jpg" />
-              <asp:Button ID="BT_crearPost" runat="server" Text="Crear Post" OnClick="BT_crear_port_Click"  class="btn btn-secondary"/>
+              <asp:Button ID="BT_crearPost" runat="server" Text="Crear Post" OnClick="BT_crear_port_Click"  class="btn btn-secondary" Width="106px"/>
               <asp:Button ID="BT_verPqr" runat="server" Text="Ver PQR" class="btn btn-secondary" OnClick="BT_verPqr_Click"/>
               <asp:Button ID="BT_listaUser" runat="server" Text="Listado usuarios" class="btn btn-secondary" OnClick="BT_listaUser_Click"/>
               <asp:Button ID="BT_misPost" runat="server" class="btn btn-secondary" OnClick="BT_misPost_Click" Text="Mis Post" />

@@ -51,7 +51,7 @@
             <table align="center" class="table-active">
                 <tr>
                     <td class="auto-style2" colspan="2"><h2>
-                        <asp:Label ID="LB_titulo" runat="server" Text="Registro"></asp:Label>
+                        <asp:Label ID="LB_titReg" runat="server" Text="Registro"></asp:Label>
                         </h2>
                     </td>
                 </tr>

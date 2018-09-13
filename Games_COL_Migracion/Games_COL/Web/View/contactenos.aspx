@@ -64,7 +64,7 @@
         </tr>
         <tr>
             <td class="auto-style6">
-                <asp:Label ID="Label1" runat="server" Text="Duda/inquietud/sugerencia:"></asp:Label>
+                <asp:Label ID="LB_duda" runat="server" Text="Duda/inquietud/sugerencia:"></asp:Label>
             </td>
             <td class="auto-style7">
                 <asp:RegularExpressionValidator ID="validator_sugerencias" runat="server"

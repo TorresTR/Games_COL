@@ -1879,7 +1879,7 @@ namespace Logica
             }
             else if (int.Parse(validez.Rows[0]["id"].ToString()) == -2)
             {
-                men = "Ya extsite un token, por favor verifique su correo.";
+                men = "Ya exisite un token, por favor verifique su correo.";
             }
             else
             {

@@ -32,7 +32,7 @@
     </script>
     <table class="auto-style1">
         <tr>
-            <td class="auto-style5" colspan="2">&nbsp;<asp:Label ID="LB_titulo" runat="server" Text="Recuperar contraeña"></asp:Label>
+            <td class="auto-style5" colspan="2">&nbsp;<asp:Label ID="LB_titulo" runat="server" Text="Recuperar contraseña"></asp:Label>
             </td>
         </tr>
         <tr>

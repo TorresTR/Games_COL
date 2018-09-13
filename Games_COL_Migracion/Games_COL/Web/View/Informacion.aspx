@@ -46,7 +46,7 @@ p.MsoListParagraphCxSpLast
     <table class="w-100">
     <tr>
         <td>
-            <asp:Label ID="LB_tituloInfo" runat="server" Text="INFORMACION"></asp:Label>
+            <asp:Label ID="LB_informacion" runat="server" Text="INFORMACION"></asp:Label>
         </td>
     </tr>
     <tr>
