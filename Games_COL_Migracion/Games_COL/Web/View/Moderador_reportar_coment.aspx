@@ -37,8 +37,7 @@
             </td>
         </tr>
         <tr>
-            <td class="text-center" colspan="2">Motivo:
-                <asp:Label ID="LB_motivo" runat="server" Text="Motivo:"></asp:Label>
+            <td class="text-center" colspan="2">&nbsp;<asp:Label ID="LB_motivo" runat="server" Text="Motivo:"></asp:Label>
             </td>
         </tr>
         <tr>

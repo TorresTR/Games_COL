@@ -68,8 +68,7 @@
             <tr>
                 
                 <td class="auto-style3">
-                    <h2>Contenido:
-                        <asp:Label ID="LB_titContenido" runat="server" Text="Contenido:"></asp:Label>
+                    <h2>&nbsp;<asp:Label ID="LB_titContenido" runat="server" Text="Contenido:"></asp:Label>
                     </h2>
                     <h4>
                     <asp:Label ID="LB_muestraPag" runat="server"></asp:Label>

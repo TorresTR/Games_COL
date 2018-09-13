@@ -30,7 +30,7 @@
                         &nbsp;
                         <asp:Label ID="LB_muestraIDreporte" runat="server" Text='<%# Bind("id_reporte") %>' Visible="False"></asp:Label>
                         <br />
-                        <asp:Label ID="LB_idReporte0" runat="server" Text="ID post Reportado:" Visible="False"></asp:Label>
+                        <asp:Label ID="LB_idPostReport" runat="server" Text="ID post Reportado:" Visible="False"></asp:Label>
                         &nbsp;
                         <asp:Label ID="LB_idPost" runat="server" Text='<%# Bind("id_post") %>' Visible="False"  ></asp:Label>
                         <br />

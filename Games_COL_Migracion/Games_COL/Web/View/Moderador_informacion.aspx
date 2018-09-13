@@ -5,14 +5,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table class="w-100">
         <tr>
-            <td class="text-center">INFORMACION</td>
+            <td class="text-center">
+                <asp:Label ID="LB_informacion" runat="server" Text="INFORMACION"></asp:Label>
+            </td>
         </tr>
         <tr>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td class="text-left">
-                <asp:Label ID="LB_info" runat="server" Text="Bienvenido a GamesCol!!        GamesCol es un proyecto donde podras encontrar publicaciones realizadas por otras personas acerca de videojuegos, del mismo modo podras realizar tus publicaciones sobre el mismo tema, en este espacio podras comentar y puntuar sobre diferentes publicaciones, dando a conocer asi tu opinion sobre diferentes videojuegos.     Ahora eres moderador, felicitaciones por tu ascenso, pero tambien debes saber que es importante tu rol en el proyecto, seras uno de los encargados de controlar el contenido publicado, como ya debes estar acostumbrado en tu nuevo rol tambien se manejaran rangos, claro que esta vez sera mas difici alcanzarlos, aun asi sabemos&nbsp; que haras lo posible por llegar al mas alto de ellos, a continuacion te mostramos los rangos de moderados y la puntuacion necesaria para poder alcanzarlos."></asp:Label>
+                <asp:Label ID="LB_info" runat="server" Text="Bienvenido a GamesCol!!  GamesCol es un proyecto donde podras encontrar publicaciones realizadas por otras personas acerca de videojuegos, del mismo modo podras realizar tus publicaciones sobre el mismo tema, en este espacio podras comentar y puntuar sobre diferentes publicaciones, dando a conocer asi tu opinion sobre diferentes videojuegos.     Ahora eres moderador, felicitaciones por tu ascenso, pero tambien debes saber que es importante tu rol en el proyecto, seras uno de los encargados de controlar el contenido publicado, como ya debes estar acostumbrado en tu nuevo rol tambien se manejaran rangos, claro que esta vez sera mas difici alcanzarlos, aun asi sabemos&nbsp; que haras lo posible por llegar al mas alto de ellos, a continuacion te mostramos los rangos de moderados y la puntuacion necesaria para poder alcanzarlos."></asp:Label>
                 <br />
                 <table class="w-100">
                     <tr>
