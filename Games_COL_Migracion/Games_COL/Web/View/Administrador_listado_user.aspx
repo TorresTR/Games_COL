@@ -114,7 +114,8 @@
         </tr>
         <tr>
             <td class="text-center">
-                MODERADORES</td>
+                <asp:Label ID="LB_tirModer" runat="server" Text="MODERADORES"></asp:Label>
+            </td>
         </tr>
         <tr>
             <td>
@@ -202,7 +203,8 @@
         </tr>
         <tr>
             <td class="text-center">
-                ADMINISTRADORES</td>
+                <asp:Label ID="LB_titAdministradores" runat="server" Text="ADMINISTRADORES"></asp:Label>
+            </td>
         </tr>
         <tr>
             <td>
