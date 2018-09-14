@@ -38,7 +38,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <CKEditor:CKEditorControl ID="Ck_editar" BasePath="/ckeditor/" runat="server" BackColor="Black" ValidationGroup="1" OnTextChanged="Ck_editar_TextChanged" ></CKEditor:CKEditorControl>
+                <CKEditor:CKEditorControl ID="Ck_editar" BasePath="/ckeditor/" runat="server" BackColor="Black" ValidationGroup="1" ></CKEditor:CKEditorControl>
                  <asp:RegularExpressionValidator ID="REV_max" runat="server"
                     ControlToValidate="Ck_editar" 
                     ErrorMessage="*" 

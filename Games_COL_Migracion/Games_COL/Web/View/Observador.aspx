@@ -41,11 +41,17 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="BT_Buscar" runat="server" CssClass="btn btn-outline-info" OnClick="BT_Buscar_Click" Text="Buscar"/>
 
+    &nbsp;
+                        <asp:DropDownList ID="DDL_Idioma"  OnSelectedIndexChanged="DDL_Idioma_SelectedIndexChanged" runat="server">
+                            <asp:ListItem Value="2">English</asp:ListItem>
+                            <asp:ListItem Value="1">Español</asp:ListItem>
+                        </asp:DropDownList>
+
     </div>
     <table class="w-100">
         <tr>
             <td class="auto-style6">
-                <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticia" >
+                <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticia" OnItemDataBound="DL_noticias_RowDataBound" > 
         <ItemTemplate>
             <br />
             <table class="table-active">

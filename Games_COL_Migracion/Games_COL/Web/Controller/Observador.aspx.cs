@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -12,14 +15,54 @@ public partial class View_Observador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       Session["user_id"] = 1;
+
+
+        int x = int.Parse(DDL_Idioma.SelectedValue.ToString());
+
+        Int32 FORMULARIO = 50;
+        L_Usercs idioma = new L_Usercs();
+        
+        DataTable info = idioma.traducir(FORMULARIO,x);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = idioma.hastableIdioma(info, compIdioma);
+        
+        BT_Buscar.Text = compIdioma["BT_buscar"].ToString();
+        DL_noticias.DataBind();
+
+
+
+        Session["user_id"] = 1;
         Response.Cache.SetNoStore();
         LB_resulbusq.Visible = false;
         
     }
 
+    protected void DL_noticias_RowDataBound(object sender, DataListItemEventArgs e)
+    {
+        try
+        {
+            try
+            {
+                ((Label)e.Item.FindControl("LB_titulo")).Text = ((Hashtable)Session["mensajes"])["LB_titulo"].ToString();
+                ((Label)e.Item.FindControl("LB_autor")).Text = ((Hashtable)Session["mensajes"])["LB_autor"].ToString();
+                ((Label)e.Item.FindControl("LB_etiqueta")).Text = ((Hashtable)Session["mensajes"])["LB_etiqueta"].ToString();
+                ((Button)e.Item.FindControl("BT_verNoticias")).Text = ((Hashtable)Session["mensajes"])["BT_verNoticias"].ToString();
+            }
+            catch (Exception exe)
+            {
 
-   
+                ((Button)e.Item.FindControl("BT_verNoticias")).Text =((Hashtable)Session["mensajes"])["BT_verNoticias"].ToString();
+            }
+        }
+        catch (Exception exx)
+        {
+        }
+
+    }
+
+
 
     protected void BT_vermas_Click(object sender, EventArgs e)
     {
@@ -120,5 +163,10 @@ public partial class View_Observador : System.Web.UI.Page
         LB_resulbusq.Text = dat.Mensaje_Alertaobservador1;
 
 
+    }
+    protected void DDL_Idioma_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
     }
 }

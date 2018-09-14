@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Data;
 using System.Security.Cryptography;
 using System.Text;
@@ -2367,6 +2368,31 @@ namespace Logica
             DataTable rango = data.obtenerRangoUser();
             return rango;
 
+        }
+
+        public DataTable obtenerIdioma()
+        {
+            DataTable prueba = new DataTable();
+            D_User idioma = new D_User();
+            prueba = idioma.ObtenerIdio();
+            return prueba;
+        }
+        public DataTable traducir(Int32  FORMULARIO, int x)
+        {
+            D_User idioma = new D_User();
+            DataTable info = idioma.obtenerIdioma(FORMULARIO, x);
+            return info;
+
+
+        }
+
+        public Hashtable hastableIdioma(DataTable info, Hashtable compIdioma)
+        {
+            for (int i = 0; i < info.Rows.Count; i++)
+            {
+                compIdioma.Add(info.Rows[i]["nombre"].ToString(), info.Rows[i]["valor"].ToString());
+            }
+            return compIdioma;
         }
 
     }
