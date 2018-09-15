@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterAdministrador.master" AutoEventWireup="true" CodeFile="~/Controller/Administrador.aspx.cs" Inherits="View_Administrador" %>
+﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/MasterAdministrador.master" AutoEventWireup="true" CodeFile="~/Controller/Administrador.aspx.cs" Inherits="View_Administrador" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -44,7 +44,7 @@
         <asp:TextBox ID="TB_buscador" runat="server" onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
         <asp:RegularExpressionValidator ID="validatorBusq" runat="server"
                     ControlToValidate="TB_buscador" 
-                    ErrorMessage="*Ingrese solo letras Y Numeros" 
+                    ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ñÑ]*$"></asp:RegularExpressionValidator>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="BT_buscar" runat="server" CssClass="btn btn-outline-info" OnClick="Button3_Click" Text="Buscar" />
@@ -53,7 +53,7 @@
         <tr>
             <td class="auto-style6">
                 
-    <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticas" >
+    <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticas" OnItemDataBound="DL_noticias_RowDataBound" >
         <ItemTemplate>
             <br />
             <table class="table-active">
@@ -87,7 +87,7 @@
                 <asp:Label ID="LB_busq" runat="server"></asp:Label>
                 
                 <br />
-    <asp:DataList ID="DL_resultado" runat="server" >
+    <asp:DataList ID="DL_resultado" runat="server" OnItemDataBound="DL_resul_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="auto-style2">
@@ -119,7 +119,7 @@
         </tr>
         <tr>
             <td class="auto-style6">
-    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_datauser" >
+    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_datauser" OnItemDataBound="DL_post_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="auto-style2">

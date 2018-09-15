@@ -42,8 +42,7 @@ public partial class View_Observador : System.Web.UI.Page
         Session["user_id"] = 1;
         Response.Cache.SetNoStore();
         LB_resulbusq.Visible = false;
-        DL_resultado.Visible = true;
-        DL_resultado.DataBind();
+      
     }
 
     protected void DL_noticias_RowDataBound(object sender, DataListItemEventArgs e)
