@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Paguina_principal.master" AutoEventWireup="true" CodeFile="~/Controller/Observador.aspx.cs" Inherits="View_Observador" %>
+﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/Paguina_principal.master" AutoEventWireup="true" CodeFile="~/Controller/Observador.aspx.cs" Inherits="View_Observador" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -39,14 +39,13 @@
                             ForeColor="Red" 
                             ValidationExpression="^[A-Za-z0-9_-ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="BT_Buscar" runat="server" CssClass="btn btn-outline-info" OnClick="BT_Buscar_Click" Text="Buscar"/>
+        <asp:Button ID="BT_Buscar" runat="server" CssClass="btn btn-outline-info" OnClick="BT_Buscar_Click" Text="Buscar"  />
 
-    &nbsp;
-                        <asp:DropDownList ID="DDL_Idioma"  OnSelectedIndexChanged="DDL_Idioma_SelectedIndexChanged" runat="server">
-                            <asp:ListItem Value="2">English</asp:ListItem>
-                            <asp:ListItem Value="1">Español</asp:ListItem>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="DDL_Idioma" runat="server" DataSourceID="ODS_cargaridioma" DataTextField="nombre" DataValueField="id"  OnSelectedIndexChanged="DDL_lenguaje_SelectedIndexChanged" AutoPostBack="true" ViewStateMode="Enabled" EnableViewState="true">
                         </asp:DropDownList>
 
+            &nbsp;<asp:ObjectDataSource ID="ODS_cargaridioma" runat="server" SelectMethod="obtenerIdioma" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+                        
     </div>
     <table class="w-100">
         <tr>
@@ -84,7 +83,7 @@
        
             <td>
                 <asp:Label ID="LB_resulbusq" runat="server"></asp:Label>
-    <asp:DataList ID="DL_resultado" runat="server">
+    <asp:DataList ID="DL_resultado" runat="server" OnItemDataBound="DL_resul_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="table-active">
@@ -98,7 +97,7 @@
                         <br />
                         <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
                         <br />
-                        <asp:Label runat="server" Text="Etiquetas:"></asp:Label>
+                        <asp:Label runat="server" Text="Etiquetas:"   ID="LB_Etiqueta"></asp:Label>
                         <asp:Label ID="LB_etiquetas" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
                         <br />
                     </td>
@@ -116,7 +115,7 @@
             </tr>
         <tr>
             <td class="auto-style6">
-    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_dataobs">
+    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_dataobs" OnItemDataBound="DL_post_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="table-active">
@@ -130,7 +129,7 @@
                         <br />
                         <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
                         <br />
-                        <asp:Label runat="server" Text="Etiquetas:"></asp:Label>
+                        <asp:Label runat="server" Text="Etiquetas:" ID="LB_Etiqueta"></asp:Label>
                         <asp:Label ID="LB_etiquetas" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
                         <br />
                     </td>

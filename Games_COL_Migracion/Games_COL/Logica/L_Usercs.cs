@@ -2386,6 +2386,27 @@ namespace Logica
 
         }
 
+        public String select_idioma(Int32 idioma)
+        {
+            String cultura = "es-CO";
+            //Didioma idioam = new Didioma();
+            D_User idioam = new D_User();
+            DataTable datos = idioam.ObtenerIdio();
+            if (datos.Rows.Count > 0)
+            {
+                for (int i = 0; i < datos.Rows.Count; i++)
+                {
+                    if (Int32.Parse(datos.Rows[i][0].ToString()) == idioma)
+                    {
+                        cultura = datos.Rows[i][2].ToString();
+                    }
+                }
+            }
+            return cultura;
+
+        }
+
+
         public Hashtable hastableIdioma(DataTable info, Hashtable compIdioma)
         {
             for (int i = 0; i < info.Rows.Count; i++)

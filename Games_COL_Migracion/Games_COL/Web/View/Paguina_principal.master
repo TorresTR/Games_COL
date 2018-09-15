@@ -39,22 +39,22 @@
         <li class="nav-item">
             <a class="nav-link" href="Ingresar.aspx">
             <asp:HyperLink ID="HL_ingresar" runat="server" NavigateUrl="Ingresar.aspx">Ingresar</asp:HyperLink>
-            </a></li>
+            </a></li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <li class="nav-item">
         <a class="nav-link" href="registro.aspx">
           <asp:HyperLink ID="HL_registro" runat="server" NavigateUrl="registro.aspx">Registrarse</asp:HyperLink>
           </a>
-      </li>
+      </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <li class="nav-item">
             <a class="nav-link" href="registro.aspx">
             <asp:HyperLink ID="HL_contacto" runat="server" NavigateUrl="contactenos.aspx">Contactenos</asp:HyperLink>
             </a>
-      </li>
+      </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <li class="nav-item">
             <a class="nav-link" href="registro.aspx">
             <asp:HyperLink ID="HL_informacion" runat="server" NavigateUrl="Informacion.aspx">Informacion</asp:HyperLink>
             </a>&nbsp;
-      </li>
+                        </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </ul>
     
   </div>

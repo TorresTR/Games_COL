@@ -15,28 +15,35 @@ public partial class View_Observador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+       
+            Int32 idioma = 1;
+            Int32 id_pagina = 50;
 
 
-        int x = int.Parse(DDL_Idioma.SelectedValue.ToString());
 
-        Int32 FORMULARIO = 50;
-        L_Usercs idioma = new L_Usercs();
-        
-        DataTable info = idioma.traducir(FORMULARIO,x);
-
-        Hashtable compIdioma = new Hashtable();
-        Session["mensajes"] = compIdioma;
-        compIdioma = idioma.hastableIdioma(info, compIdioma);
-        
-        BT_Buscar.Text = compIdioma["BT_buscar"].ToString();
-        DL_noticias.DataBind();
+            Session["valor_ddl"] = DDL_Idioma.SelectedValue.ToString();
 
 
+            L_Usercs Idio = new L_Usercs();
+            DataTable info = Idio.traducir(id_pagina, idioma);
+            Hashtable compIdioma = new Hashtable();
+            Session["mensajes"] = compIdioma;
+            compIdioma = Idio.hastableIdioma(info, compIdioma);
+        if (!this.IsPostBack)
+        {
+            BT_Buscar.Text = compIdioma["BT_buscar"].ToString();
+            DL_noticias.DataBind();
+            DL_post.DataBind();
+            DL_resultado.DataBind();
+
+            
+        }
 
         Session["user_id"] = 1;
         Response.Cache.SetNoStore();
         LB_resulbusq.Visible = false;
-        
+        DL_resultado.Visible = true;
+        DL_resultado.DataBind();
     }
 
     protected void DL_noticias_RowDataBound(object sender, DataListItemEventArgs e)
@@ -62,7 +69,51 @@ public partial class View_Observador : System.Web.UI.Page
 
     }
 
+    protected void DL_resul_RowDataBound(object sender, DataListItemEventArgs e)
+    {
+        try
+        {
+            try
+            {
+                ((Label)e.Item.FindControl("LB_titulo")).Text = ((Hashtable)Session["mensajes"])["LB_titulo"].ToString();
+                ((Label)e.Item.FindControl("LB_autor")).Text = ((Hashtable)Session["mensajes"])["LB_autor"].ToString();
+                ((Label)e.Item.FindControl("LB_etiqueta")).Text = ((Hashtable)Session["mensajes"])["LB_etiqueta"].ToString();
+                ((Button)e.Item.FindControl("BT_vermas")).Text = ((Hashtable)Session["mensajes"])["BT_vermas"].ToString();
+            }
+            catch (Exception exe)
+            {
 
+                ((Button)e.Item.FindControl("BT_vermas")).Text = ((Hashtable)Session["mensajes"])["BT_vermas"].ToString();
+            }
+        }
+        catch (Exception exx)
+        {
+        }
+
+    }
+
+    protected void DL_post_RowDataBound(object sender, DataListItemEventArgs e)
+    {
+        try
+        {
+            try
+            {
+                ((Label)e.Item.FindControl("LB_titulo")).Text = ((Hashtable)Session["mensajes"])["LB_titulo"].ToString();
+                ((Label)e.Item.FindControl("LB_autor")).Text = ((Hashtable)Session["mensajes"])["LB_autor"].ToString();
+                ((Label)e.Item.FindControl("LB_etiqueta")).Text = ((Hashtable)Session["mensajes"])["LB_etiqueta"].ToString();
+                ((Button)e.Item.FindControl("BT_vermas")).Text = ((Hashtable)Session["mensajes"])["BT_vermas"].ToString();
+            }
+            catch (Exception exe)
+            {
+
+                ((Button)e.Item.FindControl("BT_vermas")).Text = ((Hashtable)Session["mensajes"])["BT_vermas"].ToString();
+            }
+        }
+        catch (Exception exx)
+        {
+        }
+
+    }
 
     protected void BT_vermas_Click(object sender, EventArgs e)
     {
@@ -164,9 +215,45 @@ public partial class View_Observador : System.Web.UI.Page
 
 
     }
-    protected void DDL_Idioma_SelectedIndexChanged(object sender, EventArgs e)
+
+
+
+    protected void DDL_lenguaje_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
-        Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+        Int32 index = Int32.Parse(DDL_Idioma.SelectedValue.ToString());
+        L_Usercs cambiar_cultura = new L_Usercs();
+        String cultura = cambiar_cultura.select_idioma(index);
+        Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultura);
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultura);
+        Session["mensajes"] = index;
+        Int32 id_pagina = 50;
+        try
+        {
+            
+
+            L_Usercs Idio = new L_Usercs();
+            DataTable info = Idio.traducir(id_pagina, index);
+            Hashtable compIdioma = new Hashtable();
+
+            Session["mensajes"] = compIdioma;
+            compIdioma = Idio.hastableIdioma(info, compIdioma);
+            BT_Buscar.Text = compIdioma["BT_buscar"].ToString();
+            DL_noticias.DataBind();
+            DL_post.DataBind();
+            DL_resultado.DataBind();
+
+
+        }
+        catch
+        {
+
+        }
+
+
     }
+
+
+
+
+
 }
