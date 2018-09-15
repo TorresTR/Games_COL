@@ -1181,6 +1181,27 @@ namespace Logica
             return bus;
         }
 
+        public U_user busquedaMensaje1(DataTable busq,string r1,string r2)
+        {
+
+            U_user bus = new U_user();
+            int x = busq.Rows.Count;
+
+            if (x == 0)
+            {
+                bus.Estado = true;
+                bus.Mensaje_Alertaobservador1 = r1;
+            }
+            else
+            {
+                bus.Estado = true;
+                bus.Mensaje_Alertaobservador1 = r2;
+
+            }
+
+            return bus;
+        }
+
         public U_user loggin(DataTable registros,string a)
         {
             D_User datos = new D_User();

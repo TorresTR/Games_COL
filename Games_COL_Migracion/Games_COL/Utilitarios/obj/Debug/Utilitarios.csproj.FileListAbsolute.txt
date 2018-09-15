@@ -15,4 +15,3 @@ C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utili
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.dll
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.pdb
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
-C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache

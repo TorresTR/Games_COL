@@ -33,8 +33,8 @@ public partial class View_Administrador_listado_user : System.Web.UI.Page
         Session["mensajes"] = compIdioma;
         compIdioma = Idio.hastableIdioma(info, compIdioma);
 
-        LB_titUusarios.Text = compIdioma["LB_titUsuarios"].ToString();
-        LB_tirModer.Text = compIdioma["LB_titModer"].ToString();
+        LB_titUsarios.Text = compIdioma["LB_titUsuarios"].ToString();
+        LB_titModer.Text = compIdioma["LB_titModer"].ToString();
         LB_titAdministradores.Text = compIdioma["LB_titAdministradores"].ToString();
         BT_reporUser.Text = compIdioma["BT_reporUser"].ToString();
         BT_reporModer.Text = compIdioma["BT_reporModer"].ToString();

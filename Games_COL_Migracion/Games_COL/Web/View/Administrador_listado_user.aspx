@@ -17,7 +17,7 @@
     <table class="w-100">
         <tr>
             <td class="text-center">
-                <asp:Label ID="LB_titUusarios" runat="server" Text="USUARIOS"></asp:Label>
+                <asp:Label ID="LB_titUsarios" runat="server" Text="USUARIOS"></asp:Label>
             </td>
         </tr>
         <tr>
@@ -115,7 +115,7 @@
         </tr>
         <tr>
             <td class="text-center">
-                <asp:Label ID="LB_tirModer" runat="server" Text="MODERADORES"></asp:Label>
+                <asp:Label ID="LB_titModer" runat="server" Text="MODERADORES"></asp:Label>
             </td>
         </tr>
         <tr>

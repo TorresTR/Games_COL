@@ -11,6 +11,8 @@ using Utilitarios;
 
 public partial class View_Administrador_android : System.Web.UI.Page
 {
+    String mensaje1;
+    String mensaje2;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -76,6 +78,8 @@ public partial class View_Administrador_android : System.Web.UI.Page
                 ((Label)e.Item.FindControl("LB_autor")).Text = ((Hashtable)Session["mensajes"])["LB_autor"].ToString();
                 ((Label)e.Item.FindControl("LB_etiqueta")).Text = ((Hashtable)Session["mensajes"])["LB_etiqueta"].ToString();
                 ((Button)e.Item.FindControl("BT_vermas")).Text = ((Hashtable)Session["mensajes"])["BT_vermas"].ToString();
+                mensaje1 = ((Hashtable)Session["mensajes"])["no_existe"].ToString();
+                mensaje2 = ((Hashtable)Session["mensajes"])["resultado"].ToString();
             }
             catch (Exception exe)
             {
@@ -189,7 +193,7 @@ public partial class View_Administrador_android : System.Web.UI.Page
         DL_resultado.DataSource = dato;
         DL_resultado.DataBind();
 
-        dat = lugar.busquedaMensaje(dato);
+        dat = lugar.busquedaMensaje1(dato,mensaje1,mensaje2);
 
         LB_busq.Visible = dat.Estado;
         LB_busq.Text = dat.Mensaje_Alertaobservador1;
