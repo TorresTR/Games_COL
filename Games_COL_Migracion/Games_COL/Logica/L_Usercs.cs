@@ -2056,6 +2056,15 @@ namespace Logica
             return dat;
         }
 
+        public U_user editarListadoAdminmoder()
+        {
+
+            U_user dat = new U_user();
+
+            dat.Link_observador = "Administrador_editar_moderador.aspx";
+            return dat;
+        }
+
         public void eliminarUsuario(int h)
         {
 
@@ -2366,6 +2375,15 @@ namespace Logica
 
             D_User data = new D_User();
             DataTable rango = data.obtenerRangoUser();
+            return rango;
+
+        }
+
+        public DataTable obtenerRangoModer()
+        {
+
+            D_User data = new D_User();
+            DataTable rango = data.obtenerRangomoder();
             return rango;
 
         }

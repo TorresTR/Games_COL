@@ -19,7 +19,7 @@
                 
         <div>
             <div class="text-center">
-            <asp:DataList ID="DL_postBloqueado" runat="server" DataSourceID="ODS_obtenerPostReportados" CssClass="auto-style3" Width="400px">
+            <asp:DataList ID="DL_postBloqueado" runat="server" DataSourceID="ODS_obtenerPostReportados" CssClass="auto-style3" Width="400px" OnItemDataBound="DL_postBloqueado_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="w-100">
@@ -64,7 +64,7 @@
 &nbsp;
             <asp:ObjectDataSource ID="ODS_obtenerPostReportados" runat="server" SelectMethod="obtenerpostReport" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="Bt_volver" runat="server" CssClass="btn btn-outline-info" OnClick="Bt_volver_Click" Text="Volver" />
+                <asp:Button ID="BT_volver" runat="server" CssClass="btn btn-outline-info" OnClick="Bt_volver_Click" Text="Volver" />
             <br />
         </div>
 

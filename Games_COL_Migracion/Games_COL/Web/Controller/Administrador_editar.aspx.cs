@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Collections;
 
 public partial class View_Adminsitrador_editar : System.Web.UI.Page
 {
@@ -15,7 +16,30 @@ public partial class View_Adminsitrador_editar : System.Web.UI.Page
         Response.Cache.SetNoStore();
 
 
+        Int32 idioma = 1;
+        Int32 id_pagina = 6;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
 
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+        
+        Bt_editarCk.Text = compIdioma["Bt_editarCk"].ToString(); 
+        BT_editar.Text = compIdioma["BT_editar"].ToString();
+        BT_volver.Text = compIdioma["BT_volver"].ToString();
+        LB_autor.Text= compIdioma["LB_autor"].ToString();
 
         L_Usercs dac = new L_Usercs();
         U_misPost dato = new U_misPost();

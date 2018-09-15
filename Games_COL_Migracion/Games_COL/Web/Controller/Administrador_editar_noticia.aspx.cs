@@ -7,6 +7,7 @@ using System.Web.UI;
 using Logica;
 using Utilitarios;
 using System.Web.UI.WebControls;
+using System.Collections;
 
 public partial class View_Administrador_editar_noticia : System.Web.UI.Page
 {
@@ -14,6 +15,35 @@ public partial class View_Administrador_editar_noticia : System.Web.UI.Page
     {
        
         Response.Cache.SetNoStore();
+
+
+        Int32 idioma = 1;
+        Int32 id_pagina = 8;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
+
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+
+        LB_autor.Text = compIdioma["LB_autor"].ToString();
+        Bt_editarCk.Text = compIdioma["Bt_editarCk"].ToString();
+        BT_volver.Text = compIdioma["BT_volver"].ToString();
+        BT_editar.Text = compIdioma["BT_editar"].ToString();
+       
+
+
 
         U_userCrearpost doc = new U_userCrearpost();
         L_Usercs dac = new L_Usercs();

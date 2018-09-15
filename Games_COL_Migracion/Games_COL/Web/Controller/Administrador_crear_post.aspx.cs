@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
+using System.Collections;
 
 public partial class View_Administrador_crear_post : System.Web.UI.Page
 {
@@ -15,7 +16,36 @@ public partial class View_Administrador_crear_post : System.Web.UI.Page
     {
        
         Response.Cache.SetNoStore();
-        
+
+
+
+        Int32 idioma = 1;
+        Int32 id_pagina = 5;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
+
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+      
+        LB_tiitulo.Text = compIdioma["LB_titulo"].ToString();
+        LB_Contenido.Text= compIdioma["LB_contenido"].ToString();
+        LB_etiqueta.Text = compIdioma["LB_etiqueta"].ToString();
+        BT_guardar.Text = compIdioma["BT_guardar"].ToString(); 
+        BT_vistaPrevia.Text = compIdioma["BT_vistaPrevia"].ToString(); 
+        B_volver.Text = compIdioma["B_volver"].ToString(); 
+       
         L_Usercs dac = new L_Usercs();
         int b = int.Parse(Session["user_id"].ToString());
         DataTable data = dac.obtenerInteraccion(b);

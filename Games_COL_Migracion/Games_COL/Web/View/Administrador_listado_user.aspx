@@ -22,7 +22,8 @@
         </tr>
         <tr>
             <td>
-                <asp:DataList ID="DL_usuarios" runat="server" BorderColor="White" DataSourceID="ODS_usuarios" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both">
+                <asp:DataList ID="DL_usuarios" runat="server" BorderColor="White" DataSourceID="ODS_usuarios" Font-Bold="True" Font-Italic="False" 
+                    Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" OnItemDataBound="DL_usuarios_RowDataBound">
                     <ItemTemplate>
                         <table class="w-100">
                             <caption>
@@ -120,7 +121,9 @@
         <tr>
             <td>
                 <br />
-                <asp:DataList ID="DL_moder" runat="server" BorderColor="White" DataSourceID="ODS_usuarios0" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both">
+                <asp:DataList ID="DL_moder" runat="server" 
+                    BorderColor="White" DataSourceID="ODS_usuarios0" Font-Bold="True" Font-Italic="False" Font-Overline="False" 
+                    Font-Strikeout="False" Font-Underline="False" GridLines="Both" OnItemDataBound="DL_moder_RowDataBound">
                     <ItemTemplate>
                         <table class="w-100">
                             <caption>
@@ -168,7 +171,7 @@
                                             <asp:Label ID="LB_correo" runat="server" Text='<%# Bind("correo") %>'></asp:Label>
                                         </td>
                                         <td>
-                                            <asp:Button ID="BT_editar" runat="server" CssClass="btn btn-outline-info" OnClick="BT_editar_Click" Text="Editar" />
+                                            <asp:Button ID="BT_editar" runat="server" CssClass="btn btn-outline-info" OnClick="BT_editar_moder_Click" Text="Editar" />
                                         </td>
                                         <td>
                                             <asp:Button ID="BT_eliminar" runat="server" CssClass="btn btn-outline-danger" OnClick="BT_eliminar_Click" Text="Eliminar" />
@@ -208,7 +211,9 @@
         </tr>
         <tr>
             <td>
-                <asp:DataList ID="DL_admin" runat="server" BorderColor="White" DataSourceID="ODS_usuarios1" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both">
+                <asp:DataList ID="DL_admin" runat="server" 
+                    BorderColor="White" DataSourceID="ODS_usuarios1" Font-Bold="True" 
+                    Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" OnItemDataBound="DL_admin_RowDataBound">
                     <ItemTemplate>
                         <table class="w-100">
                             <caption>

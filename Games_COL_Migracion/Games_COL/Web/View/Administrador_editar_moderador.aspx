@@ -102,7 +102,7 @@
                 <asp:DropDownList ID="DDL_rango" runat="server" DataSourceID="ODS_rangoU" DataTextField="tipo" DataValueField="id">
                 </asp:DropDownList>
                 &nbsp;<asp:RequiredFieldValidator ID="RFV_rango" runat="server" ControlToValidate="DDL_rango" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-&nbsp;<asp:ObjectDataSource ID="ODS_rangoU" runat="server" SelectMethod="obtenerRangoModer" TypeName="DAOUsuario"></asp:ObjectDataSource>
+&nbsp;<asp:ObjectDataSource ID="ODS_rangoU" runat="server" SelectMethod="obtenerRangoModer" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
             </td>
         </tr>
         <tr>
