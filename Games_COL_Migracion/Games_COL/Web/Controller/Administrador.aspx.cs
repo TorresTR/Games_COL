@@ -33,7 +33,7 @@ public partial class View_Administrador : System.Web.UI.Page
         Hashtable compIdioma = new Hashtable();
         Session["mensajes"] = compIdioma;
         compIdioma = Idio.hastableIdioma(info, compIdioma);
-
+        
 
         BT_buscar.Text = compIdioma["BT_buscar"].ToString();
         DL_noticias.DataBind();

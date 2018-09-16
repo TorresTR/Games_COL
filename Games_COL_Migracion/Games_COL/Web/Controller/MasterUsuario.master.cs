@@ -9,12 +9,46 @@ using System.Web.UI.WebControls;
 using Datos;
 using Utilitarios;
 using Logica;
+using System.Collections;
 
 public partial class View_MasterUsuario : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+        Int32 idioma = 1;
+        Int32 id_pagina = 63;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
+
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+        BT_inicio.Text = compIdioma["BT_inicio"].ToString();
+        BT_crearPost.Text = compIdioma["BT_crearPost"].ToString();
+        BT_PQR.Text = compIdioma["BT_PQR"].ToString();
+        B_solicitud.Text = compIdioma["B_solicitud"].ToString();
+        BT_misPost.Text = compIdioma["BT_misPost"].ToString();
+        BT_comentarios.Text = compIdioma["BT_comentarios"].ToString();
+        BT_respuestas.Text = compIdioma["BT_respuestas"].ToString();
+        BT_verinfo.Text = compIdioma["BT_verinfo"].ToString();
+        LB_nick.Text = compIdioma["LB_nick"].ToString();
+        LB_puntos.Text = compIdioma["LB_puntos"].ToString();
+        LB_rango.Text = compIdioma["LB_rango"].ToString();
+        LB_mensaje.Text = compIdioma["LB_mensaje"].ToString();
+        BT_cerrar.Text = compIdioma["BT_cerrar"].ToString();
+
 
 
         D_User us = new D_User();

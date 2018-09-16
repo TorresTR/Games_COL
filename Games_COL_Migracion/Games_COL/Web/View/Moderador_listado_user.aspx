@@ -17,10 +17,10 @@
         <tr>
             <td>
                 <asp:DataList ID="DL_usuarios" runat="server" DataSourceID="ODS_usuarios" BorderColor="White" Font-Bold="True" Font-Italic="False" Font-Overline="False" 
-                    Font-Strikeout="False" Font-Underline="False" GridLines="Both" >
+                    Font-Strikeout="False" Font-Underline="False" GridLines="Both" OnItemDataBound="DL_noticias_RowDataBound" >
                     <ItemTemplate>
                         <table class="w-100">
-                            <caption>
+                            <caption> 
                                 <h1>
                                     <tr>
                                         <b>

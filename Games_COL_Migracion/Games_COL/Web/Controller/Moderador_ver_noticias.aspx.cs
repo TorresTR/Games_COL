@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -14,6 +15,28 @@ public partial class View_Moderador_ver_noticias : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
+        Int32 idioma = 1;
+        Int32 id_pagina = 44;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
+
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+        LB_titAutor.Text = compIdioma["LB_titAutor"].ToString();
+        LB_titContenido.Text = compIdioma["LB_titContenido"].ToString();
+        B_volver.Text = compIdioma["B_volver"].ToString();
 
         U_userCrearpost doc = new U_userCrearpost();
         L_Usercs dac = new L_Usercs();

@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%--<html xmlns="http://www.w3.org/1999/xhtml">--%>
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
@@ -155,9 +155,12 @@
                             <td>
                                 &nbsp;</td>
                             <td class="auto-style4">
-                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id" AutoGenerateColumns="False"  >
+                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id" AutoGenerateColumns="False" OnRowDataBound="GV_Idioma_RowDataBound" >
                                     <Columns>
                                         <asp:TemplateField HeaderText="Reportar">
+                                            <HeaderTemplate>
+                                                <asp:Label ID="LB_reportar" runat="server"></asp:Label>
+                                            </HeaderTemplate>
                                             <ItemTemplate>
                                                 <asp:Button ID="BT_reportar" runat="server" Text="Reportar" CommandName="reportar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClick="BT_reportar_Click" CssClass="btn btn-outline-success"/>
                                                 <br />
@@ -165,6 +168,9 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Comentarios">
+                                            <HeaderTemplate>
+                                                <asp:Label ID="LB_titCom" runat="server"></asp:Label>
+                                            </HeaderTemplate>
                                             <ItemTemplate>
                                                 <asp:Label ID="LB_comentario" runat="server" Text='<%# Bind("comentarios") %>'></asp:Label>
                                             </ItemTemplate>

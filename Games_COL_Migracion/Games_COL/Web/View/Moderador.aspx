@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterModerador.master" AutoEventWireup="true" CodeFile="~/Controller/Moderador.aspx.cs" Inherits="View_Moderador" %>
+﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/MasterModerador.master" AutoEventWireup="true" CodeFile="~/Controller/Moderador.aspx.cs" Inherits="View_Moderador" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -52,7 +52,7 @@
         <tr>
             <td class="auto-style6">
                 
-    <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticas" >
+    <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticas"  OnItemDataBound="DL_noticias_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="table-active">
@@ -85,7 +85,7 @@
                 
                 <asp:Label ID="LB_busq" runat="server"></asp:Label>
                 
-    <asp:DataList ID="DL_resultado" runat="server" >
+    <asp:DataList ID="DL_resultado" runat="server"  OnItemDataBound="DL_resul_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="auto-style2">
@@ -117,7 +117,7 @@
         </tr>
         <tr>
             <td class="auto-style6">
-    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_datauser" >
+    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_datauser" OnItemDataBound="DL_post_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="auto-style2">

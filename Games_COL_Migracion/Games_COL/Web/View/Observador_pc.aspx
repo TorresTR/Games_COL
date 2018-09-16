@@ -50,7 +50,7 @@
         <table class="auto-style1">
             <tr>
                 <td class="auto-style6">
-                <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticia" >
+                <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticia"  OnItemDataBound="DL_noticias_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="table-active">
@@ -85,7 +85,7 @@
 
                 <td>
                 <asp:Label ID="LB_resulbusq" runat="server"></asp:Label>
-    <asp:DataList ID="DL_resultado" runat="server">
+    <asp:DataList ID="DL_resultado" runat="server"  ItemDataBound="DL_resul_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="table-active">
@@ -99,7 +99,7 @@
                         <br />
                         <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
                         <br />
-                        <asp:Label runat="server" Text="Etiquetas:"></asp:Label>
+                        <asp:Label runat="server" Text="Etiquetas:" ID="LB_eti"></asp:Label>
                         <asp:Label ID="LB_etiquetas" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
                         <br />
                     </td>
@@ -116,7 +116,7 @@
             </tr>
             <tr>
                 <td class="auto-style6">
-                    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_treaListaData">
+                    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_treaListaData" OnItemDataBound="DL_post_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="auto-style1">

@@ -11,7 +11,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:DataList ID="DL_coment" runat="server" DataSourceID="ODS_reporte_comentarios" Width="448px">
+    <asp:DataList ID="DL_coment" runat="server" DataSourceID="ODS_reporte_comentarios" Width="448px" OnItemDataBound="DL_coment_RowDataBound">
         <ItemTemplate>
             <table class="w-100">
                 <tr>

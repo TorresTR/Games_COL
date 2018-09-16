@@ -54,7 +54,7 @@
         <table class="auto-style1">
             <tr>
                 <td class="auto-style6">
-                <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticia" >
+                <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticia" OnItemDataBound="DL_noticias_RowDataBound"> 
         <ItemTemplate>
             <br />
             <table class="table-active">
@@ -86,7 +86,7 @@
 
                 <td>
                 <asp:Label ID="LB_resulbusq" runat="server"></asp:Label>
-    <asp:DataList ID="DL_resultado" runat="server" CssClass="auto-style7">
+    <asp:DataList ID="DL_resultado" runat="server" CssClass="auto-style7"  OnItemDataBound="DL_resul_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="table-active">
@@ -117,7 +117,7 @@
             </tr>
             <tr>
                 <td class="auto-style6">
-                    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_treaListaData">
+                    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_treaListaData"  OnItemDataBound="DL_post_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="auto-style1">

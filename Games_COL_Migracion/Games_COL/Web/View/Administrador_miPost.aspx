@@ -13,9 +13,12 @@
             <td class="auto-style2">
                 
                     <ContentTemplate>
-                        <asp:GridView ID="GV_miPost" runat="server" AutoGenerateColumns="False">
+                        <asp:GridView ID="GV_miPost" runat="server" AutoGenerateColumns="False" OnRowDataBound="GV_miPost_RowDataBound" >
                             <Columns>
                                 <asp:TemplateField HeaderText="Editar">
+                                    <HeaderTemplate>
+                                        <asp:Label ID="LB_editar" runat="server"></asp:Label>
+                                    </HeaderTemplate>
                                     <ItemTemplate>
                                         <asp:Button ID="BT_editar" runat="server" OnClick="BT_editar_Click" Text="Editar" CssClass="btn btn-outline-info" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"/>
                                         <br />
@@ -23,16 +26,25 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Eliminar">
+                                    <HeaderTemplate>
+                                        <asp:Label ID="LB_eliminar" runat="server"></asp:Label>
+                                    </HeaderTemplate>
                                     <ItemTemplate>
                                         <asp:Button ID="BT_eliminar" runat="server" Text="Eliminar" CssClass="btn btn-outline-info" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClick="BT_eliminar_Click" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Titulo">
+                                    <HeaderTemplate>
+                                        <asp:Label ID="LB_tit" runat="server"></asp:Label>
+                                    </HeaderTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="LB_titulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Etiqueta">
+                                    <HeaderTemplate>
+                                        <asp:Label ID="LB_eti" runat="server"></asp:Label>
+                                    </HeaderTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="LB_etiqueta" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
                                     </ItemTemplate>

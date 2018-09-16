@@ -1,6 +1,8 @@
 ﻿using Logica;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,6 +13,52 @@ public partial class View_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Int32 idioma = 1;
+        Int32 id_pagina = 21;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
+
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+        BT_volver.Text = compIdioma["BT_volver"].ToString();
+        
+    }
+
+    protected void DL_solicitudes_RowDataBound(object sender, DataListItemEventArgs e)
+    {
+        try
+        {
+            try
+            {
+                ((Label)e.Item.FindControl("LB_titUsuario")).Text = ((Hashtable)Session["mensajes"])["LB_titUsuario"].ToString();
+                ((Label)e.Item.FindControl("LB_titulo")).Text = ((Hashtable)Session["mensajes"])["LB_titulo"].ToString();
+                ((Label)e.Item.FindControl("LB_titPuntos")).Text = ((Hashtable)Session["mensajes"])["LB_titPuntos"].ToString();
+                ((Label)e.Item.FindControl("LB_titNick")).Text = ((Hashtable)Session["mensajes"])["LB_titNick"].ToString();
+                ((Button)e.Item.FindControl("BT_ascender")).Text = ((Hashtable)Session["mensajes"])["BT_ascender"].ToString();
+                ((Button)e.Item.FindControl("BT_ignorar")).Text = ((Hashtable)Session["mensajes"])["BT_ignorar"].ToString();
+
+            }
+            catch (Exception exe)
+            {
+
+                
+            }
+        }
+        catch (Exception exx)
+        {
+        }
 
     }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -10,16 +11,112 @@ using Utilitarios;
 
 public partial class View_Moderador_android : System.Web.UI.Page
 {
+    string mensaje1;
+    string mensaje2;
     protected void Page_Load(object sender, EventArgs e)
     {
 
         Response.Cache.SetNoStore();
         LB_busq.Visible = false;
+        Int32 idioma = 1;
+        Int32 id_pagina = 30;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
 
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+        BT_buscar.Text = compIdioma["BT_buscar"].ToString();
+        DL_noticias.DataBind();
+        DL_post.DataBind();
+        DL_resultado.DataBind();
 
     }
 
-   
+    protected void DL_noticias_RowDataBound(object sender, DataListItemEventArgs e)
+    {
+        try
+        {
+            try
+            {
+                ((Label)e.Item.FindControl("LB_titulo")).Text = ((Hashtable)Session["mensajes"])["LB_titulo"].ToString();
+                ((Label)e.Item.FindControl("LB_autor")).Text = ((Hashtable)Session["mensajes"])["LB_autor"].ToString();
+                ((Label)e.Item.FindControl("LB_etiqueta")).Text = ((Hashtable)Session["mensajes"])["LB_etiqueta"].ToString();
+                ((Button)e.Item.FindControl("BT_verNoticias")).Text = ((Hashtable)Session["mensajes"])["BT_verNoticias"].ToString();
+                mensaje1 = ((Hashtable)Session["mensajes"])["no_existe"].ToString();
+                mensaje2 = ((Hashtable)Session["mensajes"])["resultado"].ToString();
+
+            }
+            catch (Exception exe)
+            {
+
+                ((Button)e.Item.FindControl("BT_verNoticias")).Text = ((Hashtable)Session["mensajes"])["BT_verNoticias"].ToString();
+            }
+        }
+        catch (Exception exx)
+        {
+        }
+
+    }
+
+    protected void DL_resul_RowDataBound(object sender, DataListItemEventArgs e)
+    {
+        try
+        {
+            try
+            {
+                ((Label)e.Item.FindControl("LB_titulo")).Text = ((Hashtable)Session["mensajes"])["LB_titulo"].ToString();
+                ((Label)e.Item.FindControl("LB_autor")).Text = ((Hashtable)Session["mensajes"])["LB_autor"].ToString();
+                ((Label)e.Item.FindControl("LB_etiqueta")).Text = ((Hashtable)Session["mensajes"])["LB_etiqueta"].ToString();
+                ((Button)e.Item.FindControl("BT_vermas")).Text = ((Hashtable)Session["mensajes"])["BT_verNoticias"].ToString();
+            }
+            catch (Exception exe)
+            {
+
+                ((Button)e.Item.FindControl("BT_vermas")).Text = ((Hashtable)Session["mensajes"])["BT_verNoticias"].ToString();
+            }
+        }
+        catch (Exception exx)
+        {
+        }
+
+    }
+
+    protected void DL_post_RowDataBound(object sender, DataListItemEventArgs e)
+    {
+        try
+        {
+            try
+            {
+                ((Label)e.Item.FindControl("LB_titulo")).Text = ((Hashtable)Session["mensajes"])["LB_titulo"].ToString();
+                ((Label)e.Item.FindControl("LB_autor")).Text = ((Hashtable)Session["mensajes"])["LB_autor"].ToString();
+                ((Label)e.Item.FindControl("LB_etiqueta")).Text = ((Hashtable)Session["mensajes"])["LB_etiqueta"].ToString();
+                ((Button)e.Item.FindControl("BT_vermas")).Text = ((Hashtable)Session["mensajes"])["BT_verNoticias"].ToString();
+            }
+            catch (Exception exe)
+            {
+
+                ((Button)e.Item.FindControl("BT_vermas")).Text = ((Hashtable)Session["mensajes"])["BT_verNoticias"].ToString();
+            }
+        }
+        catch (Exception exx)
+        {
+        }
+
+    }
+
+
     protected void BT_vermas_Click(object sender, EventArgs e)
     {
         Button btn = (Button)sender;
@@ -93,7 +190,7 @@ public partial class View_Moderador_android : System.Web.UI.Page
         DL_resultado.DataSource = dato;
         DL_resultado.DataBind();
 
-        dat = lugar.busquedaMensaje(dato);
+        dat = lugar.busquedaMensaje1(dato,mensaje1,mensaje2);
 
         LB_busq.Visible = dat.Estado;
         LB_busq.Text = dat.Mensaje_Alertaobservador1;

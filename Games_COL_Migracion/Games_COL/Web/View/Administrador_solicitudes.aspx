@@ -16,7 +16,7 @@
         .auto-style5 {
             font-size: large;
         }
-        .auto-style6 {
+        .auto-style6 { 
             width: 87px;
             font-size: large;
         }
@@ -25,14 +25,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table class="w-100">
         <tr>
-            <td class="text-center" colspan="2">SOLICITUDES DE ASCENSO A MODERADORES</td>
+            <td class="text-center" colspan="2">
+                <asp:Label ID="LB_titulo" runat="server"></asp:Label>
+            </td>
         </tr>
         <tr>
             <td colspan="2">&nbsp;</td>
         </tr>
         <tr>
             <td colspan="2">
-                <asp:DataList ID="DL_solicitudes" runat="server" DataSourceID="ODS_solicitudes">
+                <asp:DataList ID="DL_solicitudes" runat="server" DataSourceID="ODS_solicitudes" OnItemDataBound="DL_solicitudes_RowDataBound">
                     <ItemTemplate>
                         <table class="w-100">
                             <tr>
@@ -58,7 +60,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style6"><strong>Nick:<asp:Label ID="LB_titNick" runat="server" Text="Nick:"></asp:Label>
+                                <td class="auto-style6"><strong><asp:Label ID="LB_titNick" runat="server" Text="Nick:"></asp:Label>
                                     </strong></td>
                                 <td>
                                     <asp:Label ID="LB_nick" runat="server" Text='<%# Bind("nick") %>'></asp:Label>

@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
 using Datos;
+using System.Collections;
 
 public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 {
@@ -23,7 +24,34 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         Response.Cache.SetNoStore();
 
-        
+        Int32 idioma = 1;
+        Int32 id_pagina = 23;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
+
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+        LB_titAutor.Text = compIdioma["LB_titAutor"].ToString();
+        LB_titCont.Text = compIdioma["LB_titCont"].ToString();
+        LB_puntos.Text = compIdioma["LB_titAutor"].ToString();
+        LB_comentar.Text = compIdioma["LB_comentar"].ToString();
+        BT_reporte.Text = compIdioma["BT_reporte"].ToString();
+        BT_comentar.Text = compIdioma["BT_comentar"].ToString();
+        B_volver.Text = compIdioma["BT_volver"].ToString();
+
+
         U_userCrearpost doc = new U_userCrearpost();
         L_Usercs log = new L_Usercs();
         D_User dac = new D_User();
@@ -103,6 +131,32 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
 
     }
+
+    protected void GV_comentarios_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+     
+        try
+        {
+            try
+            {
+                ((Label)e.Row.FindControl("LB_reportar")).Text = ((Hashtable)Session["mensajes"])["LB_reportar"].ToString();
+                ((Label)e.Row.FindControl("LB_comentar")).Text = ((Hashtable)Session["mensajes"])["LB_com"].ToString();
+                ((Button)e.Row.FindControl("BT_reportar")).Text = ((Hashtable)Session["mensajes"])["BT_reportar"].ToString();
+
+            }
+            catch (Exception exe)
+            {
+                ((Button)e.Row.FindControl("BT_reportar")).Text = ((Hashtable)Session["mensajes"])["LB_reportar"].ToString();
+                
+
+            }
+        }
+        catch (Exception exx)
+        {
+        }
+
+    }
+
 
     protected void Bt_uno_Click(object sender, EventArgs e)
     {
@@ -526,6 +580,8 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         Response.Redirect(dat.Link_observador);
     }
+
+
 
 
 }

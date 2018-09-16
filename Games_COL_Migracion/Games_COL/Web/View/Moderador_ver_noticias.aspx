@@ -15,7 +15,7 @@
             width: 50%;
         }
     </style>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
     <title></title>
     <link href="Styles/Estilos.css" rel="stylesheet" type="text/css" />
 </head>

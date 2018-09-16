@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterAdministrador.master" AutoEventWireup="true" CodeFile="~/Controller/Administrador_reportar_post.aspx.cs" Inherits="View_Default" %>
+﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/MasterAdministrador.master"  AutoEventWireup="true" CodeFile="~/Controller/Administrador_reportar_post.aspx.cs" Inherits="View_Default" %>
 
 
 

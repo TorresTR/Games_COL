@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 using Utilitarios;
 using Logica;
 using Datos;
-
+using System.Collections;
 
 public partial class View_Default : System.Web.UI.Page
 {
@@ -16,6 +16,32 @@ public partial class View_Default : System.Web.UI.Page
     {
         
         Response.Cache.SetNoStore();
+        Int32 idioma = 1;
+        Int32 id_pagina = 58;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
+
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+        LB_ingresar.Text = compIdioma["LB_ingresar"].ToString();
+        L_UserName.Text = compIdioma["L_UserName"].ToString();
+        L_contraseña.Text = compIdioma["L_contraseña"].ToString();
+        HL_recuperar.Text = compIdioma["HL_recuperar"].ToString();
+        BT_Ingresar.Text = compIdioma["BT_ingresar"].ToString();
+        BT_registro.Text = compIdioma["BT_registro"].ToString();
+        B_volver.Text = compIdioma["B_volver"].ToString();
 
     }
 

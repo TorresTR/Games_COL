@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -13,7 +14,31 @@ public partial class View_Crear_post : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        Int32 idioma = 1;
+        Int32 id_pagina = 5;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
 
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+        LB_etiqueta.Text = compIdioma["LB_etiqueta"].ToString();
+        LB_Contenido.Text = compIdioma["LB_contenido"].ToString();
+        BT_guardar.Text = compIdioma["BT_guardar"].ToString();
+        BT_vistaPrevia.Text = compIdioma["BT_vistaPrevia"].ToString();
+        B_volver.Text = compIdioma["B_volver"].ToString();
+        LB_tiitulo.Text = compIdioma["LB_titulo"].ToString();
 
         Response.Cache.SetNoStore();
         L_Usercs dac = new L_Usercs();

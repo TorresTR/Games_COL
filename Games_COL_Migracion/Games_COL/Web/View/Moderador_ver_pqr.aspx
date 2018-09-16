@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterModerador.master" AutoEventWireup="true" CodeFile="~/Controller/Moderador_ver_pqr.aspx.cs" Inherits="View_Moderador_ver_pqr" %>
+﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/MasterModerador.master" AutoEventWireup="true" CodeFile="~/Controller/Moderador_ver_pqr.aspx.cs" Inherits="View_Moderador_ver_pqr" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -11,7 +11,7 @@
     <table class="w-100">
         <tr>
             <td>
-                <asp:DataList ID="DL_PQR" runat="server" DataSourceID="ODS_pqr">
+                <asp:DataList ID="DL_PQR" runat="server" DataSourceID="ODS_pqr" OnItemDataBound="DL_noticias_RowDataBound">
                     <ItemTemplate>
                         <table class="w-100">
                             <tr>

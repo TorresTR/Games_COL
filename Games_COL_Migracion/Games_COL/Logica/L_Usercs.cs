@@ -1871,7 +1871,7 @@ namespace Logica
             return pqr;
         }
 
-        public string Token(System.Data.DataTable validez)
+        public string Token(System.Data.DataTable validez, string r1, string r2, string r3)
         {
 
             D_User dao = new D_User();
@@ -1897,15 +1897,15 @@ namespace Logica
                 String mensaje = "su link de acceso es: " + "http://18.222.174.227/View/Recuperar_contra.aspx?" + userToken;
                 correo.enviarCorreo(token.Correo, userToken, mensaje);
 
-                men = "Su nueva contraseña ha sido enviada a su correo";
+                men = r1;
             }
             else if (int.Parse(validez.Rows[0]["id"].ToString()) == -2)
             {
-                men = "Ya exisite un token, por favor verifique su correo.";
+                men = r2;
             }
             else
             {
-                men = "El usurio digitado no existe";
+                men = r3;
             }
             return men;
         }

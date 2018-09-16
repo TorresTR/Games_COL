@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterModerador.master" AutoEventWireup="true" CodeFile="~/Controller/Moderador_atencion_bloquer_post.aspx.cs" Inherits="View_Moderador_atencion_bloquer_post" %>
+﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/MasterModerador.master" AutoEventWireup="true" CodeFile="~/Controller/Moderador_atencion_bloquer_post.aspx.cs" Inherits="View_Moderador_atencion_bloquer_post" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -20,7 +20,7 @@
                 
                 
         <div>
-            <asp:DataList ID="DL_PostReport" runat="server" DataSourceID="ODS_obtenerPostReportados" CssClass="auto-style3" Width="362px">
+            <asp:DataList ID="DL_PostReport" runat="server" DataSourceID="ODS_obtenerPostReportados" CssClass="auto-style3" Width="362px" OnItemDataBound="DL_noticias_RowDataBound">
         <ItemTemplate>
             <br />
             <table class="auto-style4">

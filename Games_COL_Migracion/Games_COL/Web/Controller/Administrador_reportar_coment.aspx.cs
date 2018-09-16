@@ -1,5 +1,6 @@
 ﻿using Logica;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -13,7 +14,30 @@ public partial class View_Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+        Int32 idioma = 1;
+        Int32 id_pagina = 16;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
 
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+        LB_titReportCom.Text = compIdioma["LB_titReportCom"].ToString();
+        LB_titComentRepor.Text = compIdioma["LB_titComentRepor"].ToString();
+        LB_titMotivo.Text = compIdioma["LB_titMotivo"].ToString();
+        BT_reportar.Text = compIdioma["BT_reportar"].ToString();
+        BT_volver.Text = compIdioma["BT_volver"].ToString();
 
         ClientScriptManager cm = this.ClientScript;
         U_comentarios doc = new U_comentarios();
