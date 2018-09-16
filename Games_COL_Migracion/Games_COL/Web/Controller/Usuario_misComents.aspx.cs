@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -13,6 +14,30 @@ public partial class View_Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+        Int32 idioma = 1;
+        Int32 id_pagina = 71;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
+
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+
+        LB_titAutor.Text = compIdioma["LB_titAutor"].ToString();
+        LB_titContenido.Text = compIdioma["LB_titContenido"].ToString();
+        BT_volver.Text = compIdioma["BT_volver"].ToString();
+
 
         U_userCrearpost doc = new U_userCrearpost();
         L_Usercs dac = new L_Usercs();
@@ -33,6 +58,27 @@ public partial class View_Default : System.Web.UI.Page
 
         GV_comentariosuser.DataSource = dac.dataEliminarcoment(dato,dato2);
         GV_comentariosuser.DataBind();
+    }
+
+    protected void GV_Idioma_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        try
+        {
+            try
+            {
+                ((Label)e.Row.FindControl("LB_eliminar")).Text = ((Hashtable)Session["mensajes"])["LB_eliminar"].ToString();
+                ((Label)e.Row.FindControl("LB_coment")).Text = ((Hashtable)Session["mensajes"])["LB_coment"].ToString();
+            }
+            catch (Exception exe)
+            {
+
+                ((Button)e.Row.FindControl("BT_eliminar")).Text  = ((Hashtable)Session["mensajes"])["BT_eliminar"].ToString();
+            }
+        }
+        catch (Exception exx)
+        {
+        }
+
     }
 
     protected void BT_eliminar_Click(object sender, EventArgs e)

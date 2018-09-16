@@ -72,7 +72,25 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td class="auto-style3">
-                        <asp:GridView ID="GV_comentarios" runat="server">
+                        <asp:GridView ID="GV_comentarios" runat="server" AutoGenerateColumns="False" OnRowDataBound="GV_Idioma_RowDataBound">
+                            <Columns>
+                                <asp:TemplateField HeaderText="Comentario">
+                                    <HeaderTemplate>
+                                        <asp:Label ID="LB_coment" runat="server"></asp:Label>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="LB_comentario" runat="server" Text='<%# Bind("comentarios") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="id">
+                                    <HeaderTemplate>
+                                        <asp:Label ID="LB_titId" runat="server" Visible="False"></asp:Label>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id") %>' Visible="False"></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
                         </asp:GridView>
                     </td>
                     <td>&nbsp;</td>

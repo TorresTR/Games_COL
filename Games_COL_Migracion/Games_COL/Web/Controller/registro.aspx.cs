@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -20,6 +21,35 @@ public partial class View_registro : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+        Int32 idioma = 1;
+        Int32 id_pagina = 57;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
+
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+        LB_titReg.Text = compIdioma["LB_titReg"].ToString();
+        LB_nombre.Text = compIdioma["LB_nombre"].ToString();
+        LB_nick.Text = compIdioma["LB_nick"].ToString();
+        LB_correo.Text = compIdioma["LB_correo"].ToString();
+        LB_contra.Text = compIdioma["LB_contra"].ToString();
+        LB_confirma.Text = compIdioma["LB_confirma"].ToString();
+        B_registrar.Text = compIdioma["B_registrar"].ToString();
+        B_volver.Text = compIdioma["B_volver"].ToString();
+
+
     }
 
     protected void B_registrar_Click(object sender, EventArgs e)

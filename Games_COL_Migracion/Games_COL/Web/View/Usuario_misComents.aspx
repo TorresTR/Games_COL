@@ -24,9 +24,12 @@
         </tr>
         <tr>
             <td>
-                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id" AutoGenerateColumns="False" >
+                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id" AutoGenerateColumns="False" OnRowDataBound="GV_Idioma_RowDataBound">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Eliminar">
+                                            <HeaderTemplate>
+                                                <asp:Label ID="LB_eliminar" runat="server"></asp:Label>
+                                            </HeaderTemplate>
                                             <ItemTemplate>
                                                 &nbsp;<asp:Button ID="BT_eliminar" runat="server" CssClass="btn btn-outline-danger" OnClick="BT_eliminar_Click" Text="Eliminar" />
                                             </ItemTemplate>
@@ -37,6 +40,9 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Comentarios">
+                                            <HeaderTemplate>
+                                                <asp:Label ID="LB_coment" runat="server"></asp:Label>
+                                            </HeaderTemplate>
                                             <ItemTemplate>
                                                 <asp:Label ID="LB_comentario" runat="server" Text='<%# Bind("comentarios") %>'></asp:Label>
                                             </ItemTemplate>

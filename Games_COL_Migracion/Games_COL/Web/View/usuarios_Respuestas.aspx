@@ -16,9 +16,12 @@
         <tr>
             <td class="auto-style2">
                 
-                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id" AutoGenerateColumns="False"  >
+                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id" AutoGenerateColumns="False" OnRowDataBound="GV_Idioma_RowDataBound" >
                                     <Columns>
                                         <asp:TemplateField HeaderText="Reportar">
+                                            <HeaderTemplate>
+                                                <asp:Label ID="LB_verMas" runat="server"></asp:Label>
+                                            </HeaderTemplate>
                                             <ItemTemplate>
                                                 <asp:Button ID="BT_reportar" runat="server" Text="Ver Mas" CommandName="reportar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClick="BT_reportar_Click" CssClass="btn btn-outline-success"/>
                                                 <br />
@@ -26,11 +29,17 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Autor">
+                                            <HeaderTemplate>
+                                                <asp:Label ID="LB_titAutor" runat="server"></asp:Label>
+                                            </HeaderTemplate>
                                             <ItemTemplate>
                                                 <asp:Label ID="LB_autor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Solicitud">
+                                            <HeaderTemplate>
+                                                <asp:Label ID="LB_titSol" runat="server"></asp:Label>
+                                            </HeaderTemplate>
                                             <ItemTemplate>
                                                 <asp:Label ID="LB_solicutud" runat="server" Text='<%# Bind("solicitud") %>'></asp:Label>
                                             </ItemTemplate>

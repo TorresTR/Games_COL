@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/usuarios_ver_noticias.aspx.cs" Inherits="View_usuarios_ver_noticias" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/usuarios_ver_noticias.aspx.cs" Inherits="View_usuarios_ver_noticias" %>
 
 <!DOCTYPE html>
 

@@ -15,7 +15,7 @@
     </tr>
     <tr>
         <td>
-    <asp:DataList ID="DL_post" runat="server" >
+    <asp:DataList ID="DL_post" runat="server" OnItemDataBound="DL_post_RowDataBound">
         <ItemTemplate>
             <pages validateRequest="false" enableEventValidation="false" />
             <br />

@@ -5,7 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table class="w-100">
     <tr>
-        <td class="text-center">INFORMACION</td>
+        <td class="text-center">
+            <asp:Label ID="LB_titulo" runat="server"></asp:Label>
+        </td>
     </tr>
     <tr>
         <td>&nbsp;</td>

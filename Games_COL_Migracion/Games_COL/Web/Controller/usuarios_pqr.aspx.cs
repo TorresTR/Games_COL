@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +13,34 @@ public partial class View_usuarios_pqr : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
         Response.Cache.SetNoStore();
+
+        Int32 idioma = 1;
+        Int32 id_pagina = 78;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
+
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+        B_volver.Text = compIdioma["B_volver"].ToString();
+        LB_solicitud.Text = compIdioma["LB_solicitud"].ToString();
+        BT_envio.Text = compIdioma["BT_envio"].ToString();
+        LB_solicitud.Text = compIdioma["LB_solicitud"].ToString();
+        LB_tipoSolicitud.Text = compIdioma["LB_tipoSolicitud"].ToString();
+
     }
 
     protected void BT_envio_Click(object sender, EventArgs e)

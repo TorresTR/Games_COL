@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -14,6 +15,30 @@ public partial class View_usuario_editar : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
+        Int32 idioma = 1;
+        Int32 id_pagina = 68;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
+
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+
+        Bt_editarCk.Text = compIdioma["BT_editarck"].ToString();
+        BT_editar.Text = compIdioma["BT_editar"].ToString();
+        BT_volver.Text = compIdioma["BT_volver"].ToString();
+        LB_autor.Text = compIdioma["LB_autor"].ToString();
 
 
         L_Usercs dac = new L_Usercs();

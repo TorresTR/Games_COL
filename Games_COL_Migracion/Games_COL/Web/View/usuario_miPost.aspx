@@ -15,34 +15,46 @@
             <td class="auto-style2">
                 
                     <ContentTemplate>
-                        <asp:GridView ID="GV_miPost" runat="server" AutoGenerateColumns="False">
-                            <Columns>
-                                <asp:TemplateField HeaderText="Editar">
-                                    <ItemTemplate>
-                                        <asp:Button ID="BT_editar" runat="server" CssClass="btn btn-outline-info" OnClick="BT_editar_Click" Text="Editar"  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"/>
-                                        <br />
-                                        <asp:Label ID="LB_id" runat="server" Text='<%# Eval("id") %>' Visible="False"></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Eliminar">
-                                    <ItemTemplate>
-                                        <asp:Button ID="BT_eliminar" runat="server"  CssClass="btn btn-outline-info" Text="Eliminar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClick="BT_eliminar_Click" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Titulo">
-                                    <ItemTemplate>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <asp:Label ID="LB_titulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Etiqueta">
-                                    <ItemTemplate>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <asp:Label ID="LB_etiqueta" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                        </asp:GridView>
+                            <asp:GridView ID="GV_miPost" runat="server" AutoGenerateColumns="False" OnRowDataBound="GV_Idioma_RowDataBound">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Editar">
+                                        <HeaderTemplate>
+                                            <asp:Label ID="LB_editar" runat="server"></asp:Label>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:Button ID="BT_editar" runat="server" CssClass="btn btn-outline-info" OnClick="BT_editar_Click" Text="Editar"  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"/>
+                                            <br />
+                                            <asp:Label ID="LB_id" runat="server" Text='<%# Eval("id") %>' Visible="False"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Eliminar">
+                                        <HeaderTemplate>
+                                            <asp:Label ID="LB_eliminar" runat="server"></asp:Label>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:Button ID="BT_eliminar" runat="server"  CssClass="btn btn-outline-info" Text="Eliminar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClick="BT_eliminar_Click" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Titulo">
+                                        <HeaderTemplate>
+                                            <asp:Label ID="LB_tit" runat="server"></asp:Label>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <asp:Label ID="LB_titulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Etiqueta">
+                                        <HeaderTemplate>
+                                            <asp:Label ID="LB_eti" runat="server"></asp:Label>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <asp:Label ID="LB_etiqueta" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
                     </ContentTemplate>
                 
             </td>

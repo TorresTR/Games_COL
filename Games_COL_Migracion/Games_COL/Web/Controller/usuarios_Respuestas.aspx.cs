@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,8 +18,30 @@ public partial class View_usuarios_Respuestas : System.Web.UI.Page
 
         L_Usercs dac = new L_Usercs();
         U_respuestasPqr dat = new U_respuestasPqr();
+        Int32 idioma = 1;
+        Int32 id_pagina = 80;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
 
-        
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+        BT_volver.Text = compIdioma["BT_volver"].ToString();
+       
+
+
+
 
         int dato = int.Parse(Session["user_id"].ToString());
 
@@ -25,6 +49,28 @@ public partial class View_usuarios_Respuestas : System.Web.UI.Page
 
         GV_comentariosuser.DataSource = dac.respuestaPqr(dat);
         GV_comentariosuser.DataBind();
+    }
+
+    protected void GV_Idioma_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        try
+        {
+            try
+            {
+                ((Label)e.Row.FindControl("LB_verMas")).Text = ((Hashtable)Session["mensajes"])["LB_verMas"].ToString();
+                ((Label)e.Row.FindControl("LB_titautor")).Text = ((Hashtable)Session["mensajes"])["LB_autor"].ToString();
+                ((Label)e.Row.FindControl("LB_titSol")).Text = ((Hashtable)Session["mensajes"])["LB_titSol"].ToString();
+            }
+            catch (Exception exe)
+            {
+
+                ((Button)e.Row.FindControl("BT_reportar")).Text  = ((Hashtable)Session["mensajes"])["BT_reportar"].ToString();
+            }
+        }
+        catch (Exception exx)
+        {
+        }
+
     }
 
     protected void BT_reportar_Click(object sender, EventArgs e)

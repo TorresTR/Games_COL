@@ -7,12 +7,36 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilitarios;
 using Logica;
+using System.Collections;
 
 public partial class View_Observador_ver_noticia : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        Int32 idioma = 1;
+        Int32 id_pagina = 53;
+        try
+        {
+            idioma = Int32.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+            idioma = 1;
+        }
+
+        L_Usercs Idio = new L_Usercs();
+        DataTable info = Idio.traducir(id_pagina, idioma);
+
+        Hashtable compIdioma = new Hashtable();
+        Session["mensajes"] = compIdioma;
+        compIdioma = Idio.hastableIdioma(info, compIdioma);
+
+
+        B_volver.Text = compIdioma["B_volver"].ToString();
+        LB_titAutor.Text = compIdioma["LB_titAutor"].ToString();
+        LB_titContenido.Text = compIdioma["LB_titContenido"].ToString();
+
+
         U_userCrearpost doc = new U_userCrearpost();
         L_Usercs dac = new L_Usercs();
 

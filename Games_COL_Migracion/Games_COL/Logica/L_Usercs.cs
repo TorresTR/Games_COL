@@ -1839,7 +1839,7 @@ namespace Logica
         }
 
       
-        public U_Interaccion solicitudModer(U_Datos datos, System.Data.DataTable validez)
+        public U_Interaccion solicitudModer(U_Datos datos, System.Data.DataTable validez,string r1,string r2)
         {
             D_User dao = new D_User();
             U_Interaccion inter = new U_Interaccion();
@@ -1847,12 +1847,12 @@ namespace Logica
             if (int.Parse(validez.Rows[0]["puntos"].ToString()) >= 3700)
             {
                 dao.insertarSolicitud(datos);
-                inter.Mensaje = "Solicitud enviada con exito";
+                inter.Mensaje = r1;
                 inter.Estado = false;
             }
             else
             {
-                inter.Mensaje = "No cuenta con los requisitos necesarios para realizar la solicitud";
+                inter.Mensaje = r2;
                 inter.Estado = false;
             }
             return inter;
