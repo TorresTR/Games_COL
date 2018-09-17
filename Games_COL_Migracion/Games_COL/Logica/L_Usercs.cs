@@ -270,7 +270,18 @@ namespace Logica
             return dato;
         }
 
-
+        public int comparaIdioma(DataTable dat,int c)
+        {
+            foreach (DataRow row in dat.Rows)
+            {
+                if ( c == int.Parse(dat.Rows[0]["id"].ToString())) {
+                    break;
+                } else {
+                    c = 1;
+                }
+            }
+            return c;
+        }
         public U_comentarios ObtenerComentarioreportar(int c)
         {
             U_comentarios dat = new U_comentarios();
@@ -2413,7 +2424,7 @@ namespace Logica
         {
             DataTable prueba = new DataTable();
             D_User idioma = new D_User();
-            prueba = idioma.ObtenerIdio();
+            prueba = idioma.idiomas();
             return prueba;
         }
         public DataTable traducir(Int32  FORMULARIO, int x)
@@ -2445,6 +2456,24 @@ namespace Logica
 
         }
 
+        public DataTable formularios()
+        {
+
+            D_User llamar = new D_User();
+
+            DataTable dat = llamar.formularios();
+            return dat;
+        }
+
+        public DataTable controles(int idio,int form)
+        {
+
+            D_User llamar = new D_User();
+
+            DataTable dat = llamar.controles(idio,form);
+            return dat;
+        }
+
 
         public Hashtable hastableIdioma(DataTable info, Hashtable compIdioma)
         {
@@ -2453,6 +2482,18 @@ namespace Logica
                 compIdioma.Add(info.Rows[i]["nombre"].ToString(), info.Rows[i]["valor"].ToString());
             }
             return compIdioma;
+        }
+
+        public void eliminarIdioma(int i)
+        {
+            D_User log = new D_User();
+            log.eliminarIdioma(i);
+        }
+
+        public void editarCont(int id, string cont)
+        {
+            D_User datos = new D_User();
+            datos.modificarControles(cont,id);
         }
 
     }

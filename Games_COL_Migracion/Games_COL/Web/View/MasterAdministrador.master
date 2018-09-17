@@ -32,6 +32,7 @@
               <asp:Button ID="BT_solicitudes" runat="server" Text="Solicitudes" class="btn btn-secondary" OnClick="BT_solicitudes_Click"/>
               <asp:Button ID="BT_crear_noticia" runat="server" Text="Crear Noticia" class="btn btn-secondary" OnClick="BT_crear_noticia_Click"/>
               <asp:Button ID="BT_mi_noticia" runat="server" Text="Mi noticia" class="btn btn-secondary" OnClick="BT_mi_noticia_Click"/>
+              <asp:Button ID="BT_idioma" runat="server" OnClick="BT_idioma_Click" Text="Idioma" />
           </p>
           <table class="w-100">
               <tr>

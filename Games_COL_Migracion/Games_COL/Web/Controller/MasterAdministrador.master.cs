@@ -171,4 +171,9 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
 
         Response.Redirect("Administrador_miNoticia.aspx");
     }
+
+    protected void BT_idioma_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Administrador-idioma.aspx");
+    }
 }

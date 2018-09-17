@@ -24,7 +24,9 @@ public partial class View_Paguina_principal : System.Web.UI.MasterPage
         Int32 id_pagina = 62;
         try
         {
+
             idioma = Int32.Parse(Session["valor_ddl"].ToString());
+
         }
         catch
         {

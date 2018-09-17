@@ -15,16 +15,24 @@ public partial class View_Observador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
-            Int32 idioma = 1;
+         L_Usercs Idio = new L_Usercs();
+
+        Int32 idioma = 1;
             Int32 id_pagina = 50;
+        DataTable tabla = Idio.obtenerIdioma();
+
+        try {
+            Session["valor_ddl"] = DDL_Idioma.SelectedValue.ToString() ;
+            int c = int.Parse(Session["valor_ddl"].ToString());
+            Session["valor_ddl"]=Idio.comparaIdioma(tabla, c);
+        }
+        catch
+        {
+            idioma = 1;
+        }
+            
 
 
-
-            Session["valor_ddl"] = DDL_Idioma.SelectedValue.ToString();
-
-
-            L_Usercs Idio = new L_Usercs();
             DataTable info = Idio.traducir(id_pagina, idioma);
             Hashtable compIdioma = new Hashtable();
             Session["mensajes"] = compIdioma;
@@ -222,8 +230,16 @@ public partial class View_Observador : System.Web.UI.Page
         Int32 index = Int32.Parse(DDL_Idioma.SelectedValue.ToString());
         L_Usercs cambiar_cultura = new L_Usercs();
         String cultura = cambiar_cultura.select_idioma(index);
-        Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultura);
-        Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultura);
+        try {
+            
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultura);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultura);
+        }
+        catch
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('El idioma seleccionado aun se esta implementando gracias');", true);
+        }
+       
         Session["mensajes"] = index;
         Int32 id_pagina = 50;
         try
