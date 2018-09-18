@@ -16,15 +16,14 @@ public partial class View_Observador : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
          L_Usercs Idio = new L_Usercs();
+        U_Datos dato = new U_Datos();
 
         Int32 idioma = 1;
             Int32 id_pagina = 50;
         DataTable tabla = Idio.obtenerIdioma();
 
         try {
-            Session["valor_ddl"] = DDL_Idioma.SelectedValue.ToString() ;
-            int c = int.Parse(Session["valor_ddl"].ToString());
-            Session["valor_ddl"]=Idio.comparaIdioma(tabla, c);
+            Session["valor_ddl"] = DDL_Idioma.SelectedValue.ToString();
         }
         catch
         {

@@ -2818,6 +2818,8 @@ namespace Datos
             return Post;
         }
 
+      
+
         public DataTable eliminarIdioma(int idioma)
         {
             DataTable Post = new DataTable();
@@ -2877,6 +2879,37 @@ namespace Datos
                 }
             }
             return Post;
+        }
+
+        public DataTable insertarIdioma(string idioma,string terminacion)
+        {
+            DataTable Documentos = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_insertar_idioma", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_idioma", NpgsqlDbType.Text).Value = idioma;
+                dataAdapter.SelectCommand.Parameters.Add("_terminacion", NpgsqlDbType.Text).Value = terminacion;
+                
+
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                conection.Open();
+                dataAdapter.Fill(Documentos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Documentos;
         }
 
     }

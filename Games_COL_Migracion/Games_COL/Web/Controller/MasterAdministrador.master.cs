@@ -47,6 +47,7 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
         LB_puntos.Text = compIdioma["LB_puntos"].ToString();
         LB_rango.Text = compIdioma["LB_rango"].ToString();
         BT_cerrar.Text = compIdioma["BT_cerrar"].ToString();
+        BT_idioma.Text = compIdioma["BT_idioma"].ToString();
 
 
         D_User us = new D_User();

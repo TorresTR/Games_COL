@@ -2474,6 +2474,16 @@ namespace Logica
             return dat;
         }
 
+        public DataTable insertarIdioma(string idioma, string terminacion)
+        {
+
+            D_User llamar = new D_User();
+
+            DataTable dat = llamar.insertarIdioma(idioma, terminacion);
+            return dat;
+        }
+
+
 
         public Hashtable hastableIdioma(DataTable info, Hashtable compIdioma)
         {

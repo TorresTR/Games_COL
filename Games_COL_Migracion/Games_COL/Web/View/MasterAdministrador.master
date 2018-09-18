@@ -22,7 +22,7 @@
 
       <div class="collapse navbar-collapse" id="navbarColor02">
           <p>
-              <asp:Image ID="Image1" runat="server" ImageUrl="~/Img/logo.jpg" />
+              <asp:Image ID="Image1" runat="server" ImageUrl="~/Img/logo.jpg" Width="213px" />
               <asp:Button ID="BT_crearPost" runat="server" Text="Crear Post" OnClick="BT_crear_port_Click"  class="btn btn-secondary" Width="106px"/>
               <asp:Button ID="BT_verPqr" runat="server" Text="Ver PQR" class="btn btn-secondary" OnClick="BT_verPqr_Click"/>
               <asp:Button ID="BT_listaUser" runat="server" Text="Listado usuarios" class="btn btn-secondary" OnClick="BT_listaUser_Click"/>
@@ -32,7 +32,7 @@
               <asp:Button ID="BT_solicitudes" runat="server" Text="Solicitudes" class="btn btn-secondary" OnClick="BT_solicitudes_Click"/>
               <asp:Button ID="BT_crear_noticia" runat="server" Text="Crear Noticia" class="btn btn-secondary" OnClick="BT_crear_noticia_Click"/>
               <asp:Button ID="BT_mi_noticia" runat="server" Text="Mi noticia" class="btn btn-secondary" OnClick="BT_mi_noticia_Click"/>
-              <asp:Button ID="BT_idioma" runat="server" OnClick="BT_idioma_Click" Text="Idioma" />
+              <asp:Button ID="BT_idioma" runat="server" OnClick="BT_idioma_Click" class="btn btn-secondary"  Text="Idioma" />
           </p>
           <table class="w-100">
               <tr>
