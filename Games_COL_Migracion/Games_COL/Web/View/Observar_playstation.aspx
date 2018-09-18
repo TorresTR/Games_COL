@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Paguina_principal.master" AutoEventWireup="true" CodeFile="~/Controller/Observar_playstation.aspx.cs" Inherits="View_Observar_playstation" %>
+﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/Paguina_principal.master" AutoEventWireup="true" CodeFile="~/Controller/Observar_playstation.aspx.cs" Inherits="View_Observar_playstation" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
      <style type="text/css">

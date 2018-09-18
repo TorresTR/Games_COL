@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/Administrador_noticia.aspx.cs" Inherits="View_Administrador_noticia" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/Administrador_noticia.aspx.cs" Inherits="View_Administrador_noticia" %>
 
 <%@ Register Assembly="CKEditor.NET"  Namespace="CKEditor.NET" TagPrefix="CKEditor"%>
 

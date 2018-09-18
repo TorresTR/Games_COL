@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterAdministrador.master" AutoEventWireup="true" CodeFile="~/Controller/Administrador_agregar_idioma.aspx.cs" Inherits="View_Default" %>
+﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/MasterAdministrador.master" AutoEventWireup="true" CodeFile="~/Controller/Administrador_agregar_idioma.aspx.cs" Inherits="View_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -19,6 +19,8 @@
                 <asp:TextBox ID="TB_terminacion" runat="server"></asp:TextBox>
 &nbsp;&nbsp;
                 <asp:Button ID="BT_agregar" runat="server" OnClick="BT_agregar_Click" Text="Agregar" CssClass="btn btn-outline-success" />
+                <br />
+                <asp:Label ID="LB_idIdioma" runat="server"></asp:Label>
             </td>
             <td>
                  <script type="text/javascript">
@@ -46,20 +48,27 @@
 &nbsp;
                 <asp:Button ID="BT_traduccion" runat="server" Text="Aceptar" CssClass="btn btn-outline-success" OnClick="BT_traduccion_Click" />
 &nbsp;<asp:Label ID="LB_idform" runat="server" Visible="False"></asp:Label>
+                 <asp:Label ID="LB_control" runat="server"></asp:Label>
             </td>
         </tr>
         <tr>
             <td colspan="2">
-            <asp:GridView ID="GV_agregar" runat="server" AutoGenerateColumns="False" DataKeyNames="id,contenido" PageIndex="1" PageSize="1"  OnRowDataBound="GV_Idioma_RowDataBound">
+            <asp:GridView ID="GV_agregar" runat="server" AutoGenerateColumns="False" DataKeyNames="id,contenido,id_form,control"  OnRowDataBound="GV_Idioma_RowDataBound">
                         <Columns>
                             <asp:TemplateField HeaderText="formulario">
+                                <HeaderTemplate>
+                                    <asp:Label ID="Label1" runat="server" Visible="true"></asp:Label>
+                                </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="LB_formulario" runat="server" Text='<%# Bind("formulario") %>' Visible="False"></asp:Label>
+                                    <asp:Label ID="LB_formulario" runat="server" Text='<%# Bind("formulario") %>' Visible="true"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="control">
+                                <HeaderTemplate>
+                                    <asp:Label ID="Label1" runat="server" Visible="true"></asp:Label>
+                                </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="LB_control" runat="server" Text='<%# Bind("control") %>' Visible="False"></asp:Label>
+                                    <asp:Label ID="LB_control" runat="server" Text='<%# Bind("control") %>' Visible="true"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="contenido">
@@ -71,18 +80,27 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="id_formulario">
+                                <HeaderTemplate>
+                                    <asp:Label ID="Label1" runat="server" Visible="true"></asp:Label>
+                                </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="LB_idForm" runat="server" Text='<%# Bind("id_form") %>' Visible="False"></asp:Label>
+                                    <asp:Label ID="LB_idForm" runat="server" Text='<%# Bind("id_form") %>' Visible="true"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="idioma">
+                                <HeaderTemplate>
+                                    <asp:Label ID="Label1" runat="server" Visible="true"></asp:Label>
+                                </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="LB_idioma" runat="server" Text='<%# Bind("idioma") %>' Visible="False"></asp:Label>
+                                    <asp:Label ID="LB_idioma" runat="server" Text='<%# Bind("idioma") %>' Visible="true"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="id">
+                                <HeaderTemplate>
+                                    <asp:Label ID="Label1" runat="server" Visible="true"></asp:Label>
+                                </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="LB_id0" runat="server" Text='<%# Bind("id") %>' Visible="False"></asp:Label>
+                                    <asp:Label ID="LB_id0" runat="server" Text='<%# Bind("id") %>' Visible="true"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Editar">

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/Administrador_verpqrCompleto.aspx.cs" Inherits="View_Administrador_verpqrCompleto" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/Administrador_verpqrCompleto.aspx.cs" Inherits="View_Administrador_verpqrCompleto" %>
 
 <!DOCTYPE html>
 

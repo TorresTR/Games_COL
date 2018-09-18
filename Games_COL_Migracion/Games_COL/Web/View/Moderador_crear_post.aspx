@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/Moderador_crear_post.aspx.cs" Inherits="View_Moderador_crear_post" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/Moderador_crear_post.aspx.cs" Inherits="View_Moderador_crear_post" %>
 
 <%@ Register Assembly="CKEditor.NET"  Namespace="CKEditor.NET" TagPrefix="CKEditor"%>
 

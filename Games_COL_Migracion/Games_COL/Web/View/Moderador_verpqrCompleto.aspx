@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/Moderador_verpqrCompleto.aspx.cs" Inherits="View_Moderador_verpqrCompleto" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/Moderador_verpqrCompleto.aspx.cs" Inherits="View_Moderador_verpqrCompleto" %>
 
 <!DOCTYPE html>
 

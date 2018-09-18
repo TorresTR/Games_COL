@@ -71,6 +71,9 @@ public partial class View_Default : System.Web.UI.Page
         string idioma = TB_idioma.Text;
         string terminacion = TB_terminacion.Text;
         log.insertarIdioma(idioma,terminacion);
+        DataTable dat = log.ObtenerIdioE(idioma);
+        LB_idIdioma.Text = dat.Rows[0]["id"].ToString();
+
     }
 
     protected void DDL_traduir_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,10 +101,12 @@ public partial class View_Default : System.Web.UI.Page
         Int32 fila = row.RowIndex;
 
         int rowindex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
-        int id = Convert.ToInt32(GV_agregar.DataKeys[rowindex].Values["id_formulario"]);
+        int id = Convert.ToInt32(GV_agregar.DataKeys[rowindex].Values["id_form"]);
         string contenido = Convert.ToString(GV_agregar.DataKeys[rowindex].Values["contenido"]);
+        string control = Convert.ToString(GV_agregar.DataKeys[rowindex].Values["control"]);
         LB_idform.Text = id.ToString();
         LB_cont.Text = contenido;
+        LB_control.Text = control;
     }
 
     protected void BT_traduccion_Click(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false"  CodeFile="~/Controller/Administrador_verCompleto.aspx.cs" Inherits="Plantilla_Administrador_verCompleto" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" EnableEventValidation="false"  CodeFile="~/Controller/Administrador_verCompleto.aspx.cs" Inherits="Plantilla_Administrador_verCompleto" %>
 
 <!DOCTYPE html>
 

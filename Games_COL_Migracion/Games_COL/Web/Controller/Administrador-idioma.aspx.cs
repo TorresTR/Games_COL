@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
+using Utilitarios;
 
 public partial class View_Default : System.Web.UI.Page
 {
@@ -27,7 +28,7 @@ public partial class View_Default : System.Web.UI.Page
         {
             idioma = 1;
         }
-
+        
         L_Usercs Idio = new L_Usercs();
         DataTable info = Idio.traducir(id_pagina, idioma);
 
@@ -100,34 +101,44 @@ public partial class View_Default : System.Web.UI.Page
 
     protected void BT_eliminar_Click(object sender, EventArgs e)
     {
-
+       
+        int i;
+        int sesion=1;
         L_Usercs log = new L_Usercs();
-        int i = int.Parse(LB_idEli.Text);
-        log.eliminarIdioma(i);
-        DDL_IdiomaEl.DataBind();
+        try
+        {
+             i = int.Parse(LB_idEli.Text);
+            sesion = int.Parse(Session["valor_ddl"].ToString());
+        }
+        catch
+        {
+             i = 1;
+        }
         
+        U_Datos dato = log.comparaIdioma(i,sesion);
+        string mensaje = dato.Mensaje1;
+        ClientScript.RegisterStartupScript(this.GetType(), "alert", mensaje, true);
+        Session["valor_ddl"] = dato.Id;
+        LB_idEli.Text = "";
+        L_Usercs dac = new L_Usercs();
+        U_user datos = new U_user();
+        U_Datos val = new U_Datos();
+
+        datos.Session = Session.SessionID;
+        datos = dac.cerrarse(datos);
+
+        Session["user_id"] = null;
+
+
+        val.Sesion = null;
+        dac.validarCerrarsesion(val);
+
+        Response.Redirect(datos.Link_observador);
+
+
     }
 
-    protected void BT_editar_Click(object sender, EventArgs e)
-    {
-        TB_cont.Visible = true;
-        BT_guardar.Visible = true;
-      
- 
-        Button bt = (Button)sender;
-        TableCell tableCell = (TableCell)bt.Parent;
-        GridViewRow row = (GridViewRow)tableCell.Parent;
-        GV_controles.SelectedIndex = row.RowIndex;
-        Int32 fila = row.RowIndex;
-
-        int rowindex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
-        int id = Convert.ToInt32(GV_controles.DataKeys[rowindex].Values["id"]);
-        string contenido = Convert.ToString(GV_controles.DataKeys[rowindex].Values["contenido"]);
-
-        TB_cont.Text = contenido;
-        LB_id.Text = id.ToString();
-
-    }
+   
 
     protected void BT_guardar_Click(object sender, EventArgs e)
     {
@@ -154,11 +165,27 @@ public partial class View_Default : System.Web.UI.Page
 
     protected void BT_volver_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Adminisrador.aspx");
+        Response.Redirect("Administrador.aspx");
     }
 
     protected void BT_agregar_Click(object sender, EventArgs e)
     {
         Response.Redirect("Administrador_agregar_idioma.aspx");
+    }
+
+    protected void GV_controles_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if(e.CommandArgument == "edit")
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            int id = Convert.ToInt32(GV_controles.DataKeys[index].Value);
+        }
+    }
+
+    protected void GV_controles_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        GridViewRow row = GV_controles.SelectedRow;
+        int id = Convert.ToInt32(GV_controles.DataKeys[row.RowIndex].Values["id"]);
+        string contenido = Convert.ToString(GV_controles.DataKeys[row.RowIndex].Values["contenido"]);
     }
 }

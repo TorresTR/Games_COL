@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/VerPostCompleto.aspx.cs" Inherits="View_VerPostCompleto" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/VerPostCompleto.aspx.cs" Inherits="View_VerPostCompleto" %>
 
 <!DOCTYPE html>
 

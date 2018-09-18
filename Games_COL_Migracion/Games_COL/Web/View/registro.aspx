@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#"   AutoEventWireup="true" CodeFile="~/Controller/registro.aspx.cs" Inherits="View_registro" %>
+﻿<%@ Page Language="C#"  EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/registro.aspx.cs" Inherits="View_registro" %>
 
 <!DOCTYPE html>
 

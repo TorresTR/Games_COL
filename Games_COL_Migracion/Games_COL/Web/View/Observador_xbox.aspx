@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Paguina_principal.master" AutoEventWireup="true" CodeFile="~/Controller/Observador_xbox.aspx.cs" Inherits="View_Observador_xbox" %>
+﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/Paguina_principal.master" AutoEventWireup="true" CodeFile="~/Controller/Observador_xbox.aspx.cs" Inherits="View_Observador_xbox" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
      <style type="text/css">

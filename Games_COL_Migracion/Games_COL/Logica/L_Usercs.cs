@@ -33,6 +33,20 @@ namespace Logica
             return link; 
         }
 
+        public U_user cerrarse1(U_user datos)
+        {
+
+            D_User llamada = new D_User();
+            U_user link = new U_user();
+
+            llamada.cerrarSession(datos);
+
+            link.Link_observador = "Observador.aspx";
+
+            return link;
+        }
+
+
         public U_Datos validarCerrarsesion(U_Datos sesion) {
 
             U_Datos llamado = new U_Datos();
@@ -42,6 +56,19 @@ namespace Logica
                 llamado.Link = "Ingresar.aspx";
             }
             
+            return llamado;
+        }
+
+        public U_Datos validarCerrarsesion1(U_Datos sesion)
+        {
+
+            U_Datos llamado = new U_Datos();
+
+            if (sesion.Sesion == null)
+            {
+                llamado.Link = "Observador.aspx";
+            }
+
             return llamado;
         }
 
@@ -2483,6 +2510,16 @@ namespace Logica
             return dat;
         }
 
+        public DataTable ObtenerIdioE(string idioma)
+        {
+
+            D_User llamar = new D_User();
+
+            DataTable dat = llamar.ObtenerIdiomaEsp(idioma);
+            return dat;
+        }
+
+      
 
 
         public Hashtable hastableIdioma(DataTable info, Hashtable compIdioma)
@@ -2505,6 +2542,32 @@ namespace Logica
             D_User datos = new D_User();
             datos.modificarControles(cont,id);
         }
+
+        public U_Datos comparaIdioma(int i,int idioma)
+        {
+            U_Datos dato = new U_Datos();
+            
+            if (i == 1)
+            {
+                dato.Mensaje1 = "alert('No se puede eliminar el idioma por defecto');";
+                dato.Id = idioma;
+
+            }
+            else
+            {
+                dato.Mensaje1 = "alert('Idioma eliminado con exito');";
+                if (i == idioma)
+                {
+                    dato.Id = 1;
+                }
+                eliminarIdioma(i);
+
+            }
+            return dato;
+        }
+
+        
+
 
     }
 

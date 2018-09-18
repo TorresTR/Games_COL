@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" ValidateRequest="false" CodeFile="~/Controller/Crear_post.aspx.cs" Inherits="View_Crear_post" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" ValidateRequest="false" CodeFile="~/Controller/Crear_post.aspx.cs" Inherits="View_Crear_post" %>
 <%@ Register Assembly="CKEditor.NET"  Namespace="CKEditor.NET" TagPrefix="CKEditor"%>
 
 <!DOCTYPE html>

@@ -2912,5 +2912,35 @@ namespace Datos
             return Documentos;
         }
 
+        public DataTable ObtenerIdiomaEsp(string idioma)
+        {
+            DataTable Post = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_obtener_idio_esp", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_idioma", NpgsqlDbType.Text).Value = idioma;
+
+                conection.Open();
+                dataAdapter.Fill(Post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return Post;
+
+        }
+
     }
 }
