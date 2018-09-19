@@ -53,7 +53,7 @@
         </tr>
         <tr>
             <td colspan="2">
-            <asp:GridView ID="GV_agregar" runat="server" AutoGenerateColumns="False" DataKeyNames="id,contenido,id_form,control"  OnRowDataBound="GV_Idioma_RowDataBound">
+            <asp:GridView ID="GV_agregar" runat="server" AutoGenerateColumns="False" DataKeyNames="id,contenido,id_form,control">
                         <Columns>
                             <asp:TemplateField HeaderText="formulario">
                                 <HeaderTemplate>
@@ -109,6 +109,18 @@
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <asp:Button ID="BT_traducir" runat="server"  Text="Traducir" OnClick="BT_traducir_Click" CssClass="btn btn-outline-success" />
+                                    <br />
+                                     <asp:Label ID="LB_formu" runat="server" Text='<%# Eval("formulario") %>' Visible="False"></asp:Label>
+                                    <br />
+                                     <asp:Label ID="LB_contro" runat="server" Text='<%# Eval("control") %>' Visible="False"></asp:Label>
+                                     <br />
+                                     <asp:Label ID="LB_content" runat="server" Text='<%# Eval("contenido") %>' Visible="False"></asp:Label>
+                                     <br />
+                                     <asp:Label ID="LB_idF" runat="server" Text='<%# Eval("id_form") %>' Visible="False"></asp:Label>
+                                     <br />
+                                     <asp:Label ID="LB_idio" runat="server" Text='<%# Eval("idioma") %>' Visible="False"></asp:Label>
+                                     <br />
+                                     <asp:Label ID="LB_idd" runat="server" Text='<%# Eval("id") %>' Visible="False"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

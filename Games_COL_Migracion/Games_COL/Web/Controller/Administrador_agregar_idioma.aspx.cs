@@ -92,21 +92,21 @@ public partial class View_Default : System.Web.UI.Page
         TB_contenido.Visible = true;
         BT_traduccion.Visible = true;
 
+        Button bt = sender as Button;
+        GridViewRow grid = (GridViewRow)bt.NamingContainer;
+
+        Label formulario = (Label)grid.FindControl("LB_formu");
+        Label control = (Label)grid.FindControl("LB_contro");
+        Label content = (Label)grid.FindControl("LB_content");
+        Label Idformu = (Label)grid.FindControl("LB_idF");
+        Label idioma = (Label)grid.FindControl("LB_idio");
+        Label id = (Label)grid.FindControl("LB_idd");
 
 
-        Button bt = (Button)sender;
-        TableCell tableCell = (TableCell)bt.Parent;
-        GridViewRow row = (GridViewRow)tableCell.Parent;
-        GV_agregar.SelectedIndex = row.RowIndex;
-        Int32 fila = row.RowIndex;
 
-        int rowindex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
-        int id = Convert.ToInt32(GV_agregar.DataKeys[rowindex].Values["id_form"]);
-        string contenido = Convert.ToString(GV_agregar.DataKeys[rowindex].Values["contenido"]);
-        string control = Convert.ToString(GV_agregar.DataKeys[rowindex].Values["control"]);
-        LB_idform.Text = id.ToString();
-        LB_cont.Text = contenido;
-        LB_control.Text = control;
+        LB_idform.Text = Idformu.Text;
+        LB_cont.Text = content.Text;
+        LB_control.Text = control.Text;
     }
 
     protected void BT_traduccion_Click(object sender, EventArgs e)

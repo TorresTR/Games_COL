@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/MasterAdministrador.master" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/Administrador_miNoticia.aspx.cs" Inherits="View_Administrador_miNoticia" %>
+﻿<%@ Page Title="" Language="C#"  MasterPageFile="~/View/MasterAdministrador.master" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/Administrador_miNoticia.aspx.cs" Inherits="View_Administrador_miNoticia" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">

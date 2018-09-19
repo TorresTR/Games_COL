@@ -28,6 +28,35 @@
             height: 33px;
             width: 388px;
         }
+
+        .indicadorenlinea {
+            border-style: solid;
+            border-width: 2px;
+            width: 190px;
+            padding: 2px;
+        }
+        .muy_debil{
+            background-color:gray;
+            color:white;
+
+        }
+        .debil{
+            background-color:red;
+            color:white;
+        }
+        .media{
+            background-color:orange;
+            color:white;
+        }
+        .fuerte{
+            background-color:yellow;
+            color:white;
+        }
+        .irrompible{
+            background-color:green;
+            color:white;
+        }
+
         </style>
 </head>
 <body>
@@ -56,7 +85,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">&nbsp;</td>
+                    <td colspan="2">
+                        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                        </asp:ScriptManager>
+                    </td>
                 </tr>
                 <tr>
                     <td class="auto-style2">
@@ -111,6 +143,20 @@
                     <td class="auto-style5">
                         <asp:TextBox ID="TB_pass" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12" onkeyup = "keyUP(event.keyCode)" 
             onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                        <ajaxToolkit:PasswordStrength StrengthIndicatorType="BarIndicator" 
+                            ID="TB_pass_PasswordStrength" 
+                            runat="server" 
+                            BehaviorID="TB_pass_PasswordStrength" 
+                            TargetControlID="TB_pass" 
+                            MinimumLowerCaseCharacters="2" 
+                            MinimumNumericCharacters="2" 
+                            MinimumUpperCaseCharacters="1" 
+                            MinimumSymbolCharacters="1"
+                            PreferredPasswordLength="10" 
+                            DisplayPosition="RightSide" 
+                            BarBorderCssClass="indicadorenlinea"
+                            TextStrengthDescriptionStyles="muy_debil;debil;media;fuerte;irrompible"
+                            RequiresUpperAndLowerCaseCharacters="true"/>
                         <asp:RequiredFieldValidator ID="RFV_contraseña" runat="server" ControlToValidate="TB_pass" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                          <asp:RegularExpressionValidator ID="valitar_contra"
                             runat="server" 
@@ -128,6 +174,20 @@
                     <td class="auto-style5">
                         <asp:TextBox ID="TB_confirmapass" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12" onkeyup = "keyUP(event.keyCode)" 
             onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                        <ajaxToolkit:PasswordStrength StrengthIndicatorType="BarIndicator" 
+                            ID="TB_confirmapass_PasswordStrength" 
+                            runat="server" 
+                            BehaviorID="TB_confirmapass_PasswordStrength" 
+                            TargetControlID="TB_confirmapass" 
+                            MinimumLowerCaseCharacters="2" 
+                            MinimumNumericCharacters="2" 
+                            MinimumUpperCaseCharacters="1" 
+                            MinimumSymbolCharacters="1"
+                            PreferredPasswordLength="10" 
+                            DisplayPosition="RightSide" 
+                            BarBorderCssClass="indicadorenlinea"
+                            TextStrengthDescriptionStyles="muy_debil;debil;media;fuerte;irrompible"
+                            RequiresUpperAndLowerCaseCharacters="true"/>
                         <asp:RequiredFieldValidator ID="RFV_confirmapass" runat="server" ControlToValidate="TB_confirmapass" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="valitar_confirmapasss"
                             runat="server" 

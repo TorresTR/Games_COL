@@ -43,7 +43,7 @@ public partial class View_Default : System.Web.UI.Page
         BT_volver.Text = compIdioma["BT_volver"].ToString();
         BT_agregar.Text = compIdioma["BT_agregar"].ToString();
         LB_titulo.Text = compIdioma["LB_titulo"].ToString();
-        GV_controles.DataBind();
+        //GV_controles.DataBind();
 
     }
 
@@ -146,9 +146,9 @@ public partial class View_Default : System.Web.UI.Page
         int id = int.Parse(LB_id.Text);
         string cont = TB_cont.Text;
         log.editarCont(id,cont);
-        TB_cont.Visible = false;
-        BT_guardar.Visible = false;
-        GV_controles.DataBind();
+        TB_cont.Text = "";
+        LB_id.Text = "";
+        //GV_controles.DataBind();
     }
 
 
@@ -173,19 +173,28 @@ public partial class View_Default : System.Web.UI.Page
         Response.Redirect("Administrador_agregar_idioma.aspx");
     }
 
-    protected void GV_controles_RowCommand(object sender, GridViewCommandEventArgs e)
+    
+    protected void BT_editar_Click(object sender, EventArgs e)
     {
-        if(e.CommandArgument == "edit")
-        {
-            int index = Convert.ToInt32(e.CommandArgument);
-            int id = Convert.ToInt32(GV_controles.DataKeys[index].Value);
-        }
-    }
+        Button bt = sender as Button;
+        GridViewRow grid = (GridViewRow)bt.NamingContainer;
+        Label IdRecogido = (Label)grid.FindControl("LB_idobp");
+        Label content = (Label)grid.FindControl("LB_contentob");
+        Label control = (Label)grid.FindControl("LB_controlob");
+        Label formulario = (Label)grid.FindControl("LB_formuob");
+        Label idioma = (Label)grid.FindControl("LB_idioob");
 
-    protected void GV_controles_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        GridViewRow row = GV_controles.SelectedRow;
-        int id = Convert.ToInt32(GV_controles.DataKeys[row.RowIndex].Values["id"]);
-        string contenido = Convert.ToString(GV_controles.DataKeys[row.RowIndex].Values["contenido"]);
+        TB_cont.Text = content.Text;
+        LB_id.Text = IdRecogido.Text;
+        //int rowindex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
+        // int id = Convert.ToInt32(GV_controles.DataKeys[rowindex].Values["id"]);
+        //string contenido = Convert.ToString(GV_controles.DataKeys[rowindex].Values["contenido"]);
+        //string control = Convert.ToString(GV_controles.DataKeys[rowindex].Values["control"]);
+
+        //string IdRecogido = ((Label)row.Cells[rowindex].FindControl("LB_idobp")).Text;
+        //string content = ((Label)row.Cells[rowindex].FindControl("LB_contentob")).Text;
+        //string control = ((Label)row.Cells[rowindex].FindControl("LB_controlob")).Text;
+        //string formulario = ((Label)row.Cells[rowindex].FindControl("LB_formuob")).Text;
+        //string idioma = ((Label)row.Cells[rowindex].FindControl("LB_idioob")).Text;
     }
 }

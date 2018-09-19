@@ -62,24 +62,9 @@
     </tr>
     <tr>
         <td class="text-center" colspan="3">
-            <asp:GridView ID="GV_controles" runat="server" AutoGenerateColumns="False" DataKeyNames="id,contenido" OnRowCommand="GV_controles_RowCommand" OnSelectedIndexChanged="GV_controles_SelectedIndexChanged">
+            <asp:GridView ID="GV_controles" runat="server" AutoGenerateColumns="False" DataKeyNames="id,contenido,control" 
+               >
                         <Columns>
-                            <asp:TemplateField HeaderText="contenido">
-                                <HeaderTemplate>
-                                    <asp:Label ID="LB_titCont" runat="server"></asp:Label>
-                                </HeaderTemplate>
-                                <ItemTemplate>
-                                    <asp:Label ID="LB_contenido" runat="server" Text='<%# Bind("contenido") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Editar">
-                                <HeaderTemplate>
-                                    <asp:Label ID="LB_titEdit" runat="server"></asp:Label>
-                                </HeaderTemplate>
-                                <ItemTemplate>
-                                    <asp:Button ID="BT_editar" runat="server"  Text="Editar" CssClass="btn btn-outline-success" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>" CommandName="edit" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="formulario">
                                 <HeaderTemplate>
                                     <asp:Label ID="Label1" runat="server" Visible="true"></asp:Label>
@@ -120,10 +105,41 @@
                                     <asp:Label ID="LB_id0" runat="server" Text='<%# Bind("id") %>' Visible="true"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:CommandField ButtonType="Button" ShowSelectButton="True" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>" CommandName="edit"/>
-                        </Columns>
-                        <PagerSettings NextPageText="1" />
+                          
+                            <asp:TemplateField HeaderText="contenido">
+                                <HeaderTemplate>
+                                    <asp:Label ID="LB_titCont" runat="server"></asp:Label>
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="LB_contenido" runat="server" Text='<%# Bind("contenido") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            
+                          
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Button ID="BT_editar" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" 
+                                        CommandName="reportar" CssClass="btn btn-outline-success" OnClick="BT_editar_Click" Text="Editar" />
+                                     <br />
+                                     <asp:Label ID="LB_idobp" runat="server" Text='<%# Eval("id") %>' Visible="False"></asp:Label>
+                                     <br />
+                                     <asp:Label ID="LB_contentob" runat="server" Text='<%# Eval("contenido") %>' Visible="False"></asp:Label>
+                                    <br />
+                                     <asp:Label ID="LB_controlob" runat="server" Text='<%# Eval("control") %>' Visible="False"></asp:Label>
+                                    <br />
+                                     <asp:Label ID="LB_formuob" runat="server" Text='<%# Eval("formulario") %>' Visible="False"></asp:Label>
+                                     <br />
+                                     <asp:Label ID="LB_idioob" runat="server" Text='<%# Eval("idioma") %>' Visible="False"></asp:Label>
+
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            
+                          
+                            </Columns>
+                       
+                        
                     </asp:GridView>
+            
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;
         </td>
