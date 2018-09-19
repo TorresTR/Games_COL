@@ -19,7 +19,7 @@ public partial class View_Observador : System.Web.UI.Page
         U_Datos dato = new U_Datos();
 
         Int32 idioma = 1;
-            Int32 id_pagina = 50;
+        Int32 id_pagina = 50;
         DataTable tabla = Idio.obtenerIdioma();
 
         try {

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Default : System.Web.UI.Page
 {
@@ -65,6 +67,7 @@ public partial class View_Default : System.Web.UI.Page
     protected void BT_agregar_Click(object sender, EventArgs e)
     {
         Session["idioma_agrega"] = TB_idioma.Text;
+        BT_traduccion.Visible = true;
         TB_idioma.ReadOnly = true;
         TB_terminacion.ReadOnly = true;
         L_Usercs log = new L_Usercs();
@@ -111,16 +114,25 @@ public partial class View_Default : System.Web.UI.Page
 
     protected void BT_traduccion_Click(object sender, EventArgs e)
     {
+        U_control control = new U_control();
+        try
+        {
+            
+            control.Nombre = LB_cont.Text;
+            control.Idioma = int.Parse(LB_idIdioma.Text);
+            control.Id_form = int.Parse(LB_idform.Text);
+            control.Contenido = TB_contenido.Text;
+            L_Usercs log = new L_Usercs();
+            log.insertarControl(control);
+        }
+        catch
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Seleccione un control valido');", true);
+        }
+        
+        LB_cont.Text = "";
+        LB_control.Text = "";
+        TB_contenido.Text = "";
        
-        DataRow row = agrega.NewRow();
-        DataColumn colum;
-
-        colum = new DataColumn();
-        colum.DataType = System.Type.GetType("System.String");
-        colum.ColumnName = "contenido";
-        agrega.Columns.Add(colum);
-
-        row["contenido"] = TB_contenido.Text;
-        agrega.Rows.Add(row);
     }
 }

@@ -186,15 +186,6 @@ public partial class View_Default : System.Web.UI.Page
 
         TB_cont.Text = content.Text;
         LB_id.Text = IdRecogido.Text;
-        //int rowindex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
-        // int id = Convert.ToInt32(GV_controles.DataKeys[rowindex].Values["id"]);
-        //string contenido = Convert.ToString(GV_controles.DataKeys[rowindex].Values["contenido"]);
-        //string control = Convert.ToString(GV_controles.DataKeys[rowindex].Values["control"]);
-
-        //string IdRecogido = ((Label)row.Cells[rowindex].FindControl("LB_idobp")).Text;
-        //string content = ((Label)row.Cells[rowindex].FindControl("LB_contentob")).Text;
-        //string control = ((Label)row.Cells[rowindex].FindControl("LB_controlob")).Text;
-        //string formulario = ((Label)row.Cells[rowindex].FindControl("LB_formuob")).Text;
-        //string idioma = ((Label)row.Cells[rowindex].FindControl("LB_idioob")).Text;
+       
     }
 }

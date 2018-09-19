@@ -59,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="U_actualizarBloqueo.cs" />
     <Compile Include="U_comentarios.cs" />
+    <Compile Include="U_control.cs" />
     <Compile Include="U_Datos.cs" />
     <Compile Include="U_datosEncriptados.cs" />
     <Compile Include="U_Datospqr.cs" />

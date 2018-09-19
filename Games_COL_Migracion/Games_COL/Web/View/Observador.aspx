@@ -8,6 +8,12 @@
         .auto-style6 {
             width: 50%;
         }
+        .auto-style7 {
+            border-radius: 0.3rem;
+            text-align: left;
+            margin-bottom: 2rem;
+            background-color: #1c1e22;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -24,7 +30,7 @@
 
     }               
     </script>
-    <div class="jumbotron">
+    <div class="auto-style7">
         &nbsp;&nbsp;
         <asp:Button ID="BT_pc" runat="server" Text="PC" OnClick="BT_pc_Click" CssClass="btn btn-secondary" />&nbsp;&nbsp;
         <asp:Button ID="BT_xbox" runat="server" Text="XBOX" OnClick="BT_xbox_Click" CssClass="btn btn-secondary" />&nbsp;&nbsp;
@@ -46,38 +52,79 @@
 
             &nbsp;<asp:ObjectDataSource ID="ODS_cargaridioma" runat="server" SelectMethod="obtenerIdioma" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
                         
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+                        
+        <asp:HyperLink ID="HL_noticias" runat="server">Noticias</asp:HyperLink>
+                        
+    &nbsp;&nbsp;
+        <asp:HyperLink ID="HL_post" runat="server">Post</asp:HyperLink>
+                        
     </div>
     <table class="w-100">
         <tr>
             <td class="auto-style6">
-                <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticia" OnItemDataBound="DL_noticias_RowDataBound" > 
-        <ItemTemplate>
-            <br />
-            <table class="table-active">
-                <tr>
-                    <td class="auto-style5">
-                        <asp:Label ID="LB_titulo" runat="server" Text="Titulo"></asp:Label>
-                        <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
-                        <br />
-                        <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
-                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
-                        <br />
-                        <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
-                        <br />
-                        <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
-                        <asp:Label ID="LB_noticiaNombre" runat="server" Text="Noticia"></asp:Label>
-                        <br />
-                    </td>
-                    <td>
-                        <asp:Button ID="BT_verNoticias" runat="server" CssClass="btn btn-outline-danger" OnClick="BT_verNoticas_Click" Text="Ver mas" />
-                    </td>
-                </tr>
-            </table>
-            <br />
-            <hr />
-        </ItemTemplate>
-    </asp:DataList>
+                <asp:Panel ID="Panel1" runat="server" BorderColor="White">
+                    <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticia" OnItemDataBound="DL_noticias_RowDataBound" >
+                        <ItemTemplate>
+                            <br />
+                            <table class="table-active">
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="LB_titulo" runat="server" Text="Titulo"></asp:Label>
+                                        <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
+                                        <br />
+                                        <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
+                                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                        <br />
+                                        <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
+                                        <br />
+                                        <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
+                                        <asp:Label ID="LB_noticiaNombre" runat="server" Text="Noticia"></asp:Label>
+                                        <br />
+                                    </td>
+                                    <td>
+                                        <asp:Button ID="BT_verNoticias" runat="server" CssClass="btn btn-outline-danger" OnClick="BT_verNoticas_Click" Text="Ver mas" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                            <hr />
+                        </ItemTemplate>
+                    </asp:DataList>
+                </asp:Panel>
+                <ajaxToolkit:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" CollapsedText="Noticias" TargetControlID="Panel1" TextLabelID="Noticias" Collapsed="True" CollapseControlID="HL_noticias" CollapsedSize="30" ExpandControlID="HL_noticias" ExpandedText="Ultima hora" SuppressPostBack="True" ExpandedSize="500" />
                 <asp:ObjectDataSource ID="ODS_noticia" runat="server" SelectMethod="obtenerPostNoticia" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+                <asp:Panel ID="Panel2" runat="server">
+                    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_dataobs" OnItemDataBound="DL_post_RowDataBound">
+                        <ItemTemplate>
+                            <br />
+                            <table class="table-active">
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="LB_titulo0" runat="server" Text="Titulo"></asp:Label>
+                                        <asp:Label ID="LB_muestraTitulo0" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
+                                        <br />
+                                        <asp:Label ID="LB_autor0" runat="server" Text="autor"></asp:Label>
+                                        <asp:Label ID="LB_muestraAutor0" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                        <br />
+                                        <asp:Label ID="LB_id0" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
+                                        <br />
+                                        <asp:Label runat="server" Text="Etiquetas:" ID="LB_Etiqueta0"></asp:Label>
+                                        <asp:Label ID="LB_etiquetas" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
+                                        <br />
+                                    </td>
+                                    <td>
+                                        <asp:Button ID="BT_vermas" runat="server" Text="Ver mas" OnClick="BT_vermas_Click" CommandName="vermas" CommandArgument='<%# Eval("id") %>' CssClass="btn btn-outline-danger" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                            <hr />
+                        </ItemTemplate>
+                    </asp:DataList>
+                </asp:Panel>
+                <ajaxToolkit:CollapsiblePanelExtender ID="Panel2_CollapsiblePanelExtender" runat="server" BehaviorID="Panel2_CollapsiblePanelExtender" CollapseControlID="HL_post" Collapsed="True" CollapsedSize="30" CollapsedText="Post" ExpandControlID="HL_post" ExpandedSize="500" ExpandedText="prueba" SuppressPostBack="True" TargetControlID="Panel2" TextLabelID="Post" />
                 <br />
                 </td>
        
@@ -115,33 +162,6 @@
             </tr>
         <tr>
             <td class="auto-style6">
-    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_dataobs" OnItemDataBound="DL_post_RowDataBound">
-        <ItemTemplate>
-            <br />
-            <table class="table-active">
-                <tr>
-                    <td class="auto-style5">
-                        <asp:Label ID="LB_titulo" runat="server" Text="Titulo"></asp:Label>
-                        <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
-                        <br />
-                        <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
-                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
-                        <br />
-                        <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
-                        <br />
-                        <asp:Label runat="server" Text="Etiquetas:" ID="LB_Etiqueta"></asp:Label>
-                        <asp:Label ID="LB_etiquetas" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
-                        <br />
-                    </td>
-                    <td>
-                        <asp:Button ID="BT_vermas" runat="server" Text="Ver mas" OnClick="BT_vermas_Click" CommandName="vermas" CommandArgument='<%# Eval("id") %>' CssClass="btn btn-outline-danger" />
-                    </td>
-                </tr>
-            </table>
-            <br />
-            <hr />
-        </ItemTemplate>
-    </asp:DataList>
                 <asp:ObjectDataSource ID="ODS_dataobs" runat="server" SelectMethod="obtenerPostObservador" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
             </td>
             <td>

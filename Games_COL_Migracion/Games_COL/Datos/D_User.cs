@@ -2942,5 +2942,38 @@ namespace Datos
 
         }
 
+          public DataTable insertarControles(U_control datos)
+        {
+            DataTable Documentos = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            { 
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_insertar_control", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_nombre", NpgsqlDbType.Text).Value = datos.Nombre;
+                dataAdapter.SelectCommand.Parameters.Add("_id_form", NpgsqlDbType.Integer).Value = datos.Id_form;
+                dataAdapter.SelectCommand.Parameters.Add("_id_idioma", NpgsqlDbType.Integer).Value = datos.Idioma;
+                dataAdapter.SelectCommand.Parameters.Add("_contenido", NpgsqlDbType.Text).Value = datos.Contenido;
+ 
+
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                conection.Open();
+                dataAdapter.Fill(Documentos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Documentos;
+        }
+
     }
 }

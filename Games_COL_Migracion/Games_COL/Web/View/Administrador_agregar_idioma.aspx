@@ -16,7 +16,9 @@
                 <br />
                 <asp:TextBox ID="TB_idioma" runat="server"></asp:TextBox>
 &nbsp;
+                 <asp:RequiredFieldValidator ID="RFV_nombre0" runat="server" ControlToValidate="TB_idioma" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:TextBox ID="TB_terminacion" runat="server"></asp:TextBox>
+                 <asp:RequiredFieldValidator ID="RFV_nombre1" runat="server" ControlToValidate="TB_terminacion" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
 &nbsp;&nbsp;
                 <asp:Button ID="BT_agregar" runat="server" OnClick="BT_agregar_Click" Text="Agregar" CssClass="btn btn-outline-success" />
                 <br />
@@ -46,7 +48,7 @@
 &nbsp;<asp:TextBox ID="TB_contenido" runat="server" onkeyup = "keyUP(event.keyCode)"></asp:TextBox>
                  <asp:RequiredFieldValidator ID="RFV_nombre" runat="server" ControlToValidate="TB_contenido" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
 &nbsp;
-                <asp:Button ID="BT_traduccion" runat="server" Text="Aceptar" CssClass="btn btn-outline-success" OnClick="BT_traduccion_Click" />
+                <asp:Button ID="BT_traduccion" runat="server" Text="Aceptar" CssClass="btn btn-outline-success" OnClick="BT_traduccion_Click" Visible="False" />
 &nbsp;<asp:Label ID="LB_idform" runat="server" Visible="False"></asp:Label>
                  <asp:Label ID="LB_control" runat="server"></asp:Label>
             </td>

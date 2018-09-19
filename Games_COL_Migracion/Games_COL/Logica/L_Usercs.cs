@@ -1074,6 +1074,15 @@ namespace Logica
 
         }
 
+        public void insertarControl(U_control x)
+        {
+
+            D_User data = new D_User();
+
+            data.insertarControles(x);
+
+
+        }
 
 
         public DataTable obtenerComentario1(int x)
