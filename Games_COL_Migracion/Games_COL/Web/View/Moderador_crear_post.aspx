@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/Moderador_crear_post.aspx.cs" Inherits="View_Moderador_crear_post" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register Assembly="CKEditor.NET"  Namespace="CKEditor.NET" TagPrefix="CKEditor"%>
 
 <!DOCTYPE html>
@@ -31,7 +31,6 @@
 
 </head>
 <body>
-   
     <form id="form1" runat="server">
         <div>
         
@@ -50,24 +49,10 @@
                 <asp:Label ID="LB_tiitulo" runat="server" Text="Titulo:"></asp:Label>
             </td>
             <td>
-                 <script type="text/javascript">
-        function isAlphaNumeric(keyCode)
-
-    {
-
-        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
-
-               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
-
-            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
-
-
-        }       
-
-        //onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"
-    </script>
+     
                 <asp:TextBox ID="TB_titulo" runat="server" Width="307px" ValidationGroup="1" MaxLength="20"
-                   onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;" ></asp:TextBox>
+                   onpaste = "return false;" ></asp:TextBox>
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_titulo" />
                 <asp:RequiredFieldValidator ID="RFV_titulo" runat="server" ControlToValidate="TB_titulo"
                     ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="validator_titulo" runat="server"
@@ -78,7 +63,9 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style2">&nbsp;</td>
+            <td class="auto-style2">
+   <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+            </td>
             <td>&nbsp;</td>
         </tr>
         <tr>

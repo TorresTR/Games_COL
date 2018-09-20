@@ -11,6 +11,8 @@
                 <asp:Label ID="LB_mostrarAutor" runat="server"></asp:Label>
                 <br />
                 <br />
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
                 <asp:Label ID="LB_contenido" runat="server"></asp:Label>
             </td>
         </tr>

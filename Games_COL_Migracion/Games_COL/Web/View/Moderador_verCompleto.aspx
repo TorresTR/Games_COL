@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false"  CodeFile="~/Controller/Moderador_verCompleto.aspx.cs" Inherits="View_Moderador_verCompleto" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %> 
 
 <!DOCTYPE html>
 
@@ -26,22 +27,6 @@
                                                                                  }
     </style></head><body><form id="form1" runat="server">
 
-        <script type="text/javascript">
-        function isAlphaNumeric(keyCode)
-
-    {
-
-        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
-
-               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
-
-            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
-
-
-        }       
-
-        //onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"
-    </script>
         <div>
         <table class="auto-style1">
             <tr>
@@ -125,10 +110,10 @@
                 <td class="auto-style5" colspan="2">
                     <asp:Label ID="LB_comentar" runat="server" Text="Comentar:"></asp:Label>
                     <asp:TextBox ID="TB_comentarios" runat="server" Height="79px" TextMode="MultiLine" 
-                        Width="224px" MaxLength="50" ValidationGroup="1" onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                        Width="224px" MaxLength="50" ValidationGroup="1"  onpaste = "return false;"></asp:TextBox>
+                    <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_comentarios" />
                      <asp:RequiredFieldValidator ID="RFV_comentarios" runat="server" ControlToValidate="TB_comentarios" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
-                     <asp:RegularExpressionValidator ID="validator_comentario" runat="server" ControlToValidate="TB_comentarios"
-                         ErrorMessage="*" ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+             
                       <asp:RegularExpressionValidator ID="REV_max" runat="server"
                     ControlToValidate="TB_comentarios" 
                     ErrorMessage="*" 

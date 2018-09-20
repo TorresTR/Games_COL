@@ -76,6 +76,9 @@ public partial class View_Default : System.Web.UI.Page
         log.insertarIdioma(idioma,terminacion);
         DataTable dat = log.ObtenerIdioE(idioma);
         LB_idIdioma.Text = dat.Rows[0]["id"].ToString();
+        int i = int.Parse(LB_idIdioma.Text);
+        
+        
 
     }
 
@@ -124,6 +127,8 @@ public partial class View_Default : System.Web.UI.Page
             control.Contenido = TB_contenido.Text;
             L_Usercs log = new L_Usercs();
             log.insertarControl(control);
+            int i = int.Parse(LB_idIdioma.Text);
+            log.comparaIdioma(i);
         }
         catch
         {

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/MasterModerador.master" AutoEventWireup="true" CodeFile="~/Controller/Moderador_admin_coment.aspx.cs" Inherits="View_Default" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -10,8 +11,12 @@
         }
     </style>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+    <br />
     <asp:DataList ID="DL_coment" runat="server" DataSourceID="ODS_reporte_comentarios" Width="448px" OnItemDataBound="DL_coment_RowDataBound">
+       
         <ItemTemplate>
             <table class="w-100">
                 <tr>
@@ -41,6 +46,7 @@
                     </td>
                 </tr>
             </table>
+             
         </ItemTemplate>
     </asp:DataList>
     <asp:ObjectDataSource ID="ODS_reporte_comentarios" runat="server" SelectMethod="obtenercomnetReport" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>

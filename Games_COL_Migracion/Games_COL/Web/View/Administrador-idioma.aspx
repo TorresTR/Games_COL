@@ -12,6 +12,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <table class="w-100">
     <tr>
         <td class="auto-style2">
@@ -45,6 +46,7 @@
             <asp:Label ID="LB_idiomaEli" runat="server" Visible="False"></asp:Label>
             &nbsp;
             <asp:Button ID="BT_eliminar" runat="server" OnClick="BT_eliminar_Click" Text="Eliminar" CssClass="btn btn-outline-success" />
+            <ajaxToolkit:ConfirmButtonExtender ID="BT_eliminar_ConfirmButtonExtender" runat="server"  ConfirmText="Esta seguro que quiere eliminar este idioma???"  TargetControlID="BT_eliminar" />
             &nbsp;
             <br />
             <asp:Label ID="LB_idEli" runat="server" Visible="False"></asp:Label>

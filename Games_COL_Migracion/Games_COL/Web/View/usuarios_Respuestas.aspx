@@ -47,6 +47,8 @@
                                     </Columns>
                                     
                                 </asp:GridView>
+                                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                                </asp:ScriptManager>
                 </td>
             <td>&nbsp;</td>
         </tr>

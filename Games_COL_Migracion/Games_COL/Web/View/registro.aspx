@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#"  EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/registro.aspx.cs" Inherits="View_registro" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <!DOCTYPE html>
 
@@ -61,20 +62,7 @@
 </head>
 <body>
 
-     <script type="text/javascript">
-        function isAlphaNumeric(keyCode)
-
-    {
-
-        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
-
-               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
-
-            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
-
-    }               
-    </script>
-
+    
     <form id="form1" runat="server">
         <div>
             <table align="center" class="table-active">
@@ -95,15 +83,11 @@
                         <asp:Label ID="LB_nombre" runat="server" Text="Nombre:"></asp:Label>
                     </td>
                     <td class="auto-style5">
-                        <asp:TextBox ID="TB_nombre" runat="server" ValidationGroup="1" MaxLength="30" onkeyup = "keyUP(event.keyCode)" 
-            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                        <asp:TextBox ID="TB_nombre" runat="server" ValidationGroup="1" MaxLength="30" 
+             onpaste = "return false;"></asp:TextBox>
+                        <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_nombre" />
                         <asp:RequiredFieldValidator ID="RFV_nombre" runat="server" ControlToValidate="TB_nombre" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="validator_nombre"
-                            runat="server" 
-                            ControlToValidate="TB_nombre" 
-                            ErrorMessage="*" 
-                            ForeColor="Red" 
-                            ValidationExpression="^[A-Za-z ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                        
                     </td>
                 </tr>
                 <tr>
@@ -111,8 +95,9 @@
                         <asp:Label ID="LB_nick" runat="server" Text="Nick:"></asp:Label>
                     </td>
                     <td class="auto-style5">
-                        <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12" onkeyup = "keyUP(event.keyCode)" 
-            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                        <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12" 
+            onpaste = "return false;"></asp:TextBox>
+                         <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_nick" />
                         <asp:RequiredFieldValidator ID="RFV_nick" runat="server" ControlToValidate="TB_nick" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="validator_nick"
                             runat="server" 
@@ -127,8 +112,9 @@
                         <asp:Label ID="LB_correo" runat="server" Text="Correo:"></asp:Label>
                     </td>
                     <td class="auto-style6">
-                        <asp:TextBox ID="TB_email" runat="server" TextMode="Email" Width="179px" ValidationGroup="1" MaxLength="50" onkeyup = "keyUP(event.keyCode)" 
-            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;" ></asp:TextBox>
+                        <asp:TextBox ID="TB_email" runat="server" TextMode="Email" Width="179px" ValidationGroup="1" MaxLength="50" 
+             onpaste = "return false;" ></asp:TextBox>
+                         <cc1:filteredtextboxextender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_email" />
                         <asp:RequiredFieldValidator ID="RFV_correo" runat="server" 
                             ControlToValidate="TB_email" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                        
@@ -141,8 +127,9 @@
                         <asp:Label ID="LB_contra" runat="server" Text="Contraseña:"></asp:Label>
                     </td>
                     <td class="auto-style5">
-                        <asp:TextBox ID="TB_pass" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12" onkeyup = "keyUP(event.keyCode)" 
-            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                        <asp:TextBox ID="TB_pass" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12" 
+            onpaste = "return false;"></asp:TextBox>
+                         <cc1:filteredtextboxextender ID="FilteredTextBoxExtender4" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_pass" />
                         <ajaxToolkit:PasswordStrength StrengthIndicatorType="BarIndicator" 
                             ID="TB_pass_PasswordStrength" 
                             runat="server" 
@@ -158,12 +145,7 @@
                             TextStrengthDescriptionStyles="muy_debil;debil;media;fuerte;irrompible"
                             RequiresUpperAndLowerCaseCharacters="true"/>
                         <asp:RequiredFieldValidator ID="RFV_contraseña" runat="server" ControlToValidate="TB_pass" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
-                         <asp:RegularExpressionValidator ID="valitar_contra"
-                            runat="server" 
-                            ControlToValidate="TB_pass" 
-                            ErrorMessage="*" 
-                            ForeColor="Red" 
-                            ValidationExpression="^[A-Za-z0-9_-ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                        
                         
                     </td>
                 </tr>
@@ -172,8 +154,9 @@
                         <asp:Label ID="LB_confirma" runat="server" Text="Connfirme contraseña:"></asp:Label>
                     </td>
                     <td class="auto-style5">
-                        <asp:TextBox ID="TB_confirmapass" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12" onkeyup = "keyUP(event.keyCode)" 
-            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                        <asp:TextBox ID="TB_confirmapass" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12"
+           onpaste = "return false;"></asp:TextBox>
+                         <cc1:filteredtextboxextender ID="FilteredTextBoxExtender5" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_confirmapass" />
                         <ajaxToolkit:PasswordStrength StrengthIndicatorType="BarIndicator" 
                             ID="TB_confirmapass_PasswordStrength" 
                             runat="server" 

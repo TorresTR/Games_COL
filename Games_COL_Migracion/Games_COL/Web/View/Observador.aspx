@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/Paguina_principal.master" AutoEventWireup="true" CodeFile="~/Controller/Observador.aspx.cs" Inherits="View_Observador" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -17,27 +18,15 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <script type="text/javascript">
-        function isAlphaNumeric(keyCode)
-
-    {
-
-        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
-
-               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
-
-            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
-
-    }               
-    </script>
     <div class="auto-style7">
         &nbsp;&nbsp;
         <asp:Button ID="BT_pc" runat="server" Text="PC" OnClick="BT_pc_Click" CssClass="btn btn-secondary" />&nbsp;&nbsp;
         <asp:Button ID="BT_xbox" runat="server" Text="XBOX" OnClick="BT_xbox_Click" CssClass="btn btn-secondary" />&nbsp;&nbsp;
         <asp:Button ID="BT_plasyStation" runat="server" Text="PlayStation" OnClick="BT_plasyStation_Click" CssClass="btn btn-secondary" />&nbsp;&nbsp;
         <asp:Button ID="BT_andrioid" runat="server" Text="ANDROID" OnClick="BT_andrioid_Click" CssClass="btn btn-secondary" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TB_buscador" runat="server" MaxLength="20" onkeyup = "keyUP(event.keyCode)" 
-            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+        <asp:TextBox ID="TB_buscador" runat="server" MaxLength="20" 
+             onpaste = "return false;"></asp:TextBox>
+         <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_buscador" />
         <asp:RegularExpressionValidator ID="valitar_confirmapasss"
                             runat="server" 
                             ControlToValidate="TB_buscador" 
@@ -50,7 +39,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="DDL_Idioma" runat="server" DataSourceID="ODS_cargaridioma" DataTextField="nombre" DataValueField="id"  OnSelectedIndexChanged="DDL_lenguaje_SelectedIndexChanged" AutoPostBack="true" ViewStateMode="Enabled" EnableViewState="true">
                         </asp:DropDownList>
 
-            &nbsp;<asp:ObjectDataSource ID="ODS_cargaridioma" runat="server" SelectMethod="obtenerIdioma" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+            &nbsp;<asp:ObjectDataSource ID="ODS_cargaridioma" runat="server" SelectMethod="obtenerIdiomaActivo" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
                         
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
@@ -102,13 +91,13 @@
                             <table class="table-active">
                                 <tr>
                                     <td class="auto-style5">
-                                        <asp:Label ID="LB_titulo0" runat="server" Text="Titulo"></asp:Label>
-                                        <asp:Label ID="LB_muestraTitulo0" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
+                                        <asp:Label ID="LB_titulo" runat="server" Text="Titulo"></asp:Label>
+                                        <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
                                         <br />
-                                        <asp:Label ID="LB_autor0" runat="server" Text="autor"></asp:Label>
-                                        <asp:Label ID="LB_muestraAutor0" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                        <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
+                                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
                                         <br />
-                                        <asp:Label ID="LB_id0" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
+                                        <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
                                         <br />
                                         <asp:Label runat="server" Text="Etiquetas:" ID="LB_Etiqueta0"></asp:Label>
                                         <asp:Label ID="LB_etiquetas" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
@@ -165,7 +154,7 @@
                 <asp:ObjectDataSource ID="ODS_dataobs" runat="server" SelectMethod="obtenerPostObservador" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
             </td>
             <td>
-                &nbsp;</td>
+                    &nbsp;</td>
         </tr>
     </table>
 </asp:Content>

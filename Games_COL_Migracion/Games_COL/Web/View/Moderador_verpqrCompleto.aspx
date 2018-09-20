@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/Moderador_verpqrCompleto.aspx.cs" Inherits="View_Moderador_verpqrCompleto" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <!DOCTYPE html>
 
@@ -17,23 +18,8 @@
                                                                                      width: 706px;
                                                                                  }
         </style></head><body><form id="form1" runat="server">
-
-            <script type="text/javascript">
-        function isAlphaNumeric(keyCode)
-
-    {
-
-        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
-
-               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
-
-            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
-
-
-        }       
-
-        //onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"
-    </script>
+            <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+         
         <div>
         <table class="auto-style1">
             <tr>
@@ -98,7 +84,8 @@
             <tr>
                 <td class="auto-style2" colspan="2">
                     <asp:TextBox ID="TB_respuestapqr" runat="server" Height="79px" TextMode="MultiLine" Width="344px" ValidationGroup="1" 
-                        MaxLength="150" onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                        MaxLength="150"  onpaste = "return false;"></asp:TextBox>
+                    <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_respuestapqr" />
                     <asp:RegularExpressionValidator ID="REV_max" runat="server"
                     ControlToValidate="TB_respuestapqr" 
                     ErrorMessage="*" 

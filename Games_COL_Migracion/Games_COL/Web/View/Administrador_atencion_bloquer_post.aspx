@@ -19,6 +19,9 @@
                 
         <div>
             <div class="text-center">
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
+                <br />
             <asp:DataList ID="DL_postBloqueado" runat="server" DataSourceID="ODS_obtenerPostReportados" CssClass="auto-style3" Width="400px" OnItemDataBound="DL_postBloqueado_RowDataBound">
         <ItemTemplate>
             <br />

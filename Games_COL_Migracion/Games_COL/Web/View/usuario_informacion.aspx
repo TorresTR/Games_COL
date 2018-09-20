@@ -10,7 +10,10 @@
         </td>
     </tr>
     <tr>
-        <td>&nbsp;</td>
+        <td>
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+        </td>
     </tr>
     <tr>
         <td class="text-left">&nbsp;<asp:Label ID="LB_info1" runat="server" Text="Gracias por registrarte en GamesCol!!     GamesCol es un proyecto donde podras encontrar publicaciones realizadas por otras personas acerca de videojuegos, del mismo modo podras realizar tus publicaciones sobre el mismo tema, en este espacio podras comentar y puntuar sobre diferentes publicaciones, dando a conocer asi tu opinion sobre diferentes videojuegos.   Al momento de registrarte se te asigno un rango, este con el fin de&nbsp; dar un prestigio a los&nbsp; diferentes usuarios, mientras realices interacciones (crear post, comentar, puntuar), obtendras puntos necesarios para poder ascender de rango, en la siguiente tabla podras observar los rangos disponibles y la puntuacion necesaria para llegar al mismo."></asp:Label>

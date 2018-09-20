@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterUsuario.master" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/usuarios.aspx.cs" Inherits="View_usuarios" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -21,20 +22,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-     <script type="text/javascript">
-        function isAlphaNumeric(keyCode)
-
-    {
-
-        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
-
-               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
-
-            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
-
-    }               
-    </script>
-
     <div>
 
         &nbsp;&nbsp;
@@ -43,12 +30,9 @@
         <asp:Button ID="BT_ps" runat="server" Text="PlayStation" OnClick="BT_ps_Click" CssClass="btn btn-secondary" />&nbsp;&nbsp;
         <asp:Button ID="BT_android" runat="server" Text="Android" OnClick="BT_android_Click" CssClass="btn btn-secondary" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TB_buscador" runat="server" MaxLength="20" onkeyup = "keyUP(event.keyCode)" 
-            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
-        <asp:RegularExpressionValidator ID="validatorBusq" runat="server"
-                    ControlToValidate="TB_buscador" 
-                    ErrorMessage="*" 
-                    ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ñÑ]*$"></asp:RegularExpressionValidator>
+        <asp:TextBox ID="TB_buscador" runat="server" MaxLength="20"  onpaste = "return false;"></asp:TextBox>
+        <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_buscador" />
+       
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="BT_buscar" runat="server" CssClass="btn btn-outline-info" OnClick="BT_Buscar_Click" Text="Buscar" />
         <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -80,7 +64,7 @@
                                         &nbsp;
                                         <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
                                         <br />
-                                        <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
+                                        <asp:Label ID="LB_id" runat="server" visible="false" Text='<%# Bind("id") %>'></asp:Label>
                                         <br />
                                         <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
                                         &nbsp;
@@ -143,15 +127,15 @@
                             <table class="auto-style2">
                                 <tr>
                                     <td class="auto-style4">
-                                        <asp:Label ID="LB_titulo0" runat="server" Text="Titulo:"></asp:Label>
-                                        <asp:Label ID="LB_muestraTitulo0" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
+                                        <asp:Label ID="LB_titulo" runat="server" Text="Titulo:"></asp:Label>
+                                        <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
                                         <br />
-                                        <asp:Label ID="LB_id0" runat="server" Text='<%# Bind("id") %>' Visible="false" ></asp:Label>
+                                        <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id") %>' Visible="false" ></asp:Label>
                                         <br />
-                                        <asp:Label ID="LB_autor0" runat="server" Text="Autor:"></asp:Label>
-                                        <asp:Label ID="LB_muestraAutor0" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                        <asp:Label ID="LB_autor" runat="server" Text="Autor:"></asp:Label>
+                                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
                                         <br />
-                                        <asp:Label ID="LB_etiqueta0" runat="server" Text="Etiqueta:"></asp:Label>
+                                        <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
                                         <asp:Label ID="LB_etiquetaMuestra" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
                                     </td>
                                     <td class="auto-style3">

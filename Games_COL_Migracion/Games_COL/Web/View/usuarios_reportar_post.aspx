@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/MasterUsuario.master" AutoEventWireup="true" CodeFile="~/Controller/usuarios_reportar_post.aspx.cs" Inherits="View_usuarios_reportar_post" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -21,20 +22,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <script type="text/javascript">
-        function isAlphaNumeric(keyCode)
 
-    {
-
-        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
-
-               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
-
-            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
-
-    }               
-    </script>
-
+    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
     <table class="w-100">
         <tr>
             <td class="auto-style1">&nbsp;</td>
@@ -61,15 +50,10 @@
         <tr>
             <td class="text-center" colspan="2">
                 <asp:TextBox ID="TB_reporte" runat="server" Height="166px" TextMode="MultiLine" Width="404px" 
-                    ValidationGroup="1" MaxLength="60" onkeyup = "keyUP(event.keyCode)" 
-            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                    ValidationGroup="1" MaxLength="60"  onpaste = "return false;"></asp:TextBox>
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_reporte" />
                 <asp:RequiredFieldValidator ID="RFV_reportar" runat="server" ControlToValidate="TB_reporte" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="validator_reporte" 
-                    runat="server" 
-                    ControlToValidate="TB_reporte" 
-                    ErrorMessage="*" 
-                    ForeColor="Red" 
-                    ValidationExpression="^[A-Za-z0-9 ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+            
                 <asp:RegularExpressionValidator ID="REV_max" runat="server"
                     ControlToValidate="TB_reporte" 
                     ErrorMessage="*" 

@@ -13,6 +13,9 @@
             <td class="auto-style2">
                 
                     <ContentTemplate>
+                        &nbsp;<asp:ScriptManager ID="ScriptManager1" runat="server">
+                    </asp:ScriptManager>
+                    <br />
                         <asp:GridView ID="GV_miPost" runat="server" AutoGenerateColumns="False" OnRowDataBound="GV_mipost_RowDataBound">
                             <Columns>
                                 <asp:TemplateField HeaderText="Editar">

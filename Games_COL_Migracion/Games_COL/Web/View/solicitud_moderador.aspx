@@ -5,7 +5,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table class="w-100">
     <tr>
-        <td class="text-center">&nbsp;<asp:Label ID="LB_titulo" runat="server" Text="FORMULARIO DE SOLICITUD A MODERADOR"></asp:Label>
+        <td class="text-center">
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+            &nbsp;<asp:Label ID="LB_titulo" runat="server" Text="FORMULARIO DE SOLICITUD A MODERADOR"></asp:Label>
         </td>
     </tr>
     <tr>

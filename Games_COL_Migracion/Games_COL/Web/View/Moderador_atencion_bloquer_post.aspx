@@ -20,6 +20,9 @@
                 
                 
         <div>
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+            <br />
             <asp:DataList ID="DL_PostReport" runat="server" DataSourceID="ODS_obtenerPostReportados" CssClass="auto-style3" Width="362px" OnItemDataBound="DL_noticias_RowDataBound">
         <ItemTemplate>
             <br />

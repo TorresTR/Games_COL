@@ -53,7 +53,9 @@
             <tr>
                 <td class="auto-style2" colspan="2">
                     <h4>
-                        &nbsp;</h4>
+                        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                        </asp:ScriptManager>
+                    </h4>
                     <h5>
                         &nbsp;</h5>
                 </td>

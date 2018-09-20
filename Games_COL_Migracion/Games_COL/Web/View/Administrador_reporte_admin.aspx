@@ -8,6 +8,9 @@
     <table class="w-100">
         <tr>
             <td>
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
+                <br />
                 <CR:CrystalReportViewer ID="CRV_administrador" runat="server" AutoDataBind="True" GroupTreeImagesFolderUrl="" Height="50px" ReportSourceID="CRS_admin" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" Width="350px" />
                 <CR:CrystalReportSource ID="CRS_admin" runat="server">
                     <Report FileName="~/Reportes/Reporte_Admin_admin.rpt">

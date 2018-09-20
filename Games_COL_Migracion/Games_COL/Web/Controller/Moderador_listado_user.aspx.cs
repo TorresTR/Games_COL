@@ -119,5 +119,11 @@ public partial class View_Default : System.Web.UI.Page
         Response.Redirect("Moderador_listado_user.aspx" );
     }
 
-   
+
+
+    protected void DL_usuarios_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+
+    }
 }

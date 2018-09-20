@@ -16,8 +16,11 @@
         </tr>
         <tr>
             <td>
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
+                <br />
                 <asp:DataList ID="DL_usuarios" runat="server" DataSourceID="ODS_usuarios" BorderColor="White" Font-Bold="True" Font-Italic="False" Font-Overline="False" 
-                    Font-Strikeout="False" Font-Underline="False" GridLines="Both" OnItemDataBound="DL_noticias_RowDataBound" >
+                    Font-Strikeout="False" Font-Underline="False" GridLines="Both" OnItemDataBound="DL_noticias_RowDataBound" OnSelectedIndexChanged="DL_usuarios_SelectedIndexChanged" >
                     <ItemTemplate>
                         <table class="w-100">
                             <caption> 

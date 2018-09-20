@@ -30,7 +30,10 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2">&nbsp;</td>
+            <td colspan="2">
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
+            </td>
         </tr>
         <tr>
             <td colspan="2">

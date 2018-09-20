@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/Administrador_noticia.aspx.cs" Inherits="View_Administrador_noticia" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register Assembly="CKEditor.NET"  Namespace="CKEditor.NET" TagPrefix="CKEditor"%>
 
 <!DOCTYPE html>
@@ -31,7 +31,6 @@
 
 </head>
 <body>
-   
     <form id="form1" runat="server">
         <div>
         
@@ -45,31 +44,15 @@
         </tr>
         <tr>
             <td class="auto-style3">
+   <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
                 <asp:Label ID="LB_tiitulo" runat="server" Text="Titulo:"></asp:Label>
             </td>
-            <script type="text/javascript">
-        function isAlphaNumeric(keyCode)
-
-    {
-
-        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
-
-               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
-
-            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
-
-
-        }       
-
-        //onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"
-    </script>
+           
             <td>
-                <asp:TextBox ID="TB_titulo" runat="server" Width="307px" ValidationGroup="1" onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                <asp:TextBox ID="TB_titulo" runat="server" Width="307px" ValidationGroup="1" onpaste = "return false;"></asp:TextBox>
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_titulo" />
                 <asp:RequiredFieldValidator ID="RFV_titulo" runat="server" ControlToValidate="TB_titulo" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="validator_titulo" runat="server"
-                    ControlToValidate="TB_titulo" 
-                    ErrorMessage="*" 
-                    ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                
                 
             </td>
         </tr>

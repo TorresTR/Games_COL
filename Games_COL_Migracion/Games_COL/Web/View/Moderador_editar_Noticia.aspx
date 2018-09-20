@@ -28,6 +28,8 @@
         </tr>
         <tr>
             <td colspan="2" class="auto-style3">
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
                 <asp:Label ID="LB_muestraContenido" runat="server"></asp:Label>
             </td>
         </tr>

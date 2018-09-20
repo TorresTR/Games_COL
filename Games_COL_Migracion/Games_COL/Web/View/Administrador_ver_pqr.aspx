@@ -14,6 +14,9 @@
     <table class="w-100">
         <tr>
             <td class="auto-style4">
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
+                <br />
                 <asp:DataList ID="DL_verPQR" runat="server" DataSourceID="ODS_pqr" OnItemDataBound="DL_verPQR_RowDataBound">
                     <ItemTemplate>
                         <table class="w-100">

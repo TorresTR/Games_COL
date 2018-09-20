@@ -17,6 +17,8 @@
     <table class="w-100">
         <tr>
             <td class="text-center">
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
                 <asp:Label ID="LB_titUsarios" runat="server" Text="USUARIOS"></asp:Label>
             </td>
         </tr>

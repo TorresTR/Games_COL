@@ -37,7 +37,7 @@ public partial class View_Administrador_atencion_bloquer_post : System.Web.UI.Pa
 
         
         DL_postBloqueado.DataBind();
-        BT_volver.Text = compIdioma["BT_volver\t"].ToString();
+        BT_volver.Text = compIdioma["BT_volver"].ToString();
 
     }
 

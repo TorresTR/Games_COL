@@ -24,6 +24,8 @@
             <td colspan="2">
                 <asp:Label ID="LB_autor" runat="server" Text="Autor:"></asp:Label>
                 <asp:Label ID="LB_verAutor" runat="server"></asp:Label>
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
             </td>
         </tr>
         <tr>

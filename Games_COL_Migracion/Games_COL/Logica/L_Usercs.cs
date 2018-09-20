@@ -297,17 +297,27 @@ namespace Logica
             return dato;
         }
 
-        public int comparaIdioma(DataTable dat,int c)
+        public void comparaIdioma(int c)
         {
-            foreach (DataRow row in dat.Rows)
+            D_User dato = new D_User();
+            DataTable datos = dato.validarIdioma(c);
+             idioma(datos, c);
+
+        }
+        public void idioma(DataTable dat,int c)
+        {
+            D_User datos = new D_User();
+            int idi=0;
+            if (int.Parse(dat.Rows[0]["id"].ToString()) > 0)
             {
-                if ( c == int.Parse(dat.Rows[0]["id"].ToString())) {
-                    break;
-                } else {
-                    c = 1;
-                }
+                idi = c;
+                datos.cambiarEstado(idi);
             }
-            return c;
+            else
+            {
+                
+            }
+
         }
         public U_comentarios ObtenerComentarioreportar(int c)
         {
@@ -2461,6 +2471,13 @@ namespace Logica
             DataTable prueba = new DataTable();
             D_User idioma = new D_User();
             prueba = idioma.idiomas();
+            return prueba;
+        }
+        public DataTable obtenerIdiomaActivo()
+        {
+            DataTable prueba = new DataTable();
+            D_User idioma = new D_User();
+            prueba = idioma.idiomasactivos();
             return prueba;
         }
         public DataTable traducir(Int32  FORMULARIO, int x)

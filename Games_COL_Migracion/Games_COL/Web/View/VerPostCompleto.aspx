@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/VerPostCompleto.aspx.cs" Inherits="View_VerPostCompleto" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <!DOCTYPE html>
 
@@ -54,6 +55,8 @@
                 <td class="auto-style2" colspan="2">
                     <h4>
                         <asp:Label ID="LB_puntos" runat="server" Text="Puntos:"></asp:Label>
+                        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                        </asp:ScriptManager>
                     </h4>
                     <h5>
                         <asp:Label ID="LB_muestraPuntos" runat="server"></asp:Label>

@@ -55,6 +55,8 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                    </asp:ScriptManager>
                     </ContentTemplate>
                 
             </td>

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/Paguina_principal.master" AutoEventWireup="true" CodeFile="~/Controller/Recuperar_contra.aspx.cs" Inherits="View_Default" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -13,23 +14,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <script type="text/javascript">
-        function isAlphaNumeric(keyCode)
-
-    {
-
-        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
-
-               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
-
-            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
-
-
-        }       
-
-        //onkeyup = "keyUP(event.keyCode)" 
-        //    onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"
-    </script>
+    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
     <table class="auto-style1">
         <tr>
             <td class="auto-style5" colspan="2">&nbsp;<asp:Label ID="LB_titulo" runat="server" Text="Recuperar contraseña"></asp:Label>
@@ -40,16 +25,11 @@
                 <asp:Label ID="L_digite_nueva" runat="server" Text="Digite su Nueva Contraseña:"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="TB_digite_nueva_contraseña" runat="server" ValidationGroup="1" onkeyup = "keyUP(event.keyCode)" 
-            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                <asp:TextBox ID="TB_digite_nueva_contraseña" runat="server" ValidationGroup="1" onpaste = "return false;"></asp:TextBox>
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_digite_nueva_contraseña" />
                 <asp:RequiredFieldValidator ID="RFV_contra" runat="server" ControlToValidate="TB_digite_nueva_contraseña" 
                     ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="valitar_contra"
-                            runat="server" 
-                            ControlToValidate="TB_digite_nueva_contraseña" 
-                            ErrorMessage="*" 
-                            ForeColor="Red" 
-                            ValidationExpression="^[A-Za-z0-9_-ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                
             </td>
         </tr>
         <tr>
@@ -57,16 +37,11 @@
                 <asp:Label ID="L_Repita_Contraseña" runat="server" Text="Repita su Contraseña:"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="TB_repita_contraseña" runat="server" ValidationGroup="1" onkeyup = "keyUP(event.keyCode)" 
-            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                <asp:TextBox ID="TB_repita_contraseña" runat="server" ValidationGroup="1"  onpaste = "return false;"></asp:TextBox>
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_repita_contraseña" />
                 <asp:RequiredFieldValidator ID="RFV_repitaContra" runat="server" 
                     ErrorMessage="*" ControlToValidate="TB_repita_contraseña"  ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="REV_repita"
-                            runat="server" 
-                            ControlToValidate="TB_repita_contraseña" 
-                            ErrorMessage="*" 
-                            ForeColor="Red" 
-                            ValidationExpression="^[A-Za-z0-9_-ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                
             </td>
         </tr>
         <tr>

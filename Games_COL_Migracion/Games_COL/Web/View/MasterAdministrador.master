@@ -37,17 +37,21 @@
           <table class="w-100">
               <tr>
                   <td class="auto-style1">
-                      <asp:Label ID="LB_nick" runat="server" Text="Nick:"></asp:Label>
-                      <asp:Label ID="LB_nickMuestra" runat="server"></asp:Label>
                       <br />
-                      <asp:Label ID="LB_puntos" runat="server" Text="Puntos:"></asp:Label>
-                      <asp:Label ID="LB_muestraPuntos" runat="server"></asp:Label>
-                      <br />
-                      <asp:Label ID="LB_rango" runat="server" Text="Rango:"></asp:Label>
-                      <asp:Label ID="LB_muestraRango" runat="server"></asp:Label>
-                      <br />
-                      <asp:Label ID="LB_rango0" runat="server" Text="Id:" Visible="False"></asp:Label>
-                      <asp:Label ID="LB_muestraID" runat="server" Visible="False"></asp:Label>
+                      <asp:Panel ID="Panel1" runat="server">
+                          <asp:Label ID="LB_nick" runat="server" Text="Nick:"></asp:Label>
+                          <asp:Label ID="LB_nickMuestra" runat="server"></asp:Label>
+                          <br />
+                          <asp:Label ID="LB_puntos" runat="server" Text="Puntos:"></asp:Label>
+                          <asp:Label ID="LB_muestraPuntos" runat="server"></asp:Label>
+                          <br />
+                          <asp:Label ID="LB_rango" runat="server" Text="Rango:"></asp:Label>
+                          <asp:Label ID="LB_muestraRango" runat="server"></asp:Label>
+                          <br />
+                          <asp:Label ID="LB_rango0" runat="server" Text="Id:" Visible="False"></asp:Label>
+                          <asp:Label ID="LB_muestraID" runat="server" Visible="False"></asp:Label>
+                      </asp:Panel>
+                      <ajaxToolkit:DragPanelExtender ID="Panel1_DragPanelExtender" runat="server" BehaviorID="Panel1_DragPanelExtender" DragHandleID="Panel1" TargetControlID="Panel1" />
                   </td>
                   <td>
                       <asp:Button ID="BT_cerrar" runat="server" OnClick="BT_cerrar_Click" Text="Cerrar Sesion" CssClass="btn btn-outline-danger"/>

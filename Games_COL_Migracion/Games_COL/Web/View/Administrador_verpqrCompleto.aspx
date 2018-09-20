@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/Administrador_verpqrCompleto.aspx.cs" Inherits="View_Administrador_verpqrCompleto" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <!DOCTYPE html>
 
@@ -24,7 +25,7 @@
                 <td>&nbsp;</td>
             </tr>
 
-
+<asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
             <tr class="jumbotron">
                 
                 <td class="auto-style3">
@@ -74,22 +75,6 @@
             <tr>
 
 
-                  <script type="text/javascript">
-        function isAlphaNumeric(keyCode)
-
-    {
-
-        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
-
-               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
-
-            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
-
-
-        }       
-
-        //onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"
-    </script>
 
                <td class="text-center" colspan="2">
                     <asp:Label ID="LB_comentar" runat="server" Text="Responder:"></asp:Label>
@@ -98,16 +83,11 @@
             <tr>
                 <td class="auto-style2" colspan="2">
                     <asp:TextBox ID="TB_respuestapqr" runat="server" Height="79px"
-                        TextMode="MultiLine" Width="344px" ValidationGroup="1" MaxLength="150" onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                        TextMode="MultiLine" Width="344px" ValidationGroup="1" MaxLength="150"  onpaste = "return false;"></asp:TextBox>
+                    <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_respuestapqr" />
                      <asp:RequiredFieldValidator ID="RFV_respuesta" runat="server" ControlToValidate="TB_respuestapqr" ErrorMessage="*" 
                          ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
-                      <asp:RegularExpressionValidator ID="REV_max" runat="server"
-                    ControlToValidate="TB_respuestapqr" 
-                    ErrorMessage="*" 
-                    ForeColor="Red" ValidationExpression="^[\s\S]{0,150}$" ValidationGroup="1"></asp:RegularExpressionValidator>
-                     <asp:RegularExpressionValidator ID="validator_comentario" runat="server" 
-                         ControlToValidate="TB_respuestapqr" ErrorMessage="*" 
-                         ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                      
                 </td>
             </tr>
             <tr>

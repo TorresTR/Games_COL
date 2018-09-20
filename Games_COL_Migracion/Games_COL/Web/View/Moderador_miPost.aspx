@@ -12,7 +12,11 @@
         <tr>
             <td class="auto-style2">
                 
+                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                    </asp:ScriptManager>
+                
                     <ContentTemplate>
+                        <br />
                         <asp:GridView ID="GV_miPost" runat="server" OnRowDataBound="GV_Idioma_RowDataBound" AutoGenerateColumns="False">
                             <Columns>
                                 <asp:TemplateField HeaderText="Editar">

@@ -126,6 +126,9 @@ public partial class View_usuarios : System.Web.UI.Page
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
 
+
+
+
         string ID = lblid.Text;
 
         U_user dat = new U_user();

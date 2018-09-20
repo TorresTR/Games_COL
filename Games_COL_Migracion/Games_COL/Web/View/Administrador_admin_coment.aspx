@@ -11,6 +11,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     &nbsp;<br />
     <asp:Label ID="LB_mensaje" runat="server" ForeColor="Red"></asp:Label>
     <asp:DataList ID="DL_coment" runat="server" DataSourceID="ODS_reporte_comentarios" Width="448px" OnItemDataBound="DL_admin_coment_RowDataBound">

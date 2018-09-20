@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/MasterAdministrador.master" AutoEventWireup="true" CodeFile="~/Controller/Administrador_agregar_idioma.aspx.cs" Inherits="View_Default" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table class="w-100">
-        <tr>
+        <tr><asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
             <td colspan="2">&nbsp;</td>
         </tr>
         <tr>
@@ -15,9 +16,11 @@
                 <asp:Label ID="LB_terminacion" runat="server" Text="Terminacion"></asp:Label>
                 <br />
                 <asp:TextBox ID="TB_idioma" runat="server"></asp:TextBox>
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_idioma" />
 &nbsp;
                  <asp:RequiredFieldValidator ID="RFV_nombre0" runat="server" ControlToValidate="TB_idioma" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:TextBox ID="TB_terminacion" runat="server"></asp:TextBox>
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_terminacion" />
                  <asp:RequiredFieldValidator ID="RFV_nombre1" runat="server" ControlToValidate="TB_terminacion" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
 &nbsp;&nbsp;
                 <asp:Button ID="BT_agregar" runat="server" OnClick="BT_agregar_Click" Text="Agregar" CssClass="btn btn-outline-success" />
@@ -25,19 +28,7 @@
                 <asp:Label ID="LB_idIdioma" runat="server"></asp:Label>
             </td>
             <td>
-                 <script type="text/javascript">
-        function isAlphaNumeric(keyCode)
-
-    {
-
-        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
-
-               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
-
-            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
-
-    }               
-    </script>
+         
                         
             <asp:DropDownList ID="DDL_forms" runat="server" DataSourceID="ODS_forms" DataTextField="nombre" DataValueField="id" AutoPostBack="true" ViewStateMode="Enabled" EnableViewState="true" OnSelectedIndexChanged="DDL_traduir_SelectedIndexChanged">
             </asp:DropDownList>
@@ -46,6 +37,7 @@
                 <br />
                 <asp:Label ID="LB_cont" runat="server" Font-Bold="True" Font-Size="X-Large" Font-Underline="True" ForeColor="White"></asp:Label>
 &nbsp;<asp:TextBox ID="TB_contenido" runat="server" onkeyup = "keyUP(event.keyCode)"></asp:TextBox>
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_contenido" />
                  <asp:RequiredFieldValidator ID="RFV_nombre" runat="server" ControlToValidate="TB_contenido" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
 &nbsp;
                 <asp:Button ID="BT_traduccion" runat="server" Text="Aceptar" CssClass="btn btn-outline-success" OnClick="BT_traduccion_Click" Visible="False" />

@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="~/Controller/Generar_token.aspx.cs" Inherits="View_Generar_token" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <!DOCTYPE html>
 
@@ -17,23 +18,7 @@
     </style>
 </head>
 <body>
-
-     <script type="text/javascript">
-        function isAlphaNumeric(keyCode)
-
-    {
-
-        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
-
-               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
-
-            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
-
-
-        }       
-
-        //onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"
-    </script>
+    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
 
     <form id="form1" runat="server">
         <div>
@@ -42,13 +27,9 @@
                     <td class="auto-style2">
                         <asp:Label ID="LB_digiteNick" runat="server" Text="Digite su nick:"></asp:Label>
                         <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12"
-                            onkeyup = "keyUP(event.keyCode)" onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="valitar_confirmapasss"
-                            runat="server" 
-                            ControlToValidate="TB_nick" 
-                            ErrorMessage="*" 
-                            ForeColor="Red" 
-                            ValidationExpression="^[A-Za-z0-9_-ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                           onpaste = "return false;"></asp:TextBox>
+                        <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_nick" />
+                       
                         <asp:RequiredFieldValidator ID="RFV_nick" runat="server" ControlToValidate="TB_nick" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                     </td>
                 </tr>

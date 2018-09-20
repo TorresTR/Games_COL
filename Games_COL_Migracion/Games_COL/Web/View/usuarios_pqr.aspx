@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/MasterUsuario.master" AutoEventWireup="true" CodeFile="~/Controller/usuarios_pqr.aspx.cs" Inherits="View_usuarios_pqr" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -43,20 +44,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
 
-    <script type="text/javascript">
-        function isAlphaNumeric(keyCode)
-
-    {
-
-        return (((keyCode >= 48 && keyCode <= 57)&& isShift == false) ||                     
-
-               (keyCode >= 65 && keyCode <= 90) || keyCode == 8 ||
-
-            (keyCode >= 96 && keyCode <= 105) || keyCode == 32 )
-
-    }               
-    </script>
     <table class="auto-style2">
         <tr>
             <td class="auto-style6"></td>
@@ -67,8 +56,8 @@
                 <asp:Label ID="LB_aunto" runat="server" Text="Asunto:"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="TB_asunto" runat="server" Width="261px" ValidationGroup="1" MaxLength="20" min="10" onkeyup = "keyUP(event.keyCode)" 
-            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                <asp:TextBox ID="TB_asunto" runat="server" Width="261px" ValidationGroup="1" MaxLength="20" min="10"  onpaste = "return false;"></asp:TextBox>
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_asunto" />
                 <asp:RequiredFieldValidator ID="RFV_asunto" runat="server" ControlToValidate="TB_asunto" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="validator_asunto" runat="server"
                     ControlToValidate="TB_asunto" 
@@ -113,8 +102,8 @@
         </tr>
         <tr>
             <td class="auto-style11" colspan="2">
-                <asp:TextBox ID="TB_solicitud" runat="server" Height="200px" TextMode="MultiLine" Width="500px" ValidationGroup="1" MaxLength="150" onkeyup = "keyUP(event.keyCode)" 
-            onkeydown = "return isAlphaNumeric(event.keyCode);" onpaste = "return false;"></asp:TextBox>
+                <asp:TextBox ID="TB_solicitud" runat="server" Height="200px" TextMode="MultiLine" Width="500px" ValidationGroup="1" MaxLength="150"  onpaste = "return false;"></asp:TextBox>
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_solicitud" />
 
             </td>
         </tr>
