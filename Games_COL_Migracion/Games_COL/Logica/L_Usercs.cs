@@ -162,6 +162,31 @@ namespace Logica
 
         }
 
+        public void consultaUsuario(string nick)
+        {
+
+            D_User llamado = new D_User();
+
+
+          DataTable dato = llamado.consultaUsuario(nick);
+           int id = int.Parse(dato.Rows[0]["user_id"].ToString());
+            insertarSesion(id);
+
+
+        }
+
+        public void insertarSesion(int id_user)
+        {
+
+            D_User llamado = new D_User();
+
+            llamado.insertarSesion(id_user);
+
+
+
+        }
+
+
         public DataTable eliminarMiscomentariospuntos(U_userCrearpost dato)
         {
 
@@ -279,6 +304,7 @@ namespace Logica
                     dat.insertarUsuario(datos);
                     dato.Mensaje1 = "Usuario registrado con exito";
                     dato.Link = "Ingresar.aspx";
+                    consultaUsuario(datos.Nick);
 
                 }
                 else

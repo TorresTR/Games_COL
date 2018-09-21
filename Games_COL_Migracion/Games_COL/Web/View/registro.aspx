@@ -114,7 +114,7 @@
                     <td class="auto-style6">
                         <asp:TextBox ID="TB_email" runat="server" TextMode="Email" Width="179px" ValidationGroup="1" MaxLength="50" 
              onpaste = "return false;" ></asp:TextBox>
-                         <cc1:filteredtextboxextender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_email" />
+                        
                         <asp:RequiredFieldValidator ID="RFV_correo" runat="server" 
                             ControlToValidate="TB_email" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                        

@@ -1207,6 +1207,8 @@ namespace Datos
 
         }
 
+ 
+
         public void actualizarPQR(U_Datospqr datos)
         {
             DataTable Documentos = new DataTable();
@@ -1223,6 +1225,39 @@ namespace Datos
                 dataAdapter.SelectCommand.Parameters.Add("_respuesta", NpgsqlDbType.Text).Value = datos.Respuesta;
                 dataAdapter.SelectCommand.Parameters.Add("_fecha", NpgsqlDbType.Date).Value = datos.Fecha_respuesta;
                 dataAdapter.SelectCommand.Parameters.Add("_estado_respuesta", NpgsqlDbType.Integer).Value = datos.Estado_respuesta;
+
+
+
+                conection.Open();
+                dataAdapter.Fill(Documentos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+        }
+
+        public void insertarSesion(int id_user)
+        {
+            DataTable Documentos = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("seguridad.f_insertar_sesion", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                dataAdapter.SelectCommand.Parameters.Add("_id_usuario", NpgsqlDbType.Integer).Value = id_user;
+
 
 
 
@@ -1280,6 +1315,39 @@ namespace Datos
             {
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.ignorar_pqr", conection);
                 dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = dato.Id_pqr;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+
+
+                conection.Open();
+                dataAdapter.Fill(Post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return Post;
+
+        }
+
+        public DataTable consultaUsuario(string nick)
+        {
+            DataTable Post = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("seguridad.f_traer_usuario", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_nick", NpgsqlDbType.Text).Value = nick;
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
@@ -3060,6 +3128,39 @@ namespace Datos
                 }
             }
             return Documentos;
+        }
+
+        public DataTable insertaSesiones(int id)
+        {
+            DataTable Post = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("seguridad.f_insertar_sesion", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_id_usuario", NpgsqlDbType.Integer).Value = id;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+
+
+                conection.Open();
+                dataAdapter.Fill(Post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return Post;
+
         }
 
     }
