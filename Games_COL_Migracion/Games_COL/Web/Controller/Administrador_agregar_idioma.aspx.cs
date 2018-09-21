@@ -140,4 +140,9 @@ public partial class View_Default : System.Web.UI.Page
         TB_contenido.Text = "";
        
     }
+
+    protected void BT_volver_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Administrador-idioma.aspx");
+    }
 }

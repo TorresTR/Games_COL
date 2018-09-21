@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table class="w-100">
         <tr><asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
-            <td colspan="2">&nbsp;</td>
+            <td>&nbsp;</td>
         </tr>
         <tr>
             <td>
@@ -124,7 +124,12 @@
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td>
+                <asp:Button ID="BT_volver" runat="server" Text="Volver" CssClass="btn btn-outline-success" OnClick="BT_volver_Click" />
+                 <ajaxToolkit:ConfirmButtonExtender ID="volvercomfirm"
+                     runat="server"  ConfirmText="al volver no se guardaran los cambios realizados seguro desea volver?"  TargetControlID="BT_volver" />
+
+            </td>
         </tr>
     </table>
 </asp:Content>
