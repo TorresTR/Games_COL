@@ -18,7 +18,7 @@
         <td class="auto-style2">
 &nbsp;&nbsp;
             &nbsp;&nbsp;
-            <asp:Button ID="BT_agregar" runat="server" CssClass="btn btn-outline-success" OnClick="BT_agregar_Click" Text="Agregar idioma" />
+            <asp:Button ID="BT_agregar" runat="server" CssClass="btn btn-outline-success"  OnClick="BT_agregar_Click" Text="Agregar idioma" />
         </td>
         <td class="text-center">
             <asp:Label ID="LB_titulo" runat="server" Text="ADMINISTRADOR DE IDIOMA"></asp:Label>

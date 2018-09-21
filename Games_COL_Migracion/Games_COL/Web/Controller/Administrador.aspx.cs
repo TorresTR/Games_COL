@@ -16,6 +16,7 @@ public partial class View_Administrador : System.Web.UI.Page
         Response.Cache.SetNoStore();
         LB_busq.Visible = false;
 
+
         Int32 idioma = 1;
         Int32 id_pagina = 1;
         try
