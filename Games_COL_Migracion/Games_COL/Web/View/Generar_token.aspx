@@ -18,13 +18,14 @@
     </style>
 </head>
 <body>
-    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
 
     <form id="form1" runat="server">
         <div>
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style2">
+    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+
                         <asp:Label ID="LB_digiteNick" runat="server" Text="Digite su nick:"></asp:Label>
                         <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12"
                            onpaste = "return false;"></asp:TextBox>

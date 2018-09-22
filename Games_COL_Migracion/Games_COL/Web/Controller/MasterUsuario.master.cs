@@ -130,10 +130,12 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
         L_Usercs dac = new L_Usercs();
         U_user datos = new U_user();
         U_Datos val = new U_Datos();
+        string nick = LB_nickMuestra.Text;
+        int id_user = dac.consultaid(nick);
 
         datos.Session = Session.SessionID;
         datos = dac.cerrarse(datos);
-
+        dac.cerrarSesio(id_user);
         Session["user_id"] = null;
         
 

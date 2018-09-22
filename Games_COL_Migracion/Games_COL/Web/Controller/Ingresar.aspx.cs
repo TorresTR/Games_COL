@@ -61,6 +61,8 @@ public partial class View_Default : System.Web.UI.Page
         usuario.Nick = TB_UserName.Text.ToString();
         usuario.Pass = TB_Contraseña.Text.ToString();
         string a = Session.SessionID;
+        int id = user.consultaid(usuario.Nick);
+        user.validar_Bloqueo(id);
         
         DataTable registros = datos.loggin(usuario);
         llamado.Sesion = registros.Rows[0]["user_id"].ToString();
@@ -68,9 +70,9 @@ public partial class View_Default : System.Web.UI.Page
 
         Session["user_id"] = llamado.Sesion;
 
-        link = user.loggin(registros,a);
-        
+        link = user.loggin(registros,a,usuario.Nick,id);
 
+        L_error.Text = link.Mensaje_Alertaobservador1;
         Response.Redirect(link.Link_demas);
 
     }

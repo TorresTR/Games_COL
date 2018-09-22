@@ -14,7 +14,6 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
     <table class="auto-style1">
         <tr>
             <td class="auto-style5" colspan="2">&nbsp;<asp:Label ID="LB_titulo" runat="server" Text="Recuperar contraseña"></asp:Label>
@@ -22,6 +21,7 @@
         </tr>
         <tr>
             <td class="auto-style7">
+    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
                 <asp:Label ID="L_digite_nueva" runat="server" Text="Digite su Nueva Contraseña:"></asp:Label>
             </td>
             <td>

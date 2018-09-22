@@ -162,7 +162,7 @@ namespace Logica
 
         }
 
-        public void consultaUsuario(string nick)
+        public int consultaUsuario(string nick)
         {
 
             D_User llamado = new D_User();
@@ -171,6 +171,20 @@ namespace Logica
           DataTable dato = llamado.consultaUsuario(nick);
            int id = int.Parse(dato.Rows[0]["user_id"].ToString());
             insertarSesion(id);
+            return id;
+
+
+        }
+        public int consultaid(string nick)
+        {
+
+            D_User llamado = new D_User();
+
+
+            DataTable dato = llamado.consultaUsuario(nick);
+            int id = int.Parse(dato.Rows[0]["user_id"].ToString());
+         
+            return id;
 
 
         }
@@ -279,6 +293,14 @@ namespace Logica
             DataTable mioresul = data.ObtenermisPost(mio);
 
             return mioresul;
+        }
+
+        public void cerrarSesio(int id)
+        {
+
+            D_User data = new D_User();
+
+            DataTable mioresul = data.cerradoSesion(id);
         }
 
 
@@ -1285,11 +1307,32 @@ namespace Logica
             return bus;
         }
 
-        public U_user loggin(DataTable registros,string a)
+        public void validar_Bloqueo(int id)
+        {
+            D_User dato = new D_User();
+            dato.validaBloqueo(id);
+        }
+
+        public DataTable validaSesion(int id)
+        {
+            D_User dato = new D_User();
+            DataTable dat = dato.validaSesion(id);
+            return dat;
+        }
+
+        public void validaCerradoSesion(int id)
+        {
+            D_User dato = new D_User();
+            dato.cerradoSesion(id);
+            
+        }
+
+        public U_user loggin(DataTable registros,string a,string nick,int id_usuario)
         {
             D_User datos = new D_User();
             U_user link = new U_user();
             int rol = int.Parse(registros.Rows[0]["rol"].ToString());
+            int id_user = consultaid(nick);
             string sesi;
 
             if (registros.Rows.Count > 0)
@@ -1298,24 +1341,40 @@ namespace Logica
                 switch (rol)
                 {
                     case 1:
-                        string nombre = registros.Rows[0]["nombre"].ToString();
-                        string user = registros.Rows[0]["user_id"].ToString();
+                        DataTable val = validaSesion(id_usuario);
+                       
+                            string nombre = registros.Rows[0]["nombre"].ToString();
+                            string user = registros.Rows[0]["user_id"].ToString();
 
-                        int b = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
+                            int b = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
 
-                        U_session datosUsuario = new U_session();
-                        L_mac datosConexion = new L_mac();
+                            U_session datosUsuario = new U_session();
+                            L_mac datosConexion = new L_mac();
 
-                        datosUsuario.UserId = b;
-                        datosUsuario.Ip = datosConexion.ip();
-                        datosUsuario.Mac = datosConexion.mac();
-                        datosUsuario.Session = a;
+                            datosUsuario.UserId = b;
+                            datosUsuario.Ip = datosConexion.ip();
+                            datosUsuario.Mac = datosConexion.mac();
+                            datosUsuario.Session = a;
+                            if (int.Parse(val.Rows[0]["intentos"].ToString()) == 0)
+                            {
+                                datos.guardadoSession(datosUsuario);
+                                int id = int.Parse(registros.Rows[0]["user_id"].ToString());
+                                
+                                link = sesion(rol, b);
+                            }
+                            else
+                            {
+                                link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
+                            link.Link_demas = "ingresar.aspx";
+                            }
 
-                        datos.guardadoSession(datosUsuario);
-                        link = sesion(rol, b);
                         return link;
+                        
+                        
+                        
 
                     case 2:
+                        DataTable valMod = validaSesion(id_usuario);
                         nombre = registros.Rows[0]["nombre"].ToString();
                         sesi = registros.Rows[0]["user_id"].ToString();
 
@@ -1324,23 +1383,26 @@ namespace Logica
 
                         U_session datosUsuariom = new U_session();
                         L_mac datosConexionMod = new L_mac();
-
+                        
                         datosUsuariom.UserId = bmod;
                         datosUsuariom.Ip = datosConexionMod.ip();
                         datosUsuariom.Mac = datosConexionMod.mac();
                         datosUsuariom.Session = a;
 
                         datos.guardadoSession(datosUsuariom);
+
+                       
                         link = sesion(rol, bmod);
                         return link;
 
                     case 3:
+                        DataTable valAdm = validaSesion(id_usuario);
                         nombre = registros.Rows[0]["nombre"].ToString();
                         sesi = registros.Rows[0]["user_id"].ToString();
 
 
                         int badmon = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
-
+                        
                         U_session datosUsuarioad = new U_session();
                         L_mac datosConexionadmon = new L_mac();
 
@@ -1350,10 +1412,22 @@ namespace Logica
                         datosUsuarioad.Session = a;
 
                         datos.guardadoSession(datosUsuarioad);
+
+
+                       
                         link = sesion(rol, badmon);
                         return link;
 
                     default:
+                        DataTable errord = datos.validarErroneo(id_user);
+                        if (int.Parse(errord.Rows[0]["intentos"].ToString()) == 1)
+                        {
+                            link.Mensaje_Alertaobservador1 = "Ha superado la cantidad de intentos permitidos, su cuenta esta bloqueada, por favor intente mas tarde";
+                        }
+                        else
+                        {
+                            link.Mensaje_Alertaobservador1 = "";
+                        }
                         rol = 0;
                         link = sesion(rol, 0);
                         return link;
@@ -1362,6 +1436,7 @@ namespace Logica
             }
             else
             {
+               
                 rol = 0;
                 link = sesion(rol, 0);
                 return link;
