@@ -15,6 +15,9 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+
+         
+
         Int32 idioma = 1;
         Int32 id_pagina = 65;
         try
