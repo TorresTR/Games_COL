@@ -15,7 +15,24 @@
         }
     </style>
     </head>
-<body>
+     <script type="text/javascript">
+
+        var bpregunta = true;
+        window.onbeforeunload = comfirmExit;
+        
+
+        function comfirmExit() {
+
+            if (bpregunta) {
+                var boton = document.getElementById('<%=BT_cerrar.ClientID%>');
+                boton.click();
+                return confirm("se va a cerrar la paguina y cerrar su sesion, seguro que quiera hacerlo ");
+            }
+           
+        }
+        
+    </script>
+<body onbeforeunload="return comfirmExit()">
     <form id="form1" runat="server">
     <div>
         &nbsp;<asp:Image ID="Image1" runat="server" ImageUrl="~/Img/logo.jpg" />

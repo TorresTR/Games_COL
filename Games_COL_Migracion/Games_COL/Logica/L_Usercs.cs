@@ -1388,8 +1388,19 @@ namespace Logica
                         datosUsuariom.Ip = datosConexionMod.ip();
                         datosUsuariom.Mac = datosConexionMod.mac();
                         datosUsuariom.Session = a;
+                        if (int.Parse(valMod.Rows[0]["intentos"].ToString()) == 0)
+                        {
+                            datos.guardadoSession(datosUsuariom);
+                            int id = int.Parse(registros.Rows[0]["user_id"].ToString());
 
-                        datos.guardadoSession(datosUsuariom);
+                            link = sesion(rol, bmod);
+                        }
+                        else
+                        {
+                            link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
+                            link.Link_demas = "ingresar.aspx";
+                        }
+                        
 
                        
                         link = sesion(rol, bmod);
@@ -1410,8 +1421,19 @@ namespace Logica
                         datosUsuarioad.Ip = datosConexionadmon.ip();
                         datosUsuarioad.Mac = datosConexionadmon.mac();
                         datosUsuarioad.Session = a;
+                        if (int.Parse(valAdm.Rows[0]["intentos"].ToString()) == 0)
+                        {
+                            datos.guardadoSession(datosUsuarioad);
+                            int id = int.Parse(registros.Rows[0]["user_id"].ToString());
 
-                        datos.guardadoSession(datosUsuarioad);
+                            link = sesion(rol, badmon);
+                        }
+                        else
+                        {
+                            link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
+                            link.Link_demas = "ingresar.aspx";
+                        }
+                       
 
 
                        

@@ -135,16 +135,32 @@ public partial class View_MasterModerador : System.Web.UI.MasterPage
         L_Usercs dac = new L_Usercs();
         U_user datos = new U_user();
         U_Datos val = new U_Datos();
-
+        string nick = LB_nickMuestra.Text;
+        int id_user = dac.consultaid(nick);
+        
+        
         datos.Session = Session.SessionID;
         datos = dac.cerrarse(datos);
 
         Session["user_id"] = null;
+        
 
+
+
+        dac.cerrarSesio(id_user);
 
         val.Sesion = null;
         dac.validarCerrarsesion(val);
+        try
+        {
+            Session.Abandon();
+            Response.Redirect("Ingresar.aspx");
 
+        }
+        catch
+        {
+
+        }
         Response.Redirect(datos.Link_observador);
     }
 

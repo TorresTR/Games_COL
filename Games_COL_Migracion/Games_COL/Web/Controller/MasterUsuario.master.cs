@@ -132,6 +132,7 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
         U_Datos val = new U_Datos();
         string nick = LB_nickMuestra.Text;
         int id_user = dac.consultaid(nick);
+       
 
         datos.Session = Session.SessionID;
         datos = dac.cerrarse(datos);
@@ -141,7 +142,16 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
 
         val.Sesion = null;
         dac.validarCerrarsesion(val);
+        try
+        {
+            Session.Abandon();
+            Response.Redirect("Ingresar.aspx");
 
+        }
+        catch
+        {
+
+        }
         Response.Redirect(datos.Link_observador);
     }
 
