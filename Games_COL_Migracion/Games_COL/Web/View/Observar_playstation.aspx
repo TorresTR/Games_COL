@@ -36,34 +36,45 @@
         <table class="auto-style1">
             <tr>
                 <td class="auto-style6">
-                <asp:DataList ID="DL_niticias" runat="server" DataSourceID="ODS_noticia" OnItemDataBound="DL_noticias_RowDataBound">
-        <ItemTemplate>
-            <br />
-            <table class="table-active">
-                <tr>
-                    <td class="auto-style5">
-                        <asp:Label ID="LB_titulo" runat="server" Text="Titulo"></asp:Label>
-                        <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
-                        <br />
-                        <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
-                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
-                        <br />
-                        <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
-                        <br />
-                        <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
-                        <asp:Label ID="LB_noticiaNombre" runat="server" Text="Noticia"></asp:Label>
-                        <br />
-                    </td>
-                    <td>
-                        <asp:Button ID="BT_verNoticias" runat="server" CssClass="btn btn-outline-danger" OnClick="BT_verNoticas_Click" Text="Ver mas" />
-                    </td>
-                </tr>
-            </table>
-            <br />
-            <hr />
-        </ItemTemplate>
-    </asp:DataList>
+                    <br />
+                        
+        <asp:HyperLink ID="HL_noticias" runat="server">Noticias</asp:HyperLink>
+                        
+                    <asp:Panel ID="Panel1" runat="server">
+                        <asp:DataList ID="DL_niticias" runat="server" DataSourceID="ODS_noticia" OnItemDataBound="DL_noticias_RowDataBound">
+                            <ItemTemplate>
+                                <br />
+                                <table class="table-active">
+                                    <tr>
+                                        <td class="auto-style5">
+                                            <asp:Label ID="LB_titulo" runat="server" Text="Titulo"></asp:Label>
+                                            <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
+                                            <br />
+                                            <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
+                                            <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                            <br />
+                                            <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
+                                            <br />
+                                            <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
+                                            <asp:Label ID="LB_noticiaNombre" runat="server" Text="Noticia"></asp:Label>
+                                            <br />
+                                        </td>
+                                        <td>
+                                            <asp:Button ID="BT_verNoticias" runat="server" CssClass="btn btn-outline-danger" OnClick="BT_verNoticas_Click" Text="Ver mas" />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br />
+                                <hr />
+                            </ItemTemplate>
+                        </asp:DataList>
+                    </asp:Panel>
+                    <cc1:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" CollapseControlID="HL_noticias" ExpandControlID="HL_noticias" TargetControlID="Panel1" />
                 <asp:ObjectDataSource ID="ODS_noticia" runat="server" SelectMethod="obtenerPostNoticia" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+
+
+
+        <asp:HyperLink ID="HL_post" runat="server">Post</asp:HyperLink>
 
 
 
@@ -102,6 +113,7 @@
             </tr>
             <tr>
                 <td class="auto-style6">
+                    <br />
                     <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_treaListaData" OnItemDataBound="DL_post_RowDataBound">
         <ItemTemplate>
             <br />

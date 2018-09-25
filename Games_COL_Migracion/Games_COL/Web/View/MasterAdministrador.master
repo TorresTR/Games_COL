@@ -15,24 +15,23 @@
         }
     </style>
 </head>
-    <script type="text/javascript">
+  <%--  <script type="text/javascript">
 
-        var bpregunta = true;
+       
         window.onbeforeunload = comfirmExit;
         
 
         function comfirmExit() {
 
-            if (bpregunta) {
                 var boton = document.getElementById('<%=BT_cerrar.ClientID%>');
                 boton.click();
-                return confirm("se va a cerrar la paguina y cerrar su sesion, seguro que quiera hacerlo ");
-            }
+                return alert("se va a cerrar la paguina y cerrar su sesion, seguro que quiera hacerlo ");
+          
            
         }
         
-    </script>
-<body onbeforeunload="return comfirmExit()">
+    </script>--%>
+<body >
     
     <form id="form1" runat="server">
     <div>

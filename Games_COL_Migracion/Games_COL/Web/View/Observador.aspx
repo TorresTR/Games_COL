@@ -44,16 +44,15 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
                         
-        <asp:HyperLink ID="HL_noticias" runat="server">Noticias</asp:HyperLink>
-                        
     &nbsp;&nbsp;
-        <asp:HyperLink ID="HL_post" runat="server">Post</asp:HyperLink>
-                        
+                                
     </div>
     <table class="w-100">
         <tr>
             <td class="auto-style6">
                 <asp:Panel ID="Panel1" runat="server" BorderColor="White">
+                    <asp:HyperLink ID="HL_noticias" runat="server">Noticias</asp:HyperLink>
+                    <br />
                     <asp:DataList ID="DL_noticias" runat="server" DataSourceID="ODS_noticia" OnItemDataBound="DL_noticias_RowDataBound" >
                         <ItemTemplate>
                             <br />
@@ -84,7 +83,10 @@
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" CollapsedText="Noticias" TargetControlID="Panel1" TextLabelID="Noticias" Collapsed="True" CollapseControlID="HL_noticias" CollapsedSize="30" ExpandControlID="HL_noticias" ExpandedText="Ultima hora" SuppressPostBack="True" ExpandedSize="500" />
                 <asp:ObjectDataSource ID="ODS_noticia" runat="server" SelectMethod="obtenerPostNoticia" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+        <asp:HyperLink ID="HL_post" runat="server">Post</asp:HyperLink>
+                        
                 <asp:Panel ID="Panel2" runat="server">
+                    <br />
                     <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_dataobs" OnItemDataBound="DL_post_RowDataBound">
                         <ItemTemplate>
                             <br />

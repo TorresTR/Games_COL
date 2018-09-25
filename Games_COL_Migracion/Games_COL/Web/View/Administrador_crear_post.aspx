@@ -31,7 +31,6 @@
 
 </head>
 <body>
-   <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
 
     <form id="form1" runat="server">
         <div>
@@ -42,7 +41,10 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td colspan="2">&nbsp;</td>
+            <td colspan="2">
+   <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+
+            </td>
         </tr>
         <tr>
             <td class="auto-style3">

@@ -15,7 +15,7 @@
         }
     </style>
 </head>
-     <script type="text/javascript">
+    <%-- <script type="text/javascript">
 
         var bpregunta = true;
         window.onbeforeunload = comfirmExit;
@@ -31,8 +31,8 @@
            
         }
         
-    </script>
-<body onbeforeunload="return comfirmExit()">
+    </script>--%>
+<body>
     <form id="form1" runat="server">
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

@@ -32,8 +32,6 @@
 </head>
 <body>
    
-    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
-
     <form id="form1" runat="server">
         <div>
         
@@ -44,6 +42,9 @@
         </tr>
         <tr>
             <td colspan="2" class="text-center">
+   
+    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+
                 <asp:Label ID="LB_mensaje" runat="server" ForeColor="Red"></asp:Label>
             </td>
         </tr>
