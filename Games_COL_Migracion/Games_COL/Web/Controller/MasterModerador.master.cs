@@ -47,7 +47,7 @@ public partial class View_MasterModerador : System.Web.UI.MasterPage
         LB_rango.Text = compIdioma["LB_rango"].ToString();
         BT_cerrar.Text = compIdioma["BT_cerrar"].ToString();
         BT_mi_noticia.Text = compIdioma["BT_mi_noticia"].ToString();
-
+        Session["nick"] = LB_nickMuestra.Text;
 
         D_User us = new D_User();
         L_Usercs log = new L_Usercs();

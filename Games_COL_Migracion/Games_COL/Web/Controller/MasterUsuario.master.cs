@@ -48,7 +48,7 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
         LB_rango.Text = compIdioma["LB_rango"].ToString();
         LB_mensaje.Text = compIdioma["LB_mensaje"].ToString();
         BT_cerrar.Text = compIdioma["BT_cerrar"].ToString();
-
+        Session["nick"]= LB_nickMuestra.Text;
 
 
         D_User us = new D_User();

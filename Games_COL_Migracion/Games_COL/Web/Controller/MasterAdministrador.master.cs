@@ -51,7 +51,7 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
         LB_rango.Text = compIdioma["LB_rango"].ToString();
         BT_cerrar.Text = compIdioma["BT_cerrar"].ToString();
         BT_idioma.Text = compIdioma["BT_idioma"].ToString();
-
+        Session["nick"] = LB_nickMuestra.Text;
 
         D_User us = new D_User();
         L_Usercs log = new L_Usercs();

@@ -1,7 +1,8 @@
 ﻿<%@ Application Language="C#" %>
 
-<script runat="server">
 
+<script runat="server">
+    int i;
     void Application_Start(object sender, EventArgs e)
     {
         // Código que se ejecuta al iniciarse la aplicación
@@ -23,14 +24,17 @@
     void Session_Start(object sender, EventArgs e)
     {
         // Código que se ejecuta al iniciarse una nueva sesión
-
+        
     }
 
     void Session_End(object sender, EventArgs e)
     {
+        i = int.Parse(Session["user_id"].ToString());
         try
         {
-            
+
+            Logica.L_Usercs user = new Logica.L_Usercs();
+            user.cerrarSesio(i);
         }
         catch
         {
