@@ -1334,6 +1334,8 @@ namespace Logica
             int rol = int.Parse(registros.Rows[0]["rol"].ToString());
             int id_user = consultaid(nick);
             string sesi;
+            string nombre;
+            string user;
 
             if (registros.Rows.Count > 0)
             {
@@ -1341,10 +1343,20 @@ namespace Logica
                 switch (rol)
                 {
                     case 1:
-                        DataTable val = validaSesion(id_usuario);
-                       
-                            string nombre = registros.Rows[0]["nombre"].ToString();
-                            string user = registros.Rows[0]["user_id"].ToString();
+
+                        DataTable llamado = datos.comparaerror(id_user);
+
+                        if (int.Parse(llamado.Rows[0]["errores"].ToString()) >= 3)
+                        {
+                            link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
+                            link.Link_demas = "ingresar.aspx";
+                        }
+                        else
+                        {
+                            DataTable val = validaSesion(id_usuario);
+
+                            nombre = registros.Rows[0]["nombre"].ToString();
+                            user = registros.Rows[0]["user_id"].ToString();
 
                             int b = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
 
@@ -1359,85 +1371,88 @@ namespace Logica
                             {
                                 datos.guardadoSession(datosUsuario);
                                 int id = int.Parse(registros.Rows[0]["user_id"].ToString());
-                                
+
                                 link = sesion(rol, b);
                             }
                             else
                             {
                                 link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
-                            link.Link_demas = "ingresar.aspx";
+                                link.Link_demas = "ingresar.aspx";
                             }
 
+
+                        }
+
+
                         return link;
-                        
-                        
-                        
 
                     case 2:
-                        DataTable valMod = validaSesion(id_usuario);
-                        nombre = registros.Rows[0]["nombre"].ToString();
-                        sesi = registros.Rows[0]["user_id"].ToString();
 
+                        DataTable llomod = datos.comparaerror(id_user);
 
-                        int bmod = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
-
-                        U_session datosUsuariom = new U_session();
-                        L_mac datosConexionMod = new L_mac();
-                        
-                        datosUsuariom.UserId = bmod;
-                        datosUsuariom.Ip = datosConexionMod.ip();
-                        datosUsuariom.Mac = datosConexionMod.mac();
-                        datosUsuariom.Session = a;
-                        if (int.Parse(valMod.Rows[0]["intentos"].ToString()) == 0)
+                        if (int.Parse(llomod.Rows[0]["errores"].ToString()) >= 3)
                         {
+                            link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
+                            link.Link_demas = "ingresar.aspx";
+                        }
+                        else
+                        {
+
+                            DataTable valMod = validaSesion(id_usuario);
+                            nombre = registros.Rows[0]["nombre"].ToString();
+                            sesi = registros.Rows[0]["user_id"].ToString();
+
+
+                            int bmod = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
+
+                            U_session datosUsuariom = new U_session();
+                            L_mac datosConexionMod = new L_mac();
+
+                            datosUsuariom.UserId = bmod;
+                            datosUsuariom.Ip = datosConexionMod.ip();
+                            datosUsuariom.Mac = datosConexionMod.mac();
+                            datosUsuariom.Session = a;
+
                             datos.guardadoSession(datosUsuariom);
-                            int id = int.Parse(registros.Rows[0]["user_id"].ToString());
+
 
                             link = sesion(rol, bmod);
                         }
-                        else
-                        {
-                            link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
-                            link.Link_demas = "ingresar.aspx";
-                        }
-                        
-
-                       
-                        link = sesion(rol, bmod);
                         return link;
 
                     case 3:
-                        DataTable valAdm = validaSesion(id_usuario);
-                        nombre = registros.Rows[0]["nombre"].ToString();
-                        sesi = registros.Rows[0]["user_id"].ToString();
 
+                        DataTable lladmin = datos.comparaerror(id_user);
 
-                        int badmon = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
-                        
-                        U_session datosUsuarioad = new U_session();
-                        L_mac datosConexionadmon = new L_mac();
-
-                        datosUsuarioad.UserId = badmon;
-                        datosUsuarioad.Ip = datosConexionadmon.ip();
-                        datosUsuarioad.Mac = datosConexionadmon.mac();
-                        datosUsuarioad.Session = a;
-                        if (int.Parse(valAdm.Rows[0]["intentos"].ToString()) == 0)
-                        {
-                            datos.guardadoSession(datosUsuarioad);
-                            int id = int.Parse(registros.Rows[0]["user_id"].ToString());
-
-                            link = sesion(rol, badmon);
-                        }
-                        else
+                        if (int.Parse(lladmin.Rows[0]["errores"].ToString()) >= 3)
                         {
                             link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
                             link.Link_demas = "ingresar.aspx";
                         }
-                       
+                        else
+                        {
+
+                            DataTable valAdm = validaSesion(id_usuario);
+                            nombre = registros.Rows[0]["nombre"].ToString();
+                            sesi = registros.Rows[0]["user_id"].ToString();
 
 
-                       
-                        link = sesion(rol, badmon);
+                            int badmon = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
+
+                            U_session datosUsuarioad = new U_session();
+                            L_mac datosConexionadmon = new L_mac();
+
+                            datosUsuarioad.UserId = badmon;
+                            datosUsuarioad.Ip = datosConexionadmon.ip();
+                            datosUsuarioad.Mac = datosConexionadmon.mac();
+                            datosUsuarioad.Session = a;
+
+                            datos.guardadoSession(datosUsuarioad);
+
+
+
+                            link = sesion(rol, badmon);
+                        }
                         return link;
 
                     default:
@@ -1458,11 +1473,12 @@ namespace Logica
             }
             else
             {
-               
+
                 rol = 0;
                 link = sesion(rol, 0);
                 return link;
             }
+
 
         }
 
