@@ -1457,13 +1457,14 @@ namespace Logica
 
                     default:
                         DataTable errord = datos.validarErroneo(id_user);
-                        if (int.Parse(errord.Rows[0]["intentos"].ToString()) == 1)
+                        if (int.Parse(errord.Rows[0]["intentos_erroneos"].ToString()) == 3)
                         {
                             link.Mensaje_Alertaobservador1 = "Ha superado la cantidad de intentos permitidos, su cuenta esta bloqueada, por favor intente mas tarde";
                         }
                         else
                         {
                             link.Mensaje_Alertaobservador1 = "";
+                            link.Link_demas = "Ingresar.aspx";
                         }
                         rol = 0;
                         link = sesion(rol, 0);

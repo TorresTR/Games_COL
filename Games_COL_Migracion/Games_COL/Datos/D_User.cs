@@ -1961,7 +1961,7 @@ namespace Datos
 
             try
             {
-                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("seguridad.f_insertar_erroneo", conection);
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("seguridad.f_insertar_erroneo1", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                 dataAdapter.SelectCommand.Parameters.Add("_id_usuario", NpgsqlDbType.Integer).Value = id;
                 
