@@ -1362,7 +1362,7 @@ namespace Logica
 
                         DataTable llamado = datos.comparaerror(id_user);
 
-                        if (int.Parse(llamado.Rows[0]["errores"].ToString()) >= 3)
+                        if (int.Parse(llamado.Rows[0]["errores"].ToString()) >= 3 || int.Parse(llamado.Rows[0]["sesiones"].ToString()) >=2)
                         {
                             link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
                             link.Link_demas = "ingresar.aspx";
@@ -1406,7 +1406,7 @@ namespace Logica
 
                         DataTable llomod = datos.comparaerror(id_user);
 
-                        if (int.Parse(llomod.Rows[0]["errores"].ToString()) >= 3)
+                        if (int.Parse(llomod.Rows[0]["errores"].ToString()) >= 3 || int.Parse(llomod.Rows[0]["sesiones"].ToString()) >= 2)
                         {
                             link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
                             link.Link_demas = "ingresar.aspx";
@@ -1440,7 +1440,7 @@ namespace Logica
 
                         DataTable lladmin = datos.comparaerror(id_user);
 
-                        if (int.Parse(lladmin.Rows[0]["errores"].ToString()) >= 3)
+                        if (int.Parse(lladmin.Rows[0]["errores"].ToString()) >= 3 || int.Parse(lladmin.Rows[0]["sesiones"].ToString()) >= 2)
                         {
                             link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
                             link.Link_demas = "ingresar.aspx";
