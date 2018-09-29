@@ -323,12 +323,12 @@ namespace Logica
 
 
 
-        public U_Datos insertarUsuarionuevo(U_Datos datos)
+        public U_Datos insertarUsuarionuevo(U_Datos datos, Entity_usuario datosu)
         {
 
             D_User dat = new D_User();
             U_Datos dato = new U_Datos();
-
+            L_persistencia log = new L_persistencia();
 
 
             if (datos.Pass == datos.Confirma)
@@ -339,10 +339,10 @@ namespace Logica
                 if (int.Parse(validez.Rows[0]["id"].ToString()) > 0)
                 {
 
-                    dat.insertarUsuario(datos);
+                    log.insertarUsuario(datosu);
                     dato.Mensaje1 = "Usuario registrado con exito";
                     dato.Link = "Ingresar.aspx";
-                    consultaUsuario(datos.Nick);
+                    
 
                 }
                 else

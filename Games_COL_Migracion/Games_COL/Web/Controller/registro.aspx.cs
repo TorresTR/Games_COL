@@ -75,8 +75,10 @@ public partial class View_registro : System.Web.UI.Page
 
 
         //datos = dat.insertarUsuarionuevo(datos);
+        int id = dat.consultaUsuario(dato.Nick);
+        //dat.insertarSesion(id);
         cm.RegisterClientScriptBlock(this.GetType(), "", datos.Mensaje1);
-        LB_mensaje.Text = datos.Mensaje1.ToString();
+        //LB_mensaje.Text = datos.Mensaje1.ToString();
 
     }
 
