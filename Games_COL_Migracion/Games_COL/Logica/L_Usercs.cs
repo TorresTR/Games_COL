@@ -21,6 +21,22 @@ namespace Logica
             return prueba;
         }
 
+        public DataTable obtenerMiPost(int id, int user)
+        {
+            DataTable prueba = new DataTable();
+            D_User pqr = new D_User();
+            prueba = pqr.obtenerMipost(id,user);
+            return prueba;
+        }
+
+        public DataTable obtenerUsuario(int id)
+        {
+            DataTable prueba = new DataTable();
+            D_User pqr = new D_User();
+            prueba = pqr.obtenerUser(id);
+            return prueba;
+        }
+
         public U_user cerrarse(U_user datos) {
 
             D_User llamada = new D_User();

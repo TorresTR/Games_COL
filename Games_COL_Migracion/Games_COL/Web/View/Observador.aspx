@@ -153,7 +153,7 @@
             </tr>
         <tr>
             <td class="auto-style6">
-                <asp:ObjectDataSource ID="ODS_dataobs" runat="server" SelectMethod="obtenerPostObservador" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_dataobs" runat="server" SelectMethod="obtenerPost" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
             </td>
             <td>
                     &nbsp;</td>

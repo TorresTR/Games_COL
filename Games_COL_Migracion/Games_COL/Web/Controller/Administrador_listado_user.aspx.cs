@@ -174,18 +174,32 @@ public partial class View_Administrador_listado_user : System.Web.UI.Page
     {
        
         Button btn = (Button)sender;
+        L_persistencia log = new L_persistencia();
+        L_Usercs dac = new L_Usercs();
+        Entity_usuario user = new Entity_usuario();
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
         string ID = lblid.Text;
         int h = int.Parse(ID);
+        DataTable dato = dac.obtenerUsuario(h);
+
+        user.Id = h;
+        user.Nombre = dato.Rows[0]["nombre"].ToString();
+        user.Nick = dato.Rows[0]["nick"].ToString();
+        user.Puntos = int.Parse(dato.Rows[0]["puntos"].ToString());
+        user.Id_rango = int.Parse(dato.Rows[0]["id_rango"].ToString());
+        user.Correo = dato.Rows[0]["correo"].ToString();
+        user.Contra = dato.Rows[0]["contra"].ToString();
+        user.Id_rol = int.Parse(dato.Rows[0]["id_rol"].ToString());
+        user.Estado = int.Parse(dato.Rows[0]["estado"].ToString());
+        user.Session = dato.Rows[0]["session"].ToString();
+        user.Interaciones = int.Parse(dato.Rows[0]["interacciones"].ToString());
+        user.Fecha_interaccion = DateTime.Parse(dato.Rows[0]["fecha_interaccion"].ToString());
+
+        log.borrarUsuario(user);
 
 
-        
-        
 
-       
-
-        L_Usercs dac = new L_Usercs();
         U_user dat = dac.retornoAdmin();
 
         Response.Redirect(dat.Link_observador );

@@ -67,20 +67,29 @@ public partial class View_Default : System.Web.UI.Page
     protected void BT_guardar_Click(object sender, EventArgs e)
     {
 
-
+        L_persistencia log = new L_persistencia();
         L_Usercs dac = new L_Usercs();
-        U_Datos user = new U_Datos();
+        Entity_usuario user = new Entity_usuario();
         int b = int.Parse(Session["user_id"].ToString());
+        int h = int.Parse(LB_id.Text.ToString());
+        DataTable dato = dac.obtenerUsuario(h);
 
         user.Id = int.Parse(LB_id.Text.ToString());
         user.Nombre = TB_nombre.Text.ToString();
         user.Nick = TB_nick.Text.ToString();
         user.Puntos = int.Parse(TB_puntos.Text.ToString());
-        user.Rango = int.Parse(DDL_rango.SelectedValue.ToString());
+        user.Id_rango = int.Parse(DDL_rango.SelectedValue.ToString());
         user.Correo = TB_correo.Text.ToString();
-        U_user dat = new U_user();
+        user.Contra = dato.Rows[0]["contra"].ToString();
+        user.Id_rol = int.Parse(dato.Rows[0]["id_rol"].ToString());
+        user.Estado = int.Parse(dato.Rows[0]["estado"].ToString());
+        user.Session = dato.Rows[0]["session"].ToString();
+        user.Interaciones = int.Parse(dato.Rows[0]["interacciones"].ToString());
+        user.Fecha_interaccion = DateTime.Parse(dato.Rows[0]["fecha_interaccion"].ToString());
 
-        dac.actualizarUser(user);
+        U_user dat = new U_user();
+        log.actualizarUsuario(user);
+        //dac.actualizarUser(user);
         dat = dac.listadoUser();
 
         Response.Redirect(dat.Link_observador);

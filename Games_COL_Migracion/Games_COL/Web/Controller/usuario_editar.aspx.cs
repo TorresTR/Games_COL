@@ -61,14 +61,27 @@ public partial class View_usuario_editar : System.Web.UI.Page
     protected void BT_editar_Click(object sender, EventArgs e)
     {
 
-
         L_Usercs dac = new L_Usercs();
-        U_userCrearpost post = new U_userCrearpost();
+        Entity_post post = new Entity_post();
+        //U_userCrearpost post = new U_userCrearpost();
+        int a = int.Parse(Session["IdRecogido"].ToString());
+        int user = int.Parse(Session["user_id"].ToString());
+
+        DataTable dato = dac.obtenerMiPost(a,user);
+        L_persistencia log = new L_persistencia();
 
         post.Id = int.Parse(Session["IdRecogido"].ToString());
-        post.Contenido1 = Ck_editar.Text.ToString();
+        post.Contenido = Ck_editar.Text.ToString();
+        post.Autor = int.Parse(Session["user_id"].ToString());
+        post.Titulo = dato.Rows[0]["titulo"].ToString();
+        post.Fecha =  DateTime.Parse( dato.Rows[0]["fecha"].ToString());
+        post.Puntos = int.Parse(dato.Rows[0]["puntos"].ToString());
+        post.Etiqueta = int.Parse(dato.Rows[0]["etiqueta"].ToString());
+        post.Estado_bloqueo = int.Parse(dato.Rows[0]["estado_bloqueo"].ToString());
+        post.Num_puntos = int.Parse(dato.Rows[0]["num_puntos"].ToString());
 
-        dac.actualizarMispost(post);
+        log.actualizarPost(post);
+        //dac.actualizarMispost(post);
 
     }
 

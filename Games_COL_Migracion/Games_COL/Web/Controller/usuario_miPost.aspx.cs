@@ -135,6 +135,11 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         Button bt = (Button)sender;
         TableCell tableCell = (TableCell)bt.Parent;
         GridViewRow row = (GridViewRow)tableCell.Parent;
+        L_Usercs dac = new L_Usercs();
+        U_misPost dato = new U_misPost();
+        Entity_post post = new Entity_post();
+        L_persistencia log = new L_persistencia();
+
         GV_miPost.SelectedIndex = row.RowIndex;
         int fila = row.RowIndex;
 
@@ -143,13 +148,20 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
 
         int x = int.Parse(IdRecogido);
+        DataTable datos = dac.obtenerMiPost(x, b);
 
-        L_Usercs dac = new L_Usercs();
-        U_misPost dato = new U_misPost();
+        post.Id = x;
+        post.Contenido = datos.Rows[0]["contenido"].ToString();
+        post.Autor = int.Parse(Session["user_id"].ToString());
+        post.Titulo = datos.Rows[0]["titulo"].ToString();
+        post.Fecha = DateTime.Parse(datos.Rows[0]["fecha"].ToString());
+        post.Puntos = int.Parse(datos.Rows[0]["puntos"].ToString());
+        post.Etiqueta = int.Parse(datos.Rows[0]["etiqueta"].ToString());
+        post.Estado_bloqueo = int.Parse(datos.Rows[0]["estado_bloqueo"].ToString());
+        post.Num_puntos = int.Parse(datos.Rows[0]["num_puntos"].ToString());
 
-        dato.Id_mipost = x;
-
-        dac.eliminarMipost(dato);
+        log.borrarPost(post);
+        //dac.eliminarMipost(dato);
 
 
 

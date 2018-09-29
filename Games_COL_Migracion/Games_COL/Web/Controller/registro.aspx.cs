@@ -54,21 +54,27 @@ public partial class View_registro : System.Web.UI.Page
 
     protected void B_registrar_Click(object sender, EventArgs e)
     {
-        
+        Entity_usuario dato = new Entity_usuario();
+        L_persistencia log = new L_persistencia();
         ClientScriptManager cm = this.ClientScript;
-        datos.Nombre = TB_nombre.Text.ToString();
-        datos.Nick = TB_nick.Text.ToString();
-        datos.Pass = TB_pass.Text.ToString();
-        datos.Correo = TB_email.Text.ToString();
-        datos.Confirma = TB_confirmapass.Text.ToString();
-        datos.Puntos = 0;
-        datos.Rol = 1;
-        datos.Rango = 1;
-        datos.Estado = 1;
-        datos.Fecha = DateTime.Now;
+        dato.Nombre = TB_nombre.Text.ToString();
+        dato.Nick = TB_nick.Text.ToString();
+        dato.Contra = TB_pass.Text.ToString();
+        dato.Correo = TB_email.Text.ToString();
+        string Confirma = TB_confirmapass.Text.ToString();
+        dato.Puntos = 0;
+        dato.Id_rol = 1;
+        dato.Id_rango = 1;
+        dato.Estado = 1;
+        dato.Fecha_interaccion = DateTime.Now;
+        dato.Puntos = 1;
+        dato.Estado = 1;
+        dato.Session = "prueba";
+
+        log.insertarUsuario(dato);
 
 
-        datos = dat.insertarUsuarionuevo(datos);
+        //datos = dat.insertarUsuarionuevo(datos);
         cm.RegisterClientScriptBlock(this.GetType(), "", datos.Mensaje1);
         LB_mensaje.Text = datos.Mensaje1.ToString();
 
