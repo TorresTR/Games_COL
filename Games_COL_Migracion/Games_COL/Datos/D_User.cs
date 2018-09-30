@@ -43,6 +43,35 @@ namespace Datos
         }
 
 
+        public DataTable traerPQR(int id)
+        {
+            DataTable Usuario = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_traer_pqr", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = id;
+
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
+
+
         public DataTable ObtenerComentRepor()
         {
             DataTable Post = new DataTable();
@@ -857,7 +886,7 @@ namespace Datos
 
         }
 
-        public DataTable ListarUsuarios()
+        public DataTable ListarUsuarios( )
         {
 
             DataTable usuarios = new DataTable();
@@ -866,7 +895,39 @@ namespace Datos
             try
             {
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_listar_usuarios", conection);
+               
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
+                conection.Open();
+                dataAdapter.Fill(usuarios);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return usuarios;
+
+        }
+
+
+        public DataTable ListarComent(int id)
+        {
+
+            DataTable usuarios = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_obtener_comentario", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = id;
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
                 conection.Open();

@@ -46,11 +46,18 @@ public partial class View_contactenos : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
         U_Sugerencia sugere = new U_Sugerencia();
         L_Usercs user = new L_Usercs();
+        Entity_contacto cont = new Entity_contacto();
+        L_persistencia per = new L_persistencia();
 
         sugere.Correo = TB_correo.Text.ToString();
         sugere.Sugerencia = TB_sugerencias.Text.ToString();
 
-       sugere = user.sugerenciasUsuarios(sugere);
+        cont.Correo = TB_correo.Text.ToString();
+        cont.Sugerencia = TB_sugerencias.Text.ToString();
+
+        per.insertarContato(cont);
+
+        sugere = user.sugerenciasUsuarios(sugere);
 
         cm.RegisterClientScriptBlock(this.GetType(), "",sugere.Mensaje );
         Response.Redirect(sugere.Link);

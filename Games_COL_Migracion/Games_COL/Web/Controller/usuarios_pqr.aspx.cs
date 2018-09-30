@@ -49,6 +49,8 @@ public partial class View_usuarios_pqr : System.Web.UI.Page
 
         U_Datospqr pqr = new U_Datospqr();
         L_Usercs dao = new L_Usercs();
+        L_persistencia log = new L_persistencia();
+        Entity_pqr ent = new Entity_pqr();
 
         int b = int.Parse(Session["user_id"].ToString());
 
@@ -60,7 +62,19 @@ public partial class View_usuarios_pqr : System.Web.UI.Page
         pqr.Fecha = dt;
         pqr.Id_user = b;
 
-        dao.insertarPqr(pqr);
+        ent.Usuario = b;
+        ent.Solicitud = int.Parse(DDL_tipoSolicitud.SelectedValue.ToString());
+        ent.Contenido = TB_solicitud.Text.ToString();
+        ent.Asunto = TB_asunto.Text.ToString();
+        ent.Fecha = dt;
+        ent.Respuesta = "";
+        ent.Id_contestador = 0;
+        ent.Fecha_respuesta = DateTime.Parse("1990-01-01" );
+        ent.Estado_respuesta = 0;
+
+        log.insertarPQR(ent);
+
+       // dao.insertarPqr(pqr);
 
         U_user retorno = new U_user();
         L_Usercs llamado = new L_Usercs();

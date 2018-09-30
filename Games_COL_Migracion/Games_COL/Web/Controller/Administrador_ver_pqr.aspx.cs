@@ -91,6 +91,9 @@ public partial class View_Administrador_ver_pqr : System.Web.UI.Page
 
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
+        L_persistencia per = new L_persistencia();
+        Entity_pqr ent = new Entity_pqr();
+
         Label lblid = (Label)item.FindControl("LB_muestraId");
         string ID = lblid.Text;
         Int32 id = int.Parse(lblid.Text);
@@ -100,7 +103,10 @@ public partial class View_Administrador_ver_pqr : System.Web.UI.Page
         U_Datospqr pqr = new U_Datospqr();
         pqr.Id_pqr = id;
 
-        user.ignorarPQR(pqr);
+        ent.Id_pqr = id;
+        per.borrarPQR(ent);
+
+        //user.ignorarPQR(pqr);
 
 
         U_user dat = new U_user();

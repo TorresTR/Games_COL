@@ -84,18 +84,20 @@ public partial class View_Default : System.Web.UI.Page
     protected void BT_eliminar_Click(object sender, EventArgs e)
     {
         L_Usercs dac = new L_Usercs();
+        L_persistencia log = new L_persistencia();
+        Entity_comentarios coment = new Entity_comentarios();
         Button bt = (Button)sender;
         TableCell tableCell = (TableCell)bt.Parent;
         GridViewRow row = (GridViewRow)tableCell.Parent;
         GV_comentariosuser.SelectedIndex = row.RowIndex;
         int fila = row.RowIndex;
-
+        coment.Id_comentario = int.Parse(((Label)row.Cells[fila].FindControl("Label1")).Text);
         int h = int.Parse(Session["parametro"].ToString());
         int b = int.Parse(Session["user_id"].ToString());
         int IdRecogido = int.Parse(((Label)row.Cells[fila].FindControl("Label1")).Text);
 
-
-        dac.dataEliminarcomentaction(IdRecogido);
+        log.borrarComentario(coment);
+        //dac.dataEliminarcomentaction(IdRecogido);
 
         U_user data = new U_user();
         L_Usercs llamado = new L_Usercs();

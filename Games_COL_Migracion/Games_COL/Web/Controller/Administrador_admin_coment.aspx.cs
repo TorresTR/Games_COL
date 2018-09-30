@@ -68,13 +68,25 @@ public partial class View_Administrador_admin_coment : System.Web.UI.Page
     {
         L_Usercs dato = new L_Usercs();
         ClientScriptManager cm = this.ClientScript;
-        
+        Entity_comentarios coment = new Entity_comentarios();
+        L_persistencia logica = new L_persistencia();
 
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
         string ID = lblid.Text;
         int h = int.Parse(ID);
+
+        DataTable com = dato.obtenerComentarioEsp(h);
+
+        coment.Id_comentario = h;
+        coment.Comentario = com.Rows[0]["comentario"].ToString();
+        coment.Id_post = int.Parse(com.Rows[0]["id_post"].ToString());
+        coment.Id_user = int.Parse(com.Rows[0]["id_user"].ToString());
+        coment.Estado = 3;
+
+        logica.actualizarComentario(coment);
+
 
         dato.eliminarComent(h);
         LB_mensaje.Text = "Comentario Bloqueado";

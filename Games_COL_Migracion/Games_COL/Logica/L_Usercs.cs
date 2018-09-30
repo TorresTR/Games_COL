@@ -21,6 +21,22 @@ namespace Logica
             return prueba;
         }
 
+        public DataTable obtenerComentarioEsp(int id)
+        {
+            DataTable prueba = new DataTable();
+            D_User dato = new D_User();
+            prueba = dato.ListarComent(id);
+            return prueba;
+        }
+
+        public DataTable traerPQR(int id)
+        {
+            DataTable prueba = new DataTable();
+            D_User dato = new D_User();
+            prueba = dato.traerPQR(id);
+            return prueba;
+        }
+
         public DataTable obtenerMiPost(int id, int user)
         {
             DataTable prueba = new DataTable();
@@ -452,7 +468,7 @@ namespace Logica
             D_User dato = new D_User();
             U_Sugerencia dat = new U_Sugerencia();
 
-            dato.insertarSugerenciaUsuario(sugere);
+            //dato.insertarSugerenciaUsuario(sugere);
             dat.Mensaje = "<script type='text/javascript'>alert('Solicitud registrada con exito');</script>";
             dat.Link = "observador.aspx";
 
@@ -2037,7 +2053,7 @@ namespace Logica
             {
                 inter = inter + 1;
                 coment.Interaccion = inter;
-                dac.insertarComentarios(coment);
+               
                 DataTable regis = dac.obtenerUss(coment.Id_user);
                 int x = int.Parse(regis.Rows[0]["puntos"].ToString());
                 x = x + 1;

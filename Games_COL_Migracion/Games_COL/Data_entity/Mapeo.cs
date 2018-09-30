@@ -19,6 +19,9 @@ namespace Data
         
         public DbSet<Entity_post> post { get; set; }
         public DbSet<Entity_usuario> usuario { get; set; }
+        public DbSet<Entity_comentarios> comentario { get; set; }
+        public DbSet<Entity_pqr> pqr { get; set; }
+        public DbSet<Entity_contacto> contacto { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder builder)

@@ -54,7 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity_comentarios.cs" />
+    <Compile Include="Entity_contacto.cs" />
     <Compile Include="Entity_post.cs" />
+    <Compile Include="Entity_pqr.cs" />
     <Compile Include="Entity_usuario.cs" />
     <Compile Include="InforR_administrador.Designer.cs">
       <AutoGen>True</AutoGen>

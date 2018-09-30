@@ -64,5 +64,83 @@ namespace Logica
             dato.eliminarUsuario(usuario);
         }
 
+        public void insertarComenatrio(Entity_comentarios comentario)
+        {
+            daoPost dao = new daoPost();
+            dao.insertComentario(comentario);
+
+        }
+
+        public List<Entity_comentarios> obtenerComentario(int post)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerComentario(post);
+        }
+
+        public void actualizarComentario(Entity_comentarios comentario)
+        {
+            daoPost dao = new daoPost();
+            dao.actualizarComentario(comentario);
+
+        }
+
+        public void borrarComentario(Entity_comentarios comentario)
+        {
+            daoPost dato = new daoPost();
+            dato.eliminarComentario(comentario);
+        }
+
+        public void insertarPQR(Entity_pqr pqr)
+        {
+            daoPost dao = new daoPost();
+            dao.insertPQR(pqr);
+
+        }
+
+        public List<Entity_pqr> obtenerPQR()
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerPQR();
+        }
+
+        public void actualizarPQR(Entity_pqr pqr)
+        {
+            daoPost dao = new daoPost();
+            dao.actualizarPQR(pqr);
+
+        }
+
+        public void borrarPQR(Entity_pqr pqr)
+        {
+            daoPost dato = new daoPost();
+            dato.eliminarPQR(pqr);
+        }
+
+        public void insertarContato(Entity_contacto contacto)
+        {
+            daoPost dao = new daoPost();
+            dao.insertContacto(contacto);
+
+        }
+
+        public List<Entity_contacto> obtenerContacto()
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerContactos();
+        }
+
+        public void actualizarContacto(Entity_contacto contacto)
+        {
+            daoPost dao = new daoPost();
+            dao.actualizarContacto(contacto);
+
+        }
+
+        public void borrarContacto(Entity_contacto contacto)
+        {
+            daoPost dato = new daoPost();
+            dato.eliminarContacto(contacto);
+        }
+
     }
 }

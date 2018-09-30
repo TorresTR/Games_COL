@@ -100,5 +100,134 @@ namespace Datos
             }
         }
 
+        public void insertComentario(Entity_comentarios coment)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.comentario.Add(coment);
+                db.SaveChanges();
+
+
+            }
+        }
+
+        public List<Entity_comentarios> obtenerComentario(int post)
+            {
+            using (var db = new Mapeo("usuario"))
+            {
+
+                var a = db.comentario.ToList<Entity_comentarios>().Where(x => x.Estado.Equals(1)).Where(x=>x.Id_post.Equals(post));
+                return a.ToList<Entity_comentarios>();
+            }
+        }
+
+        public void actualizarComentario(Entity_comentarios comentario)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.comentario.Attach(comentario);
+                var entry = db.Entry(comentario);
+                entry.State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+
+        public void eliminarComentario(Entity_comentarios comentario)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.comentario.Attach(comentario);
+                db.Entry(comentario).State = EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
+        public void insertPQR(Entity_pqr pqr)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.pqr.Add(pqr);
+                db.SaveChanges();
+
+
+            }
+        }
+
+        public List<Entity_pqr> obtenerPQR()
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+
+                var a = db.pqr.ToList<Entity_pqr>().Where(x=>x.Estado_respuesta.Equals(0));
+                return a.ToList<Entity_pqr>();
+            }
+        }
+
+        public void actualizarPQR(Entity_pqr pqr)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.pqr.Attach(pqr);
+                var entry = db.Entry(pqr);
+                entry.State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+
+        public void eliminarPQR(Entity_pqr pqr)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.pqr.Attach(pqr);
+                db.Entry(pqr).State = EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
+        public void insertContacto(Entity_contacto contacto)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.contacto.Add(contacto);
+                db.SaveChanges();
+
+
+            }
+        }
+
+        public List<Entity_contacto> obtenerContactos()
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+
+                var a = db.contacto.ToList<Entity_contacto>();
+                return a.ToList<Entity_contacto>();
+            }
+        }
+
+        public void actualizarContacto(Entity_contacto contacto)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.contacto.Attach(contacto);
+                var entry = db.Entry(contacto);
+                entry.State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+
+        public void eliminarContacto(Entity_contacto contacto)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.contacto.Attach(contacto);
+                db.Entry(contacto).State = EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
     }
 }
