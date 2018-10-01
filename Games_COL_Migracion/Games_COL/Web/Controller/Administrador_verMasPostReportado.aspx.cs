@@ -39,7 +39,7 @@ public partial class View_Administrador_verMasPostReportado : System.Web.UI.Page
         U_userCrearpost doc = new U_userCrearpost();
         L_Usercs dac = new L_Usercs();
 
-
+         
         doc.Id = int.Parse(Session["parametro"].ToString());
         int x = int.Parse(Session["parametro"].ToString());
 

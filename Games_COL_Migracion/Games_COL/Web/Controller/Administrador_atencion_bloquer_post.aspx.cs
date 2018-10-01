@@ -76,7 +76,8 @@ public partial class View_Administrador_atencion_bloquer_post : System.Web.UI.Pa
         Label lblid = (Label)item.FindControl("LB_idPost");
         string ID = lblid.Text;
 
-        int b = int.Parse(Session["user_id"].ToString());
+        Session["parametro"] = ID;
+        int b = int.Parse(Session["parametro"].ToString());
 
         string dat = b.ToString();
         
