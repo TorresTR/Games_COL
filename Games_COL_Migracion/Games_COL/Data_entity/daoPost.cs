@@ -229,5 +229,27 @@ namespace Datos
             }
         }
 
+
+
+        public List<Entity_reporte> obtenerReporteadmin()
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+
+                var a = db.Reporte.ToList<Entity_reporte>();
+                return a.ToList<Entity_reporte>();
+            }
+        }
+
+        public List<Entity_reporteModer> obtenerReporteModeradmin()
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+
+                var a = db.ReporteModer.ToList<Entity_reporteModer>();
+                return a.ToList<Entity_reporteModer>();
+            }
+        }
+
     }
 }

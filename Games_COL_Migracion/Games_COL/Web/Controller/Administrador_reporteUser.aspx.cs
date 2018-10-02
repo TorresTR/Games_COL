@@ -50,12 +50,15 @@ public partial class View_Administrador_reporteUser : System.Web.UI.Page
     {
         DataRow fila;  //dr
         DataTable informacion = new DataTable(); //dt
+
+        L_persistencia info = new L_persistencia();
+
         InforR_administrador datos = new InforR_administrador();
         L_Usercs persona = new L_Usercs();
-        DataTable inter = persona.listarUserAdmin();
+        DataTable inter = persona.ToDataTable(info.obtenerReporteuser());
         informacion = datos.Tables["User"];
 
-        DataTable intermedio = persona.listarUserAdmin();
+        DataTable intermedio = persona.ToDataTable(info.obtenerReporteuser());
         persona.reporteAdministrador(inter, informacion);
 
 

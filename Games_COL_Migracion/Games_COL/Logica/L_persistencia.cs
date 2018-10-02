@@ -142,5 +142,18 @@ namespace Logica
             dato.eliminarContacto(contacto);
         }
 
+
+        public List<Entity_reporte> obtenerReporteuser()
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerReporteadmin();
+        }
+
+        public List<Entity_reporteModer> obtenerReportModer()
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerReporteModeradmin();
+        }
+
     }
 }
