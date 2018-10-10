@@ -24,6 +24,7 @@ namespace Data
         public DbSet<Entity_contacto> contacto { get; set; }
         public DbSet<Entity_reporte> Reporte { get; set; }
         public DbSet<Entity_reporteModer> ReporteModer { get; set; }
+        public DbSet<Entity_etiqueta> etiqueta { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder builder)

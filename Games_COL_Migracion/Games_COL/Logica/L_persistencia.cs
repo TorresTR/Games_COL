@@ -25,6 +25,12 @@ namespace Logica
             return dao.obtenerPost();
         }
 
+        public List<Entity_post> obtenerMiPost(int id)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerMiPost(id);
+        }
+
         public void actualizarPost(Entity_post post)
         {
             daoPost dao = new daoPost();

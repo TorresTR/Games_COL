@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Entity_comentarios.cs" />
     <Compile Include="Entity_contacto.cs" />
+    <Compile Include="Entity_etiqueta.cs" />
     <Compile Include="Entity_post.cs" />
     <Compile Include="Entity_pqr.cs" />
     <Compile Include="Entity_reporte.cs" />

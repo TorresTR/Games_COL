@@ -45,7 +45,10 @@ public partial class View_usuario_miPost : System.Web.UI.Page
 
         mio.Id_mipost = dato;
 
-        GV_miPost.DataSource = dac.misPost(mio);
+        L_persistencia log = new L_persistencia();
+        //log.obtenerMiPost(mio.Id_mipost, dato);
+        DataTable data = dac.ToDataTable(log.obtenerMiPost(dato));
+        GV_miPost.DataSource = data;
         GV_miPost.DataBind();
 
         try

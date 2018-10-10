@@ -28,8 +28,8 @@ namespace Datos
         {
             using (var db = new Mapeo("usuario"))
             {
-
-                var a = db.post.ToList<Entity_post>().Where(x => x.Estado_bloqueo.Equals(1));
+               // var e = db.post.Join(Entity_post, (x=>x.Id),(y=));
+                var a = db.post.ToList<Entity_post>().Where(x => x.Estado_bloqueo.Equals(1)).;
                 return a.ToList<Entity_post>();
             }
         }
@@ -251,5 +251,17 @@ namespace Datos
             }
         }
 
+        public List<Entity_post> obtenerMiPost(int id)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+
+                var a = db.post.ToList<Entity_post>().Where(x => x.Autor.Equals(id));
+                return a.ToList<Entity_post>();
+            }
+        }
+
     }
+
+    
 }
