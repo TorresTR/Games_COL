@@ -13,23 +13,6 @@ C:\Users\David\Documents\Visual Studio 2017\Proyecto\Games_COL_ultimaversion\Gam
 C:\Users\David\Documents\Visual Studio 2017\Proyecto\Games_COL_ultimaversion\Games_COL\Logica\bin\Debug\Npgsql.pdb
 C:\Users\David\Documents\Visual Studio 2017\Proyecto\Games_COL_ultimaversion\Games_COL\Logica\bin\Debug\Npgsql.xml
 C:\Users\David\Documents\Visual Studio 2017\Proyecto\Games_COL_ultimaversion\Games_COL\Logica\obj\Debug\Logica.csproj.CopyComplete
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Logica.dll
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Logica.pdb
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Datos.dll
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Utilitarios.dll
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Npgsql.dll
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Datos.pdb
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Utilitarios.pdb
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Npgsql.pdb
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Npgsql.xml
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.csproj.CopyComplete
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.dll
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.pdb
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Newtonsoft.Json.dll
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Logica.dll.config
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Logica.dll
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Logica.pdb
@@ -154,6 +137,8 @@ C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logic
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.dll
 C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.pdb
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Logica.dll.config
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Logica.dll
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Logica.pdb
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Microsoft.Win32.Primitives.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\netstandard.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\System.AppContext.dll
@@ -250,12 +235,29 @@ C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\b
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\System.Xml.XPath.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\System.Xml.XPath.XDocument.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Data_entity.dll
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Datos.dll
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Newtonsoft.Json.dll
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Npgsql.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\System.ValueTuple.dll
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Utilitarios.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\EntityFramework.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Data_entity.pdb
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Data_entity.dll.config
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Datos.pdb
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Datos.dll.config
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Utilitarios.pdb
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Utilitarios.dll.config
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Newtonsoft.Json.xml
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Npgsql.pdb
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Npgsql.xml
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\System.ValueTuple.xml
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\EntityFramework.xml
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.dll
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.pdb

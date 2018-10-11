@@ -15,7 +15,8 @@ public partial class View_Observador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-         L_Usercs Idio = new L_Usercs();
+
+        L_Usercs Idio = new L_Usercs();
         U_Datos dato = new U_Datos();
 
         Int32 idioma = 1;
@@ -29,7 +30,9 @@ public partial class View_Observador : System.Web.UI.Page
         {
             idioma = 1;
         }
-            
+
+        
+      
 
 
             DataTable info = Idio.traducir(id_pagina, idioma);
@@ -49,7 +52,10 @@ public partial class View_Observador : System.Web.UI.Page
         Session["user_id"] = 1;
         Response.Cache.SetNoStore();
         LB_resulbusq.Visible = false;
-      
+
+
+       
+
     }
 
     protected void DL_noticias_RowDataBound(object sender, DataListItemEventArgs e)

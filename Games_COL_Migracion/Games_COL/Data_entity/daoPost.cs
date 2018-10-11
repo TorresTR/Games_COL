@@ -16,11 +16,11 @@ namespace Datos
         {
             using (var db = new Mapeo("usuario"))
             {
-                
-                    db.post.Add(post);
-                    db.SaveChanges();
 
-               
+                db.post.Add(post);
+                db.SaveChanges();
+
+
             }
         }
 
@@ -28,8 +28,8 @@ namespace Datos
         {
             using (var db = new Mapeo("usuario"))
             {
-               // var e = db.post.Join(Entity_post, (x=>x.Id),(y=));
-                var a = db.post.ToList<Entity_post>().Where(x => x.Estado_bloqueo.Equals(1)).;
+                // var e = db.post.Join(Entity_post, (x=>x.Id),(y=));
+                var a = db.post.ToList<Entity_post>().Where(x => x.Estado_bloqueo.Equals(1));
                 return a.ToList<Entity_post>();
             }
         }
@@ -112,11 +112,11 @@ namespace Datos
         }
 
         public List<Entity_comentarios> obtenerComentario(int post)
-            {
+        {
             using (var db = new Mapeo("usuario"))
             {
 
-                var a = db.comentario.ToList<Entity_comentarios>().Where(x => x.Estado.Equals(1)).Where(x=>x.Id_post.Equals(post));
+                var a = db.comentario.ToList<Entity_comentarios>().Where(x => x.Estado.Equals(1)).Where(x => x.Id_post.Equals(post));
                 return a.ToList<Entity_comentarios>();
             }
         }
@@ -159,7 +159,7 @@ namespace Datos
             using (var db = new Mapeo("usuario"))
             {
 
-                var a = db.pqr.ToList<Entity_pqr>().Where(x=>x.Estado_respuesta.Equals(0));
+                var a = db.pqr.ToList<Entity_pqr>().Where(x => x.Estado_respuesta.Equals(0));
                 return a.ToList<Entity_pqr>();
             }
         }
@@ -261,7 +261,35 @@ namespace Datos
             }
         }
 
-    }
 
+        public List<Entity_idioma> obtenerIdiomaActivo()
+        {
+            using (var db = new Mapeo("idioma"))
+            {
+
+                var a = db.idioma.ToList<Entity_idioma>().Where(x => x.Estado.Equals(1));
+                return a.ToList<Entity_idioma>();
+            }
+
+
+
+        }
+
+
+
+        public List<Entity_controlesIdioma> obtenerControles(int i, int form)
+        {
+            using (var db = new Mapeo("idioma"))
+            {
+
+                var a = db.controles.ToList<Entity_controlesIdioma>().Where(x => x.Id_idioma.Equals(i) & x.Id_formulario.Equals(form));
+                return a.ToList<Entity_controlesIdioma>();
+            }
+
+
+
+        }
+
+    }
     
 }

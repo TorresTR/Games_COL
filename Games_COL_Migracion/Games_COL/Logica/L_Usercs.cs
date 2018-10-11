@@ -2678,6 +2678,7 @@ namespace Logica
             prueba = idioma.idiomas();
             return prueba;
         }
+
         public DataTable obtenerIdiomaActivo()
         {
             DataTable prueba = new DataTable();
@@ -2685,6 +2686,17 @@ namespace Logica
             prueba = idioma.idiomasactivos();
             return prueba;
         }
+
+        public DataTable obtenerIdiomaActivoprueba()
+        {
+            DataTable prueba = new DataTable();
+            //D_User idioma = new D_User();
+            L_persistencia log = new L_persistencia();
+            prueba = ToDataTable(log.obteneridiomaactivo());
+            return prueba;
+        }
+
+
         public DataTable traducir(Int32  FORMULARIO, int x)
         {
             D_User idioma = new D_User();

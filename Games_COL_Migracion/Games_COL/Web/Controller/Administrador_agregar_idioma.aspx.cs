@@ -87,7 +87,9 @@ public partial class View_Default : System.Web.UI.Page
         L_Usercs log = new L_Usercs();
 
         int form = int.Parse(DDL_forms.SelectedValue.ToString());
-        DataTable datos = log.controles(i, form);
+
+        L_persistencia contro = new L_persistencia();
+        DataTable datos = log.ToDataTable(contro.obtenerControles(i, form));
         GV_agregar.DataSource = datos;
         GV_agregar.DataBind();
     }

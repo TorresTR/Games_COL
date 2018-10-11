@@ -25,6 +25,8 @@ namespace Data
         public DbSet<Entity_reporte> Reporte { get; set; }
         public DbSet<Entity_reporteModer> ReporteModer { get; set; }
         public DbSet<Entity_etiqueta> etiqueta { get; set; }
+        public DbSet<Entity_idioma> idioma { get; set; }
+        public DbSet<Entity_controlesIdioma> controles { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder builder)

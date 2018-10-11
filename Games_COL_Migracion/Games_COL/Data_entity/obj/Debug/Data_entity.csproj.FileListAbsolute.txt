@@ -37,6 +37,7 @@ C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_ent
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_entity\bin\Debug\System.ValueTuple.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_entity\bin\Debug\Utilitarios.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_entity\bin\Debug\Utilitarios.pdb
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_entity\bin\Debug\Utilitarios.dll.config
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_entity\bin\Debug\EntityFramework.xml
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_entity\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_entity\bin\Debug\EntityFramework6.Npgsql.xml

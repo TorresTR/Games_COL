@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Utilitarios;
 using Data;
 using Datos;
+using System.Data;
 
 namespace Logica
 {
@@ -159,6 +160,19 @@ namespace Logica
         {
             daoPost dao = new daoPost();
             return dao.obtenerReporteModeradmin();
+        }
+
+
+        public List<Entity_idioma> obteneridiomaactivo()
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerIdiomaActivo();
+        }
+
+        public List<Entity_controlesIdioma> obtenerControles(int i, int form)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerControles(i,form);
         }
 
     }
