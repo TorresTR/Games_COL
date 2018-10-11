@@ -290,6 +290,41 @@ namespace Datos
 
         }
 
+
+        public void insertIdioma(Entity_idioma idioma)
+        {
+            using (var db = new Mapeo("idioma"))
+            {
+                db.idioma.Add(idioma);
+                db.SaveChanges();
+
+
+            }
+        }
+
+
+        public List<Entity_idioma> obtenerIdiomaEsp(String idi)
+        {
+            using (var db = new Mapeo("idioma"))
+            {
+                // var e = db.post.Join(Entity_post, (x=>x.Id),(y=));
+                var a = db.idioma.ToList<Entity_idioma>().Where(x => x.Nombre.Equals(idi));
+                return a.ToList<Entity_idioma>();
+            }
+        }
+
+
+        public void insertControlTraducido(Entity_controlesIdioma control)
+        {
+            using (var db = new Mapeo("idioma"))
+            {
+                db.controles.Add(control);
+                db.SaveChanges();
+
+
+            }
+        }
+
     }
     
 }

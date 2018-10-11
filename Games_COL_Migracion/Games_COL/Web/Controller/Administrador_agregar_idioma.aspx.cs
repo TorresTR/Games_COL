@@ -70,12 +70,24 @@ public partial class View_Default : System.Web.UI.Page
         BT_traduccion.Visible = true;
         TB_idioma.ReadOnly = true;
         TB_terminacion.ReadOnly = true;
+
         L_Usercs log = new L_Usercs();
+        L_persistencia per = new L_persistencia();
+        Entity_idioma idiom = new Entity_idioma();
+
         string idioma = TB_idioma.Text;
         string terminacion = TB_terminacion.Text;
-        log.insertarIdioma(idioma,terminacion);
-        DataTable dat = log.ObtenerIdioE(idioma);
+
+        idiom.Nombre = idioma;
+        idiom.Terminacion = terminacion;
+        idiom.Estado = 2;
+        per.insertarIdioma(idiom);
+       // log.insertarIdioma(idioma,terminacion);
+
+        DataTable dat = log.ToDataTable(per.obtenerIdiomaEspe(idioma));
+
         LB_idIdioma.Text = dat.Rows[0]["id"].ToString();
+
         int i = int.Parse(LB_idIdioma.Text);
         
         
@@ -119,16 +131,23 @@ public partial class View_Default : System.Web.UI.Page
 
     protected void BT_traduccion_Click(object sender, EventArgs e)
     {
-        U_control control = new U_control();
+        //U_control control = new U_control();
+        Entity_controlesIdioma contro = new Entity_controlesIdioma();
         try
         {
-            
-            control.Nombre = LB_cont.Text;
-            control.Idioma = int.Parse(LB_idIdioma.Text);
-            control.Id_form = int.Parse(LB_idform.Text);
-            control.Contenido = TB_contenido.Text;
+            contro.Nombre = LB_cont.Text;
+            contro.Id_idioma = int.Parse(LB_idIdioma.Text);
+            contro.Id_formulario = int.Parse(LB_idform.Text);
+            contro.Contenido = TB_contenido.Text;
+
+            //control.Nombre = LB_cont.Text;
+            //control.Idioma = int.Parse(LB_idIdioma.Text);
+            //control.Id_form = int.Parse(LB_idform.Text);
+            //control.Contenido = TB_contenido.Text;
+
+            L_persistencia per = new L_persistencia();
             L_Usercs log = new L_Usercs();
-            log.insertarControl(control);
+            per.insertarControlTraducido(contro);
             int i = int.Parse(LB_idIdioma.Text);
             log.comparaIdioma(i);
         }

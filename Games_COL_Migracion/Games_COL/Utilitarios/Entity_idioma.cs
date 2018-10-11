@@ -16,7 +16,7 @@ namespace Utilitarios
         private Int32 id;
         private String nombre;
         private String terminacion;
-        private String estado;
+        private Int32 estado;
 
         [Key]
         [Column("id")]
@@ -26,6 +26,6 @@ namespace Utilitarios
         [Column("terminacion")]
         public string Terminacion { get => terminacion; set => terminacion = value; }
         [Column("estado")]
-        public string Estado { get => estado; set => estado = value; }
+        public int Estado { get => estado; set => estado = value; }
     }
 }

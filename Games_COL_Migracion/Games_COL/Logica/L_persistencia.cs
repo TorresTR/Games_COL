@@ -175,5 +175,25 @@ namespace Logica
             return dao.obtenerControles(i,form);
         }
 
+        public void insertarIdioma(Entity_idioma idioma)
+        {
+            daoPost dao = new daoPost();
+            dao.insertIdioma(idioma);
+
+        }
+
+        public List<Entity_idioma> obtenerIdiomaEspe(String idi)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerIdiomaEsp(idi);
+        }
+
+        public void insertarControlTraducido(Entity_controlesIdioma control)
+        {
+            daoPost dao = new daoPost();
+            dao.insertControlTraducido(control);
+
+        }
+
     }
 }
