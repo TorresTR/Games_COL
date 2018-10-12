@@ -54,10 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entiry_formularioIdioma.cs" />
     <Compile Include="Entity_comentarios.cs" />
     <Compile Include="Entity_contacto.cs" />
     <Compile Include="Entity_controlesIdioma.cs" />
     <Compile Include="Entity_etiqueta.cs" />
+    <Compile Include="Entity_idioma-agregar.cs" />
     <Compile Include="Entity_idioma.cs" />
     <Compile Include="Entity_post.cs" />
     <Compile Include="Entity_pqr.cs" />

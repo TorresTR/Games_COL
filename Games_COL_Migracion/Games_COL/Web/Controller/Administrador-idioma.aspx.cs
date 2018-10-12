@@ -82,10 +82,14 @@ public partial class View_Default : System.Web.UI.Page
     protected void DDL_lenguaje_SelectedIndexChanged(object sender, EventArgs e)
     {
         L_Usercs log = new L_Usercs();
-
+        L_persistencia llamado = new L_persistencia();
         idio = int.Parse(DDL_Idioma.SelectedValue.ToString());
         form = int.Parse(DDL_forms.SelectedValue.ToString());
-        DataTable datos= log.controles(idio,form);
+
+      
+
+        DataTable datos= log.ToDataTable(llamado.obtenerIdiomacontroles(idio,form));
+
         GV_controles.DataSource = datos;
         GV_controles.DataBind();
 
@@ -143,9 +147,13 @@ public partial class View_Default : System.Web.UI.Page
     protected void BT_guardar_Click(object sender, EventArgs e)
     {
         L_Usercs log = new L_Usercs();
+        
+
         int id = int.Parse(LB_id.Text);
         string cont = TB_cont.Text;
+
         log.editarCont(id,cont);
+
         TB_cont.Text = "";
         LB_id.Text = "";
         //GV_controles.DataBind();

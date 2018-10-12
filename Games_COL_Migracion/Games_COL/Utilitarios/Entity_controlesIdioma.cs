@@ -12,7 +12,7 @@ namespace Utilitarios
     [Table("controles", Schema = "idioma")]
     public class Entity_controlesIdioma
     {
-        private int id;
+        private int? id;
         private String nombre;
         private int id_formulario;
         private int id_idioma;
@@ -22,7 +22,7 @@ namespace Utilitarios
 
         [Key]
         [Column("id")]
-        public int Id { get => id; set => id = value; }
+        public int? Id { get => id; set => id = value; }
         [Column("nombre")]
         public string Nombre { get => nombre; set => nombre = value; }
         [Column("id_formulario")]
@@ -31,5 +31,10 @@ namespace Utilitarios
         public int Id_idioma { get => id_idioma; set => id_idioma = value; }
         [Column("contenido")]
         public string Contenido { get => contenido; set => contenido = value; }
+
+        
     }
+
+
+   
 }

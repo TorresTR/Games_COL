@@ -64,7 +64,7 @@
     </tr>
     <tr>
         <td class="text-center" colspan="3">
-            <asp:GridView ID="GV_controles" runat="server" AutoGenerateColumns="False" DataKeyNames="id,contenido,control" 
+            <asp:GridView ID="GV_controles" runat="server" AutoGenerateColumns="False" DataKeyNames="id,contenido,nombre" 
                >
                         <Columns>
                             <asp:TemplateField HeaderText="formulario">
@@ -72,7 +72,7 @@
                                     <asp:Label ID="Label1" runat="server" Visible="true"></asp:Label>
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="LB_formulario" runat="server" Text='<%# Bind("formulario") %>' Visible="true"></asp:Label>
+                                    <asp:Label ID="LB_formulario" runat="server" Text='<%# Bind("id_formulario") %>' Visible="true"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="control">
@@ -80,7 +80,7 @@
                                     <asp:Label ID="Label2" runat="server" Visible="true"></asp:Label>
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="LB_control" runat="server" Text='<%# Bind("control") %>' Visible="true"></asp:Label>
+                                    <asp:Label ID="LB_control" runat="server" Text='<%# Bind("nombre") %>' Visible="true"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="id_formulario">
@@ -88,7 +88,7 @@
                                     <asp:Label ID="Label3" runat="server" Visible="true"></asp:Label>
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="LB_idForm" runat="server" Text='<%# Bind("id_form") %>' Visible="true"></asp:Label>
+                                    <asp:Label ID="LB_idForm" runat="server" Text='<%# Bind("id_formulario") %>' Visible="true"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="idioma">
@@ -96,7 +96,7 @@
                                     <asp:Label ID="Label4" runat="server" Visible="true"></asp:Label>
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="LB_idioma" runat="server" Text='<%# Bind("idioma") %>' Visible="true"></asp:Label>
+                                    <asp:Label ID="LB_idioma" runat="server" Text='<%# Bind("id_idioma") %>' Visible="true"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="id">
@@ -127,11 +127,11 @@
                                      <br />
                                      <asp:Label ID="LB_contentob" runat="server" Text='<%# Eval("contenido") %>' Visible="False"></asp:Label>
                                     <br />
-                                     <asp:Label ID="LB_controlob" runat="server" Text='<%# Eval("control") %>' Visible="False"></asp:Label>
+                                     <asp:Label ID="LB_controlob" runat="server" Text='<%# Eval("nombre") %>' Visible="False"></asp:Label>
                                     <br />
-                                     <asp:Label ID="LB_formuob" runat="server" Text='<%# Eval("formulario") %>' Visible="False"></asp:Label>
+                                     <asp:Label ID="LB_formuob" runat="server" Text='<%# Eval("id_formulario") %>' Visible="False"></asp:Label>
                                      <br />
-                                     <asp:Label ID="LB_idioob" runat="server" Text='<%# Eval("idioma") %>' Visible="False"></asp:Label>
+                                     <asp:Label ID="LB_idioob" runat="server" Text='<%# Eval("id_idioma") %>' Visible="False"></asp:Label>
 
                                 </ItemTemplate>
                             </asp:TemplateField>

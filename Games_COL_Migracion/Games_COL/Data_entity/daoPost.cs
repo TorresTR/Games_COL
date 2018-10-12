@@ -325,6 +325,63 @@ namespace Datos
             }
         }
 
+
+        public List<Entity_controlesIdioma> obtenerIdiomaformu(int idi,int form)
+        {
+            using (var db = new Mapeo("idioma"))
+            {
+                // var e = db.post.Join(Entity_post, (x=>x.Id),(y=));
+                var a = db.controles.ToList<Entity_controlesIdioma>().Where(x => x.Id_idioma.Equals(idi)).Where(x => x.Id_formulario.Equals(form));
+                return a.ToList<Entity_controlesIdioma>();
+            }
+        }
+
+
+       
+
+        //public List<Entity_idioma_agregar> obtenerContolesprueba(int form, int idioma)
+        //{
+
+        //    using (var db = new Mapeo("idioma"))
+        //    {
+
+        //        List<Entity_idioma_agregar> obj1 = new List<Entity_idioma_agregar>();
+        //        var resu = (from ct in db.controles
+        //                    join fr in db.formu on ct.Id_formulario equals form 
+        //                    join fz in db.formu on ct.Id_idioma equals idioma
+        //                    join hg in db.formu on ct.Id_formulario equals  hg.Id
+
+
+        //                   select new {
+
+        //                       formulario = fr.Nombre,
+        //                       control = ct.Nombre,
+        //                       contenido = ct.Contenido,
+        //                       id_form = ct.Id_formulario,
+        //                       idioma = ct.Id_idioma,
+        //                       id=ct.Id
+
+        //                   });
+
+        //        foreach (var item in resu)
+        //        {
+        //            Entity_idioma_agregar log = new Entity_idioma_agregar();
+
+        //            log.Formulario = item.formulario;
+        //            log.Control = item.control;
+        //            log.Contenido = item.contenido;
+        //            log.Id_form = item.id_form;
+        //            log.Idioma = item.idioma;
+        //            log.Id = item.id;
+
+        //            obj1.Add(log);
+        //        }
+
+        //        return obj1;
+        //    }
+        //}
+
+
     }
     
 }

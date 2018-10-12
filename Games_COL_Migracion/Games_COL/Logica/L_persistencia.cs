@@ -195,5 +195,21 @@ namespace Logica
 
         }
 
+
+        public List<Entity_controlesIdioma> obtenerIdiomacontroles(int idi,int form)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerIdiomaformu(idi,form);
+        }
+
+         
+        //public List<Entity_idioma_agregar> obtenerPrueba(int form,int idio)
+        //{
+        //    daoPost dao = new daoPost();
+        //    return dao.obtenerContolesprueba(form,idio);
+        //}
+
+
+
     }
 }

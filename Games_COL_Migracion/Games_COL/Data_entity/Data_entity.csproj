@@ -86,6 +86,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Persistencia_funciones\Persistencia_funciones.csproj">
+      <Project>{7a5b43c8-d9a2-4180-b74b-ffd56ed6849b}</Project>
+      <Name>Persistencia_funciones</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utilitarios\Utilitarios.csproj">
       <Project>{4f86464a-0c31-4cd8-988e-bb1da0718618}</Project>
       <Name>Utilitarios</Name>
