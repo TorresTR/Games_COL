@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilitarios;
+using Persistencia_funciones;
 
 public partial class View_Default : System.Web.UI.Page
 {
@@ -59,6 +60,9 @@ public partial class View_Default : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
         U_comentarios reporte = new U_comentarios();
         L_Usercs envio = new L_Usercs();
+        Entity_comentarios coment = new Entity_comentarios();
+        L_persistencia per = new L_persistencia();
+        Entity_reporte_comentarios coment_rep = new Entity_reporte_comentarios();
 
         int b = int.Parse(Session["IdRecogido"].ToString());
         int p = int.Parse(Session["parametro"].ToString());
@@ -70,13 +74,23 @@ public partial class View_Default : System.Web.UI.Page
         DataTable regis = envio.obtenerComentario1(b);
 
 
-        reporte.Id_com_reportado1 = b;
-        reporte.Contenido1 = TB_motivoR.Text.ToString();
-        reporte.Fecha = dt;
-        reporte.Id_user = u;
+        coment_rep.Id_com_reportado = b;
+        coment_rep.Contendio = TB_motivoR.Text.ToString();
+        coment_rep.Fecha = dt;
+        coment_rep.Id_user = u;
 
-        envio.insertarComentarioReportado(reporte);
-        envio.bloquearComent(b);
+        per.insertarReportecomentar(coment_rep);
+
+        DataTable com = envio.obtenerComentariofinal(b);
+       
+
+        coment.Id_comentario = int.Parse(com.Rows[0]["id_comentario"].ToString());
+        coment.Id_post = int.Parse(com.Rows[0]["id_post"].ToString());
+        coment.Id_user= int.Parse(com.Rows[0]["id_user"].ToString());
+        coment.Comentario= com.Rows[0]["comentario"].ToString();
+        coment.Estado = 2;
+        //envio.bloquearComent(b);
+        per.actualizarComentario(coment);
 
         string ID = Session["parametro"].ToString();
         string z = Session["user_id"].ToString();

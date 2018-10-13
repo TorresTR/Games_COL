@@ -138,7 +138,7 @@
                     </asp:DataList>
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="Panel2_CollapsiblePanelExtender" runat="server" BehaviorID="Panel2_CollapsiblePanelExtender" CollapseControlID="HL_post" CollapsedSize="30" ExpandControlID="HL_post" ExpandedSize="500" SuppressPostBack="True" TargetControlID="Panel2" />
-    <asp:ObjectDataSource ID="ODS_datauser" runat="server" SelectMethod="obtenerPostxbox" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ODS_datauser" runat="server" SelectMethod="obtenerPostxbox" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
             </td>
             <td>&nbsp;</td>
         </tr>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Utilitarios;
+using Persistencia_funciones;
 
 namespace Datos
 {
@@ -77,6 +78,38 @@ namespace Datos
                 return a.ToList<Entity_usuario>();
             }
         }
+
+        public List<Entity_usuario> obtenerModer()
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+
+                var a = db.usuario.ToList<Entity_usuario>().Where(x => x.Id_rol.Equals(2));
+                return a.ToList<Entity_usuario>();
+            }
+        }
+
+        public List<Entity_usuario> obtenerCarga(int id)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+
+                var a = db.usuario.ToList<Entity_usuario>().Where(x => x.Id.Equals(id));
+                return a.ToList<Entity_usuario>();
+            }
+        }
+
+        public List<Entity_comentarios> obtenerComentesp(int id)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+
+                var a = db.comentario.ToList<Entity_comentarios>().Where(x => x.Id_comentario.Equals(id));
+                return a.ToList<Entity_comentarios>();
+            }
+        }
+
+
 
         public void actualizarUsuario(Entity_usuario usuario)
         {
@@ -261,6 +294,15 @@ namespace Datos
             }
         }
 
+        public List<Entity_noticias> obtenerMinoticia(int id)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+
+                var a = db.noticas.ToList<Entity_noticias>().Where(x => x.Id_noticia.Equals(id));
+                return a.ToList<Entity_noticias>();
+            }
+        }
 
         public List<Entity_idioma> obtenerIdiomaActivo()
         {
@@ -336,8 +378,131 @@ namespace Datos
             }
         }
 
+        public void eliminarActualizar(actualizar_estado_bloqueo estado)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.actua_est.Attach(estado);
+                db.Entry(estado).State = EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
 
-       
+        public void eliminarTokenrecuperarcontra(Entity_token_recuperacion_user token)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.token_recupera.Attach(token);
+                db.Entry(token).State = EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
+
+        public void eliminarSolicitud(Entity_solicitud sol)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.solicitud.Attach(sol);
+                db.Entry(sol).State = EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
+
+        public void insertSolicitud(Entity_solicitud sol)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.solicitud.Add(sol);
+                db.SaveChanges();
+
+
+            }
+        }
+
+
+        public List<Entity_post> obtenerPostmioeditar(int post, int id)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+
+                var a = db.post.ToList<Entity_post>().Where(x => x.Autor.Equals(id)).Where(x => x.Id.Equals(post));
+                return a.ToList<Entity_post>();
+            }
+        }
+
+
+        public List<Entity_post> obtenerPostpc()
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                // var e = db.post.Join(Entity_post, (x=>x.Id),(y=));
+                var a = db.post.ToList<Entity_post>().Where(x => x.Estado_bloqueo.Equals(1)).Where(x=> x.Etiqueta.Equals(5));
+                return a.ToList<Entity_post>();
+            }
+        }
+
+        public List<Entity_post> obtenerPostxbox()
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                // var e = db.post.Join(Entity_post, (x=>x.Id),(y=));
+                var a = db.post.ToList<Entity_post>().Where(x => x.Estado_bloqueo.Equals(1)).Where(x => x.Etiqueta.Equals(2));
+                return a.ToList<Entity_post>();
+            }
+        }
+
+        public List<Entity_puntuacion> obtenerPuntos(int id)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                // var e = db.post.Join(Entity_post, (x=>x.Id),(y=));
+                var a = db.puntos.ToList<Entity_puntuacion>().Where(x => x.Id_usuario.Equals(id));
+                return a.ToList<Entity_puntuacion>();
+            }
+        }
+
+        public List<Entity_rango> obtenerRangouser()
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                // var e = db.post.Join(Entity_post, (x=>x.Id),(y=));
+                var a = db.rango.ToList<Entity_rango>().Where(x => x.Identificador.Equals(1));
+                return a.ToList<Entity_rango>();
+            }
+        }
+
+        public List<Entity_solicitud> obtenerSolicituddata()
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                // var e = db.post.Join(Entity_post, (x=>x.Id),(y=));
+                var a = db.solicitud.ToList<Entity_solicitud>();
+                return a.ToList<Entity_solicitud>();
+            }
+        }
+
+        public List<Entity_usuario> obtenerUser(int id)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                // var e = db.post.Join(Entity_post, (x=>x.Id),(y=));
+                var a = db.usuario.ToList<Entity_usuario>().Where(x => x.Id.Equals(id));
+                return a.ToList<Entity_usuario>();
+            }
+        }
+
+        public void insertReportecoment(Entity_reporte_comentarios sol)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                db.coment_repo.Add(sol);
+                db.SaveChanges();
+
+
+            }
+        }
 
         //public List<Entity_idioma_agregar> obtenerContolesprueba(int form, int idioma)
         //{
@@ -383,5 +548,5 @@ namespace Datos
 
 
     }
-    
+
 }

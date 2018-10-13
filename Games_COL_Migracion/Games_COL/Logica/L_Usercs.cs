@@ -1235,6 +1235,20 @@ namespace Logica
             return punt;
         }
 
+
+        public DataTable obtenerComentariofinal(int x)
+        {
+
+            D_User data = new D_User();
+            U_userCrearpost comentario = new U_userCrearpost();
+
+            comentario.Comentarios1 = x;
+
+            DataTable punt = data.ObtenerComentFinal(comentario);
+
+            return punt;
+        }
+
         public U_userCrearpost retornoObservador()
         {
             U_userCrearpost dat = new U_userCrearpost();
@@ -1646,7 +1660,7 @@ namespace Logica
                 {
                     datos.Nick = dat.Rows[0]["nick"].ToString();
                     datos.Puntos = int.Parse(dat.Rows[0]["puntos"].ToString());
-                    datos.Mensaje1 = dat.Rows[0]["tipo"].ToString();
+                    datos.Mensaje1 = dat.Rows[0]["id_rango"].ToString();
                     datos.Id = int.Parse(dat.Rows[0]["id"].ToString());
 
                 }
@@ -2463,7 +2477,7 @@ namespace Logica
                 moder.Nombre = regis.Rows[0]["nombre"].ToString();
                 moder.Nick = regis.Rows[0]["nick"].ToString();
                 moder.Puntos = int.Parse(regis.Rows[0]["puntos"].ToString());
-                moder.Confirma = regis.Rows[0]["tipo"].ToString();
+                moder.Confirma = regis.Rows[0]["id_rango"].ToString();
                 moder.Correo = regis.Rows[0]["correo"].ToString();
                 moder.Bin = false;
 

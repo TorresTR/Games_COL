@@ -74,7 +74,7 @@
                 </asp:DropDownList>
                 &nbsp;
                 <asp:RequiredFieldValidator ID="RFV_rango" runat="server" ControlToValidate="DDL_rango" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                <asp:ObjectDataSource ID="ODS_rangoU" runat="server" SelectMethod="obtenerRangoUser" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_rangoU" runat="server" SelectMethod="obtenerRangousuario" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
             </td>
         </tr>
         <tr>

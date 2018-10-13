@@ -140,7 +140,7 @@
                             <td>
                                 &nbsp;</td>
                             <td class="auto-style4">
-                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id" AutoGenerateColumns="False" OnRowDataBound="GV_Idioma_RowDataBound" >
+                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id_comentario" AutoGenerateColumns="False" OnRowDataBound="GV_Idioma_RowDataBound" >
                                     <Columns>
                                         <asp:TemplateField HeaderText="Reportar">
                                             <HeaderTemplate>
@@ -149,7 +149,7 @@
                                             <ItemTemplate>
                                                 <asp:Button ID="BT_reportar" runat="server" Text="Reportar" CommandName="reportar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClick="BT_reportar_Click" CssClass="btn btn-outline-success"/>
                                                 <br />
-                                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>' Visible="False"></asp:Label>
+                                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("id_comentario") %>' Visible="False"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Comentarios">
@@ -157,7 +157,7 @@
                                                 <asp:Label ID="LB_titCom" runat="server"></asp:Label>
                                             </HeaderTemplate>
                                             <ItemTemplate>
-                                                <asp:Label ID="LB_comentario" runat="server" Text='<%# Bind("comentarios") %>'></asp:Label>
+                                                <asp:Label ID="LB_comentario" runat="server" Text='<%# Bind("comentario") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>

@@ -10,6 +10,7 @@ using Datos;
 using Utilitarios;
 using Logica;
 using System.Collections;
+using Persistencia_funciones;
 
 public partial class View_MasterUsuario : System.Web.UI.MasterPage
 {
@@ -70,9 +71,11 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
         int b = int.Parse(Session["user_id"].ToString());
 
 
-        DataTable data = us.CargarUsusarios(b);
-        LB_mensaje.Text= log.ActualizarRango(data, b);
-        DataTable dat = us.CargarUsusarios(b);
+        L_persistencia per = new L_persistencia();
+
+        DataTable data = log.ToDataTable(per.obtenerCarga(b));
+        log.ActualizarRango(data, b);
+        DataTable dat = log.ToDataTable(per.obtenerCarga(b));
         dato = log.cargaDatos(dat, b);
 
         LB_nickMuestra.Text = dato.Nick;

@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
+using Persistencia_funciones;
 
 public partial class View_Moderador_miNoticia : System.Web.UI.Page
 {
@@ -38,8 +39,16 @@ public partial class View_Moderador_miNoticia : System.Web.UI.Page
 
         
         int dato = int.Parse(Session["user_id"].ToString());
+        DataTable dt = dac.minoticiagv(dato);
 
-        GV_miPost.DataSource = dac.minoticiagv(dato);
+        L_persistencia per = new L_persistencia();
+        Entity_noticias not = new Entity_noticias();
+
+        int dtr = int.Parse(dt.Rows[0]["id"].ToString());
+
+        DataTable data = dac.ToDataTable(per.obtenerMinoticia(dtr));
+
+        GV_miPost.DataSource = data;
         GV_miPost.DataBind();
 
     }

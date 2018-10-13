@@ -7,6 +7,7 @@ using Utilitarios;
 using Data;
 using Datos;
 using System.Data;
+using Persistencia_funciones;
 
 namespace Logica
 {
@@ -26,6 +27,17 @@ namespace Logica
             return dao.obtenerPost();
         }
 
+        public List<Entity_post> obtenerPostpc()
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerPostpc();
+        }
+
+        public List<Entity_post> obtenerPostxbox()
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerPostxbox();
+        }
         public List<Entity_post> obtenerMiPost(int id)
         {
             daoPost dao = new daoPost();
@@ -56,6 +68,12 @@ namespace Logica
         {
             daoPost dao = new daoPost();
             return dao.obtenerUsuario();
+        }
+
+        public List<Entity_usuario> obtenerModerador()
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerModer();
         }
 
         public void actualizarUsuario(Entity_usuario usuario)
@@ -202,7 +220,113 @@ namespace Logica
             return dao.obtenerIdiomaformu(idi,form);
         }
 
-         
+
+        public void borrarActualizar(actualizar_estado_bloqueo post)
+        {
+            daoPost dato = new daoPost();
+            dato.eliminarActualizar(post);
+        }
+
+        public void borrarRecuperarcontra(Entity_token_recuperacion_user token)
+        {
+            daoPost dato = new daoPost();
+            dato.eliminarTokenrecuperarcontra(token);
+        }
+
+
+        public void borrarSolicitud(Entity_solicitud sol)
+        {
+            daoPost dato = new daoPost();
+            dato.eliminarSolicitud(sol);
+        }
+
+
+        public U_Interaccion insertarSolicitud(Entity_solicitud sol, System.Data.DataTable validez, string r1, string r2)
+        {
+            daoPost dao = new daoPost();
+            
+            U_Interaccion inter = new U_Interaccion();
+
+            if (int.Parse(validez.Rows[0]["puntos"].ToString()) >= 3700)
+            {
+                dao.insertSolicitud(sol);
+                inter.Mensaje = r1;
+                inter.Estado = false;
+            }
+            else
+            {
+                inter.Mensaje = r2;
+                inter.Estado = false;
+            }
+            return inter;
+
+        }
+
+
+        public List<Entity_usuario> obtenerCarga(int id)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerCarga(id);
+        }
+
+        public List<Entity_comentarios> obtenerComentarioesp(int id)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerComentesp(id);
+        }
+
+
+        public List<Entity_noticias> obtenerMinoticia(int id)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerMinoticia(id);
+        }
+
+
+        public List<Entity_post> obtenerMipostmio(int post, int id)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerPostmioeditar(post,id);
+        }
+
+        public List<Entity_puntuacion> obtenerPuntos(int id)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerPuntos(id);
+        }
+
+
+        public DataTable obtenerRangousuario()
+        {
+            daoPost dao = new daoPost();
+            L_Usercs user = new L_Usercs();
+           DataTable dat = user.ToDataTable(dao.obtenerRangouser());
+            return dat;
+        }
+
+
+        public DataTable obtenerDatasolicitudesuser()
+        {
+            daoPost dao = new daoPost();
+            L_Usercs user = new L_Usercs();
+            DataTable dat = user.ToDataTable(dao.obtenerSolicituddata());
+            return dat;
+        }
+
+
+        public List<Entity_usuario> obtenerUser(int id)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerUser(id);
+        }
+
+
+        public void insertarReportecomentar(Entity_reporte_comentarios post)
+        {
+            daoPost dao = new daoPost();
+            dao.insertReportecoment(post);
+
+        }
         //public List<Entity_idioma_agregar> obtenerPrueba(int form,int idio)
         //{
         //    daoPost dao = new daoPost();

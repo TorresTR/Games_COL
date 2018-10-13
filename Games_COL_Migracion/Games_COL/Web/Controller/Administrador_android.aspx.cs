@@ -122,7 +122,7 @@ public partial class View_Administrador_android : System.Web.UI.Page
     {
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
-        Label lblid = (Label)item.FindControl("LB_id");
+        Label lblid = (Label)item.FindControl("LB_id0");
 
 
         string ID = lblid.Text;

@@ -137,7 +137,7 @@
             <br />
         </ItemTemplate>
     </asp:DataList>
-    <asp:ObjectDataSource ID="ODS_datauser" runat="server" SelectMethod="obtenerPostxbox" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ODS_datauser" runat="server" SelectMethod="obtenerPostxbox" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
             </td>
             <td>&nbsp;</td>
         </tr>

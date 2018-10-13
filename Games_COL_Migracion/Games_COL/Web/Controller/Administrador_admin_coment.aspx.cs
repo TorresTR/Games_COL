@@ -77,7 +77,7 @@ public partial class View_Administrador_admin_coment : System.Web.UI.Page
         string ID = lblid.Text;
         int h = int.Parse(ID);
 
-        DataTable com = dato.obtenerComentarioEsp(h);
+        DataTable com = dato.ToDataTable(logica.obtenerComentarioesp(h));
 
         coment.Id_comentario = h;
         coment.Comentario = com.Rows[0]["comentario"].ToString();

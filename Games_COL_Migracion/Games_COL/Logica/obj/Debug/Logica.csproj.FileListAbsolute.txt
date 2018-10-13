@@ -261,3 +261,5 @@ C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\o
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.csproj.CopyComplete
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\obj\Debug\Logica.pdb
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Persistencia_funciones.dll
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Logica\bin\Debug\Persistencia_funciones.pdb

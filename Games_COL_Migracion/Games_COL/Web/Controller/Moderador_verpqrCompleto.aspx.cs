@@ -60,20 +60,35 @@ public partial class View_Moderador_verpqrCompleto : System.Web.UI.Page
 
         L_Usercs user = new L_Usercs();
         U_Datospqr respuesa = new U_Datospqr();
+        L_persistencia pqr = new L_persistencia();
+        Entity_pqr ent = new Entity_pqr();
 
 
         int b = int.Parse(Session["user_id"].ToString());
-        int q = int.Parse(Session["IdRecogido"].ToString());
-        int a =1;
+        int q = int.Parse(Session["parametro"].ToString());
+        int a = 1;
+        DataTable tabla = user.traerPQR(q);
+
         DateTime dt = DateTime.Now;
 
-        respuesa.Id_respondedor = b;
-        respuesa.Fecha_respuesta = dt;
-        respuesa.Respuesta = TB_respuestapqr.Text.ToString();
-        respuesa.Id_pqr = q;
-        respuesa.Estado_respuesta = a;
+        //respuesa.Id_respondedor = b;
+        //respuesa.Fecha_respuesta = dt;
+        //respuesa.Respuesta = TB_respuestapqr.Text.ToString();
+        //respuesa.Id_pqr = q;
+        //respuesa.Estado_respuesta = a;
 
-        user.actualizarpqr(respuesa);
+        ent.Id_pqr = q;
+        ent.Usuario = int.Parse(tabla.Rows[0]["usuario"].ToString());
+        ent.Solicitud = int.Parse(tabla.Rows[0]["solicitud"].ToString());
+        ent.Contenido = tabla.Rows[0]["contenido"].ToString();
+        ent.Asunto = tabla.Rows[0]["asunto"].ToString();
+        ent.Fecha = DateTime.Parse(tabla.Rows[0]["fecha"].ToString());
+        ent.Respuesta = TB_respuestapqr.Text.ToString();
+        ent.Id_contestador = b;
+        ent.Fecha_respuesta = dt;
+        ent.Estado_respuesta = 1;
+
+        pqr.actualizarPQR(ent);
         string par = q.ToString();
         string ui = b.ToString();
  

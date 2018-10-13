@@ -87,19 +87,23 @@ public partial class View_Moderador_ver_pqr : System.Web.UI.Page
 
     protected void BT_ignorar_Click(object sender, EventArgs e)
     {
-        string q = Session["user_id"].ToString();
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
+        L_persistencia per = new L_persistencia();
+        Entity_pqr ent = new Entity_pqr();
+
         Label lblid = (Label)item.FindControl("LB_muestraId");
         string ID = lblid.Text;
         Int32 id = int.Parse(lblid.Text);
-        int b = int.Parse(q);
+        int b = int.Parse(Session["user_id"].ToString());
+
+        L_Usercs user = new L_Usercs();
         U_Datospqr pqr = new U_Datospqr();
         pqr.Id_pqr = id;
-        D_User user = new D_User();
 
-
-        user.ignorarpqr(pqr);
+        ent.Id_pqr = id;
+        per.borrarPQR(ent);
+        //user.ignorarpqr(pqr);
         Response.Redirect("Moderador_ver_pqr.aspx");
 
 

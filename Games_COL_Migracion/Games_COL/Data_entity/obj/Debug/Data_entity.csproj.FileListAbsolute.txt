@@ -51,3 +51,5 @@ C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_ent
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_entity\obj\Debug\Data_entity.csproj.CopyComplete
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_entity\obj\Debug\Data_entity.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_entity\obj\Debug\Data_entity.pdb
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_entity\bin\Debug\Persistencia_funciones.dll
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Data_entity\bin\Debug\Persistencia_funciones.pdb

@@ -10,6 +10,7 @@ using Logica;
 using Utilitarios;
 using System.Collections;
 using System.Data;
+using Persistencia_funciones;
 
 public partial class View_Default : System.Web.UI.Page
 {
@@ -67,15 +68,23 @@ public partial class View_Default : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
         int b = int.Parse(Session["user_id"].ToString());
         L_Usercs log = new L_Usercs();
-
+        L_persistencia per = new L_persistencia();
+        Entity_solicitud sol = new Entity_solicitud();
         
         datos.Id = b;
         System.Data.DataTable validez = dao.SolicitudAscenso(datos);
         datos.Nick = validez.Rows[0]["nick"].ToString();
         datos.Puntos = int.Parse(validez.Rows[0]["puntos"].ToString());
         datos.Fecha = DateTime.Now;
-        U_Interaccion inter = log.solicitudModer(datos,validez,mensaje,mensaje2);
-      
+
+        sol.Id_user = int.Parse(Session["user_id"].ToString());
+        sol.Nick = validez.Rows[0]["nick"].ToString();
+        sol.Puntos = int.Parse(validez.Rows[0]["puntos"].ToString());
+        sol.Fecha= DateTime.Now;
+
+        U_Interaccion inter = per.insertarSolicitud(sol, validez, mensaje, mensaje2); 
+
+        //log.solicitudModer(datos, validez, mensaje, mensaje2);
         LB_mensaje.Text = inter.Mensaje;
         B_solicitud.Visible = inter.Estado;
        

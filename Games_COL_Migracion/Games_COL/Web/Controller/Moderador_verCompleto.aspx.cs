@@ -54,12 +54,12 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
 
         L_Usercs log = new L_Usercs();
         D_User dac = new D_User();
-
+        L_persistencia logica = new L_persistencia();
 
         int comparador_idpost = int.Parse(Session["parametro"].ToString());
         int comparador_iduser = int.Parse(Session["user_id"].ToString());
 
-        DataTable regisval = dac.obtenerpuntsval(comparador_iduser);
+        DataTable regisval = log.ToDataTable(logica.obtenerPuntos(comparador_iduser));
 
         DataTable data = dac.ObtenerInteraccion(comparador_iduser);
         int inter = int.Parse(data.Rows[0]["id"].ToString());
@@ -115,7 +115,7 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         LB_muestraPag.Text = datos.Contenido1;
         LB_autor.Text = datos.Autor1;
 
-
+        
 
         DataTable punt = dac.verpuntos(doc);
         datos = log.promedioPunt(punt);
@@ -125,7 +125,7 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         LB_motrarPuntos.Text = tot.ToString();
 
         datos.Comentarios1 = dato;
-        GV_comentariosuser.DataSource = log.obtenerComentario(comparador_idpost);
+        GV_comentariosuser.DataSource = logica.obtenerComentario(comparador_idpost);
         GV_comentariosuser.DataBind();
 
 
@@ -198,9 +198,28 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
 
 
 
+        L_Usercs data_userPost = new L_Usercs();
+        L_persistencia per = new L_persistencia();
+        Entity_usuario user_ent = new Entity_usuario();
 
+        DataTable datat = data_userPost.obtenerUsuario(b);
 
-        dac.actualizarpuntoUser(b, x);
+        user_ent.Id = b;
+        user_ent.Nombre = datat.Rows[0]["nombre"].ToString();
+        user_ent.Nick = datat.Rows[0]["nick"].ToString();
+        user_ent.Correo = datat.Rows[0]["correo"].ToString();
+        user_ent.Contra = datat.Rows[0]["contra"].ToString();
+        user_ent.Puntos = x;
+        user_ent.Id_rol = int.Parse(datat.Rows[0]["id_rol"].ToString());
+        user_ent.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
+        user_ent.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
+        user_ent.Session = datat.Rows[0]["session"].ToString();
+        user_ent.Interaciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
+        per.actualizarUsuario(user_ent);
+
+        //dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
         string ui = Session["user_id"].ToString();
@@ -266,8 +285,27 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
 
 
 
+        L_Usercs data_userPost = new L_Usercs();
+        L_persistencia per = new L_persistencia();
+        Entity_usuario user_ent = new Entity_usuario();
 
-        dac.actualizarpuntoUser(b, x);
+        DataTable datat = data_userPost.obtenerUsuario(b);
+
+        user_ent.Id = b;
+        user_ent.Nombre = datat.Rows[0]["nombre"].ToString();
+        user_ent.Nick = datat.Rows[0]["nick"].ToString();
+        user_ent.Correo = datat.Rows[0]["correo"].ToString();
+        user_ent.Contra = datat.Rows[0]["contra"].ToString();
+        user_ent.Puntos = x;
+        user_ent.Id_rol = int.Parse(datat.Rows[0]["id_rol"].ToString());
+        user_ent.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
+        user_ent.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
+        user_ent.Session = datat.Rows[0]["session"].ToString();
+        user_ent.Interaciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
+        per.actualizarUsuario(user_ent);
+        //dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
         string ui = Session["user_id"].ToString();
@@ -333,8 +371,27 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
 
 
 
+        L_Usercs data_userPost = new L_Usercs();
+        L_persistencia per = new L_persistencia();
+        Entity_usuario user_ent = new Entity_usuario();
 
-        dac.actualizarpuntoUser(b, x);
+        DataTable datat = data_userPost.obtenerUsuario(b);
+
+        user_ent.Id = b;
+        user_ent.Nombre = datat.Rows[0]["nombre"].ToString();
+        user_ent.Nick = datat.Rows[0]["nick"].ToString();
+        user_ent.Correo = datat.Rows[0]["correo"].ToString();
+        user_ent.Contra = datat.Rows[0]["contra"].ToString();
+        user_ent.Puntos = x;
+        user_ent.Id_rol = int.Parse(datat.Rows[0]["id_rol"].ToString());
+        user_ent.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
+        user_ent.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
+        user_ent.Session = datat.Rows[0]["session"].ToString();
+        user_ent.Interaciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
+        per.actualizarUsuario(user_ent);
+        //dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
         string ui = Session["user_id"].ToString();
@@ -399,8 +456,27 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
 
 
 
+        L_Usercs data_userPost = new L_Usercs();
+        L_persistencia per = new L_persistencia();
+        Entity_usuario user_ent = new Entity_usuario();
 
-        dac.actualizarpuntoUser(b, x);
+        DataTable datat = data_userPost.obtenerUsuario(b);
+
+        user_ent.Id = b;
+        user_ent.Nombre = datat.Rows[0]["nombre"].ToString();
+        user_ent.Nick = datat.Rows[0]["nick"].ToString();
+        user_ent.Correo = datat.Rows[0]["correo"].ToString();
+        user_ent.Contra = datat.Rows[0]["contra"].ToString();
+        user_ent.Puntos = x;
+        user_ent.Id_rol = int.Parse(datat.Rows[0]["id_rol"].ToString());
+        user_ent.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
+        user_ent.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
+        user_ent.Session = datat.Rows[0]["session"].ToString();
+        user_ent.Interaciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
+        per.actualizarUsuario(user_ent);
+        //dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
         string ui = Session["user_id"].ToString();
@@ -465,8 +541,27 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
 
 
 
+        L_Usercs data_userPost = new L_Usercs();
+        L_persistencia per = new L_persistencia();
+        Entity_usuario user_ent = new Entity_usuario();
 
-        dac.actualizarpuntoUser(b, x);
+        DataTable datat = data_userPost.obtenerUsuario(b);
+
+        user_ent.Id = b;
+        user_ent.Nombre = datat.Rows[0]["nombre"].ToString();
+        user_ent.Nick = datat.Rows[0]["nick"].ToString();
+        user_ent.Correo = datat.Rows[0]["correo"].ToString();
+        user_ent.Contra = datat.Rows[0]["contra"].ToString();
+        user_ent.Puntos = x;
+        user_ent.Id_rol = int.Parse(datat.Rows[0]["id_rol"].ToString());
+        user_ent.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
+        user_ent.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
+        user_ent.Session = datat.Rows[0]["session"].ToString();
+        user_ent.Interaciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
+        per.actualizarUsuario(user_ent);
+        //dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
         string ui = Session["user_id"].ToString();
@@ -490,14 +585,20 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         L_Usercs log = new L_Usercs();
         U_comentarios coment = new U_comentarios();
         D_User dac = new D_User();
-
+        L_persistencia logica = new L_persistencia();
+        Entity_comentarios comentario = new Entity_comentarios();
 
         int b = int.Parse(Session["user_id"].ToString());
         DateTime dt = DateTime.Now;
-        coment.Fecha = dt;
-        coment.Conetinido1 = TB_comentarios.Text.ToString();
-        coment.Id_post = int.Parse(Session["parametro"].ToString());
+
         coment.Id_user = int.Parse(Session["user_id"].ToString());
+
+        comentario.Comentario = TB_comentarios.Text.ToString();
+        comentario.Id_post = int.Parse(Session["parametro"].ToString());
+        comentario.Id_user = int.Parse(Session["user_id"].ToString());
+        comentario.Estado = 1;
+
+        logica.insertarComenatrio(comentario);
 
         DataTable data = dac.ObtenerInteraccion(b);
         int inter = int.Parse(data.Rows[0]["id"].ToString());

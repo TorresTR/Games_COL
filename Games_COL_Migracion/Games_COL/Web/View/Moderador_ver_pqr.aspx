@@ -20,10 +20,10 @@
                             <tr>
                                 <td class="auto-style5">
                                     <asp:Label ID="LB_autor" runat="server" Text="autor:"></asp:Label>
-                                    <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                    <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("usuario") %>'></asp:Label>
                                     <br />
                                     <asp:Label ID="LB_idPQR" runat="server" Text="ID PQR:"></asp:Label>
-                                    <asp:Label ID="LB_muestraId" runat="server" Text='<%# Bind("id") %>'></asp:Label>
+                                    <asp:Label ID="LB_muestraId" runat="server" Text='<%# Bind("id_pqr") %>'></asp:Label>
                                     <br />
                                     <asp:Label ID="LB_tipoSolicitud" runat="server" Text="Tipo de Solicitud:"></asp:Label>
                                     <asp:Label ID="LB_muestraSolicitud" runat="server" Text='<%# Bind("solicitud") %>'></asp:Label>
@@ -34,10 +34,10 @@
                                     <br />
                                 </td>
                                 <td>
-                                    <asp:Button ID="BT_resolver" runat="server" Text="Resolver" CommandName="resolver" CommandArgument='<%# Eval("id") %>' CssClass="btn btn-outline-info" OnClick="BT_resolver_Click"/>
+                                    <asp:Button ID="BT_resolver" runat="server" Text="Resolver" CommandName="resolver" CommandArgument='<%# Eval("id_pqr") %>' CssClass="btn btn-outline-info" OnClick="BT_resolver_Click"/>
                                     <br />
                                     <br />
-                                    <asp:Button ID="BT_ignorar" runat="server" Text="Ignorar" Width="90px" CommandName="ignorar" CommandArgument='<%# Eval("id") %>' CssClass="btn btn-outline-danger" OnClick="BT_ignorar_Click" />
+                                    <asp:Button ID="BT_ignorar" runat="server" Text="Ignorar" Width="90px" CommandName="ignorar" CommandArgument='<%# Eval("id_pqr") %>' CssClass="btn btn-outline-danger" OnClick="BT_ignorar_Click" />
                                 </td>
                             </tr>
                         </table>
@@ -48,7 +48,7 @@
                         <br />
                     </ItemTemplate>
                 </asp:DataList>
-                <asp:ObjectDataSource ID="ODS_pqr" runat="server" SelectMethod="Obtenerpqrmoderador" TypeName="Datos.D_User"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_pqr" runat="server" SelectMethod="obtenerPQR" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
             </td>
         </tr>
         <tr>

@@ -32,8 +32,8 @@ C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitar
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\bin\Debug\System.ValueTuple.xml
-C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csproj.CopyComplete
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.pdb
+C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache

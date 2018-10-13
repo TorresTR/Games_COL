@@ -163,7 +163,7 @@
                                         </td>
                                         </b>
                                         <td>
-                                            <asp:Label ID="LB_rango" runat="server" Text='<%# Bind("tipo") %>'></asp:Label>
+                                       
                                         </td>
                                         <td>&nbsp; </td>
                                         <td class="auto-style2">
@@ -203,7 +203,7 @@
                         </table>
                     </ItemTemplate>
                 </asp:DataList>
-                <asp:ObjectDataSource ID="ODS_usuarios0" runat="server" SelectMethod="listarModerAdmin" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_usuarios0" runat="server" SelectMethod="obtenerModerador" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
             </td>
         </tr>
         <tr>

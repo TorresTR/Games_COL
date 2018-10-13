@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using Utilitarios;
+using Persistencia_funciones;
 
 namespace Data
 {
@@ -28,7 +29,13 @@ namespace Data
         public DbSet<Entity_idioma> idioma { get; set; }
         public DbSet<Entity_controlesIdioma> controles { get; set; }
         public DbSet<Entiry_formularioIdioma> formu { get; set; }
-
+        public DbSet<actualizar_estado_bloqueo> actua_est { get; set; }
+        public DbSet<Entity_token_recuperacion_user> token_recupera { get; set; }
+        public DbSet<Entity_solicitud> solicitud { get; set; }
+        public DbSet<Entity_noticias> noticas { get; set; }
+        public DbSet<Entity_puntuacion> puntos { get; set; }
+        public DbSet<Entity_rango> rango { get; set; }
+        public DbSet<Entity_reporte_comentarios> coment_repo { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {

@@ -66,9 +66,10 @@ public partial class View_usuario_editar : System.Web.UI.Page
         //U_userCrearpost post = new U_userCrearpost();
         int a = int.Parse(Session["IdRecogido"].ToString());
         int user = int.Parse(Session["user_id"].ToString());
-
-        DataTable dato = dac.obtenerMiPost(a,user);
         L_persistencia log = new L_persistencia();
+
+        DataTable dato = dac.ToDataTable(log.obtenerMipostmio(a,user));
+       
 
         post.Id = int.Parse(Session["IdRecogido"].ToString());
         post.Contenido = Ck_editar.Text.ToString();

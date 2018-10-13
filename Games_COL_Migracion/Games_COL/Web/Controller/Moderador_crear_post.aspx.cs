@@ -102,7 +102,29 @@ public partial class View_Moderador_crear_post : System.Web.UI.Page
 
         x = x + 1;
 
-        data_userPost.actualizarpuntoUser(b, x);
+
+        
+        L_persistencia per = new L_persistencia();
+        Entity_usuario user_ent = new Entity_usuario();
+
+        DataTable datat = data_userPost.obtenerUsuario(b);
+
+        user_ent.Id = b;
+        user_ent.Nombre = datat.Rows[0]["nombre"].ToString();
+        user_ent.Nick = datat.Rows[0]["nick"].ToString();
+        user_ent.Correo = datat.Rows[0]["correo"].ToString();
+        user_ent.Contra = datat.Rows[0]["contra"].ToString();
+        user_ent.Puntos = x;
+        user_ent.Id_rol = int.Parse(datat.Rows[0]["id_rol"].ToString());
+        user_ent.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
+        user_ent.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
+        user_ent.Session = datat.Rows[0]["session"].ToString();
+        user_ent.Interaciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
+        per.actualizarUsuario(user_ent);
+
+        //data_userPost.actualizarpuntoUser(b, x);
         data_userPost.insertarPost(datos_creartPost);
 
         cm.RegisterClientScriptBlock(this.GetType(), "", iter.Mensaje);

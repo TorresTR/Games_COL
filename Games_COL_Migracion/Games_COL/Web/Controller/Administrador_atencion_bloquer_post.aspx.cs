@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilitarios;
+using Persistencia_funciones;
 
 public partial class View_Administrador_atencion_bloquer_post : System.Web.UI.Page
 {
@@ -99,16 +100,23 @@ public partial class View_Administrador_atencion_bloquer_post : System.Web.UI.Pa
         Label lblid = (Label)item.FindControl("LB_idPost");
         string ID = lblid.Text;
 
+        L_persistencia per = new L_persistencia();
+        actualizar_estado_bloqueo est = new actualizar_estado_bloqueo();
+        Entity_post pot = new Entity_post();
+
         int b = int.Parse(Session["user_id"].ToString());
         int x = 2;
         int h = int.Parse(ID);
         int z = 1;
 
+        est.Id_post_reportador = int.Parse(ID);
+        pot.Id = int.Parse(ID);
         L_Usercs dac = new L_Usercs();
 
-        dac.bloquearPost(h, b, x, z);
+        //dac.actualizarmoderPostreportado(h, b, x,z);
 
-        
+        per.borrarActualizar(est);
+        per.borrarPost(pot);
 
 
         U_user dat = dac.atencionBloquearPost();

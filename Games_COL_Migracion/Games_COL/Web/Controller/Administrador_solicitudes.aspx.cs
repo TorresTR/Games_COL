@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilitarios;
+using Persistencia_funciones;
 
 public partial class View_Default : System.Web.UI.Page
 {
@@ -90,7 +91,8 @@ public partial class View_Default : System.Web.UI.Page
 
         L_Usercs dato = new L_Usercs();
         U_user user = new U_user();
-        ClientScriptManager cm = this.ClientScript;
+        L_persistencia per = new L_persistencia();
+        Entity_solicitud sol = new Entity_solicitud();
 
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
@@ -99,8 +101,12 @@ public partial class View_Default : System.Web.UI.Page
         int b = int.Parse(Session["user_id"].ToString());
         int h = int.Parse(ID);
 
-        dato.ignorarAscenso(h);
-        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Solicitud Ignorada');</script>");
+        sol.Id = int.Parse(ID);
+        
+
+        per.borrarSolicitud(sol);
+        //dato.ignorarAscenso(h);
+        
         user = dato.retornoAdmin();
 
         Response.Redirect(user.Link_observador);

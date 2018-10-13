@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
+using Persistencia_funciones;
 
 public partial class View_Moderador_atencion_bloquer_post : System.Web.UI.Page
 {
@@ -94,16 +95,24 @@ public partial class View_Moderador_atencion_bloquer_post : System.Web.UI.Page
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_idPost");
         string ID = lblid.Text;
-        
+
+        L_persistencia per = new L_persistencia();
+        actualizar_estado_bloqueo est = new actualizar_estado_bloqueo();
+        Entity_post pot = new Entity_post();
+
         int b = int.Parse(Session["user_id"].ToString());
         int x = 2;
         int h = int.Parse(ID);
         int z = 1;
 
+        est.Id_post_reportador = int.Parse(ID);
+        pot.Id = int.Parse(ID);
         L_Usercs dac = new L_Usercs();
 
-        dac.actualizarmoderPostreportado(h, b, x,z);
+        //dac.actualizarmoderPostreportado(h, b, x,z);
 
+        per.borrarActualizar(est);
+        per.borrarPost(pot);
         int t = int.Parse(Session["user_id"].ToString());
 
         string dat = b.ToString();

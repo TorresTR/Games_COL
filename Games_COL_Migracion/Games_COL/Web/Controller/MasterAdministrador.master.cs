@@ -75,8 +75,12 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
         int b = int.Parse(Session["user_id"].ToString());
 
 
-        DataTable data = us.CargarUsusarios(b);
-        DataTable dat = us.CargarUsusarios(b);
+        //DataTable data = us.CargarUsusarios(b);
+
+        L_persistencia per = new L_persistencia();
+        
+
+        DataTable dat = log.ToDataTable(per.obtenerCarga(b));
         dato = log.cargaDatos(dat, b);
 
         LB_nickMuestra.Text = dato.Nick;

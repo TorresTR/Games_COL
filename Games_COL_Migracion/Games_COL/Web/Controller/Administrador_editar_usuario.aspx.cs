@@ -46,7 +46,10 @@ public partial class View_Default : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
         int a = int.Parse(Session["parametro"].ToString());
 
-        DataTable regis = dac.verUser(a);
+        L_persistencia per = new L_persistencia();
+        Entity_usuario us = new Entity_usuario();
+
+        DataTable regis = dac.ToDataTable(per.obtenerUser(a));
         U_Datos moder = dac.datosModerador(regis);
 
         LB_id.Text = moder.Id.ToString();
