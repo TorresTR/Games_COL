@@ -43,9 +43,12 @@ public partial class View_usuario_verRespuestas : System.Web.UI.Page
 
         int dato = int.Parse(Session["IdRecogido"].ToString());
 
-             doc   =   dac.misRespuestaspqr(dato);
+             //doc   =   dac.misRespuestaspqr(dato);
 
-        LB_verRespuesta.Text = doc.Respuesta;
+        L_persistencia per = new L_persistencia();//agregar
+        DataTable datos = dac.ToDataTable(per.obtenerPQRVer(dato));//AGREGAR
+
+        LB_verRespuesta.Text = datos.Rows[0]["respuesta"].ToString();//AGREGAR
     }
 
     protected void BT_volver_Click(object sender, EventArgs e)

@@ -90,7 +90,7 @@ public partial class View_Default : System.Web.UI.Page
         user_ent.Id_rango = int.Parse(data.Rows[0]["id_rango"].ToString());
         user_ent.Estado = 1;
         user_ent.Session= data.Rows[0]["session"].ToString();
-        user_ent.Interaciones = int.Parse(data.Rows[0]["interacciones"].ToString());
+        user_ent.Interacciones = int.Parse(data.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(data.Rows[0]["fecha_interaccion"].ToString());
 
         per.actualizarUsuario(user_ent);

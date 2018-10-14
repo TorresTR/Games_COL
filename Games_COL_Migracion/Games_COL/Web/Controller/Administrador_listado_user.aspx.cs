@@ -193,7 +193,7 @@ public partial class View_Administrador_listado_user : System.Web.UI.Page
         user.Id_rol = int.Parse(dato.Rows[0]["id_rol"].ToString());
         user.Estado = int.Parse(dato.Rows[0]["estado"].ToString());
         user.Session = dato.Rows[0]["session"].ToString();
-        user.Interaciones = int.Parse(dato.Rows[0]["interacciones"].ToString());
+        user.Interacciones = int.Parse(dato.Rows[0]["interacciones"].ToString());
         user.Fecha_interaccion = DateTime.Parse(dato.Rows[0]["fecha_interaccion"].ToString());
 
         log.borrarUsuario(user);

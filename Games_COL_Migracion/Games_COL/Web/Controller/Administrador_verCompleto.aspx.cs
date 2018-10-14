@@ -95,10 +95,10 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
 
         UpdatePanel1.Visible = estado;
-
+        L_persistencia per = new L_persistencia();//agregar
 
         int b = int.Parse(Session["user_id"].ToString());
-        DataTable regis2 = dac.obtenerUss(b);
+        DataTable regis2 = per.obtenerUs(b);//agregar
         String x = regis2.Rows[0]["nick"].ToString();
         String z = regis.Rows[0]["autor"].ToString();
 
@@ -173,7 +173,11 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         int b = int.Parse(Session["user_id"].ToString());
         int bn = int.Parse(Session["parametro"].ToString());
-        DataTable punt = dac.ObtenerPuntos(bn);
+        L_Usercs dec = new L_Usercs();//agregar
+        L_persistencia per = new L_persistencia();//agregar
+        DataTable punt = dec.ToDataTable(per.obtenerPostEsp(bn));//agregar
+        DataTable us = per.obtenerUs(b);//agregar
+        //DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
         puntot.Id = int.Parse(Session["parametro"].ToString());
         puntot.Id_user = int.Parse(Session["user_id"].ToString());
@@ -186,7 +190,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         DataTable regis = dac.verpag(doc);
 
 
-        DataTable regis2 = dac.obtenerUss(b);
+        DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
         puntot.Autor1 = regis.Rows[0]["autor"].ToString();
@@ -196,7 +200,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         L_Usercs llamado = new L_Usercs();
 
-        llamado.puntosBoton(punt, inter, puntot);
+        llamado.puntosBoton(punt, inter, puntot, us);//AGREGAR
 
 
 
@@ -204,15 +208,17 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         int z = int.Parse(Session["parametro"].ToString());
 
 
-        DataTable regis3 = dac.obtenerUss(b);
+        DataTable regis3 = per.obtenerUs(b);//agregar
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
-
+        Entity_puntuacion pun = new Entity_puntuacion();//agregar
+        pun.Id_usuario = b;//agregar
+        pun.Id_post = z;//agregar
+        per.insertarPuntuacion(pun);//agregar
         x = x + 1;
 
 
         L_Usercs data_userPost = new L_Usercs();
-        L_persistencia per = new L_persistencia();
         Entity_usuario user_ent = new Entity_usuario();
 
         DataTable datat = data_userPost.obtenerUsuario(b);
@@ -227,7 +233,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         user_ent.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
         user_ent.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
         user_ent.Session = datat.Rows[0]["session"].ToString();
-        user_ent.Interaciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
 
         per.actualizarUsuario(user_ent);
@@ -260,7 +266,11 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         int b = int.Parse(Session["user_id"].ToString());
         int bn = int.Parse(Session["parametro"].ToString());
-        DataTable punt = dac.ObtenerPuntos(bn);
+        L_Usercs dec = new L_Usercs();//agregar
+        L_persistencia per = new L_persistencia();//agregar
+        DataTable punt = dec.ToDataTable(per.obtenerPostEsp(bn));//agregar
+        DataTable us = per.obtenerUs(b);//agregar
+        //DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
         puntot.Id = int.Parse(Session["parametro"].ToString());
         puntot.Id_user = int.Parse(Session["user_id"].ToString());
@@ -273,7 +283,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         DataTable regis = dac.verpag(doc);
 
 
-        DataTable regis2 = dac.obtenerUss(b);
+        DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
         puntot.Autor1 = regis.Rows[0]["autor"].ToString();
@@ -283,7 +293,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         L_Usercs llamado = new L_Usercs();
 
-        llamado.puntosBotonDos(punt, inter, puntot);
+        llamado.puntosBotonDos(punt, inter, puntot, us);//agregar
 
 
 
@@ -291,16 +301,18 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         int z = int.Parse(Session["parametro"].ToString());
 
 
-        DataTable regis3 = dac.obtenerUss(b);
+        DataTable regis3 = per.obtenerUs(b);//agregar
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
-
+        Entity_puntuacion pun = new Entity_puntuacion();//agregar
+        pun.Id_usuario = b;//agregar
+        pun.Id_post = z;//agregar
+        per.insertarPuntuacion(pun);//agregar
         x = x + 1;
 
 
 
         L_Usercs data_userPost = new L_Usercs();
-        L_persistencia per = new L_persistencia();
         Entity_usuario user_ent = new Entity_usuario();
 
         DataTable datat = data_userPost.obtenerUsuario(b);
@@ -315,7 +327,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         user_ent.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
         user_ent.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
         user_ent.Session = datat.Rows[0]["session"].ToString();
-        user_ent.Interaciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
 
         per.actualizarUsuario(user_ent);
@@ -343,7 +355,11 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         int b = int.Parse(Session["user_id"].ToString());
         int bn = int.Parse(Session["parametro"].ToString());
-        DataTable punt = dac.ObtenerPuntos(bn);
+        L_Usercs dec = new L_Usercs();//agregar
+        L_persistencia per = new L_persistencia();//agregar
+        DataTable punt = dec.ToDataTable(per.obtenerPostEsp(bn));//agregar
+        DataTable us = per.obtenerUs(b);//agregar
+        //DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
         puntot.Id = int.Parse(Session["parametro"].ToString());
         puntot.Id_user = int.Parse(Session["user_id"].ToString());
@@ -356,7 +372,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         DataTable regis = dac.verpag(doc);
 
 
-        DataTable regis2 = dac.obtenerUss(b);
+        DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
         puntot.Autor1 = regis.Rows[0]["autor"].ToString();
@@ -366,7 +382,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         L_Usercs llamado = new L_Usercs();
 
-        llamado.puntosBotonTres(punt, inter, puntot);
+        llamado.puntosBotonTres(punt, inter, puntot, us);//agregar
 
 
 
@@ -374,16 +390,18 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         int z = int.Parse(Session["parametro"].ToString());
 
 
-        DataTable regis3 = dac.obtenerUss(b);
+        DataTable regis3 = per.obtenerUs(b);//agregar
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
-
+        Entity_puntuacion pun = new Entity_puntuacion();//agregar
+        pun.Id_usuario = b;//agregar
+        pun.Id_post = z;//agregar
+        per.insertarPuntuacion(pun);//agregar
         x = x + 1;
 
 
 
         L_Usercs data_userPost = new L_Usercs();
-        L_persistencia per = new L_persistencia();
         Entity_usuario user_ent = new Entity_usuario();
 
         DataTable datat = data_userPost.obtenerUsuario(b);
@@ -398,7 +416,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         user_ent.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
         user_ent.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
         user_ent.Session = datat.Rows[0]["session"].ToString();
-        user_ent.Interaciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
 
         per.actualizarUsuario(user_ent);
@@ -428,7 +446,11 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         int b = int.Parse(Session["user_id"].ToString());
         int bn = int.Parse(Session["parametro"].ToString());
-        DataTable punt = dac.ObtenerPuntos(bn);
+        L_Usercs dec = new L_Usercs();//agregar
+        L_persistencia per = new L_persistencia();//agregar
+        DataTable punt = dec.ToDataTable(per.obtenerPostEsp(bn));//agregar
+        DataTable us = per.obtenerUs(b);//agregar
+        //DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
         puntot.Id = int.Parse(Session["parametro"].ToString());
         puntot.Id_user = int.Parse(Session["user_id"].ToString());
@@ -441,7 +463,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         DataTable regis = dac.verpag(doc);
 
 
-        DataTable regis2 = dac.obtenerUss(b);
+        DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
         puntot.Autor1 = regis.Rows[0]["autor"].ToString();
@@ -451,7 +473,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         L_Usercs llamado = new L_Usercs();
 
-        llamado.puntosBotonCuatro(punt, inter, puntot);
+        llamado.puntosBotonCuatro(punt, inter, puntot, us);//agregar
 
 
 
@@ -459,16 +481,18 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         int z = int.Parse(Session["parametro"].ToString());
 
 
-        DataTable regis3 = dac.obtenerUss(b);
+        DataTable regis3 = per.obtenerUs(b);//agregar
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
-
+        Entity_puntuacion pun = new Entity_puntuacion();//agregar
+        pun.Id_usuario = b;//agregar
+        pun.Id_post = z;//agregar
+        per.insertarPuntuacion(pun);//agregar
         x = x + 1;
 
 
 
         L_Usercs data_userPost = new L_Usercs();
-        L_persistencia per = new L_persistencia();
         Entity_usuario user_ent = new Entity_usuario();
 
         DataTable datat = data_userPost.obtenerUsuario(b);
@@ -483,7 +507,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         user_ent.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
         user_ent.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
         user_ent.Session = datat.Rows[0]["session"].ToString();
-        user_ent.Interaciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
 
         per.actualizarUsuario(user_ent);
@@ -512,7 +536,11 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         int b = int.Parse(Session["user_id"].ToString());
         int bn = int.Parse(Session["parametro"].ToString());
-        DataTable punt = dac.ObtenerPuntos(bn);
+        L_Usercs dec = new L_Usercs();//agregar
+        L_persistencia per = new L_persistencia();//agregar
+        DataTable punt = dec.ToDataTable(per.obtenerPostEsp(bn));//agregar
+        DataTable us = per.obtenerUs(b);//agregar
+        //DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
         puntot.Id = int.Parse(Session["parametro"].ToString());
         puntot.Id_user = int.Parse(Session["user_id"].ToString());
@@ -525,7 +553,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         DataTable regis = dac.verpag(doc);
 
 
-        DataTable regis2 = dac.obtenerUss(b);
+        DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
         puntot.Autor1 = regis.Rows[0]["autor"].ToString();
@@ -535,7 +563,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         L_Usercs llamado = new L_Usercs();
 
-        llamado.puntosBotonCinco(punt, inter, puntot);
+        llamado.puntosBotonCinco(punt, inter, puntot, us);//agregar
 
 
 
@@ -543,16 +571,19 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         int z = int.Parse(Session["parametro"].ToString());
 
 
-        DataTable regis3 = dac.obtenerUss(b);
+        DataTable regis3 = per.obtenerUs(b);//agregar
         int x = int.Parse(regis3.Rows[0]["puntos"].ToString());
         int f = int.Parse(regis3.Rows[0]["id"].ToString());
-
+        Entity_puntuacion pun = new Entity_puntuacion();//agregar
+        pun.Id_usuario = b;//agregar
+        pun.Id_post = z;//agregar
+        per.insertarPuntuacion(pun);//agregar
         x = x + 1;
 
 
 
         L_Usercs data_userPost = new L_Usercs();
-        L_persistencia per = new L_persistencia();
+
         Entity_usuario user_ent = new Entity_usuario();
 
         DataTable datat = data_userPost.obtenerUsuario(b);
@@ -567,7 +598,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         user_ent.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
         user_ent.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
         user_ent.Session = datat.Rows[0]["session"].ToString();
-        user_ent.Interaciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
 
         per.actualizarUsuario(user_ent);

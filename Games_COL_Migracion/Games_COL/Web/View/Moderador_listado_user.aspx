@@ -77,7 +77,7 @@
                         </table>
                     </ItemTemplate>
                 </asp:DataList>
-                <asp:ObjectDataSource ID="ODS_usuarios" runat="server" SelectMethod="Listarusermoder" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_usuarios" runat="server" SelectMethod="obtenerUsuario" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
             </td>
             <td>&nbsp;</td>
         </tr>

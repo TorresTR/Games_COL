@@ -21,10 +21,9 @@ namespace Persistencia_funciones
         private Int32 estado_resuelto;
 
 
-      
+        [Key]
         [Column("id_reporte")]
         public int Id_reporte { get => id_reporte; set => id_reporte = value; }
-        [Key]
         [Column("id_post_reportador")]
         public int Id_post_reportador { get => id_post_reportador; set => id_post_reportador = value; }
         [Column("contenido_reporte")]

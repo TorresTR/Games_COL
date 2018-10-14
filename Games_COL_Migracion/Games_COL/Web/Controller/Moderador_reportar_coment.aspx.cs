@@ -47,11 +47,13 @@ public partial class View_Default : System.Web.UI.Page
 
         int c = int.Parse(Session["IdRecogido"].ToString());
         int u = int.Parse(Session["user_id"].ToString());
+        L_persistencia per = new L_persistencia();//agregar
+        DataTable tabla = dac.ToDataTable(per.obtenerComent(c));//agregar
 
-        doc = dac.ObtenerComentarioreportar(c);
+       // doc = dac.ObtenerComentarioreportar(c);
 
 
-        LB_Id_comentario.Text = doc.Coment;
+        LB_Id_comentario.Text = tabla.Rows[0]["comentario"].ToString();//agregar
 
     }
 

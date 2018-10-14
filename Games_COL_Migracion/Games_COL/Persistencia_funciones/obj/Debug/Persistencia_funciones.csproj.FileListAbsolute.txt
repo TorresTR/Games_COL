@@ -4,3 +4,9 @@ C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Persiste
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Persistencia_funciones\obj\Debug\Persistencia_funciones.dll
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Persistencia_funciones\obj\Debug\Persistencia_funciones.pdb
 C:\Users\David\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Persistencia_funciones\obj\Debug\Persistencia_funciones.csprojAssemblyReference.cache
+C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Persistencia_funciones\bin\Debug\Persistencia_funciones.dll
+C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Persistencia_funciones\bin\Debug\Persistencia_funciones.pdb
+C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Persistencia_funciones\obj\Debug\Persistencia_funciones.csprojAssemblyReference.cache
+C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Persistencia_funciones\obj\Debug\Persistencia_funciones.csproj.CoreCompileInputs.cache
+C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Persistencia_funciones\obj\Debug\Persistencia_funciones.dll
+C:\Users\Jonathan\Documents\GitHub\Games_COL\Games_COL_Migracion\Games_COL\Persistencia_funciones\obj\Debug\Persistencia_funciones.pdb

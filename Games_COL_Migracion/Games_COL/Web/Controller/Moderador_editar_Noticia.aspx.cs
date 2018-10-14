@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
+using Persistencia_funciones;
 using Utilitarios;
 public partial class View_Moderador_editar_Noticia : System.Web.UI.Page
 {
@@ -63,11 +64,24 @@ public partial class View_Moderador_editar_Noticia : System.Web.UI.Page
 
         L_Usercs dac = new L_Usercs();
         U_userCrearpost post = new U_userCrearpost();
+        L_persistencia per = new L_persistencia();//agregar
+        Entity_noticias noti = new Entity_noticias();//agregar
 
         post.Id = int.Parse(Session["parametro"].ToString());
         post.Contenido1 = Ck_editar.Text.ToString();
 
-        dac.actualizaModernoticia(post);
+        DataTable data = dac.traerNoticia(int.Parse(Session["parametro"].ToString()));//agregar
+
+        noti.Id_noticia = int.Parse(Session["parametro"].ToString());//agregar
+        noti.Titulo = data.Rows[0]["titulo"].ToString();//agregar
+        noti.Contenido = Ck_editar.Text.ToString();//agregar
+        noti.Fecha = DateTime.Parse(data.Rows[0]["fecha"].ToString());//agregar
+        noti.Autor = int.Parse(data.Rows[0]["autor"].ToString());//agregar
+
+        per.actualizarMiNoticia(noti);//agregar
+
+
+        //dac.actualizaModernoticia(post);
 
     }
 

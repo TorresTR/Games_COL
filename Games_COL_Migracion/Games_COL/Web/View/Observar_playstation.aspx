@@ -53,7 +53,7 @@
                                             <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
                                             <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
                                             <br />
-                                            <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
+                                            <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id_noticia") %>'></asp:Label>
                                             <br />
                                             <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
                                             <asp:Label ID="LB_noticiaNombre" runat="server" Text="Noticia"></asp:Label>
@@ -70,7 +70,7 @@
                         </asp:DataList>
                     </asp:Panel>
                     <cc1:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" CollapseControlID="HL_noticias" ExpandControlID="HL_noticias" TargetControlID="Panel1" />
-                <asp:ObjectDataSource ID="ODS_noticia" runat="server" SelectMethod="obtenerPostNoticia" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_noticia" runat="server" SelectMethod="obtenerNoticia" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
 
 
 
@@ -141,7 +141,7 @@
             <hr />
         </ItemTemplate>
     </asp:DataList>
-    <asp:ObjectDataSource ID="ODS_treaListaData" runat="server" SelectMethod="obtenerPostps" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ODS_treaListaData" runat="server" SelectMethod="obtenerPostpS" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
 
 
 

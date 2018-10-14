@@ -1568,6 +1568,8 @@ namespace Logica
             if (data.Rows.Count > 0)
             {
                 D_User us = new D_User();
+                L_persistencia per = new L_persistencia();//agregar
+                Entity_usuario user = new Entity_usuario();//agregar
 
                 U_Datos dato = new U_Datos();
                 dato.Id = int.Parse(data.Rows[0]["id"].ToString());
@@ -1575,32 +1577,54 @@ namespace Logica
 
                 if (int.Parse(data.Rows[0]["id"].ToString()) == b)
                 {
+                    DataTable usuario = obtenerUsuario(b);//agregar
+                    user.Id = b;//agregar
+                    user.Nombre = usuario.Rows[0]["nombre"].ToString();//agregar
+                    user.Nick = usuario.Rows[0]["nick"].ToString();//agregar
+                    user.Correo = usuario.Rows[0]["correo"].ToString();//agregar
+                    user.Contra = usuario.Rows[0]["contra"].ToString();//agregar
+                    user.Puntos = int.Parse(usuario.Rows[0]["puntos"].ToString());//agregar
+                    user.Id_rol = int.Parse(usuario.Rows[0]["id_rol"].ToString());//agregar
+                    user.Estado = int.Parse(usuario.Rows[0]["estado"].ToString());//agregar
+                    user.Session = usuario.Rows[0]["session"].ToString();//agregar
+                    user.Interacciones = int.Parse(usuario.Rows[0]["interacciones"].ToString());//agregar
+                    user.Fecha_interaccion = DateTime.Parse(usuario.Rows[0]["fecha_interaccion"].ToString());//agregar
 
                     int puntos = int.Parse(data.Rows[0]["puntos"].ToString());
                     if (puntos > 150 && puntos < 300)
                     {
                         dato.Rango = 2;
-                        us.actualizarRango(dato);
+                        user.Id_rango = 2;//agregar
+                        per.actualizarUsuario(user);//agregar
+                        //us.actualizarRango(dato);
                     }
                     else if (puntos > 300 && puntos < 700)
                     {
                         dato.Rango = 3;
-                        us.actualizarRango(dato);
+                        user.Id_rango = 3;//agregar
+                        per.actualizarUsuario(user);//agregar
+                        //us.actualizarRango(dato);
                     }
                     else if (puntos > 700 && puntos < 1700)
                     {
                         dato.Rango = 4;
-                        us.actualizarRango(dato);
+                        user.Id_rango = 4;//agregar
+                        per.actualizarUsuario(user);//agregar
+                        //us.actualizarRango(dato);
                     }
                     else if (puntos > 1700 && puntos < 2700)
                     {
                         dato.Rango = 5;
-                        us.actualizarRango(dato);
+                        user.Id_rango = 5;//agregar
+                        per.actualizarUsuario(user);//agregar
+                        //us.actualizarRango(dato);
                     }
                     else if (puntos > 2700)
                     {
                         dato.Rango = 6;
-                        us.actualizarRango(dato);
+                        user.Id_rango = 6;//agregar
+                        per.actualizarUsuario(user);//agregar
+                        //us.actualizarRango(dato);
                         mensaje = "Puedes solicitar tu ascenso a moderador";
                     }
 
@@ -1617,6 +1641,8 @@ namespace Logica
             if (data.Rows.Count > 0)
             {
                 D_User us = new D_User();
+                L_persistencia per = new L_persistencia();//agregar
+                Entity_usuario user = new Entity_usuario();//agregar
 
                 U_Datos dato = new U_Datos();
                 dato.Id = int.Parse(data.Rows[0]["id"].ToString());
@@ -1624,22 +1650,40 @@ namespace Logica
 
                 if (int.Parse(data.Rows[0]["id"].ToString()) == b)
                 {
+                    DataTable usuario = obtenerUsuario(b);//agregar
+                    user.Id = b;//agregar
+                    user.Nombre = usuario.Rows[0]["nombre"].ToString();//agregar
+                    user.Nick = usuario.Rows[0]["nick"].ToString();//agregar
+                    user.Correo = usuario.Rows[0]["correo"].ToString();//agregar
+                    user.Contra = usuario.Rows[0]["contra"].ToString();//agregar
+                    user.Puntos = int.Parse(usuario.Rows[0]["puntos"].ToString());//agregar
+                    user.Id_rol = int.Parse(usuario.Rows[0]["id_rol"].ToString());//agregar
+                    user.Estado = int.Parse(usuario.Rows[0]["estado"].ToString());//agregar
+                    user.Session = usuario.Rows[0]["session"].ToString();//agregar
+                    user.Interacciones = int.Parse(usuario.Rows[0]["interacciones"].ToString());//agregar
+                    user.Fecha_interaccion = DateTime.Parse(usuario.Rows[0]["fecha_interaccion"].ToString());//agregar
 
                     int puntos = int.Parse(data.Rows[0]["puntos"].ToString());
                     if (puntos > 3700 && puntos < 5800)
                     {
                         dato.Rango = 7;
-                        us.actualizarRango(dato);
+                        user.Id_rango = 7;//agregar
+                        per.actualizarUsuario(user);//agregar
+                        //us.actualizarRango(dato);
                     }
                     else if (puntos > 5800 && puntos < 7900)
                     {
                         dato.Rango = 8;
-                        us.actualizarRango(dato);
+                        user.Id_rango = 8;//agregar
+                        per.actualizarUsuario(user);//agregar
+                        //us.actualizarRango(dato);
                     }
                     else if (puntos > 7900)
                     {
                         dato.Rango = 9;
-                        us.actualizarRango(dato);
+                        user.Id_rango = 9;//agregar
+                        per.actualizarUsuario(user);//agregar
+                        //us.actualizarRango(dato);
                     }
 
                 }
@@ -1875,7 +1919,7 @@ namespace Logica
             return puntos;
         }
 
-        public U_userCrearpost puntosBoton(DataTable punt, int inter, U_userCrearpost puntot)
+        public U_userCrearpost puntosBoton(DataTable punt, int inter, U_userCrearpost puntot, DataTable us)
         {
 
 
@@ -1898,7 +1942,7 @@ namespace Logica
                         val = int.Parse(a);
                         val = val + 1;
 
-                        String puntosA = punt.Rows[0]["puntosautor"].ToString();
+                        String puntosA = us.Rows[0]["puntos"].ToString();
                         pun = int.Parse(puntosA);
                         pun = pun + 1;
 
@@ -1919,7 +1963,7 @@ namespace Logica
         }
 
 
-        public U_userCrearpost puntosBotonDos(DataTable punt, int inter, U_userCrearpost puntot)
+        public U_userCrearpost puntosBotonDos(DataTable punt, int inter, U_userCrearpost puntot, DataTable us)
         {
 
 
@@ -1942,7 +1986,7 @@ namespace Logica
                         val = int.Parse(a);
                         val = val + 2;
 
-                        String puntosA = punt.Rows[0]["puntosautor"].ToString();
+                        String puntosA = us.Rows[0]["puntos"].ToString();
                         pun = int.Parse(puntosA);
                         pun = pun + 1;
 
@@ -1963,7 +2007,7 @@ namespace Logica
         }
 
 
-        public U_userCrearpost puntosBotonTres(DataTable punt, int inter, U_userCrearpost puntot)
+        public U_userCrearpost puntosBotonTres(DataTable punt, int inter, U_userCrearpost puntot, DataTable us)
         {
 
 
@@ -1986,7 +2030,7 @@ namespace Logica
                         val = int.Parse(a);
                         val = val + 3;
 
-                        String puntosA = punt.Rows[0]["puntosautor"].ToString();
+                        String puntosA = us.Rows[0]["puntos"].ToString();
                         pun = int.Parse(puntosA);
                         pun = pun + 1;
 
@@ -2006,7 +2050,7 @@ namespace Logica
             return puntot;
         }
 
-        public U_userCrearpost puntosBotonCuatro(DataTable punt, int inter, U_userCrearpost puntot)
+        public U_userCrearpost puntosBotonCuatro(DataTable punt, int inter, U_userCrearpost puntot, DataTable us)
         {
 
 
@@ -2029,7 +2073,7 @@ namespace Logica
                         val = int.Parse(a);
                         val = val + 4;
 
-                        String puntosA = punt.Rows[0]["puntosautor"].ToString();
+                        String puntosA = us.Rows[0]["puntos"].ToString();
                         pun = int.Parse(puntosA);
                         pun = pun + 1;
 
@@ -2049,7 +2093,7 @@ namespace Logica
             return puntot;
         }
 
-        public U_userCrearpost puntosBotonCinco(DataTable punt, int inter, U_userCrearpost puntot)
+        public U_userCrearpost puntosBotonCinco(DataTable punt, int inter, U_userCrearpost puntot, DataTable us)
         {
 
 
@@ -2072,7 +2116,7 @@ namespace Logica
                         val = int.Parse(a);
                         val = val + 5;
 
-                        String puntosA = punt.Rows[0]["puntosautor"].ToString();
+                        String puntosA = us.Rows[0]["puntos"].ToString();
                         pun = int.Parse(puntosA);
                         pun = pun + 1;
 
@@ -2823,7 +2867,21 @@ namespace Logica
             return dato;
         }
 
-        
+        public DataTable traerPost(int id)
+        {
+            DataTable prueba = new DataTable();
+            D_User dato = new D_User();
+            prueba = dato.traerPost(id);
+            return prueba;
+        }
+
+        public DataTable traerNoticia(int id)
+        {
+            DataTable prueba = new DataTable();
+            D_User dato = new D_User();
+            prueba = dato.traerNoticia(id);
+            return prueba;
+        }
 
 
     }

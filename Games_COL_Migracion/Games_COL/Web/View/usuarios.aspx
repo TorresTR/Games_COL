@@ -38,13 +38,9 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
                         
-        <asp:HyperLink ID="HL_noticias" runat="server">Noticias</asp:HyperLink>
+    &nbsp;&nbsp;<asp:HyperLink ID="HL_noticias" runat="server">Noticias</asp:HyperLink>
                         
-    &nbsp;&nbsp;
-        <asp:HyperLink ID="HL_post" runat="server">Post</asp:HyperLink>
-
-
-    </div>
+    &nbsp;</div>
     <table class="w-100">
         <tr>
             <td class="auto-style8">
@@ -64,7 +60,7 @@
                                         &nbsp;
                                         <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
                                         <br />
-                                        <asp:Label ID="LB_id" runat="server" visible="false" Text='<%# Bind("id") %>'></asp:Label>
+                                        <asp:Label ID="LB_id" runat="server" visible="false" Text='<%# Bind("id_noticia") %>'></asp:Label>
                                         <br />
                                         <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
                                         &nbsp;
@@ -83,7 +79,11 @@
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" CollapseControlID="HL_noticias" Collapsed="True" CollapsedSize="30" ExpandControlID="HL_noticias" ExpandedSize="500" SuppressPostBack="True" TargetControlID="Panel1" />
                 <br />
-                <asp:ObjectDataSource ID="ODS_noticas" runat="server" SelectMethod="obtenerPostNoticia" TypeName="Logica.L_Usercs"></asp:ObjectDataSource></td>
+                <asp:ObjectDataSource ID="ODS_noticas" runat="server" SelectMethod="obtenerNoticia" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
+        <asp:HyperLink ID="HL_post" runat="server">Post</asp:HyperLink>
+
+
+            </td>
             <td>
                 
                 <asp:Label ID="LB_busq" runat="server"></asp:Label>

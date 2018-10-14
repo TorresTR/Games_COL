@@ -1,4 +1,5 @@
 ﻿using Logica;
+using Persistencia_funciones;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -59,6 +60,8 @@ public partial class View_Default : System.Web.UI.Page
         
         U_Datosreporte reporte = new U_Datosreporte();
         L_Usercs envio = new L_Usercs();
+        L_persistencia per = new L_persistencia();//AGREGAR
+        Entity_post post = new Entity_post();//AGREGAR
 
         int b = int.Parse(Session["parametro"].ToString());
         DateTime dt = DateTime.Now;
@@ -67,15 +70,34 @@ public partial class View_Default : System.Web.UI.Page
 
 
         DataTable regis = envio.obtenerPostObservador();
-
+        DataTable dato = envio.traerPost(b);//AGREGAR
+        actualizar_estado_bloqueo report = new actualizar_estado_bloqueo();//agregar
 
         reporte.Id_post_reportado = b;
         reporte.Contido_reporte = TB_reporte.Text.ToString();
         reporte.Fecha_reporte = dt;
         reporte.User_reportador = u;
 
-        envio.insertarPostaReportar(reporte);
-        envio.bloquear_Post(b);
+        report.Id_post_reportador = b;//agregar
+        report.Contenido_reporte = TB_reporte.Text.ToString();//agregar
+        report.Fecha_reporte = dt;//agregar
+        report.User_reportador = u;//agregar
+        report.Estado_resuelto = 1;//agregar
+
+        post.Id = b;//AGREGAR
+        post.Contenido = dato.Rows[0]["contenido"].ToString();//AGREGAR
+        post.Autor = int.Parse(dato.Rows[0]["autor"].ToString());//AGREGAR
+        post.Titulo = dato.Rows[0]["titulo"].ToString();//AGREGAR
+        post.Fecha = DateTime.Parse(dato.Rows[0]["fecha"].ToString());//AGREGAR
+        post.Puntos = int.Parse(dato.Rows[0]["puntos"].ToString());//AGREGAR
+        post.Etiqueta = int.Parse(dato.Rows[0]["etiqueta"].ToString());//AGREGAR
+        post.Estado_bloqueo = 2;//AGREGAR
+        post.Num_puntos = int.Parse(dato.Rows[0]["num_puntos"].ToString());//AGREGAR
+
+        per.insertarReportePost(report);//agregar
+       // envio.insertarPostaReportar(reporte);
+       per.actualizarBloqueoPost(post);//AGREGAR
+       // envio.bloquear_Post(b);
 
         L_Usercs data = new L_Usercs();
         U_user dat = new U_user();

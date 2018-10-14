@@ -35,8 +35,7 @@
         <asp:HyperLink ID="HL_noticias" runat="server">Noticias</asp:HyperLink>
                         
     &nbsp;&nbsp;
-        <asp:HyperLink ID="HL_post" runat="server">Post</asp:HyperLink>
-    </div>
+        </div>
     <table class="w-100">
         <tr>
             <td class="auto-style5">
@@ -54,7 +53,7 @@
                                         <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
                                         <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
                                         <br />
-                                        <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
+                                        <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id_noticia") %>'></asp:Label>
                                         <br />
                                         <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
                                         <asp:Label ID="LB_noticiaNombre" runat="server" Text="Noticia"></asp:Label>
@@ -71,7 +70,9 @@
                     </asp:DataList>
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" CollapseControlID="HL_noticias" Collapsed="True" CollapsedSize="30" ExpandControlID="HL_noticias" ExpandedSize="300" SuppressPostBack="True" TargetControlID="Panel1" />
-                <asp:ObjectDataSource ID="ODS_noticas" runat="server" SelectMethod="obtenerPostNoticia" TypeName="Logica.L_Usercs"></asp:ObjectDataSource></td>
+                <asp:ObjectDataSource ID="ODS_noticas" runat="server" SelectMethod="obtenerNoticia" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
+        <asp:HyperLink ID="HL_post" runat="server">Post</asp:HyperLink>
+            </td>
             <td>
                 
                 <asp:Label ID="LB_busq" runat="server"></asp:Label>
@@ -139,7 +140,7 @@
                     </asp:DataList>
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="Panel2_CollapsiblePanelExtender" runat="server" BehaviorID="Panel2_CollapsiblePanelExtender" CollapseControlID="HL_post" Collapsed="True" CollapsedSize="30" ExpandControlID="HL_post" ExpandedSize="500" SuppressPostBack="True" TargetControlID="Panel2" />
-    <asp:ObjectDataSource ID="ODS_datauser" runat="server" SelectMethod="obtenerPostps" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ODS_datauser" runat="server" SelectMethod="obtenerPostpS" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
             </td>
             <td>&nbsp;</td>
         </tr>

@@ -116,6 +116,8 @@ public partial class View_Moderador_miNoticia : System.Web.UI.Page
         TableCell tableCell = (TableCell)bt.Parent;
         GridViewRow row = (GridViewRow)tableCell.Parent;
         GV_miPost.SelectedIndex = row.RowIndex;
+        Entity_noticias noti = new Entity_noticias();//agregar
+        L_persistencia per = new L_persistencia();//agregar
         int fila = row.RowIndex;
 
 
@@ -125,7 +127,9 @@ public partial class View_Moderador_miNoticia : System.Web.UI.Page
         int x = int.Parse(IdRecogido);
 
         L_Usercs dac = new L_Usercs();
-        dac.eliminarminoticia(x);
+        noti.Id_noticia = x;//agregar
+        per.borrarNoticia(noti);//agregar
+        //dac.eliminarminoticia(x);
 
         U_user dat = new U_user();
         L_Usercs llamar = new L_Usercs();

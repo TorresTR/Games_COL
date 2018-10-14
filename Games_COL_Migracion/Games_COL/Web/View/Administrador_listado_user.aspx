@@ -278,7 +278,7 @@
                         </table>
                     </ItemTemplate>
                 </asp:DataList>
-                <asp:ObjectDataSource ID="ODS_usuarios1" runat="server" SelectMethod="listarAdministradoresAdmin" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_usuarios1" runat="server" SelectMethod="obtenerAdmin" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
             </td>
         </tr>
         <tr>

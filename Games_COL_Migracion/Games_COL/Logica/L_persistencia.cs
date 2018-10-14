@@ -334,6 +334,122 @@ namespace Logica
         //}
 
 
+        /////agregadas
+        ///
+        public void actualizarBloqueoPost(Entity_post post)
+        {
+            daoPost dao = new daoPost();
+            dao.actualizarPost(post);
 
+        }
+
+        public void actualizarMiNoticia(Entity_noticias noticia)
+        {
+            daoPost dao = new daoPost();
+            dao.actualizarNoticia(noticia);
+
+        }
+
+        public void borrarNoticia(Entity_noticias noticia)
+        {
+            daoPost dato = new daoPost();
+            dato.eliminarNoticia(noticia);
+        }
+
+        public void insertarPuntuacion(Entity_puntuacion puntos)
+        {
+            daoPost dao = new daoPost();
+            dao.insertPutuacion(puntos);
+
+        }
+        public List<Entity_usuario> obtenerAdmin()
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerAdmin();
+        }
+
+        public List<Entity_comentarios> obtenerComent(int post)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerComent(post);
+        }
+
+        public List<Entity_comentarios> obtenerComentUs(int post, int user)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerComentUs(post, user);
+        }
+
+        public DataTable obtenerEtiquetas()
+        {
+            daoPost dao = new daoPost();
+            L_Usercs log = new L_Usercs();
+            DataTable dato = log.ToDataTable(dao.obtenerEtiquetas());
+            return dato;
+        }
+
+        public DataTable obtenerUs(int id)
+        {
+            daoPost dao = new daoPost();
+            L_Usercs log = new L_Usercs();
+            DataTable dato = log.ToDataTable(dao.obtenerUs(id));
+            return dato;
+        }
+
+        public List<Entity_noticias> obtenerNoticia()
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerNoticia();
+        }
+
+        public List<Entity_post> obtenerPostAndroid()
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerPostAndroid();
+        }
+        public List<Entity_post> obtenerPostpS()
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerPostpS();
+        }
+
+        public List<Entity_pqr> obtenerPQRVer(int pqr)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerPQRVer(pqr);
+        }
+        public List<Entity_post> obtenerPostEsp(int id)
+        {
+            daoPost dao = new daoPost();
+            return dao.obtenerPostEsp(id);
+        }
+
+        public DataTable obtenerRangoModer()
+        {
+            daoPost dao = new daoPost();
+            L_Usercs log = new L_Usercs();
+            DataTable dato = log.ToDataTable(dao.obtenerRangoModer());
+            return dato;
+        }
+        public DataTable obtenerRespuesta(int id)
+        {
+            daoPost dao = new daoPost();
+            L_Usercs log = new L_Usercs();
+            DataTable dato = log.ToDataTable(dao.obtenerRespuesta(id));
+            return dato;
+        }
+
+        public void insertarNoticia(Entity_noticias noti)
+        {
+            daoPost dao = new daoPost();
+            dao.insertNoticia(noti);
+
+        }
+        public void insertarReportePost(actualizar_estado_bloqueo report)
+        {
+            daoPost dao = new daoPost();
+            dao.insertReportePost(report);
+
+        }
     }
 }

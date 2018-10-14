@@ -35,6 +35,7 @@ public partial class View_Moderador_crear_post : System.Web.UI.Page
 
         L_Usercs Idio = new L_Usercs();
         DataTable info = Idio.traducir(id_pagina, idioma);
+        L_persistencia per = new L_persistencia();//agregar
 
         Hashtable compIdioma = new Hashtable();
         Session["mensajes"] = compIdioma;
@@ -49,7 +50,9 @@ public partial class View_Moderador_crear_post : System.Web.UI.Page
         B_volver.Text = compIdioma["B_volver"].ToString();
         LB_mensaje.Text = compIdioma["LB_mensaje"].ToString();
 
-        iter.Iteraccion = int.Parse(data.Rows[0]["id"].ToString());
+        DataTable datos = per.obtenerUs(b);//agregar
+        iter.Iteraccion = int.Parse(datos.Rows[0]["interacciones"].ToString());//agregar
+        //iter.Iteraccion = int.Parse(data.Rows[0]["id"].ToString());
 
         iter = dac.validarInteraccion(iter);
 
@@ -75,10 +78,15 @@ public partial class View_Moderador_crear_post : System.Web.UI.Page
         U_userCrearpost datos_creartPost = new U_userCrearpost();
         L_Usercs data_userPost = new L_Usercs();
 
+        L_persistencia per = new L_persistencia();//agregar
         int b = int.Parse(Session["user_id"].ToString());
 
 
-        DataTable regis = data_userPost.obtenerUsercrear(b);
+        DataTable regis = per.obtenerUs(b);//agregar
+
+
+
+        //DataTable regis = data_userPost.obtenerUsercrear(b);
 
         int x = int.Parse(regis.Rows[0]["puntos"].ToString());
 
@@ -104,7 +112,7 @@ public partial class View_Moderador_crear_post : System.Web.UI.Page
 
 
         
-        L_persistencia per = new L_persistencia();
+        
         Entity_usuario user_ent = new Entity_usuario();
 
         DataTable datat = data_userPost.obtenerUsuario(b);
@@ -119,7 +127,7 @@ public partial class View_Moderador_crear_post : System.Web.UI.Page
         user_ent.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
         user_ent.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
         user_ent.Session = datat.Rows[0]["session"].ToString();
-        user_ent.Interaciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
 
         per.actualizarUsuario(user_ent);

@@ -24,7 +24,7 @@ namespace Utilitarios
         private int estado;
         private string session;
         private DateTime? ultima_modificacion;
-        private int interaciones;
+        private int interacciones;
         private DateTime fecha_interaccion;
 
         [Key]
@@ -49,7 +49,7 @@ namespace Utilitarios
         [Column("ultima_modificacion")]
         public DateTime? Ultima_modificacion { get => ultima_modificacion; set => ultima_modificacion = value; }
         [Column("interacciones")]
-        public int Interaciones { get => interaciones; set => interaciones = value; }
+        public int Interacciones { get => interacciones; set => interacciones = value; }
         [Column("fecha_interaccion")]
         public DateTime Fecha_interaccion { get => fecha_interaccion; set => fecha_interaccion = value; }
         [Column("contra")]

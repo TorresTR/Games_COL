@@ -53,7 +53,7 @@
                                         <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
                                         <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
                                         <br />
-                                        <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
+                                        <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id_noticia") %>'></asp:Label>
                                         <br />
                                         <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
                                         <asp:Label ID="LB_noticiaNombre" runat="server" Text="Noticia"></asp:Label>
@@ -70,7 +70,7 @@
                     </asp:DataList>
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" CollapseControlID="HL_post" Collapsed="True" CollapsedSize="30" ExpandControlID="HL_post" ExpandedSize="500" SuppressPostBack="True" TargetControlID="Panel1" />
-                <asp:ObjectDataSource ID="ODS_noticas" runat="server" SelectMethod="obtenerPostNoticia" TypeName="Logica.L_Usercs"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_noticas" runat="server" SelectMethod="obtenerNoticia" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
         <asp:HyperLink ID="HL_post" runat="server">Post</asp:HyperLink>
             </td>
             <td>

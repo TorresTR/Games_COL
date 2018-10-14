@@ -1,4 +1,5 @@
 ﻿using Logica;
+using Persistencia_funciones;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -51,6 +52,8 @@ public partial class View_Administrador_noticia : System.Web.UI.Page
 
         U_userCrearpost datos_creartPost = new U_userCrearpost();
         L_Usercs data_userPost = new L_Usercs();
+        L_persistencia per = new L_persistencia();//agregar
+        Entity_noticias noti = new Entity_noticias();//agregar
 
         int b = int.Parse(Session["user_id"].ToString());
         int g = 1;
@@ -61,8 +64,15 @@ public partial class View_Administrador_noticia : System.Web.UI.Page
         datos_creartPost.Fecha = dt;
         datos_creartPost.Id_user = b;
 
+        noti.Titulo = TB_titulo.Text.ToString();//AGREGAR
+        noti.Contenido = Ckeditor1.Text.ToString();//AGREGAR
+        noti.Fecha = dt;//AGREGAR
+        noti.Autor = b;//AGREGAR
 
-        data_userPost.insertarNoticias(datos_creartPost);
+        per.insertarNoticia(noti);//AGREGAR
+
+
+        //data_userPost.insertarNoticias(datos_creartPost);
 
         TB_titulo.Text = "";
         Ckeditor1.Text = "";

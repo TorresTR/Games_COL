@@ -38,16 +38,16 @@ public partial class View_usuarios_Respuestas : System.Web.UI.Page
 
 
         BT_volver.Text = compIdioma["BT_volver"].ToString();
-       
 
 
 
+        L_persistencia per = new L_persistencia();//agregar
 
         int dato = int.Parse(Session["user_id"].ToString());
 
         dat.Id_respuesta = dato;
 
-        GV_comentariosuser.DataSource = dac.respuestaPqr(dat);
+        GV_comentariosuser.DataSource = per.obtenerRespuesta(dato);//agregar
         GV_comentariosuser.DataBind();
     }
 
