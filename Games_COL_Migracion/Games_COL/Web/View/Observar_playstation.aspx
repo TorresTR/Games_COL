@@ -78,6 +78,39 @@
 
 
 
+                    <asp:Panel ID="Panel2" runat="server">
+                        <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_treaListaData" OnItemDataBound="DL_post_RowDataBound">
+                            <ItemTemplate>
+                                <br />
+                                <table class="auto-style1">
+                                    <tr>
+                                        <td class="auto-style5">
+                                            <asp:Label ID="LB_titulo0" runat="server" Text="Titulo"></asp:Label>
+                                            <asp:Label ID="LB_muestraTitulo0" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
+                                            <br />
+                                            <asp:Label ID="LB_autor0" runat="server" Text="autor"></asp:Label>
+                                            <asp:Label ID="LB_muestraAutor0" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                            <br />
+                                            <asp:Label ID="LB_id0" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
+                                            <br />
+                                            <asp:Label runat="server" Text="Etiquetas:"></asp:Label>
+                                            <asp:Label ID="LB_etiquetas" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
+                                            <br />
+                                        </td>
+                                        <td>
+                                            <asp:Button ID="BT_vermas" runat="server" Text="Ver mas" OnClick="BT_vermas_Click" CommandName="vermas" CommandArgument='<%# Eval("id") %>' CssClass="btn btn-outline-danger" />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br />
+                                <hr />
+                            </ItemTemplate>
+                        </asp:DataList>
+                    </asp:Panel>
+                    <cc1:CollapsiblePanelExtender ID="Panel2_CollapsiblePanelExtender" runat="server" BehaviorID="Panel2_CollapsiblePanelExtender" CollapseControlID="HL_post" ExpandControlID="HL_post" ExpandedSize="500" TargetControlID="Panel2" />
+
+
+
                 </td>
 
                 <td>
@@ -114,33 +147,6 @@
             <tr>
                 <td class="auto-style6">
                     <br />
-                    <asp:DataList ID="DL_post" runat="server" DataSourceID="ODS_treaListaData" OnItemDataBound="DL_post_RowDataBound">
-        <ItemTemplate>
-            <br />
-            <table class="auto-style1">
-                <tr>
-                    <td class="auto-style5">
-                        <asp:Label ID="LB_titulo" runat="server" Text="Titulo"></asp:Label>
-                        <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
-                        <br />
-                        <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
-                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
-                        <br />
-                        <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
-                        <br />
-                        <asp:Label runat="server" Text="Etiquetas:"></asp:Label>
-                        <asp:Label ID="LB_etiquetas" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
-                        <br />
-                    </td>
-                    <td>
-                        <asp:Button ID="BT_vermas" runat="server" Text="Ver mas" OnClick="BT_vermas_Click" CommandName="vermas" CommandArgument='<%# Eval("id") %>' CssClass="btn btn-outline-danger" />
-                    </td>
-                </tr>
-            </table>
-            <br />
-            <hr />
-        </ItemTemplate>
-    </asp:DataList>
     <asp:ObjectDataSource ID="ODS_treaListaData" runat="server" SelectMethod="obtenerPostpS" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
 
 
