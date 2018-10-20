@@ -18,10 +18,10 @@ namespace Persistencia_funciones
         private Int32 id_usuario;
         private Int32 id_post;
 
-       
+        [Key]
         [Column("id_puntuacion")]
         public int Id_puntuacion { get => id_puntuacion; set => id_puntuacion = value; }
-        [Key]
+        
         [Column("id_usuario")]
         public int Id_usuario { get => id_usuario; set => id_usuario = value; }
         [Column("id_post")]

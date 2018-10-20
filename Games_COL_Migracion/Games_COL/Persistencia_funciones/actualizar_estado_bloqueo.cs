@@ -15,7 +15,7 @@ namespace Persistencia_funciones
     {
         private Int32 id_reporte;
         private Int32 id_post_reportador;
-        private Int32 contenido_reporte;
+        private String contenido_reporte;
         private DateTime fecha_reporte;
         private Int32 user_reportador;
         private Int32 estado_resuelto;
@@ -27,7 +27,7 @@ namespace Persistencia_funciones
         [Column("id_post_reportador")]
         public int Id_post_reportador { get => id_post_reportador; set => id_post_reportador = value; }
         [Column("contenido_reporte")]
-        public int Contenido_reporte { get => contenido_reporte; set => contenido_reporte = value; }
+        public String Contenido_reporte { get => contenido_reporte; set => contenido_reporte = value; }
         [Column("fecha_reporte")]
         public DateTime Fecha_reporte { get => fecha_reporte; set => fecha_reporte = value; }
         [Column("user_reportador")]

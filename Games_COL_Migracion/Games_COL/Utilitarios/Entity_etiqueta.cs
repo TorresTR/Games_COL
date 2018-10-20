@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Utilitarios
 {
     [Serializable]
-    [Table("etiqueta", Schema = "usuario")]
+    [Table("etiquetas", Schema = "usuario")]
     public class Entity_etiqueta
     {
         private int id_etiqueta;

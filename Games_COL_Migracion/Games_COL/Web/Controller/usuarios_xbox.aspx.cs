@@ -131,7 +131,7 @@ public partial class View_usuarios_xbox : System.Web.UI.Page
         L_Usercs llamado = new L_Usercs();
 
         string b = Session["user_id"].ToString();
-
+        Session["parametro"] = ID;
         dat = llamado.verCompletousuarioRegistrado();
 
         Response.Redirect(dat.Link_observador );
