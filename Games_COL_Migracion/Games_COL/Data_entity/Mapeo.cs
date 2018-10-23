@@ -13,7 +13,8 @@ namespace Data
         private readonly string schema;
 
         public Mapeo(string schema)
-            : base("name=Games_Col")
+            : base("name=GamesColEntities")
+            
         {
             this.schema = schema;
         }

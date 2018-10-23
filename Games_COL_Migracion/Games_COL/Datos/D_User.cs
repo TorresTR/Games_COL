@@ -1978,7 +1978,7 @@ namespace Datos
 
             try
             {
-                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_obtener_coment_final", conection);
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_obtener_comentario_final", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                 dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = dato.Comentarios1;
 

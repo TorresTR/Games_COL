@@ -60,6 +60,8 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\Web\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\Web\packages\System.Threading.Tasks.Extensions.4.5.1\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -75,12 +77,101 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="auditoria.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="autenticacion.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="comentarios.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contato_usuarios.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="controles.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
     <Compile Include="daoPost.cs" />
+    <Compile Include="estado_bloqueo.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="etiquetas.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="formularios.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="idiomas.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Mapeo.cs" />
+    <Compile Include="Mapeo1.cs" />
+    <Compile Include="Modelo1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelo1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelo1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="noticias.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="post.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pqr.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pqr_estados.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="puntuacion.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rango.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="reporte_comentarios.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="reporte_post.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rol.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sesiones.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="solicitud.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="token_recuperacion_user.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usuario.cs">
+      <DependentUpon>Modelo1.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Modelo1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Modelo1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelo1.edmx.diagram">
+      <DependentUpon>Modelo1.edmx</DependentUpon>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -94,6 +185,21 @@
       <Project>{4f86464a-0c31-4cd8-988e-bb1da0718618}</Project>
       <Name>Utilitarios</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Modelo1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modelo1.edmx</DependentUpon>
+      <LastGenOutput>Modelo1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelo1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modelo1.edmx</DependentUpon>
+      <LastGenOutput>Modelo1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\Web\packages\Mono.Security.5.4.0.201\build\net45\Mono.Security.targets" Condition="Exists('..\Web\packages\Mono.Security.5.4.0.201\build\net45\Mono.Security.targets')" />

@@ -67,6 +67,14 @@ namespace Datos
 
 
             }
+            using (var db = new Mapeo1("usuario"))
+            {
+
+                db.usuario.Add(usuario);
+                db.SaveChanges();
+
+
+            }
         }
 
         public List<Entity_usuario> obtenerUsuario()

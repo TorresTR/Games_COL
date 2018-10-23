@@ -1,0 +1,1469 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GamesColModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'GamesCol.dbo._puntol' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="_puntol">
+          <Property Name="puntos" Type="int" />
+        </EntityType>-->
+        <EntityType Name="controles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="ntext" Nullable="false" />
+          <Property Name="id_formulario" Type="int" Nullable="false" />
+          <Property Name="id_idioma" Type="int" Nullable="false" />
+          <Property Name="contenido" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="formularios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="idiomas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="ntext" Nullable="false" />
+          <Property Name="terminacion" Type="ntext" Nullable="false" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="auditoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="accion" Type="nvarchar" MaxLength="100" />
+          <Property Name="schema" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="tabla" Type="nvarchar" MaxLength="200" />
+          <Property Name="session" Type="ntext" Nullable="false" />
+          <Property Name="user_bd" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="data" Type="varchar(max)" Nullable="false" />
+          <Property Name="pk" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="autenticacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="ip" Type="ntext" Nullable="false" />
+          <Property Name="mac" Type="ntext" Nullable="false" />
+          <Property Name="fecha_inicio" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="session" Type="ntext" />
+          <Property Name="fecha_fin" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="sesiones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sesiones" Type="int" Nullable="false" />
+          <Property Name="sesiones_activas" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="fecha_bloqueo" Type="datetime2" Precision="7" />
+          <Property Name="intentos_erroneos" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="comentarios">
+          <Key>
+            <PropertyRef Name="id_comentario" />
+          </Key>
+          <Property Name="id_comentario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comentario" Type="ntext" Nullable="false" />
+          <Property Name="id_post" Type="int" Nullable="false" />
+          <Property Name="id_user" Type="int" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="contato_usuarios">
+          <Key>
+            <PropertyRef Name="id_sugerencia" />
+          </Key>
+          <Property Name="id_sugerencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="correo" Type="ntext" Nullable="false" />
+          <Property Name="sugerencia" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="estado_bloqueo">
+          <Key>
+            <PropertyRef Name="id_estado" />
+          </Key>
+          <Property Name="id_estado" Type="int" Nullable="false" />
+          <Property Name="estado_bloqueo" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="etiquetas">
+          <Key>
+            <PropertyRef Name="id_etiqueta" />
+          </Key>
+          <Property Name="id_etiqueta" Type="int" Nullable="false" />
+          <Property Name="nombre_etiqueta" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="noticias">
+          <Key>
+            <PropertyRef Name="id_noticia" />
+          </Key>
+          <Property Name="id_noticia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="ntext" Nullable="false" />
+          <Property Name="contenido" Type="ntext" Nullable="false" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="autor" Type="int" />
+        </EntityType>
+        <EntityType Name="post">
+          <Key>
+            <PropertyRef Name="id_post" />
+          </Key>
+          <Property Name="id_post" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="ntext" Nullable="false" />
+          <Property Name="contenido" Type="ntext" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="puntos" Type="int" />
+          <Property Name="autor" Type="int" />
+          <Property Name="etiqueta" Type="int" />
+          <Property Name="estado_bloqueo" Type="int" />
+          <Property Name="user_bloqueador" Type="int" />
+          <Property Name="num_puntos" Type="int" />
+        </EntityType>
+        <EntityType Name="pqr">
+          <Key>
+            <PropertyRef Name="id_pqr" />
+          </Key>
+          <Property Name="id_pqr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="int" Nullable="false" />
+          <Property Name="solicitud" Type="int" Nullable="false" />
+          <Property Name="contenido" Type="ntext" Nullable="false" />
+          <Property Name="asunto" Type="ntext" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="respuesta" Type="ntext" />
+          <Property Name="id_contestador" Type="int" />
+          <Property Name="fecha_respuesta" Type="date" />
+          <Property Name="estado_respuesta" Type="int" />
+        </EntityType>
+        <EntityType Name="pqr_estados">
+          <Key>
+            <PropertyRef Name="id_pqrestados" />
+          </Key>
+          <Property Name="id_pqrestados" Type="int" Nullable="false" />
+          <Property Name="estado" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="puntuacion">
+          <Key>
+            <PropertyRef Name="id_puntuacion" />
+          </Key>
+          <Property Name="id_puntuacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_post" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rango">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="tipo" Type="ntext" Nullable="false" />
+          <Property Name="identificador" Type="int" />
+        </EntityType>
+        <EntityType Name="reporte_comentarios">
+          <Key>
+            <PropertyRef Name="id_reporte_coment" />
+          </Key>
+          <Property Name="id_reporte_coment" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_com_reportado" Type="int" />
+          <Property Name="contenido" Type="ntext" />
+          <Property Name="fecha" Type="datetime2" Precision="7" />
+          <Property Name="id_user" Type="int" />
+        </EntityType>
+        <EntityType Name="reporte_post">
+          <Key>
+            <PropertyRef Name="id_reporte" />
+          </Key>
+          <Property Name="id_reporte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_post_reportador" Type="int" Nullable="false" />
+          <Property Name="contenido_reporte" Type="ntext" Nullable="false" />
+          <Property Name="fecha_reporte" Type="date" Nullable="false" />
+          <Property Name="user_reportador" Type="int" Nullable="false" />
+          <Property Name="estado_resuelto" Type="int" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="tipo" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="solicitud">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_user" Type="int" />
+          <Property Name="puntos" Type="int" />
+          <Property Name="nick" Type="ntext" />
+          <Property Name="fecha" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="token_recuperacion_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="token" Type="ntext" />
+          <Property Name="fecha_creado" Type="datetime2" Precision="7" />
+          <Property Name="fecha_vigencia" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="ntext" />
+          <Property Name="nick" Type="ntext" />
+          <Property Name="correo" Type="ntext" />
+          <Property Name="contra" Type="ntext" />
+          <Property Name="puntos" Type="int" />
+          <Property Name="id_rol" Type="int" />
+          <Property Name="id_rango" Type="int" />
+          <Property Name="estado" Type="int" />
+          <Property Name="session" Type="ntext" />
+          <Property Name="ultima_modificacion" Type="datetime2" Precision="7" />
+          <Property Name="interacciones" Type="int" />
+          <Property Name="fecha_interaccion" Type="datetime2" Precision="7" />
+        </EntityType>
+        <Association Name="comentarios_estado_fkey">
+          <End Role="estado_bloqueo" Type="Self.estado_bloqueo" Multiplicity="0..1" />
+          <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_bloqueo">
+              <PropertyRef Name="id_estado" />
+            </Principal>
+            <Dependent Role="comentarios">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="controles_id_formulario_fkey">
+          <End Role="formularios" Type="Self.formularios" Multiplicity="1" />
+          <End Role="controles" Type="Self.controles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formularios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="controles">
+              <PropertyRef Name="id_formulario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="controles_id_idioma_fkey">
+          <End Role="idiomas" Type="Self.idiomas" Multiplicity="1" />
+          <End Role="controles" Type="Self.controles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="idiomas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="controles">
+              <PropertyRef Name="id_idioma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="id_rango">
+          <End Role="rango" Type="Self.rango" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rango">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="id_rango" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="id_rol">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="id_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="autenticacion" Type="Self.autenticacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="autenticacion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="noticias_autor_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="noticias" Type="Self.noticias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="noticias">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="post_autor_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="post" Type="Self.post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="post">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="post_estado_bloqueo_fkey">
+          <End Role="estado_bloqueo" Type="Self.estado_bloqueo" Multiplicity="0..1" />
+          <End Role="post" Type="Self.post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_bloqueo">
+              <PropertyRef Name="id_estado" />
+            </Principal>
+            <Dependent Role="post">
+              <PropertyRef Name="estado_bloqueo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="post_etiqueta_fkey">
+          <End Role="etiquetas" Type="Self.etiquetas" Multiplicity="0..1" />
+          <End Role="post" Type="Self.post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etiquetas">
+              <PropertyRef Name="id_etiqueta" />
+            </Principal>
+            <Dependent Role="post">
+              <PropertyRef Name="etiqueta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pqr_solicitud_fkey">
+          <End Role="pqr_estados" Type="Self.pqr_estados" Multiplicity="1" />
+          <End Role="pqr" Type="Self.pqr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pqr_estados">
+              <PropertyRef Name="id_pqrestados" />
+            </Principal>
+            <Dependent Role="pqr">
+              <PropertyRef Name="solicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pqr_usuario_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="pqr" Type="Self.pqr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pqr">
+              <PropertyRef Name="usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="puntuacion_id_usuario_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="puntuacion" Type="Self.puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="puntuacion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reporte_comentarios_id_com_reportado_fkey">
+          <End Role="comentarios" Type="Self.comentarios" Multiplicity="0..1" />
+          <End Role="reporte_comentarios" Type="Self.reporte_comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comentarios">
+              <PropertyRef Name="id_comentario" />
+            </Principal>
+            <Dependent Role="reporte_comentarios">
+              <PropertyRef Name="id_com_reportado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reporte_comentarios_id_user_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="reporte_comentarios" Type="Self.reporte_comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reporte_comentarios">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reporte_post_id_post_reportador_fkey">
+          <End Role="post" Type="Self.post" Multiplicity="1" />
+          <End Role="reporte_post" Type="Self.reporte_post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="post">
+              <PropertyRef Name="id_post" />
+            </Principal>
+            <Dependent Role="reporte_post">
+              <PropertyRef Name="id_post_reportador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reporte_post_user_reportador_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="reporte_post" Type="Self.reporte_post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reporte_post">
+              <PropertyRef Name="user_reportador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="sesiones_id_usuario_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="sesiones" Type="Self.sesiones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sesiones">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="solicitud_id_user_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="solicitud" Type="Self.solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="solicitud">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="token_recuperacion:user_user_id_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="token_recuperacion_user" Type="Self.token_recuperacion_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="token_recuperacion_user">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GamesColModelStoreContainer">
+          <EntitySet Name="controles" EntityType="Self.controles" Schema="idioma" store:Type="Tables" />
+          <EntitySet Name="formularios" EntityType="Self.formularios" Schema="idioma" store:Type="Tables" />
+          <EntitySet Name="idiomas" EntityType="Self.idiomas" Schema="idioma" store:Type="Tables" />
+          <EntitySet Name="auditoria" EntityType="Self.auditoria" Schema="seguridad" store:Type="Tables" />
+          <EntitySet Name="autenticacion" EntityType="Self.autenticacion" Schema="seguridad" store:Type="Tables" />
+          <EntitySet Name="sesiones" EntityType="Self.sesiones" Schema="seguridad" store:Type="Tables" />
+          <EntitySet Name="comentarios" EntityType="Self.comentarios" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="contato_usuarios" EntityType="Self.contato_usuarios" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="estado_bloqueo" EntityType="Self.estado_bloqueo" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="etiquetas" EntityType="Self.etiquetas" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="noticias" EntityType="Self.noticias" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="post" EntityType="Self.post" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="pqr" EntityType="Self.pqr" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="pqr_estados" EntityType="Self.pqr_estados" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="puntuacion" EntityType="Self.puntuacion" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="rango" EntityType="Self.rango" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="reporte_comentarios" EntityType="Self.reporte_comentarios" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="reporte_post" EntityType="Self.reporte_post" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="rol" EntityType="Self.rol" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="solicitud" EntityType="Self.solicitud" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="token_recuperacion_user" EntityType="Self.token_recuperacion_user" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="usuario" store:Type="Tables" />
+          <AssociationSet Name="comentarios_estado_fkey" Association="Self.comentarios_estado_fkey">
+            <End Role="estado_bloqueo" EntitySet="estado_bloqueo" />
+            <End Role="comentarios" EntitySet="comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="controles_id_formulario_fkey" Association="Self.controles_id_formulario_fkey">
+            <End Role="formularios" EntitySet="formularios" />
+            <End Role="controles" EntitySet="controles" />
+          </AssociationSet>
+          <AssociationSet Name="controles_id_idioma_fkey" Association="Self.controles_id_idioma_fkey">
+            <End Role="idiomas" EntitySet="idiomas" />
+            <End Role="controles" EntitySet="controles" />
+          </AssociationSet>
+          <AssociationSet Name="id_rango" Association="Self.id_rango">
+            <End Role="rango" EntitySet="rango" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="id_rol" Association="Self.id_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="id_usuario" Association="Self.id_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="autenticacion" EntitySet="autenticacion" />
+          </AssociationSet>
+          <AssociationSet Name="noticias_autor_fkey" Association="Self.noticias_autor_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="noticias" EntitySet="noticias" />
+          </AssociationSet>
+          <AssociationSet Name="post_autor_fkey" Association="Self.post_autor_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="post" EntitySet="post" />
+          </AssociationSet>
+          <AssociationSet Name="post_estado_bloqueo_fkey" Association="Self.post_estado_bloqueo_fkey">
+            <End Role="estado_bloqueo" EntitySet="estado_bloqueo" />
+            <End Role="post" EntitySet="post" />
+          </AssociationSet>
+          <AssociationSet Name="post_etiqueta_fkey" Association="Self.post_etiqueta_fkey">
+            <End Role="etiquetas" EntitySet="etiquetas" />
+            <End Role="post" EntitySet="post" />
+          </AssociationSet>
+          <AssociationSet Name="pqr_solicitud_fkey" Association="Self.pqr_solicitud_fkey">
+            <End Role="pqr_estados" EntitySet="pqr_estados" />
+            <End Role="pqr" EntitySet="pqr" />
+          </AssociationSet>
+          <AssociationSet Name="pqr_usuario_fkey" Association="Self.pqr_usuario_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="pqr" EntitySet="pqr" />
+          </AssociationSet>
+          <AssociationSet Name="puntuacion_id_usuario_fkey" Association="Self.puntuacion_id_usuario_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="puntuacion" EntitySet="puntuacion" />
+          </AssociationSet>
+          <AssociationSet Name="reporte_comentarios_id_com_reportado_fkey" Association="Self.reporte_comentarios_id_com_reportado_fkey">
+            <End Role="comentarios" EntitySet="comentarios" />
+            <End Role="reporte_comentarios" EntitySet="reporte_comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="reporte_comentarios_id_user_fkey" Association="Self.reporte_comentarios_id_user_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="reporte_comentarios" EntitySet="reporte_comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="reporte_post_id_post_reportador_fkey" Association="Self.reporte_post_id_post_reportador_fkey">
+            <End Role="post" EntitySet="post" />
+            <End Role="reporte_post" EntitySet="reporte_post" />
+          </AssociationSet>
+          <AssociationSet Name="reporte_post_user_reportador_fkey" Association="Self.reporte_post_user_reportador_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="reporte_post" EntitySet="reporte_post" />
+          </AssociationSet>
+          <AssociationSet Name="sesiones_id_usuario_fkey" Association="Self.sesiones_id_usuario_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="sesiones" EntitySet="sesiones" />
+          </AssociationSet>
+          <AssociationSet Name="solicitud_id_user_fkey" Association="Self.solicitud_id_user_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="solicitud" EntitySet="solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="token_recuperacion:user_user_id_fkey" Association="Self.token_recuperacion:user_user_id_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="token_recuperacion_user" EntitySet="token_recuperacion_user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GamesColModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="controles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_formulario" Type="Int32" Nullable="false" />
+          <Property Name="id_idioma" Type="Int32" Nullable="false" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="formularios" Relationship="Self.controles_id_formulario_fkey" FromRole="controles" ToRole="formularios" />
+          <NavigationProperty Name="idiomas" Relationship="Self.controles_id_idioma_fkey" FromRole="controles" ToRole="idiomas" />
+        </EntityType>
+        <EntityType Name="formularios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="controles" Relationship="Self.controles_id_formulario_fkey" FromRole="formularios" ToRole="controles" />
+        </EntityType>
+        <EntityType Name="idiomas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="terminacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="controles" Relationship="Self.controles_id_idioma_fkey" FromRole="idiomas" ToRole="controles" />
+        </EntityType>
+        <EntityType Name="auditoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="accion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="schema" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tabla" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="session" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_bd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="autenticacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="ip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="session" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_fin" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="usuario" Relationship="Self.id_usuario" FromRole="autenticacion" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="sesiones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sesiones1" Type="Int32" Nullable="false" />
+          <Property Name="sesiones_activas" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="fecha_bloqueo" Type="DateTime" Precision="7" />
+          <Property Name="intentos_erroneos" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.sesiones_id_usuario_fkey" FromRole="sesiones" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="comentarios">
+          <Key>
+            <PropertyRef Name="id_comentario" />
+          </Key>
+          <Property Name="id_comentario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_post" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="estado_bloqueo" Relationship="Self.comentarios_estado_fkey" FromRole="comentarios" ToRole="estado_bloqueo" />
+          <NavigationProperty Name="reporte_comentarios" Relationship="Self.reporte_comentarios_id_com_reportado_fkey" FromRole="comentarios" ToRole="reporte_comentarios" />
+        </EntityType>
+        <EntityType Name="contato_usuarios">
+          <Key>
+            <PropertyRef Name="id_sugerencia" />
+          </Key>
+          <Property Name="id_sugerencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="correo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sugerencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="estado_bloqueo">
+          <Key>
+            <PropertyRef Name="id_estado" />
+          </Key>
+          <Property Name="id_estado" Type="Int32" Nullable="false" />
+          <Property Name="estado_bloqueo1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="comentarios" Relationship="Self.comentarios_estado_fkey" FromRole="estado_bloqueo" ToRole="comentarios" />
+          <NavigationProperty Name="post" Relationship="Self.post_estado_bloqueo_fkey" FromRole="estado_bloqueo" ToRole="post" />
+        </EntityType>
+        <EntityType Name="etiquetas">
+          <Key>
+            <PropertyRef Name="id_etiqueta" />
+          </Key>
+          <Property Name="id_etiqueta" Type="Int32" Nullable="false" />
+          <Property Name="nombre_etiqueta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="post" Relationship="Self.post_etiqueta_fkey" FromRole="etiquetas" ToRole="post" />
+        </EntityType>
+        <EntityType Name="noticias">
+          <Key>
+            <PropertyRef Name="id_noticia" />
+          </Key>
+          <Property Name="id_noticia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="autor" Type="Int32" />
+          <NavigationProperty Name="usuario" Relationship="Self.noticias_autor_fkey" FromRole="noticias" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="post">
+          <Key>
+            <PropertyRef Name="id_post" />
+          </Key>
+          <Property Name="id_post" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="puntos" Type="Int32" />
+          <Property Name="autor" Type="Int32" />
+          <Property Name="etiqueta" Type="Int32" />
+          <Property Name="estado_bloqueo" Type="Int32" />
+          <Property Name="user_bloqueador" Type="Int32" />
+          <Property Name="num_puntos" Type="Int32" />
+          <NavigationProperty Name="estado_bloqueo1" Relationship="Self.post_estado_bloqueo_fkey" FromRole="post" ToRole="estado_bloqueo" />
+          <NavigationProperty Name="etiquetas" Relationship="Self.post_etiqueta_fkey" FromRole="post" ToRole="etiquetas" />
+          <NavigationProperty Name="usuario" Relationship="Self.post_autor_fkey" FromRole="post" ToRole="usuario" />
+          <NavigationProperty Name="reporte_post" Relationship="Self.reporte_post_id_post_reportador_fkey" FromRole="post" ToRole="reporte_post" />
+        </EntityType>
+        <EntityType Name="pqr">
+          <Key>
+            <PropertyRef Name="id_pqr" />
+          </Key>
+          <Property Name="id_pqr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="Int32" Nullable="false" />
+          <Property Name="solicitud" Type="Int32" Nullable="false" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="asunto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="respuesta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_contestador" Type="Int32" />
+          <Property Name="fecha_respuesta" Type="DateTime" Precision="0" />
+          <Property Name="estado_respuesta" Type="Int32" />
+          <NavigationProperty Name="pqr_estados" Relationship="Self.pqr_solicitud_fkey" FromRole="pqr" ToRole="pqr_estados" />
+          <NavigationProperty Name="usuario1" Relationship="Self.pqr_usuario_fkey" FromRole="pqr" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="pqr_estados">
+          <Key>
+            <PropertyRef Name="id_pqrestados" />
+          </Key>
+          <Property Name="id_pqrestados" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="pqr" Relationship="Self.pqr_solicitud_fkey" FromRole="pqr_estados" ToRole="pqr" />
+        </EntityType>
+        <EntityType Name="puntuacion">
+          <Key>
+            <PropertyRef Name="id_puntuacion" />
+          </Key>
+          <Property Name="id_puntuacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_post" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.puntuacion_id_usuario_fkey" FromRole="puntuacion" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="rango">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="identificador" Type="Int32" />
+          <NavigationProperty Name="usuario" Relationship="Self.id_rango" FromRole="rango" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="reporte_comentarios">
+          <Key>
+            <PropertyRef Name="id_reporte_coment" />
+          </Key>
+          <Property Name="id_reporte_coment" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_com_reportado" Type="Int32" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Precision="7" />
+          <Property Name="id_user" Type="Int32" />
+          <NavigationProperty Name="comentarios" Relationship="Self.reporte_comentarios_id_com_reportado_fkey" FromRole="reporte_comentarios" ToRole="comentarios" />
+          <NavigationProperty Name="usuario" Relationship="Self.reporte_comentarios_id_user_fkey" FromRole="reporte_comentarios" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="reporte_post">
+          <Key>
+            <PropertyRef Name="id_reporte" />
+          </Key>
+          <Property Name="id_reporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_post_reportador" Type="Int32" Nullable="false" />
+          <Property Name="contenido_reporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha_reporte" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="user_reportador" Type="Int32" Nullable="false" />
+          <Property Name="estado_resuelto" Type="Int32" />
+          <NavigationProperty Name="post" Relationship="Self.reporte_post_id_post_reportador_fkey" FromRole="reporte_post" ToRole="post" />
+          <NavigationProperty Name="usuario" Relationship="Self.reporte_post_user_reportador_fkey" FromRole="reporte_post" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.id_rol" FromRole="rol" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="solicitud">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_user" Type="Int32" />
+          <Property Name="puntos" Type="Int32" />
+          <Property Name="nick" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="usuario" Relationship="Self.solicitud_id_user_fkey" FromRole="solicitud" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="token_recuperacion_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_creado" Type="DateTime" Precision="7" />
+          <Property Name="fecha_vigencia" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="usuario" Relationship="Self.token_recuperacion_user_user_id_fkey" FromRole="token_recuperacion_user" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nick" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="correo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="contra" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="puntos" Type="Int32" />
+          <Property Name="id_rol" Type="Int32" />
+          <Property Name="id_rango" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="session" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ultima_modificacion" Type="DateTime" Precision="7" />
+          <Property Name="interacciones" Type="Int32" />
+          <Property Name="fecha_interaccion" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="autenticacion" Relationship="Self.id_usuario" FromRole="usuario" ToRole="autenticacion" />
+          <NavigationProperty Name="sesiones" Relationship="Self.sesiones_id_usuario_fkey" FromRole="usuario" ToRole="sesiones" />
+          <NavigationProperty Name="noticias" Relationship="Self.noticias_autor_fkey" FromRole="usuario" ToRole="noticias" />
+          <NavigationProperty Name="post" Relationship="Self.post_autor_fkey" FromRole="usuario" ToRole="post" />
+          <NavigationProperty Name="pqr" Relationship="Self.pqr_usuario_fkey" FromRole="usuario" ToRole="pqr" />
+          <NavigationProperty Name="puntuacion" Relationship="Self.puntuacion_id_usuario_fkey" FromRole="usuario" ToRole="puntuacion" />
+          <NavigationProperty Name="rango" Relationship="Self.id_rango" FromRole="usuario" ToRole="rango" />
+          <NavigationProperty Name="reporte_comentarios" Relationship="Self.reporte_comentarios_id_user_fkey" FromRole="usuario" ToRole="reporte_comentarios" />
+          <NavigationProperty Name="reporte_post" Relationship="Self.reporte_post_user_reportador_fkey" FromRole="usuario" ToRole="reporte_post" />
+          <NavigationProperty Name="rol" Relationship="Self.id_rol" FromRole="usuario" ToRole="rol" />
+          <NavigationProperty Name="solicitud" Relationship="Self.solicitud_id_user_fkey" FromRole="usuario" ToRole="solicitud" />
+          <NavigationProperty Name="token_recuperacion_user" Relationship="Self.token_recuperacion_user_user_id_fkey" FromRole="usuario" ToRole="token_recuperacion_user" />
+        </EntityType>
+        <Association Name="controles_id_formulario_fkey">
+          <End Role="formularios" Type="Self.formularios" Multiplicity="1" />
+          <End Role="controles" Type="Self.controles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formularios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="controles">
+              <PropertyRef Name="id_formulario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="controles_id_idioma_fkey">
+          <End Role="idiomas" Type="Self.idiomas" Multiplicity="1" />
+          <End Role="controles" Type="Self.controles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="idiomas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="controles">
+              <PropertyRef Name="id_idioma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="id_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="autenticacion" Type="Self.autenticacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="autenticacion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="sesiones_id_usuario_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="sesiones" Type="Self.sesiones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sesiones">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentarios_estado_fkey">
+          <End Role="estado_bloqueo" Type="Self.estado_bloqueo" Multiplicity="0..1" />
+          <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_bloqueo">
+              <PropertyRef Name="id_estado" />
+            </Principal>
+            <Dependent Role="comentarios">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reporte_comentarios_id_com_reportado_fkey">
+          <End Role="comentarios" Type="Self.comentarios" Multiplicity="0..1" />
+          <End Role="reporte_comentarios" Type="Self.reporte_comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comentarios">
+              <PropertyRef Name="id_comentario" />
+            </Principal>
+            <Dependent Role="reporte_comentarios">
+              <PropertyRef Name="id_com_reportado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="post_estado_bloqueo_fkey">
+          <End Role="estado_bloqueo" Type="Self.estado_bloqueo" Multiplicity="0..1" />
+          <End Role="post" Type="Self.post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_bloqueo">
+              <PropertyRef Name="id_estado" />
+            </Principal>
+            <Dependent Role="post">
+              <PropertyRef Name="estado_bloqueo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="post_etiqueta_fkey">
+          <End Role="etiquetas" Type="Self.etiquetas" Multiplicity="0..1" />
+          <End Role="post" Type="Self.post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etiquetas">
+              <PropertyRef Name="id_etiqueta" />
+            </Principal>
+            <Dependent Role="post">
+              <PropertyRef Name="etiqueta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="noticias_autor_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="noticias" Type="Self.noticias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="noticias">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="post_autor_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="post" Type="Self.post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="post">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reporte_post_id_post_reportador_fkey">
+          <End Role="post" Type="Self.post" Multiplicity="1" />
+          <End Role="reporte_post" Type="Self.reporte_post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="post">
+              <PropertyRef Name="id_post" />
+            </Principal>
+            <Dependent Role="reporte_post">
+              <PropertyRef Name="id_post_reportador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pqr_solicitud_fkey">
+          <End Role="pqr_estados" Type="Self.pqr_estados" Multiplicity="1" />
+          <End Role="pqr" Type="Self.pqr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pqr_estados">
+              <PropertyRef Name="id_pqrestados" />
+            </Principal>
+            <Dependent Role="pqr">
+              <PropertyRef Name="solicitud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pqr_usuario_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="pqr" Type="Self.pqr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pqr">
+              <PropertyRef Name="usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="puntuacion_id_usuario_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="puntuacion" Type="Self.puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="puntuacion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="id_rango">
+          <End Role="rango" Type="Self.rango" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rango">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="id_rango" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reporte_comentarios_id_user_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="reporte_comentarios" Type="Self.reporte_comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reporte_comentarios">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reporte_post_user_reportador_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="reporte_post" Type="Self.reporte_post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reporte_post">
+              <PropertyRef Name="user_reportador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="id_rol">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="solicitud_id_user_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="solicitud" Type="Self.solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="solicitud">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="token_recuperacion_user_user_id_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="token_recuperacion_user" Type="Self.token_recuperacion_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="token_recuperacion_user">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GamesColEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="controles" EntityType="Self.controles" />
+          <EntitySet Name="formularios" EntityType="Self.formularios" />
+          <EntitySet Name="idiomas" EntityType="Self.idiomas" />
+          <EntitySet Name="auditoria" EntityType="Self.auditoria" />
+          <EntitySet Name="autenticacion" EntityType="Self.autenticacion" />
+          <EntitySet Name="sesiones" EntityType="Self.sesiones" />
+          <EntitySet Name="comentarios" EntityType="Self.comentarios" />
+          <EntitySet Name="contato_usuarios" EntityType="Self.contato_usuarios" />
+          <EntitySet Name="estado_bloqueo" EntityType="Self.estado_bloqueo" />
+          <EntitySet Name="etiquetas" EntityType="Self.etiquetas" />
+          <EntitySet Name="noticias" EntityType="Self.noticias" />
+          <EntitySet Name="post" EntityType="Self.post" />
+          <EntitySet Name="pqr" EntityType="Self.pqr" />
+          <EntitySet Name="pqr_estados" EntityType="Self.pqr_estados" />
+          <EntitySet Name="puntuacion" EntityType="Self.puntuacion" />
+          <EntitySet Name="rango" EntityType="Self.rango" />
+          <EntitySet Name="reporte_comentarios" EntityType="Self.reporte_comentarios" />
+          <EntitySet Name="reporte_post" EntityType="Self.reporte_post" />
+          <EntitySet Name="rol" EntityType="Self.rol" />
+          <EntitySet Name="solicitud" EntityType="Self.solicitud" />
+          <EntitySet Name="token_recuperacion_user" EntityType="Self.token_recuperacion_user" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="controles_id_formulario_fkey" Association="Self.controles_id_formulario_fkey">
+            <End Role="formularios" EntitySet="formularios" />
+            <End Role="controles" EntitySet="controles" />
+          </AssociationSet>
+          <AssociationSet Name="controles_id_idioma_fkey" Association="Self.controles_id_idioma_fkey">
+            <End Role="idiomas" EntitySet="idiomas" />
+            <End Role="controles" EntitySet="controles" />
+          </AssociationSet>
+          <AssociationSet Name="id_usuario" Association="Self.id_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="autenticacion" EntitySet="autenticacion" />
+          </AssociationSet>
+          <AssociationSet Name="sesiones_id_usuario_fkey" Association="Self.sesiones_id_usuario_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="sesiones" EntitySet="sesiones" />
+          </AssociationSet>
+          <AssociationSet Name="comentarios_estado_fkey" Association="Self.comentarios_estado_fkey">
+            <End Role="estado_bloqueo" EntitySet="estado_bloqueo" />
+            <End Role="comentarios" EntitySet="comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="reporte_comentarios_id_com_reportado_fkey" Association="Self.reporte_comentarios_id_com_reportado_fkey">
+            <End Role="comentarios" EntitySet="comentarios" />
+            <End Role="reporte_comentarios" EntitySet="reporte_comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="post_estado_bloqueo_fkey" Association="Self.post_estado_bloqueo_fkey">
+            <End Role="estado_bloqueo" EntitySet="estado_bloqueo" />
+            <End Role="post" EntitySet="post" />
+          </AssociationSet>
+          <AssociationSet Name="post_etiqueta_fkey" Association="Self.post_etiqueta_fkey">
+            <End Role="etiquetas" EntitySet="etiquetas" />
+            <End Role="post" EntitySet="post" />
+          </AssociationSet>
+          <AssociationSet Name="noticias_autor_fkey" Association="Self.noticias_autor_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="noticias" EntitySet="noticias" />
+          </AssociationSet>
+          <AssociationSet Name="post_autor_fkey" Association="Self.post_autor_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="post" EntitySet="post" />
+          </AssociationSet>
+          <AssociationSet Name="reporte_post_id_post_reportador_fkey" Association="Self.reporte_post_id_post_reportador_fkey">
+            <End Role="post" EntitySet="post" />
+            <End Role="reporte_post" EntitySet="reporte_post" />
+          </AssociationSet>
+          <AssociationSet Name="pqr_solicitud_fkey" Association="Self.pqr_solicitud_fkey">
+            <End Role="pqr_estados" EntitySet="pqr_estados" />
+            <End Role="pqr" EntitySet="pqr" />
+          </AssociationSet>
+          <AssociationSet Name="pqr_usuario_fkey" Association="Self.pqr_usuario_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="pqr" EntitySet="pqr" />
+          </AssociationSet>
+          <AssociationSet Name="puntuacion_id_usuario_fkey" Association="Self.puntuacion_id_usuario_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="puntuacion" EntitySet="puntuacion" />
+          </AssociationSet>
+          <AssociationSet Name="id_rango" Association="Self.id_rango">
+            <End Role="rango" EntitySet="rango" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="reporte_comentarios_id_user_fkey" Association="Self.reporte_comentarios_id_user_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="reporte_comentarios" EntitySet="reporte_comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="reporte_post_user_reportador_fkey" Association="Self.reporte_post_user_reportador_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="reporte_post" EntitySet="reporte_post" />
+          </AssociationSet>
+          <AssociationSet Name="id_rol" Association="Self.id_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="solicitud_id_user_fkey" Association="Self.solicitud_id_user_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="solicitud" EntitySet="solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="token_recuperacion_user_user_id_fkey" Association="Self.token_recuperacion_user_user_id_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="token_recuperacion_user" EntitySet="token_recuperacion_user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GamesColModelStoreContainer" CdmEntityContainer="GamesColEntities">
+          <EntitySetMapping Name="controles">
+            <EntityTypeMapping TypeName="GamesColModel.controles">
+              <MappingFragment StoreEntitySet="controles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_formulario" ColumnName="id_formulario" />
+                <ScalarProperty Name="id_idioma" ColumnName="id_idioma" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="formularios">
+            <EntityTypeMapping TypeName="GamesColModel.formularios">
+              <MappingFragment StoreEntitySet="formularios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="idiomas">
+            <EntityTypeMapping TypeName="GamesColModel.idiomas">
+              <MappingFragment StoreEntitySet="idiomas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="terminacion" ColumnName="terminacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="auditoria">
+            <EntityTypeMapping TypeName="GamesColModel.auditoria">
+              <MappingFragment StoreEntitySet="auditoria">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="accion" ColumnName="accion" />
+                <ScalarProperty Name="schema" ColumnName="schema" />
+                <ScalarProperty Name="tabla" ColumnName="tabla" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="user_bd" ColumnName="user_bd" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="pk" ColumnName="pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="autenticacion">
+            <EntityTypeMapping TypeName="GamesColModel.autenticacion">
+              <MappingFragment StoreEntitySet="autenticacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="mac" ColumnName="mac" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sesiones">
+            <EntityTypeMapping TypeName="GamesColModel.sesiones">
+              <MappingFragment StoreEntitySet="sesiones">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sesiones1" ColumnName="sesiones" />
+                <ScalarProperty Name="sesiones_activas" ColumnName="sesiones_activas" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="fecha_bloqueo" ColumnName="fecha_bloqueo" />
+                <ScalarProperty Name="intentos_erroneos" ColumnName="intentos_erroneos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comentarios">
+            <EntityTypeMapping TypeName="GamesColModel.comentarios">
+              <MappingFragment StoreEntitySet="comentarios">
+                <ScalarProperty Name="id_comentario" ColumnName="id_comentario" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contato_usuarios">
+            <EntityTypeMapping TypeName="GamesColModel.contato_usuarios">
+              <MappingFragment StoreEntitySet="contato_usuarios">
+                <ScalarProperty Name="id_sugerencia" ColumnName="id_sugerencia" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="sugerencia" ColumnName="sugerencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estado_bloqueo">
+            <EntityTypeMapping TypeName="GamesColModel.estado_bloqueo">
+              <MappingFragment StoreEntitySet="estado_bloqueo">
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="estado_bloqueo1" ColumnName="estado_bloqueo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="etiquetas">
+            <EntityTypeMapping TypeName="GamesColModel.etiquetas">
+              <MappingFragment StoreEntitySet="etiquetas">
+                <ScalarProperty Name="id_etiqueta" ColumnName="id_etiqueta" />
+                <ScalarProperty Name="nombre_etiqueta" ColumnName="nombre_etiqueta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="noticias">
+            <EntityTypeMapping TypeName="GamesColModel.noticias">
+              <MappingFragment StoreEntitySet="noticias">
+                <ScalarProperty Name="id_noticia" ColumnName="id_noticia" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="autor" ColumnName="autor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="post">
+            <EntityTypeMapping TypeName="GamesColModel.post">
+              <MappingFragment StoreEntitySet="post">
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="puntos" ColumnName="puntos" />
+                <ScalarProperty Name="autor" ColumnName="autor" />
+                <ScalarProperty Name="etiqueta" ColumnName="etiqueta" />
+                <ScalarProperty Name="estado_bloqueo" ColumnName="estado_bloqueo" />
+                <ScalarProperty Name="user_bloqueador" ColumnName="user_bloqueador" />
+                <ScalarProperty Name="num_puntos" ColumnName="num_puntos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pqr">
+            <EntityTypeMapping TypeName="GamesColModel.pqr">
+              <MappingFragment StoreEntitySet="pqr">
+                <ScalarProperty Name="id_pqr" ColumnName="id_pqr" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="solicitud" ColumnName="solicitud" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="asunto" ColumnName="asunto" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="respuesta" ColumnName="respuesta" />
+                <ScalarProperty Name="id_contestador" ColumnName="id_contestador" />
+                <ScalarProperty Name="fecha_respuesta" ColumnName="fecha_respuesta" />
+                <ScalarProperty Name="estado_respuesta" ColumnName="estado_respuesta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pqr_estados">
+            <EntityTypeMapping TypeName="GamesColModel.pqr_estados">
+              <MappingFragment StoreEntitySet="pqr_estados">
+                <ScalarProperty Name="id_pqrestados" ColumnName="id_pqrestados" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="puntuacion">
+            <EntityTypeMapping TypeName="GamesColModel.puntuacion">
+              <MappingFragment StoreEntitySet="puntuacion">
+                <ScalarProperty Name="id_puntuacion" ColumnName="id_puntuacion" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rango">
+            <EntityTypeMapping TypeName="GamesColModel.rango">
+              <MappingFragment StoreEntitySet="rango">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="identificador" ColumnName="identificador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reporte_comentarios">
+            <EntityTypeMapping TypeName="GamesColModel.reporte_comentarios">
+              <MappingFragment StoreEntitySet="reporte_comentarios">
+                <ScalarProperty Name="id_reporte_coment" ColumnName="id_reporte_coment" />
+                <ScalarProperty Name="id_com_reportado" ColumnName="id_com_reportado" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reporte_post">
+            <EntityTypeMapping TypeName="GamesColModel.reporte_post">
+              <MappingFragment StoreEntitySet="reporte_post">
+                <ScalarProperty Name="id_reporte" ColumnName="id_reporte" />
+                <ScalarProperty Name="id_post_reportador" ColumnName="id_post_reportador" />
+                <ScalarProperty Name="contenido_reporte" ColumnName="contenido_reporte" />
+                <ScalarProperty Name="fecha_reporte" ColumnName="fecha_reporte" />
+                <ScalarProperty Name="user_reportador" ColumnName="user_reportador" />
+                <ScalarProperty Name="estado_resuelto" ColumnName="estado_resuelto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol">
+            <EntityTypeMapping TypeName="GamesColModel.rol">
+              <MappingFragment StoreEntitySet="rol">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="solicitud">
+            <EntityTypeMapping TypeName="GamesColModel.solicitud">
+              <MappingFragment StoreEntitySet="solicitud">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="puntos" ColumnName="puntos" />
+                <ScalarProperty Name="nick" ColumnName="nick" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="token_recuperacion_user">
+            <EntityTypeMapping TypeName="GamesColModel.token_recuperacion_user">
+              <MappingFragment StoreEntitySet="token_recuperacion_user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="fecha_creado" ColumnName="fecha_creado" />
+                <ScalarProperty Name="fecha_vigencia" ColumnName="fecha_vigencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="GamesColModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="nick" ColumnName="nick" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="contra" ColumnName="contra" />
+                <ScalarProperty Name="puntos" ColumnName="puntos" />
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+                <ScalarProperty Name="id_rango" ColumnName="id_rango" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="ultima_modificacion" ColumnName="ultima_modificacion" />
+                <ScalarProperty Name="interacciones" ColumnName="interacciones" />
+                <ScalarProperty Name="fecha_interaccion" ColumnName="fecha_interaccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
