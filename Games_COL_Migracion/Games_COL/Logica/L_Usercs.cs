@@ -2733,6 +2733,7 @@ namespace Logica
         {
             DataTable prueba = new DataTable();
             D_User idioma = new D_User();
+            Dsql idio = new Dsql();
             prueba = idioma.idiomas();
             return prueba;
         }
@@ -2758,7 +2759,8 @@ namespace Logica
         public DataTable traducir(Int32  FORMULARIO, int x)
         {
             D_User idioma = new D_User();
-            DataTable info = idioma.obtenerIdioma(FORMULARIO, x);
+            Dsql idio = new Dsql();
+            DataTable info = idio.obtenerIdioma(FORMULARIO, x);
             return info;
 
 
@@ -2827,7 +2829,7 @@ namespace Logica
         {
             for (int i = 0; i < info.Rows.Count; i++)
             {
-                compIdioma.Add(info.Rows[i]["nombre"].ToString(), info.Rows[i]["valor"].ToString());
+                compIdioma.Add(info.Rows[i]["nombre"].ToString(), info.Rows[i]["contenido"].ToString());
             }
             return compIdioma;
         }

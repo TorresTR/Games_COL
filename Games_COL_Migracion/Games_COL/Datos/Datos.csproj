@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dsql.cs" />
     <Compile Include="D_correo.cs" />
     <Compile Include="D_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
