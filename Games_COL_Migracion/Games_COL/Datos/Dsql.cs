@@ -6,7 +6,6 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Utilitarios;
 
@@ -174,7 +173,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_actualizar_mi_noticia", conection);
                 dataAdapter.SelectCommand.Parameters.Add("@id_post", SqlDbType.Int).Value = post.Id;
-                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.Text).Value = post.Contenido1;
+                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.NVarChar).Value = post.Contenido1;
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
@@ -278,8 +277,8 @@ namespace Datos
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
-                dataAdapter.SelectCommand.Parameters.Add("@titulo", SqlDbType.Text).Value = datos.Titulo;
-                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.Text).Value = datos.Contenido1;
+                dataAdapter.SelectCommand.Parameters.Add("@titulo", SqlDbType.NVarChar).Value = datos.Titulo;
+                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.NVarChar).Value = datos.Contenido1;
                 dataAdapter.SelectCommand.Parameters.Add("@fecha", SqlDbType.Date).Value = datos.Fecha;
                 dataAdapter.SelectCommand.Parameters.Add("@autor", SqlDbType.Int).Value = datos.Id_user;
 
@@ -372,8 +371,8 @@ namespace Datos
 
                 dataAdapter.SelectCommand.Parameters.Add("@id_post", SqlDbType.Int).Value = data.Id_post;
                 dataAdapter.SelectCommand.Parameters.Add("@id_user_bloqueador", SqlDbType.Int).Value = data.User_bloqueador;
-                dataAdapter.SelectCommand.Parameters.Add("_estado_bloqueo", SqlDbType.Int).Value = data.Estado_bloqueo;
-                dataAdapter.SelectCommand.Parameters.Add("_respuesta", SqlDbType.Int).Value = data.Respuesta;
+                dataAdapter.SelectCommand.Parameters.Add("@estado_bloqueo", SqlDbType.Int).Value = data.Estado_bloqueo;
+                dataAdapter.SelectCommand.Parameters.Add("@respuesta", SqlDbType.Int).Value = data.Respuesta;
 
 
 
@@ -633,7 +632,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_actualizar_mi_post", conection);
                 dataAdapter.SelectCommand.Parameters.Add("@id_post", SqlDbType.Int).Value = post.Id;
-                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.Text).Value = post.Contenido1;
+                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.NVarChar).Value = post.Contenido1;
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
@@ -1054,9 +1053,9 @@ namespace Datos
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
-                dataAdapter.SelectCommand.Parameters.Add("_asunto", SqlDbType.Text).Value = datos.Asunto;
-                dataAdapter.SelectCommand.Parameters.Add("_estado", SqlDbType.Int).Value = datos.Id_pqrestado;
-                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.Text).Value = datos.Contenido;
+                dataAdapter.SelectCommand.Parameters.Add("@asunto", SqlDbType.NVarChar).Value = datos.Asunto;
+                dataAdapter.SelectCommand.Parameters.Add("@estado", SqlDbType.Int).Value = datos.Id_pqrestado;
+                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.NVarChar).Value = datos.Contenido;
                 dataAdapter.SelectCommand.Parameters.Add("@fecha", SqlDbType.Date).Value = datos.Fecha;
                 dataAdapter.SelectCommand.Parameters.Add("@id_user", SqlDbType.Int).Value = datos.Id_user;
 
@@ -1120,12 +1119,12 @@ namespace Datos
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
-                dataAdapter.SelectCommand.Parameters.Add("@titulo", SqlDbType.Text).Value = datos.Titulo;
-                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.Text).Value = datos.Contenido1;
+                dataAdapter.SelectCommand.Parameters.Add("@titulo", SqlDbType.NVarChar).Value = datos.Titulo;
+                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.NVarChar).Value = datos.Contenido1;
                 dataAdapter.SelectCommand.Parameters.Add("@fecha", SqlDbType.Date).Value = datos.Fecha;
                 dataAdapter.SelectCommand.Parameters.Add("@autor", SqlDbType.Int).Value = datos.Id_user;
-                dataAdapter.SelectCommand.Parameters.Add("_etiqueta", SqlDbType.Int).Value = datos.Id_etiqueta;
-                dataAdapter.SelectCommand.Parameters.Add("_interacciones", SqlDbType.Int).Value = datos.Interacciones;
+                dataAdapter.SelectCommand.Parameters.Add("@etiqueta", SqlDbType.Int).Value = datos.Id_etiqueta;
+                dataAdapter.SelectCommand.Parameters.Add("@interacciones", SqlDbType.Int).Value = datos.Interacciones;
 
 
 
@@ -1155,7 +1154,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_actualizar_puntopost", conection);
                 dataAdapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int).Value = dato.Id;
-                dataAdapter.SelectCommand.Parameters.Add("_puntos", SqlDbType.Int).Value = dato.Puntos;
+                dataAdapter.SelectCommand.Parameters.Add("@puntos", SqlDbType.Int).Value = dato.Puntos;
 
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
@@ -1251,8 +1250,8 @@ namespace Datos
             try
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.insertar_sugerencia", conection);
-                dataAdapter.SelectCommand.Parameters.Add("_correo", SqlDbType.Text).Value = datos.Correo;
-                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.Text).Value = datos.Sugerencia;
+                dataAdapter.SelectCommand.Parameters.Add("@correo", SqlDbType.NVarChar).Value = datos.Correo;
+                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.NVarChar).Value = datos.Sugerencia;
 
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
@@ -1282,8 +1281,8 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_validar_nick", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_user_name", SqlDbType.Text).Value = dat.Nick;
-                dataAdapter.SelectCommand.Parameters.Add("_correo", SqlDbType.Text).Value = dat.Correo;
+                dataAdapter.SelectCommand.Parameters.Add("@user_name", SqlDbType.NVarChar).Value = dat.Nick;
+                dataAdapter.SelectCommand.Parameters.Add("@correo", SqlDbType.NVarChar).Value = dat.Correo;
 
                 conection.Open();
                 dataAdapter.Fill(Usuario);
@@ -1309,9 +1308,9 @@ namespace Datos
 
             try
             {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_validar@idioma", conection);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_validar_idioma", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("@id@idioma", SqlDbType.Int).Value = idioma;
+                dataAdapter.SelectCommand.Parameters.Add("@id_idioma", SqlDbType.Int).Value = idioma;
 
 
                 conection.Open();
@@ -1341,14 +1340,14 @@ namespace Datos
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_insertar_usuario", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
-                dataAdapter.SelectCommand.Parameters.Add("_nombre", SqlDbType.Text).Value = datos.Nombre;
-                dataAdapter.SelectCommand.Parameters.Add("_nick", SqlDbType.Text).Value = datos.Nick;
-                dataAdapter.SelectCommand.Parameters.Add("_correo", SqlDbType.Text).Value = datos.Correo;
-                dataAdapter.SelectCommand.Parameters.Add("_pass", SqlDbType.Text).Value = datos.Pass;
-                dataAdapter.SelectCommand.Parameters.Add("_puntos", SqlDbType.Int).Value = datos.Puntos;
-                dataAdapter.SelectCommand.Parameters.Add("_rol", SqlDbType.Int).Value = datos.Rol;
-                dataAdapter.SelectCommand.Parameters.Add("_rango", SqlDbType.Int).Value = datos.Rango;
-                dataAdapter.SelectCommand.Parameters.Add("_estado", SqlDbType.Int).Value = datos.Estado;
+                dataAdapter.SelectCommand.Parameters.Add("@nombre", SqlDbType.NVarChar).Value = datos.Nombre;
+                dataAdapter.SelectCommand.Parameters.Add("@nick", SqlDbType.NVarChar).Value = datos.Nick;
+                dataAdapter.SelectCommand.Parameters.Add("@correo", SqlDbType.NVarChar).Value = datos.Correo;
+                dataAdapter.SelectCommand.Parameters.Add("@pass", SqlDbType.NVarChar).Value = datos.Pass;
+                dataAdapter.SelectCommand.Parameters.Add("@puntos", SqlDbType.Int).Value = datos.Puntos;
+                dataAdapter.SelectCommand.Parameters.Add("@rol", SqlDbType.Int).Value = datos.Rol;
+                dataAdapter.SelectCommand.Parameters.Add("@rango", SqlDbType.Int).Value = datos.Rango;
+                dataAdapter.SelectCommand.Parameters.Add("@estado", SqlDbType.Int).Value = datos.Estado;
                 dataAdapter.SelectCommand.Parameters.Add("@fecha", SqlDbType.Date).Value = datos.Fecha;
 
                 conection.Open();
@@ -1383,9 +1382,9 @@ namespace Datos
 
                 dataAdapter.SelectCommand.Parameters.Add("@id_pqr", SqlDbType.Int).Value = datos.Id_pqr;
                 dataAdapter.SelectCommand.Parameters.Add("@id_user", SqlDbType.Int).Value = datos.Id_respondedor;
-                dataAdapter.SelectCommand.Parameters.Add("_respuesta", SqlDbType.Text).Value = datos.Respuesta;
+                dataAdapter.SelectCommand.Parameters.Add("@respuesta", SqlDbType.NVarChar).Value = datos.Respuesta;
                 dataAdapter.SelectCommand.Parameters.Add("@fecha", SqlDbType.Date).Value = datos.Fecha_respuesta;
-                dataAdapter.SelectCommand.Parameters.Add("_estado_respuesta", SqlDbType.Int).Value = datos.Estado_respuesta;
+                dataAdapter.SelectCommand.Parameters.Add("@estado_respuesta", SqlDbType.Int).Value = datos.Estado_respuesta;
 
 
 
@@ -1508,7 +1507,7 @@ namespace Datos
             try
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("seguridad.f_traer_usuario", conection);
-                dataAdapter.SelectCommand.Parameters.Add("_nick", SqlDbType.Text).Value = nick;
+                dataAdapter.SelectCommand.Parameters.Add("@nick", SqlDbType.NVarChar).Value = nick;
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
@@ -1761,7 +1760,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_buscar_post", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("@titulo", SqlDbType.Text).Value = nombre.Busqueda_Dato;
+                dataAdapter.SelectCommand.Parameters.Add("@titulo", SqlDbType.NVarChar).Value = nombre.Busqueda_Dato;
 
                 conection.Open();
                 dataAdapter.Fill(Usuario);
@@ -1883,7 +1882,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.insertar_reporte_coment", conection);
                 dataAdapter.SelectCommand.Parameters.Add("@id_coment", SqlDbType.Int).Value = datos.Id_com_reportado1;
-                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.Text).Value = datos.Contenido1;
+                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.NVarChar).Value = datos.Contenido1;
                 dataAdapter.SelectCommand.Parameters.Add("@fecha", SqlDbType.Date).Value = datos.Fecha;
                 dataAdapter.SelectCommand.Parameters.Add("@id_user", SqlDbType.Int).Value = datos.Id_user;
 
@@ -1916,7 +1915,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.insertar_reporte", conection);
                 dataAdapter.SelectCommand.Parameters.Add("@id_post", SqlDbType.Int).Value = datos.Id_post_reportado;
-                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.Text).Value = datos.Contido_reporte;
+                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.NVarChar).Value = datos.Contido_reporte;
                 dataAdapter.SelectCommand.Parameters.Add("@fecha", SqlDbType.Date).Value = datos.Fecha_reporte;
                 dataAdapter.SelectCommand.Parameters.Add("@id_user", SqlDbType.Int).Value = datos.User_reportador;
 
@@ -2016,8 +2015,8 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("seguridad.f_loggin", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_nick", SqlDbType.Text).Value = datos.Nick;
-                dataAdapter.SelectCommand.Parameters.Add("_contra", SqlDbType.Text).Value = datos.Pass;
+                dataAdapter.SelectCommand.Parameters.Add("@nick", SqlDbType.NVarChar).Value = datos.Nick;
+                dataAdapter.SelectCommand.Parameters.Add("@contra", SqlDbType.NVarChar).Value = datos.Pass;
                 conection.Open();
                 dataAdapter.Fill(Usuario);
             }
@@ -2073,7 +2072,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("seguridad.f_actualizar_sesion", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_user@id", SqlDbType.Int).Value = id;
+                dataAdapter.SelectCommand.Parameters.Add("@user_id", SqlDbType.Int).Value = id;
 
                 conection.Open();
                 dataAdapter.Fill(Usuario);
@@ -2101,7 +2100,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("seguridad.f_actualizar_cerrar_sesion", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_user@id", SqlDbType.Int).Value = id;
+                dataAdapter.SelectCommand.Parameters.Add("@user_id", SqlDbType.Int).Value = id;
 
                 conection.Open();
                 dataAdapter.Fill(Usuario);
@@ -2158,9 +2157,9 @@ namespace Datos
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("seguridad.f_guardado_session1", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                 dataAdapter.SelectCommand.Parameters.Add("@id_usuario", SqlDbType.Int).Value = datos.UserId;
-                dataAdapter.SelectCommand.Parameters.Add("_ip", SqlDbType.Text).Value = datos.Ip;
-                dataAdapter.SelectCommand.Parameters.Add("_mac", SqlDbType.Text).Value = datos.Mac;
-                // dataAdapter.SelectCommand.Parameters.Add("_session", SqlDbType.Text).Value = datos.Session;
+                dataAdapter.SelectCommand.Parameters.Add("@ip", SqlDbType.NVarChar).Value = datos.Ip;
+                dataAdapter.SelectCommand.Parameters.Add("@mac", SqlDbType.NVarChar).Value = datos.Mac;
+                // dataAdapter.SelectCommand.Parameters.Add("_session", SqlDbType.NVarChar).Value = datos.Session;
 
                 conection.Open();
                 dataAdapter.Fill(Usuario);
@@ -2253,7 +2252,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("seguridad.f_cerrar_session", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_session", SqlDbType.Text).Value = datos.Session;
+                dataAdapter.SelectCommand.Parameters.Add("@session", SqlDbType.NVarChar).Value = datos.Session;
 
                 conection.Open();
                 dataAdapter.Fill(Usuario);
@@ -2371,11 +2370,11 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.insertar_puntos", conection);
                 dataAdapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int).Value = datos.Id;
-                dataAdapter.SelectCommand.Parameters.Add("_puntos", SqlDbType.Int).Value = datos.Puntos;
-                dataAdapter.SelectCommand.Parameters.Add("_puntosa", SqlDbType.Int).Value = datos.PuntosA;
-                dataAdapter.SelectCommand.Parameters.Add("_nump", SqlDbType.Int).Value = datos.Nump;
+                dataAdapter.SelectCommand.Parameters.Add("@puntos", SqlDbType.Int).Value = datos.Puntos;
+                dataAdapter.SelectCommand.Parameters.Add("@puntosa", SqlDbType.Int).Value = datos.PuntosA;
+                dataAdapter.SelectCommand.Parameters.Add("@nump", SqlDbType.Int).Value = datos.Nump;
                 dataAdapter.SelectCommand.Parameters.Add("@id_user", SqlDbType.Int).Value = datos.Id_user;
-                dataAdapter.SelectCommand.Parameters.Add("_interacciones", SqlDbType.Int).Value = datos.Interacciones;
+                dataAdapter.SelectCommand.Parameters.Add("@interacciones", SqlDbType.Int).Value = datos.Interacciones;
                 dataAdapter.SelectCommand.Parameters.Add("@fecha", SqlDbType.Date).Value = datos.Fecha;
 
 
@@ -2407,7 +2406,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_actualizar_puntopost", conection);
                 dataAdapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int).Value = id;
-                dataAdapter.SelectCommand.Parameters.Add("_puntos", SqlDbType.Int).Value = puntos;
+                dataAdapter.SelectCommand.Parameters.Add("@puntos", SqlDbType.Int).Value = puntos;
 
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
@@ -2477,9 +2476,9 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.insertar_Comentario", conection);
                 dataAdapter.SelectCommand.Parameters.Add("@id_post", SqlDbType.Int).Value = datos.Id_post;
-                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.Text).Value = datos.Conetinido1;
+                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.NVarChar).Value = datos.Conetinido1;
                 dataAdapter.SelectCommand.Parameters.Add("@id_user", SqlDbType.Int).Value = datos.Id_user;
-                dataAdapter.SelectCommand.Parameters.Add("_interacciones", SqlDbType.Int).Value = datos.Interaccion;
+                dataAdapter.SelectCommand.Parameters.Add("@interacciones", SqlDbType.Int).Value = datos.Interaccion;
                 dataAdapter.SelectCommand.Parameters.Add("@fecha", SqlDbType.Date).Value = datos.Fecha;
 
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -2542,8 +2541,8 @@ namespace Datos
 
 
                 dataAdapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int).Value = datos.Id;
-                dataAdapter.SelectCommand.Parameters.Add("_puntos", SqlDbType.Int).Value = datos.Puntos;
-                dataAdapter.SelectCommand.Parameters.Add("_nick", SqlDbType.Text).Value = datos.Nick;
+                dataAdapter.SelectCommand.Parameters.Add("@puntos", SqlDbType.Int).Value = datos.Puntos;
+                dataAdapter.SelectCommand.Parameters.Add("@nick", SqlDbType.NVarChar).Value = datos.Nick;
                 dataAdapter.SelectCommand.Parameters.Add("@fecha", SqlDbType.Date).Value = datos.Fecha;
 
 
@@ -2605,7 +2604,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_almacenar_token", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_token", SqlDbType.Text).Value = token;
+                dataAdapter.SelectCommand.Parameters.Add("@token", SqlDbType.NVarChar).Value = token;
                 dataAdapter.SelectCommand.Parameters.Add("@id_usuario", SqlDbType.Int).Value = userId;
 
                 conection.Open();
@@ -2634,7 +2633,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_validar_usuario", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_user_name", SqlDbType.Text).Value = user_name;
+                dataAdapter.SelectCommand.Parameters.Add("@user_name", SqlDbType.NVarChar).Value = user_name;
 
                 conection.Open();
                 dataAdapter.Fill(Usuario);
@@ -2662,7 +2661,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_obtener_usuario_token", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_token", SqlDbType.Text).Value = token;
+                dataAdapter.SelectCommand.Parameters.Add("@token", SqlDbType.NVarChar).Value = token;
 
                 conection.Open();
                 dataAdapter.Fill(Usuario);
@@ -2690,8 +2689,8 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_actualizar_contrasena", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_user@id", SqlDbType.Int).Value = datos.Id;
-                dataAdapter.SelectCommand.Parameters.Add("_clave", SqlDbType.VarChar).Value = datos.Pass;
+                dataAdapter.SelectCommand.Parameters.Add("@user_id", SqlDbType.Int).Value = datos.Id;
+                dataAdapter.SelectCommand.Parameters.Add("@clave", SqlDbType.VarChar).Value = datos.Pass;
 
                 conection.Open();
                 dataAdapter.Fill(Usuario);
@@ -2781,8 +2780,8 @@ namespace Datos
 
                 dataAdapter.SelectCommand.Parameters.Add("@id_post", SqlDbType.Int).Value = id_post;
                 dataAdapter.SelectCommand.Parameters.Add("@id_user_bloqueador", SqlDbType.Int).Value = user_bloqueador;
-                dataAdapter.SelectCommand.Parameters.Add("_estado_bloqueo", SqlDbType.Int).Value = estado_bloqueo;
-                dataAdapter.SelectCommand.Parameters.Add("_respuesta", SqlDbType.Int).Value = respuesta;
+                dataAdapter.SelectCommand.Parameters.Add("@estado_bloqueo", SqlDbType.Int).Value = estado_bloqueo;
+                dataAdapter.SelectCommand.Parameters.Add("@respuesta", SqlDbType.Int).Value = respuesta;
 
 
 
@@ -2845,11 +2844,11 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_actualizar_usuario", conection);
                 dataAdapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int).Value = user.Id;
-                dataAdapter.SelectCommand.Parameters.Add("_nombre", SqlDbType.Text).Value = user.Nombre;
-                dataAdapter.SelectCommand.Parameters.Add("_nick", SqlDbType.Text).Value = user.Nick;
-                dataAdapter.SelectCommand.Parameters.Add("_puntos", SqlDbType.Int).Value = user.Puntos;
-                dataAdapter.SelectCommand.Parameters.Add("_rango", SqlDbType.Int).Value = user.Rango;
-                dataAdapter.SelectCommand.Parameters.Add("_correo", SqlDbType.Text).Value = user.Correo;
+                dataAdapter.SelectCommand.Parameters.Add("@nombre", SqlDbType.NVarChar).Value = user.Nombre;
+                dataAdapter.SelectCommand.Parameters.Add("@nick", SqlDbType.NVarChar).Value = user.Nick;
+                dataAdapter.SelectCommand.Parameters.Add("@puntos", SqlDbType.Int).Value = user.Puntos;
+                dataAdapter.SelectCommand.Parameters.Add("@rango", SqlDbType.Int).Value = user.Rango;
+                dataAdapter.SelectCommand.Parameters.Add("@correo", SqlDbType.NVarChar).Value = user.Correo;
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
@@ -3084,7 +3083,7 @@ namespace Datos
 
             try
             {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_obtener@idio", conection);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_obtener_idio", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
@@ -3113,10 +3112,10 @@ namespace Datos
 
             try
             {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_obtener@idioma_formulario", conection);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_obtener_idioma_formulario", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("@formulario@id", SqlDbType.Int).Value = formulario;
-                dataAdapter.SelectCommand.Parameters.Add("@idioma@id", SqlDbType.Int).Value = idioma;
+                dataAdapter.SelectCommand.Parameters.Add("@formulario_id", SqlDbType.Int).Value = formulario;
+                dataAdapter.SelectCommand.Parameters.Add("@idioma_id", SqlDbType.Int).Value = idioma;
 
                 conection.Open();
                 dataAdapter.Fill(Usuario);
@@ -3142,7 +3141,7 @@ namespace Datos
 
             try
             {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_obtener@idio", conection);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_obtener_idio", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
@@ -3200,7 +3199,7 @@ namespace Datos
 
             try
             {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_obtener@idio_activo", conection);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_obtener_idio_activo", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
@@ -3258,10 +3257,10 @@ namespace Datos
 
             try
             {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_obtener@contenido", conection);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_obtener_contenido", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                 dataAdapter.SelectCommand.Parameters.Add("@idioma", SqlDbType.Int).Value = idioma;
-                dataAdapter.SelectCommand.Parameters.Add("_formulario", SqlDbType.Int).Value = form;
+                dataAdapter.SelectCommand.Parameters.Add("@formulario", SqlDbType.Int).Value = form;
 
 
 
@@ -3291,7 +3290,7 @@ namespace Datos
 
             try
             {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_eliminar@idioma", conection);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_eliminar_idioma", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                 dataAdapter.SelectCommand.Parameters.Add("@idioma", SqlDbType.Int).Value = idioma;
 
@@ -3323,7 +3322,7 @@ namespace Datos
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_editar_controles", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_cont", SqlDbType.Text).Value = con;
+                dataAdapter.SelectCommand.Parameters.Add("@cont", SqlDbType.NVarChar).Value = con;
                 dataAdapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int).Value = id;
 
 
@@ -3352,9 +3351,9 @@ namespace Datos
 
             try
             {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_insertar@idioma", conection);
-                dataAdapter.SelectCommand.Parameters.Add("@idioma", SqlDbType.Text).Value = idioma;
-                dataAdapter.SelectCommand.Parameters.Add("_terminacion", SqlDbType.Text).Value = terminacion;
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_insertar_idioma", conection);
+                dataAdapter.SelectCommand.Parameters.Add("@idioma", SqlDbType.NVarChar).Value = idioma;
+                dataAdapter.SelectCommand.Parameters.Add("@terminacion", SqlDbType.NVarChar).Value = terminacion;
 
 
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -3383,9 +3382,9 @@ namespace Datos
 
             try
             {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_obtener@idio_esp", conection);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_obtener_idio_esp", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("@idioma", SqlDbType.Text).Value = idioma;
+                dataAdapter.SelectCommand.Parameters.Add("@idioma", SqlDbType.NVarChar).Value = idioma;
 
                 conection.Open();
                 dataAdapter.Fill(Post);
@@ -3414,10 +3413,10 @@ namespace Datos
             try
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("idioma.f_insertar_control", conection);
-                dataAdapter.SelectCommand.Parameters.Add("_nombre", SqlDbType.Text).Value = datos.Nombre;
+                dataAdapter.SelectCommand.Parameters.Add("@nombre", SqlDbType.NVarChar).Value = datos.Nombre;
                 dataAdapter.SelectCommand.Parameters.Add("@id_form", SqlDbType.Int).Value = datos.Id_form;
-                dataAdapter.SelectCommand.Parameters.Add("@id@idioma", SqlDbType.Int).Value = datos.Idioma;
-                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.Text).Value = datos.Contenido;
+                dataAdapter.SelectCommand.Parameters.Add("@id_idioma", SqlDbType.Int).Value = datos.Idioma;
+                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.NVarChar).Value = datos.Contenido;
 
 
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
