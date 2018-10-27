@@ -37,14 +37,14 @@ public partial class View_Administrador_miPost : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
 
 
-        int dato = int.Parse(Session["user_id"].ToString());
+        int dato = int.Parse(Session["id"].ToString());
 
         mio.Id_mipost = dato;
 
         L_persistencia log = new L_persistencia();//agregar
         DataTable data = dac.ToDataTable(log.obtenerMiPost(dato));//agregar
         GV_miPost.DataSource = data;//agregar
-
+        GV_miPost.DataBind();
     }
 
     protected void GV_miPost_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -82,7 +82,7 @@ public partial class View_Administrador_miPost : System.Web.UI.Page
 
 
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
         Session["IdRecogido"] = IdRecogido;
         string dat = b.ToString();
@@ -107,7 +107,7 @@ public partial class View_Administrador_miPost : System.Web.UI.Page
 
 
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
         Session["IdRecogido"] = IdRecogido;
         int x = int.Parse(IdRecogido);

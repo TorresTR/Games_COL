@@ -74,7 +74,7 @@ public partial class View_registro : System.Web.UI.Page
 
 
         Entity_usuario us = new Entity_usuario();
-        us.Nombre = Session["user_id"].ToString();
+        us.Nombre = Session["id"].ToString();
         object segurity = new object();
         segurity = dato;
         string schema = "usuario";

@@ -64,7 +64,7 @@ public partial class View_Moderador_verpqrCompleto : System.Web.UI.Page
         Entity_pqr ent = new Entity_pqr();
 
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int q = int.Parse(Session["parametro"].ToString());
         int a = 1;
         DataTable tabla = user.traerPQR(q);
@@ -100,7 +100,7 @@ public partial class View_Moderador_verpqrCompleto : System.Web.UI.Page
     protected void B_volver_Click(object sender, EventArgs e)
     {
 
-        string q = Session["user_id"].ToString();
+        string q = Session["id"].ToString();
         string z = Session["parametro"].ToString();
 
         Response.Redirect("Moderador_ver_pqr.aspx");

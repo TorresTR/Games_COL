@@ -128,7 +128,7 @@ public partial class View_Moderador : System.Web.UI.Page
         U_user dat = new U_user();
         L_Usercs llamado = new L_Usercs();
 
-        string b = Session["user_id"].ToString();
+        string b = Session["id"].ToString();
 
         dat = llamado.verCompletoModerRegistrado();
 
@@ -215,7 +215,7 @@ public partial class View_Moderador : System.Web.UI.Page
 
         string x = lblid.Text.ToString();
         Session["parametro"] = x;
-        string b = Session["user_id"].ToString();
+        string b = Session["id"].ToString();
 
         envioObservador = data.verNoticiaModerador(x);
 

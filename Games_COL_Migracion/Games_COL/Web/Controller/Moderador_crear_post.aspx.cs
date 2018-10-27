@@ -19,7 +19,7 @@ public partial class View_Moderador_crear_post : System.Web.UI.Page
 
         Response.Cache.SetNoStore();
         L_Usercs dac = new L_Usercs();
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         DataTable data = dac.obtenerInteraccion(b);
         U_Interaccion iter = new U_Interaccion();
         Int32 idioma = 1;
@@ -79,7 +79,7 @@ public partial class View_Moderador_crear_post : System.Web.UI.Page
         L_Usercs data_userPost = new L_Usercs();
 
         L_persistencia per = new L_persistencia();//agregar
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
 
 
         DataTable regis = per.obtenerUs(b);//agregar
@@ -115,7 +115,7 @@ public partial class View_Moderador_crear_post : System.Web.UI.Page
 
 
         Entity_usuario us = new Entity_usuario();
-        us.Nombre = Session["user_id"].ToString();
+        us.Nombre = Session["id"].ToString();
         object segurity = new object();
         segurity = datos_creartPost;
         string schema = "usuario";

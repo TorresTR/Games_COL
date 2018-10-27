@@ -47,7 +47,7 @@ public partial class View_Default : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
         
         int c = int.Parse(Session["IdRecogido"].ToString());
-        int u = int.Parse(Session["user_id"].ToString());
+        int u = int.Parse(Session["id"].ToString());
         L_persistencia per = new L_persistencia();//agregar
         DataTable tabla = dac.ToDataTable(per.obtenerComent(c));//agregar
 
@@ -72,7 +72,7 @@ public partial class View_Default : System.Web.UI.Page
         int p = int.Parse(Session["parametro"].ToString());
         DateTime dt = DateTime.Now;
 
-        int u = int.Parse(Session["user_id"].ToString());
+        int u = int.Parse(Session["id"].ToString());
 
 
         DataTable regis = envio.obtenerComentario1(b);
@@ -84,7 +84,7 @@ public partial class View_Default : System.Web.UI.Page
         coment_rep.Id_user = u;
 
         Entity_usuario us = new Entity_usuario();
-        us.Nombre = Session["user_id"].ToString();
+        us.Nombre = Session["id"].ToString();
         object segurity = new object();
         segurity = coment_rep;
         string schema = "usuario";
@@ -105,7 +105,7 @@ public partial class View_Default : System.Web.UI.Page
         per.actualizarComentario(comenta);
 
         string ID = Session["parametro"].ToString();
-        string z = Session["user_id"].ToString();
+        string z = Session["id"].ToString();
 
 
         U_user dat = new U_user();
@@ -119,7 +119,7 @@ public partial class View_Default : System.Web.UI.Page
     protected void BT_volver_Click(object sender, EventArgs e)
     {
 
-        string z = Session["user_id"].ToString();
+        string z = Session["id"].ToString();
 
 
         U_user dat = new U_user();

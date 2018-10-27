@@ -45,7 +45,7 @@ public partial class View_Default : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
 
         int c = int.Parse(Session["parametro"].ToString());
-        int u = int.Parse(Session["user_id"].ToString());
+        int u = int.Parse(Session["id"].ToString());
 
         doc = dac.obtenerPostparareportar(c);
 
@@ -70,7 +70,7 @@ public partial class View_Default : System.Web.UI.Page
         DateTime dt = DateTime.Now;
         DataTable dato = envio.traerPost(b);//AGREGAR
 
-        int u = int.Parse(Session["user_id"].ToString());
+        int u = int.Parse(Session["id"].ToString());
 
 
         DataTable regis = envio.obtenerPostObservador();
@@ -98,7 +98,7 @@ public partial class View_Default : System.Web.UI.Page
         post.Num_puntos = int.Parse(dato.Rows[0]["num_puntos"].ToString());//AGREGAR
 
         Entity_usuario us = new Entity_usuario();
-        us.Nombre = Session["user_id"].ToString();
+        us.Nombre = Session["id"].ToString();
         object segurity = new object();
         segurity = post;
         string schema = "usuario";
@@ -123,7 +123,7 @@ public partial class View_Default : System.Web.UI.Page
     protected void BT_volver_Click(object sender, EventArgs e)
     {
 
-        string z = Session["user_id"].ToString();
+        string z = Session["id"].ToString();
 
 
         U_user dat = new U_user();

@@ -23,7 +23,7 @@ public partial class View_Default : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-        string b = Session["user_id"].ToString();
+        string b = Session["id"].ToString();
         Int32 idioma = 1;
         Int32 id_pagina = 66;
         try
@@ -56,7 +56,7 @@ public partial class View_Default : System.Web.UI.Page
     protected void B_volver_Click(object sender, EventArgs e)
     {
         
-        string q = Session["user_id"].ToString();
+        string q = Session["id"].ToString();
         Response.Redirect("usuarios.aspx" );
 
     }
@@ -66,7 +66,7 @@ public partial class View_Default : System.Web.UI.Page
 
 
         ClientScriptManager cm = this.ClientScript;
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         L_Usercs log = new L_Usercs();
         L_persistencia per = new L_persistencia();
         Entity_solicitud sol = new Entity_solicitud();
@@ -77,7 +77,7 @@ public partial class View_Default : System.Web.UI.Page
         datos.Puntos = int.Parse(validez.Rows[0]["puntos"].ToString());
         datos.Fecha = DateTime.Now;
 
-        sol.Id_user = int.Parse(Session["user_id"].ToString());
+        sol.Id_user = int.Parse(Session["id"].ToString());
         sol.Nick = validez.Rows[0]["nick"].ToString();
         sol.Puntos = int.Parse(validez.Rows[0]["puntos"].ToString());
         sol.Fecha= DateTime.Now;

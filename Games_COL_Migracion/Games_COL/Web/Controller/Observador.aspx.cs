@@ -49,7 +49,7 @@ public partial class View_Observador : System.Web.UI.Page
             
         }
 
-        Session["user_id"] = 1;
+        Session["id"] = 1;
         Response.Cache.SetNoStore();
         LB_resulbusq.Visible = false;
 

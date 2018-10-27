@@ -63,7 +63,7 @@ public partial class View_Moderador_ver_noticias : System.Web.UI.Page
     protected void B_volver_Click(object sender, EventArgs e)
     {
 
-        string z = Session["user_id"].ToString();
+        string z = Session["id"].ToString();
 
 
         U_user dat = new U_user();

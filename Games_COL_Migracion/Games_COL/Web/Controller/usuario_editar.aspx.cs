@@ -65,7 +65,7 @@ public partial class View_usuario_editar : System.Web.UI.Page
         Entity_post post = new Entity_post();
         //U_userCrearpost post = new U_userCrearpost();
         int a = int.Parse(Session["IdRecogido"].ToString());
-        int user = int.Parse(Session["user_id"].ToString());
+        int user = int.Parse(Session["id"].ToString());
         L_persistencia log = new L_persistencia();
 
         DataTable dato = dac.ToDataTable(log.obtenerMipostmio(a,user));
@@ -73,7 +73,7 @@ public partial class View_usuario_editar : System.Web.UI.Page
 
         post.Id = int.Parse(Session["IdRecogido"].ToString());
         post.Contenido = Ck_editar.Text.ToString();
-        post.Autor = int.Parse(Session["user_id"].ToString());
+        post.Autor = int.Parse(Session["id"].ToString());
         post.Titulo = dato.Rows[0]["titulo"].ToString();
         post.Fecha =  DateTime.Parse( dato.Rows[0]["fecha"].ToString());
         post.Puntos = int.Parse(dato.Rows[0]["puntos"].ToString());
@@ -97,7 +97,7 @@ public partial class View_usuario_editar : System.Web.UI.Page
     {
 
 
-        int a = int.Parse(Session["user_id"].ToString());
+        int a = int.Parse(Session["id"].ToString());
 
         string dat = a.ToString();
 

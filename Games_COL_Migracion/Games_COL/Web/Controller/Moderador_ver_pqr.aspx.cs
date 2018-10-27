@@ -72,7 +72,7 @@ public partial class View_Moderador_ver_pqr : System.Web.UI.Page
     protected void BT_resolver_Click(object sender, EventArgs e)
     {
 
-        string b = Session["user_id"].ToString();
+        string b = Session["id"].ToString();
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_muestraId");
@@ -95,7 +95,7 @@ public partial class View_Moderador_ver_pqr : System.Web.UI.Page
         Label lblid = (Label)item.FindControl("LB_muestraId");
         string ID = lblid.Text;
         Int32 id = int.Parse(lblid.Text);
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
 
         L_Usercs user = new L_Usercs();
         U_Datospqr pqr = new U_Datospqr();

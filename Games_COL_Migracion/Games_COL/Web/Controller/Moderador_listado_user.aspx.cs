@@ -97,7 +97,7 @@ public partial class View_Default : System.Web.UI.Page
         int h = int.Parse(ID);
 
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
 
 
 

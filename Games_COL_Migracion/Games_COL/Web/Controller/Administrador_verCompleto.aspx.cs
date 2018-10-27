@@ -60,7 +60,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         L_persistencia logica = new L_persistencia();
 
         int comparador_idpost = int.Parse(Session["parametro"].ToString());
-        int comparador_iduser = int.Parse(Session["user_id"].ToString());
+        int comparador_iduser = int.Parse(Session["id"].ToString());
 
 
         DataTable regisval = log.ToDataTable(logica.obtenerPuntos(comparador_iduser));
@@ -82,7 +82,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         ClientScriptManager cm = this.ClientScript;
         doc.Id = int.Parse(Session["parametro"].ToString());
-        int dato = int.Parse(Session["user_id"].ToString());
+        int dato = int.Parse(Session["id"].ToString());
 
 
 
@@ -97,7 +97,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         UpdatePanel1.Visible = estado;
         L_persistencia per = new L_persistencia();//agregar
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         DataTable regis2 = per.obtenerUs(b);//agregar
         String x = regis2.Rows[0]["nick"].ToString();
         String z = regis.Rows[0]["autor"].ToString();
@@ -171,7 +171,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         U_userCrearpost puntot = new U_userCrearpost();
         
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int bn = int.Parse(Session["parametro"].ToString());
         L_Usercs dec = new L_Usercs();//agregar
         L_persistencia per = new L_persistencia();//agregar
@@ -180,7 +180,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         //DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
         puntot.Id = int.Parse(Session["parametro"].ToString());
-        puntot.Id_user = int.Parse(Session["user_id"].ToString());
+        puntot.Id_user = int.Parse(Session["id"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
@@ -241,7 +241,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         //dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
-        string ui = Session["user_id"].ToString();
+        string ui = Session["id"].ToString();
         string par = Session["parametro"].ToString();
 
        
@@ -264,7 +264,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         U_userCrearpost puntot = new U_userCrearpost();
        
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int bn = int.Parse(Session["parametro"].ToString());
         L_Usercs dec = new L_Usercs();//agregar
         L_persistencia per = new L_persistencia();//agregar
@@ -273,7 +273,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         //DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
         puntot.Id = int.Parse(Session["parametro"].ToString());
-        puntot.Id_user = int.Parse(Session["user_id"].ToString());
+        puntot.Id_user = int.Parse(Session["id"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
@@ -334,7 +334,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         //dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
-        string ui = Session["user_id"].ToString();
+        string ui = Session["id"].ToString();
         string par = Session["parametro"].ToString();
 
     
@@ -353,7 +353,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         U_userCrearpost puntot = new U_userCrearpost();
        
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int bn = int.Parse(Session["parametro"].ToString());
         L_Usercs dec = new L_Usercs();//agregar
         L_persistencia per = new L_persistencia();//agregar
@@ -362,7 +362,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         //DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
         puntot.Id = int.Parse(Session["parametro"].ToString());
-        puntot.Id_user = int.Parse(Session["user_id"].ToString());
+        puntot.Id_user = int.Parse(Session["id"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
@@ -423,7 +423,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         // dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
-        string ui = Session["user_id"].ToString();
+        string ui = Session["id"].ToString();
         string par = Session["parametro"].ToString();
 
       
@@ -444,7 +444,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         U_userCrearpost puntot = new U_userCrearpost();
        
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int bn = int.Parse(Session["parametro"].ToString());
         L_Usercs dec = new L_Usercs();//agregar
         L_persistencia per = new L_persistencia();//agregar
@@ -453,7 +453,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         //DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
         puntot.Id = int.Parse(Session["parametro"].ToString());
-        puntot.Id_user = int.Parse(Session["user_id"].ToString());
+        puntot.Id_user = int.Parse(Session["id"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
@@ -514,7 +514,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         // dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
-        string ui = Session["user_id"].ToString();
+        string ui = Session["id"].ToString();
         string par = Session["parametro"].ToString();
 
      
@@ -534,7 +534,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         U_userCrearpost puntot = new U_userCrearpost();
        
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int bn = int.Parse(Session["parametro"].ToString());
         L_Usercs dec = new L_Usercs();//agregar
         L_persistencia per = new L_persistencia();//agregar
@@ -543,7 +543,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         //DataTable punt = dac.ObtenerPuntos(bn);
         DateTime dt = DateTime.Now;
         puntot.Id = int.Parse(Session["parametro"].ToString());
-        puntot.Id_user = int.Parse(Session["user_id"].ToString());
+        puntot.Id_user = int.Parse(Session["id"].ToString());
         puntot.Fecha = dt;
 
         U_userCrearpost doc = new U_userCrearpost();
@@ -605,7 +605,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         //dac.actualizarpuntoUser(b, x);
 
         dac.ValidarPuntuacion(b, z);
-        string ui = Session["user_id"].ToString();
+        string ui = Session["id"].ToString();
         string par = Session["parametro"].ToString();
 
       
@@ -630,19 +630,19 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         L_persistencia logica = new L_persistencia();
         Entity_comentarios comentario = new Entity_comentarios();
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         DateTime dt = DateTime.Now;
 
-        coment.Id_user = int.Parse(Session["user_id"].ToString());
+        coment.Id_user = int.Parse(Session["id"].ToString());
 
         comentario.Comentario = TB_comentarios.Text.ToString();
         comentario.Id_post = int.Parse(Session["parametro"].ToString());
-        comentario.Id_user = int.Parse(Session["user_id"].ToString());
+        comentario.Id_user = int.Parse(Session["id"].ToString());
         comentario.Estado = 1;
 
 
         Entity_usuario us = new Entity_usuario();
-        us.Nombre = Session["user_id"].ToString();
+        us.Nombre = Session["id"].ToString();
         object segurity = new object();
         segurity = comentario;
         string schema = "usuario";

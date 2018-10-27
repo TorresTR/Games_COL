@@ -80,7 +80,7 @@ public partial class View_Default : System.Web.UI.Page
         Label lblid = (Label)item.FindControl("LB_id");
         string ID = lblid.Text;
         Session["IdRecogido"] = ID;
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int h = int.Parse(ID);
 
         DataTable com = dato.ToDataTable(logica.obtenerComentarioesp(h));
@@ -106,7 +106,7 @@ public partial class View_Default : System.Web.UI.Page
     protected void Bt_volver_Click(object sender, EventArgs e)
     {
 
-        int t = int.Parse(Session["user_id"].ToString());
+        int t = int.Parse(Session["id"].ToString());
 
         string dat = t.ToString();
 

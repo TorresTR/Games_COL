@@ -24,7 +24,7 @@
                     <td class="auto-style3">
                         <asp:Label ID="LB_comentario" runat="server" Text='<%# Bind("comentario") %>'></asp:Label>
                         <br />
-                        <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id") %>' Visible="False"></asp:Label>
+                        <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id_com_reportado") %>' Visible="False"></asp:Label>
                     </td>
                     <td rowspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="BT_bloquear" runat="server" CssClass="btn btn-outline-danger" OnClick="BT_bloquear_Click" Text="Bloquear" />

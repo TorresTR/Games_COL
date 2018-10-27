@@ -41,7 +41,7 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
 
 
-        int dato = int.Parse(Session["user_id"].ToString());
+        int dato = int.Parse(Session["id"].ToString());
 
         mio.Id_mipost = dato;
 
@@ -98,7 +98,7 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         DataTable informacion = new DataTable(); //dt
         InfoR_usuario datos = new InfoR_usuario();
 
-        int dato = int.Parse(Session["user_id"].ToString());
+        int dato = int.Parse(Session["id"].ToString());
 
         informacion = datos.Tables["Post"];
 
@@ -119,7 +119,7 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         int fila = row.RowIndex;
 
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
         Session["IdRecogido"] = IdRecogido;
          string dat = b.ToString(); 
@@ -147,7 +147,7 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         int fila = row.RowIndex;
 
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
 
         int x = int.Parse(IdRecogido);
@@ -155,13 +155,21 @@ public partial class View_usuario_miPost : System.Web.UI.Page
 
         post.Id = x;
         post.Contenido = datos.Rows[0]["contenido"].ToString();
-        post.Autor = int.Parse(Session["user_id"].ToString());
+        post.Autor = int.Parse(Session["id"].ToString());
         post.Titulo = datos.Rows[0]["titulo"].ToString();
         post.Fecha = DateTime.Parse(datos.Rows[0]["fecha"].ToString());
         post.Puntos = int.Parse(datos.Rows[0]["puntos"].ToString());
         post.Etiqueta = int.Parse(datos.Rows[0]["etiqueta"].ToString());
         post.Estado_bloqueo = int.Parse(datos.Rows[0]["estado_bloqueo"].ToString());
         post.Num_puntos = int.Parse(datos.Rows[0]["num_puntos"].ToString());
+
+        Entity_usuario us = new Entity_usuario();
+        object obj = new object();
+        obj = post;
+        string schema = "usuario";
+        string tabla = "post";
+        us.Nombre = Session["id"].ToString();
+        log.auditoriaEliminar(obj, us, schema, tabla);
 
         log.borrarPost(post);
         //dac.eliminarMipost(dato);
@@ -184,7 +192,7 @@ public partial class View_usuario_miPost : System.Web.UI.Page
 
         dat = llamado.volverUsuariosRegistrado();
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         string data = b.ToString();
 
 

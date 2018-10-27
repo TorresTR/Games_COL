@@ -49,7 +49,7 @@ namespace Logica
         public DataTable obtenerPQRadmin()
         {
             DataTable prueba = new DataTable();
-            D_User pqr = new D_User();
+            Dsql pqr = new Dsql();
             prueba = pqr.Obtenerpqrmoderador();
             return prueba;
         }
@@ -57,7 +57,7 @@ namespace Logica
         public DataTable obtenerComentarioEsp(int id)
         {
             DataTable prueba = new DataTable();
-            D_User dato = new D_User();
+            Dsql dato = new Dsql();
             prueba = dato.ListarComent(id);
             return prueba;
         }
@@ -65,7 +65,7 @@ namespace Logica
         public DataTable traerPQR(int id)
         {
             DataTable prueba = new DataTable();
-            D_User dato = new D_User();
+            Dsql dato = new Dsql();
             prueba = dato.traerPQR(id);
             return prueba;
         }
@@ -73,7 +73,7 @@ namespace Logica
         public DataTable obtenerMiPost(int id, int user)
         {
             DataTable prueba = new DataTable();
-            D_User pqr = new D_User();
+            Dsql pqr = new Dsql();
             prueba = pqr.obtenerMipost(id,user);
             return prueba;
         }
@@ -81,14 +81,14 @@ namespace Logica
         public DataTable obtenerUsuario(int id)
         {
             DataTable prueba = new DataTable();
-            D_User pqr = new D_User();
+            Dsql pqr = new Dsql();
             prueba = pqr.obtenerUser(id);
             return prueba;
         }
 
         public U_user cerrarse(U_user datos) {
 
-            D_User llamada = new D_User();
+            Dsql llamada = new Dsql();
             U_user link = new U_user();
 
             llamada.cerrarSession(datos);
@@ -101,7 +101,7 @@ namespace Logica
         public U_user cerrarse1(U_user datos)
         {
 
-            D_User llamada = new D_User();
+            Dsql llamada = new Dsql();
             U_user link = new U_user();
 
             llamada.cerrarSession(datos);
@@ -140,7 +140,7 @@ namespace Logica
         public void actualizarMispost(U_userCrearpost dato)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
 
             llamado.actualizarMipost(dato);
 
@@ -150,7 +150,7 @@ namespace Logica
         public DataTable misPostcomentados(U_misPost dato)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
 
             DataTable regis = llamado.ObtenerPostE(dato);
 
@@ -160,7 +160,7 @@ namespace Logica
         public U_respuestasPqr misRespuestaspqr(int dato)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
             U_respuestasPqr dat = new U_respuestasPqr();
 
             dat.Id_respuesta = dato;
@@ -180,7 +180,7 @@ namespace Logica
         public U_userCrearpost eliminarMiscomentarios(U_userCrearpost dato)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
             U_userCrearpost dat = new U_userCrearpost();
 
             DataTable regis = llamado.verpag(dato);
@@ -188,7 +188,7 @@ namespace Logica
             if (regis.Rows.Count > 0)
             {
                 dat.Contenido1 = regis.Rows[0]["contenido"].ToString();
-                dat.Autor1 = regis.Rows[0]["autor"].ToString();
+                dat.Autor1 = regis.Rows[0]["nick"].ToString();
             }
 
             return dat;
@@ -199,7 +199,7 @@ namespace Logica
         public DataTable dataEliminarcoment(int dato1, int dato2)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
             U_misPost dat = new U_misPost();
 
             dat.Dato1 = dato1;
@@ -215,7 +215,7 @@ namespace Logica
         public void dataEliminarcomentaction(int dato1)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
             U_misPost dat = new U_misPost();
 
             dat.Dato1 = dato1;
@@ -230,7 +230,7 @@ namespace Logica
         public int consultaUsuario(string nick)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
 
 
           DataTable dato = llamado.consultaUsuario(nick);
@@ -243,23 +243,24 @@ namespace Logica
         public int consultaid(string nick)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
 
 
             DataTable dato = llamado.consultaUsuario(nick);
-            int id = int.Parse(dato.Rows[0]["user_id"].ToString());
+            
+            int id = int.Parse(dato.Rows[0]["id"].ToString());
          
             return id;
 
 
         }
 
-        public void insertarSesion(int id_user)
+        public void insertarSesion(int iDsql)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
 
-            llamado.insertarSesion(id_user);
+            llamado.insertarSesion(iDsql);
 
 
 
@@ -269,7 +270,7 @@ namespace Logica
         public DataTable eliminarMiscomentariospuntos(U_userCrearpost dato)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
 
             DataTable punt = llamado.verpuntos(dato);
 
@@ -279,7 +280,7 @@ namespace Logica
         public DataTable respuestaPqr(U_respuestasPqr dato)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
 
             DataTable punt = llamado.ObtenerRespuesta(dato);
 
@@ -290,7 +291,7 @@ namespace Logica
         public U_misPost VerMisdatosaeditar(U_misPost dato)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
             U_misPost infor = new U_misPost();
 
 
@@ -314,7 +315,7 @@ namespace Logica
         public void eliminarMipost(U_misPost dato)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
 
             llamado.eliminarMiPost(dato);
         }
@@ -323,7 +324,7 @@ namespace Logica
         public DataTable misPostCristal(DataTable informacion, int dato)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             U_misPost mio = new U_misPost();
 
             DataRow fila;
@@ -337,8 +338,8 @@ namespace Logica
 
                 fila["Titulo"] = intermedio.Rows[i]["titulo"].ToString();
                 fila["Fecha"] = intermedio.Rows[i]["fecha"].ToString();
-                fila["Estado"] = intermedio.Rows[i]["estado"].ToString();
-                fila["Etiqueta"] = intermedio.Rows[i]["etiqueta"].ToString();
+                fila["Estado"] = intermedio.Rows[i]["estado_bloqueo"].ToString();
+                fila["Etiqueta"] = intermedio.Rows[i]["nombre_etiqueta"].ToString();
 
 
                 informacion.Rows.Add(fila);
@@ -353,7 +354,7 @@ namespace Logica
         public DataTable misPost(U_misPost mio)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
 
             DataTable mioresul = data.ObtenermisPost(mio);
 
@@ -363,7 +364,7 @@ namespace Logica
         public void cerrarSesio(int id)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
 
             DataTable mioresul = data.cerradoSesion(id);
         }
@@ -375,7 +376,7 @@ namespace Logica
         public U_Datos insertarUsuarionuevo(U_Datos datos, Entity_usuario datosu)
         {
 
-            D_User dat = new D_User();
+            Dsql dat = new Dsql();
             U_Datos dato = new U_Datos();
             L_persistencia log = new L_persistencia();
 
@@ -412,14 +413,14 @@ namespace Logica
 
         public void comparaIdioma(int c)
         {
-            D_User dato = new D_User();
+            Dsql dato = new Dsql();
             DataTable datos = dato.validarIdioma(c);
              idioma(datos, c);
 
         }
         public void idioma(DataTable dat,int c)
         {
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             int idi=0;
             if (int.Parse(dat.Rows[0]["id"].ToString()) > 0)
             {
@@ -435,7 +436,7 @@ namespace Logica
         public U_comentarios ObtenerComentarioreportar(int c)
         {
             U_comentarios dat = new U_comentarios();
-            D_User dac = new D_User();
+            Dsql dac = new Dsql();
 
             dat.Id = c;
             DataTable regis = dac.ObtenerComentariouserreporte(dat);
@@ -455,7 +456,7 @@ namespace Logica
         public void insertarPostaReportar(U_Datosreporte dat)
         {
 
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
 
             datos.insertarreporte(dat);
         }
@@ -466,7 +467,7 @@ namespace Logica
         public DataTable obtenerPostObservador()
         {
 
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             DataTable data = new DataTable();
 
             data = datos.obtenerPostobser();
@@ -478,7 +479,7 @@ namespace Logica
         public U_userCrearpost obtenerPostObservadorreportadomoder(U_userCrearpost doct)
         {
 
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             DataTable data = new DataTable();
             U_userCrearpost doc = new U_userCrearpost();
 
@@ -498,7 +499,7 @@ namespace Logica
 
         public U_Sugerencia sugerenciasUsuarios(U_Sugerencia sugere)
         {
-            D_User dato = new D_User();
+            Dsql dato = new Dsql();
             U_Sugerencia dat = new U_Sugerencia();
 
             //dato.insertarSugerenciaUsuario(sugere);
@@ -512,7 +513,7 @@ namespace Logica
         public void insertarNoticias(U_userCrearpost h)
         {
 
-            D_User dat = new D_User();
+            Dsql dat = new Dsql();
 
             dat.insertarNoticias(h);
 
@@ -523,7 +524,7 @@ namespace Logica
         public DataTable minoticiagv(int h)
         {
 
-            D_User dat = new D_User();
+            Dsql dat = new Dsql();
             U_userCrearpost data = new U_userCrearpost();
 
             data.Id = h;
@@ -537,7 +538,7 @@ namespace Logica
         public void bloquearComent(int h)
         {
 
-            D_User dat = new D_User();
+            Dsql dat = new Dsql();
             U_user dato = new U_user();
 
             dato.Id = h;
@@ -549,7 +550,7 @@ namespace Logica
         public void eliminarComent(int h)
         {
 
-            D_User dat = new D_User();
+            Dsql dat = new Dsql();
             U_user dato = new U_user();
 
             dato.Id = h;
@@ -563,7 +564,7 @@ namespace Logica
         {
 
             DataRow fila;
-            D_User persona = new D_User();
+            Dsql persona = new Dsql();
 
 
             DataTable intermedio = persona.ListarUsuariosR();
@@ -746,7 +747,7 @@ namespace Logica
         {
 
             U_userCrearpost dat = new U_userCrearpost();
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
 
             dat.Id = x;
             llamado.eliminarNoticia(dat);
@@ -758,7 +759,7 @@ namespace Logica
         {
 
             U_actualizarBloqueo dat = new U_actualizarBloqueo();
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
 
             dat.Id_post = id_post;
             dat.User_bloqueador = user_bloqueador;
@@ -771,7 +772,7 @@ namespace Logica
         }
         public void bloquear_Post(int h)
         {
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             U_actualizarBloqueo bloqueo = new U_actualizarBloqueo();
             bloqueo.Id_post = h;
             datos.bloqueoPost(bloqueo);
@@ -791,7 +792,7 @@ namespace Logica
         public void actualizaModernoticia(U_userCrearpost post)
         {
 
-            D_User llamado = new D_User();
+            Dsql llamado = new Dsql();
 
             llamado.actualizarNoticia(post);
 
@@ -997,7 +998,7 @@ namespace Logica
 
         public U_user obtenerPostparareportar(int c)
         {
-            D_User dac = new D_User();
+            Dsql dac = new Dsql();
             U_user mensaje = new U_user();
 
             DataTable regis = dac.obtenerPostobser();
@@ -1040,7 +1041,7 @@ namespace Logica
         public DataTable obtenerPostNoticia()
         {
 
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             DataTable data = new DataTable();
 
             data = datos.ObtenerNoti();
@@ -1053,7 +1054,7 @@ namespace Logica
         public DataTable obtenerSolicitudAmoder()
         {
 
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             DataTable data = new DataTable();
 
             data = datos.ObtenerSolicitudes();
@@ -1065,7 +1066,7 @@ namespace Logica
         public DataTable obtenerpostReport()
         {
 
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             DataTable data = new DataTable();
 
             data = datos.ObtenerpsotReportados();
@@ -1077,7 +1078,7 @@ namespace Logica
         public DataTable obtenercomnetReport()
         {
 
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             DataTable data = new DataTable();
 
             data = datos.ObtenerComentRepor();
@@ -1089,7 +1090,7 @@ namespace Logica
         public DataTable obtenerPostpc()
         {
 
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             DataTable data = new DataTable();
 
             data = datos.obtenerPostpc();
@@ -1101,7 +1102,7 @@ namespace Logica
         public DataTable obtenerPostps()
         {
 
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             DataTable data = new DataTable();
 
             data = datos.ObtenerpostPS();
@@ -1113,7 +1114,7 @@ namespace Logica
         public DataTable obtenerPostxbox()
         {
 
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             DataTable data = new DataTable();
 
             data = datos.ObtenerpostXbox();
@@ -1125,7 +1126,7 @@ namespace Logica
         public DataTable obtenerPostandroid()
         {
 
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             DataTable data = new DataTable();
 
             data = datos.ObtenerpostAndroid();
@@ -1137,7 +1138,7 @@ namespace Logica
         public U_userCrearpost postObservador(U_userCrearpost doc)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             U_userCrearpost user = new U_userCrearpost();
 
             DataTable dat = data.verpag(doc);
@@ -1146,7 +1147,7 @@ namespace Logica
             if (dat.Rows.Count > 0)
             {
                 user.Contenido1 = dat.Rows[0]["contenido"].ToString();
-                user.Autor1 = dat.Rows[0]["autor"].ToString();
+                user.Autor1 = dat.Rows[0]["nick"].ToString();
             }
 
             DataTable punt = data.verpuntos(doc);
@@ -1157,7 +1158,7 @@ namespace Logica
 
                 int puntos = 0, num = 0, tot = 0;
                 puntos = int.Parse(punt.Rows[0]["puntos"].ToString());
-                num = int.Parse(punt.Rows[0]["nump"].ToString());
+                num = int.Parse(punt.Rows[0]["num_puntos"].ToString());
                 tot = puntos;
                 user.Totpunt = tot.ToString();
             }
@@ -1169,7 +1170,7 @@ namespace Logica
         public U_userCrearpost postObservadorNoticias(U_userCrearpost doc)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             U_userCrearpost user = new U_userCrearpost();
 
             DataTable dat = data.verNoticia(doc);
@@ -1178,7 +1179,7 @@ namespace Logica
             if (dat.Rows.Count > 0)
             {
                 user.Contenido1 = dat.Rows[0]["contenido"].ToString();
-                user.Autor1 = dat.Rows[0]["autor"].ToString();
+                user.Autor1 = dat.Rows[0]["nick"].ToString();
             }
 
 
@@ -1190,7 +1191,7 @@ namespace Logica
         public void insertarComentarioReportado(U_comentarios x)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
 
             data.insertarreporteComentariosUser(x);
 
@@ -1200,7 +1201,7 @@ namespace Logica
         public void insertarControl(U_control x)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
 
             data.insertarControles(x);
 
@@ -1211,7 +1212,7 @@ namespace Logica
         public DataTable obtenerComentario1(int x)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             U_comentarios comentario = new U_comentarios();
 
             comentario.Id = x;
@@ -1225,7 +1226,7 @@ namespace Logica
         public DataTable obtenerComentario(int x)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             U_userCrearpost comentario = new U_userCrearpost();
 
             comentario.Comentarios1 = x;
@@ -1239,7 +1240,7 @@ namespace Logica
         public DataTable obtenerComentariofinal(int x)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             U_userCrearpost comentario = new U_userCrearpost();
 
             comentario.Comentarios1 = x;
@@ -1332,7 +1333,7 @@ namespace Logica
         public DataTable Busqueda(string busqueda)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             U_user bus = new U_user();
 
             bus.Busqueda_Dato = busqueda;
@@ -1388,30 +1389,39 @@ namespace Logica
 
         public void validar_Bloqueo(int id)
         {
-            D_User dato = new D_User();
+            Dsql dato = new Dsql();
             dato.validaBloqueo(id);
         }
 
         public DataTable validaSesion(int id)
         {
-            D_User dato = new D_User();
+            Dsql dato = new Dsql();
             DataTable dat = dato.validaSesion(id);
             return dat;
         }
 
         public void validaCerradoSesion(int id)
         {
-            D_User dato = new D_User();
+            Dsql dato = new Dsql();
             dato.cerradoSesion(id);
             
         }
 
+        public DataTable valida(U_logueo user)
+        {
+            Dsql data = new Dsql();
+            DataTable datos = data.loggin(user);
+            int id =consultaid(user.Nick);
+            
+            return datos;
+        }
+
         public U_user loggin(DataTable registros,string a,string nick,int id_usuario)
         {
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             U_user link = new U_user();
-            int rol = int.Parse(registros.Rows[0]["rol"].ToString());
-            int id_user = consultaid(nick);
+            int rol = int.Parse(registros.Rows[0]["id_rol"].ToString());
+            int iDsql = consultaid(nick);
             string sesi;
             string nombre;
             string user;
@@ -1423,9 +1433,9 @@ namespace Logica
                 {
                     case 1:
 
-                        DataTable llamado = datos.comparaerror(id_user);
+                        DataTable llamado = datos.comparaerror(iDsql);
 
-                        if (int.Parse(llamado.Rows[0]["errores"].ToString()) >= 3 || int.Parse(llamado.Rows[0]["sesiones"].ToString()) >=2)
+                        if (int.Parse(llamado.Rows[0]["intentos_erroneos"].ToString()) >= 3 || int.Parse(llamado.Rows[0]["sesiones_activas"].ToString()) >=2)
                         {
                             link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
                             link.Link_demas = "ingresar.aspx";
@@ -1435,9 +1445,9 @@ namespace Logica
                             DataTable val = validaSesion(id_usuario);
 
                             nombre = registros.Rows[0]["nombre"].ToString();
-                            user = registros.Rows[0]["user_id"].ToString();
+                            user = registros.Rows[0]["id"].ToString();
 
-                            int b = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
+                            int b = Convert.ToInt32(registros.Rows[0]["id"].ToString());
 
                             U_session datosUsuario = new U_session();
                             L_mac datosConexion = new L_mac();
@@ -1449,7 +1459,7 @@ namespace Logica
                             if (int.Parse(val.Rows[0]["intentos"].ToString()) == 0)
                             {
                                 datos.guardadoSession(datosUsuario);
-                                int id = int.Parse(registros.Rows[0]["user_id"].ToString());
+                                int id = int.Parse(registros.Rows[0]["id"].ToString());
 
                                 link = sesion(rol, b);
                             }
@@ -1467,9 +1477,9 @@ namespace Logica
 
                     case 2:
 
-                        DataTable llomod = datos.comparaerror(id_user);
+                        DataTable llomod = datos.comparaerror(iDsql);
 
-                        if (int.Parse(llomod.Rows[0]["errores"].ToString()) >= 3 || int.Parse(llomod.Rows[0]["sesiones"].ToString()) >= 2)
+                        if (int.Parse(llomod.Rows[0]["intentos_erroneos"].ToString()) >= 3 || int.Parse(llomod.Rows[0]["sesiones_activas"].ToString()) >= 2)
                         {
                             link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
                             link.Link_demas = "ingresar.aspx";
@@ -1479,10 +1489,10 @@ namespace Logica
 
                             DataTable valMod = validaSesion(id_usuario);
                             nombre = registros.Rows[0]["nombre"].ToString();
-                            sesi = registros.Rows[0]["user_id"].ToString();
+                            sesi = registros.Rows[0]["id"].ToString();
 
 
-                            int bmod = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
+                            int bmod = Convert.ToInt32(registros.Rows[0]["id"].ToString());
 
                             U_session datosUsuariom = new U_session();
                             L_mac datosConexionMod = new L_mac();
@@ -1501,9 +1511,9 @@ namespace Logica
 
                     case 3:
 
-                        DataTable lladmin = datos.comparaerror(id_user);
+                        DataTable lladmin = datos.comparaerror(iDsql);
 
-                        if (int.Parse(lladmin.Rows[0]["errores"].ToString()) >= 3 || int.Parse(lladmin.Rows[0]["sesiones"].ToString()) >= 2)
+                        if (int.Parse(lladmin.Rows[0]["intentos_erroneos"].ToString()) >= 3 || int.Parse(lladmin.Rows[0]["sesiones_activas"].ToString()) >= 2)
                         {
                             link.Mensaje_Alertaobservador1 = "Tiene mas sesiones abiertas de las permitidas, por favor cierrelas e intente de nuevo";
                             link.Link_demas = "ingresar.aspx";
@@ -1513,10 +1523,10 @@ namespace Logica
 
                             DataTable valAdm = validaSesion(id_usuario);
                             nombre = registros.Rows[0]["nombre"].ToString();
-                            sesi = registros.Rows[0]["user_id"].ToString();
+                            sesi = registros.Rows[0]["id"].ToString();
 
 
-                            int badmon = Convert.ToInt32(registros.Rows[0]["user_id"].ToString());
+                            int badmon = Convert.ToInt32(registros.Rows[0]["id"].ToString());
 
                             U_session datosUsuarioad = new U_session();
                             L_mac datosConexionadmon = new L_mac();
@@ -1535,7 +1545,7 @@ namespace Logica
                         return link;
 
                     default:
-                        DataTable errord = datos.validarErroneo(id_user);
+                        DataTable errord = datos.validarErroneo(iDsql);
                         if (int.Parse(errord.Rows[0]["intentos_erroneos"].ToString()) == 3)
                         {
                             link.Mensaje_Alertaobservador1 = "Ha superado la cantidad de intentos permitidos, su cuenta esta bloqueada, por favor intente mas tarde";
@@ -1567,7 +1577,7 @@ namespace Logica
             string mensaje = "";
             if (data.Rows.Count > 0)
             {
-                D_User us = new D_User();
+                Dsql us = new Dsql();
                 L_persistencia per = new L_persistencia();//agregar
                 Entity_usuario user = new Entity_usuario();//agregar
 
@@ -1640,7 +1650,7 @@ namespace Logica
 
             if (data.Rows.Count > 0)
             {
-                D_User us = new D_User();
+                Dsql us = new Dsql();
                 L_persistencia per = new L_persistencia();//agregar
                 Entity_usuario user = new Entity_usuario();//agregar
 
@@ -1744,7 +1754,7 @@ namespace Logica
         public DataTable obtenerInteraccion(int x)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             U_userCrearpost id1 = new U_userCrearpost();
 
             int Id = x;
@@ -1776,7 +1786,7 @@ namespace Logica
         public DataTable obtenerUsercrear(int x)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             U_userCrearpost id = new U_userCrearpost();
 
             id.Id = x;
@@ -1789,7 +1799,7 @@ namespace Logica
         public void actualizarpuntoUser(int b, int x)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             U_Interaccion id = new U_Interaccion();
 
             id.Id = b;
@@ -1803,7 +1813,7 @@ namespace Logica
         public void insertarPost(U_userCrearpost datos)
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             data.insertarPost(datos);
 
 
@@ -1823,7 +1833,7 @@ namespace Logica
         {
 
 
-            D_User llamar = new D_User();
+            Dsql llamar = new Dsql();
 
             DataTable dat = llamar.ObtenerDdl();
             return dat;
@@ -1833,7 +1843,7 @@ namespace Logica
         {
 
 
-            D_User llamar = new D_User();
+            Dsql llamar = new Dsql();
 
             llamar.insertarPQR(pqr);
 
@@ -1843,7 +1853,7 @@ namespace Logica
         {
 
 
-            D_User llamar = new D_User();
+            Dsql llamar = new Dsql();
 
             DataTable dat = llamar.ObtenerPqrdatatable();
             return dat;
@@ -1853,7 +1863,7 @@ namespace Logica
         {
 
 
-            D_User llamar = new D_User();
+            Dsql llamar = new Dsql();
 
             DataTable dat = llamar.ListarUsuarios();
             return dat;
@@ -1862,7 +1872,7 @@ namespace Logica
         {
 
 
-            D_User llamar = new D_User();
+            Dsql llamar = new Dsql();
             U_user data = new U_user();
 
             data.Id = h;
@@ -1904,7 +1914,7 @@ namespace Logica
             if (regis.Rows.Count > 0)
             {
                 dat.Contenido1 = regis.Rows[0]["contenido"].ToString();
-                dat.Autor1 = regis.Rows[0]["autor"].ToString();
+                dat.Autor1 = regis.Rows[0]["nick"].ToString();
             }
             return dat;
         }
@@ -1914,7 +1924,7 @@ namespace Logica
             if (punt.Rows.Count > 0)
             {
                 puntos.PuntosA = int.Parse(punt.Rows[0]["puntos"].ToString());
-                puntos.Nump = int.Parse(punt.Rows[0]["nump"].ToString());
+                puntos.Nump = int.Parse(punt.Rows[0]["num_puntos"].ToString());
             }
             return puntos;
         }
@@ -1923,7 +1933,7 @@ namespace Logica
         {
 
 
-            D_User dac = new D_User();
+            Dsql dac = new Dsql();
 
             int val, pun;
             if (inter < 10)
@@ -1967,7 +1977,7 @@ namespace Logica
         {
 
 
-            D_User dac = new D_User();
+            Dsql dac = new Dsql();
 
             int val, pun;
             if (inter < 10)
@@ -2011,7 +2021,7 @@ namespace Logica
         {
 
 
-            D_User dac = new D_User();
+            Dsql dac = new Dsql();
 
             int val, pun;
             if (inter < 10)
@@ -2054,7 +2064,7 @@ namespace Logica
         {
 
 
-            D_User dac = new D_User();
+            Dsql dac = new Dsql();
 
             int val, pun;
             if (inter < 10)
@@ -2097,7 +2107,7 @@ namespace Logica
         {
 
 
-            D_User dac = new D_User();
+            Dsql dac = new Dsql();
 
             int val, pun;
             if (inter < 10)
@@ -2139,7 +2149,7 @@ namespace Logica
         public string comentar(int inter, U_comentarios coment)
         {
             string mensaje = "";
-            D_User dac = new D_User();
+            Dsql dac = new Dsql();
             if (inter < 10)
             {
                 inter = inter + 1;
@@ -2161,7 +2171,7 @@ namespace Logica
       
         public U_Interaccion solicitudModer(U_Datos datos, System.Data.DataTable validez,string r1,string r2)
         {
-            D_User dao = new D_User();
+            Dsql dao = new Dsql();
             U_Interaccion inter = new U_Interaccion();
 
             if (int.Parse(validez.Rows[0]["puntos"].ToString()) >= 3700)
@@ -2194,7 +2204,7 @@ namespace Logica
         public string Token(System.Data.DataTable validez, string r1, string r2, string r3)
         {
 
-            D_User dao = new D_User();
+            Dsql dao = new Dsql();
             string men = "";
             if (int.Parse(validez.Rows[0]["id"].ToString()) > 0)
             {
@@ -2232,7 +2242,7 @@ namespace Logica
 
         public DataTable genera(string valida)
         {
-            D_User dao = new D_User();
+            Dsql dao = new Dsql();
             DataTable validez = dao.generarToken(valida);
             return validez;
         }
@@ -2258,7 +2268,7 @@ namespace Logica
             if (a > 0)
             {
 
-                D_User user = new D_User();
+                Dsql user = new Dsql();
                 DataTable info = user.obtenerUsusarioToken(var);
 
                 if (int.Parse(info.Rows[0][0].ToString()) == -1)
@@ -2277,7 +2287,7 @@ namespace Logica
 
         public void contraseña(U_Datos eUser)
         {
-            D_User user = new D_User();
+            Dsql user = new Dsql();
             user.actualziarContrasena(eUser);
         }
 
@@ -2410,7 +2420,7 @@ namespace Logica
         {
 
 
-            D_User llamar = new D_User();
+            Dsql llamar = new Dsql();
 
             llamar.eliminarUsuario(h);
 
@@ -2462,7 +2472,7 @@ namespace Logica
 
         public void bloquearComentario(int h)
         {
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             data.bloquearComentario(h);
         }
 
@@ -2490,7 +2500,7 @@ namespace Logica
 
         public void bloquearPost(int h, int b, int x, int z)
         {
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             data.actualizarBloqueo(h, b, x, z);
         }
 
@@ -2532,14 +2542,14 @@ namespace Logica
         public DataTable verUser(int id)
         {
             DataTable regis = new DataTable();
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             regis = data.VerUser(id);
             return regis;
         }
 
         public void actualizarUser(U_Datos usuario)
         {
-            D_User user = new D_User();
+            Dsql user = new Dsql();
             user.actualizarUser(usuario);
 
         }
@@ -2557,19 +2567,19 @@ namespace Logica
         }
         public void listarUsuariosAdmin()
         {
-            D_User user = new D_User();
+            Dsql user = new Dsql();
             user.ListarUsuariosAdmin();
 
         }
         public void listarModeradoresAdmin()
         {
-            D_User user = new D_User();
+            Dsql user = new Dsql();
             user.ListarModeradoresAdmin();
 
         }
         public void listarAdmin()
         {
-            D_User user = new D_User();
+            Dsql user = new Dsql();
             user.ListarAdministradoresAdmin();
 
         }
@@ -2616,7 +2626,7 @@ namespace Logica
         public DataTable reporteAdministrador(DataTable inter, DataTable informacion)
         {
             DataRow fila  ;
-            D_User user = new D_User();
+            Dsql user = new Dsql();
            
 
 
@@ -2640,31 +2650,31 @@ namespace Logica
 
         public DataTable listarAdministradoresAdmin()
         {
-            D_User user = new D_User();
+            Dsql user = new Dsql();
             DataTable admin = user.ListarAdministradoresAdmin();
             return admin;
         }
         public DataTable listarModerAdmin()
         {
-            D_User user = new D_User();
+            Dsql user = new Dsql();
             DataTable admin = user.ListarModeradoresAdmin();
             return admin;
         }
         public DataTable listarUserAdmin()
         {
-            D_User user = new D_User();
+            Dsql user = new Dsql();
             DataTable admin = user.ListarUsuariosAdmin();
             return admin;
         }
         public void Ascenso(int h)
         {
-            D_User ascenso = new D_User();
+            Dsql ascenso = new Dsql();
             ascenso.Ascenso(h);
         }
 
         public void ignorarAscenso(int h)
         {
-            D_User ascenso = new D_User();
+            Dsql ascenso = new Dsql();
             ascenso.IgnorarSolicitud(h);
         }
         public U_user listaAscenso()
@@ -2686,7 +2696,7 @@ namespace Logica
         }
         public void ignorarPQR(U_Datospqr id)
         {
-            D_User ascenso = new D_User();
+            Dsql ascenso = new Dsql();
             ascenso.ignorarpqr(id);
         }
         public U_user verPQR()
@@ -2700,21 +2710,21 @@ namespace Logica
         public DataTable pqr(U_Datospqr respuesta)
         {
             DataTable tabla = new DataTable();
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             tabla = data.verpqr(respuesta);
             return tabla;
         }
         public void actualizarpqr(U_Datospqr respuesta)
         {
  
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             data.actualizarPQR(respuesta);
 
         }
         public DataTable obtenerRangoUser()
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             DataTable rango = data.obtenerRangoUser();
             return rango;
 
@@ -2723,7 +2733,7 @@ namespace Logica
         public DataTable obtenerRangoModer()
         {
 
-            D_User data = new D_User();
+            Dsql data = new Dsql();
             DataTable rango = data.obtenerRangomoder();
             return rango;
 
@@ -2732,7 +2742,7 @@ namespace Logica
         public DataTable obtenerIdioma()
         {
             DataTable prueba = new DataTable();
-            D_User idioma = new D_User();
+            Dsql idioma = new Dsql();
             Dsql idio = new Dsql();
             prueba = idioma.idiomas();
             return prueba;
@@ -2741,7 +2751,7 @@ namespace Logica
         public DataTable obtenerIdiomaActivo()
         {
             DataTable prueba = new DataTable();
-            D_User idioma = new D_User();
+            Dsql idioma = new Dsql();
             prueba = idioma.idiomasactivos();
             return prueba;
         }
@@ -2749,7 +2759,7 @@ namespace Logica
         public DataTable obtenerIdiomaActivoprueba()
         {
             DataTable prueba = new DataTable();
-            //D_User idioma = new D_User();
+            //Dsql idioma = new Dsql();
             L_persistencia log = new L_persistencia();
             prueba = ToDataTable(log.obteneridiomaactivo());
             return prueba;
@@ -2758,7 +2768,7 @@ namespace Logica
 
         public DataTable traducir(Int32  FORMULARIO, int x)
         {
-            D_User idioma = new D_User();
+            Dsql idioma = new Dsql();
             Dsql idio = new Dsql();
             DataTable info = idio.obtenerIdioma(FORMULARIO, x);
             return info;
@@ -2770,7 +2780,7 @@ namespace Logica
         {
             String cultura = "es-CO";
             //Didioma idioam = new Didioma();
-            D_User idioam = new D_User();
+            Dsql idioam = new Dsql();
             DataTable datos = idioam.ObtenerIdio();
             if (datos.Rows.Count > 0)
             {
@@ -2789,7 +2799,7 @@ namespace Logica
         public DataTable formularios()
         {
 
-            D_User llamar = new D_User();
+            Dsql llamar = new Dsql();
 
             DataTable dat = llamar.formularios();
             return dat;
@@ -2798,7 +2808,7 @@ namespace Logica
         public DataTable controles(int idio,int form)
         {
 
-            D_User llamar = new D_User();
+            Dsql llamar = new Dsql();
 
             DataTable dat = llamar.controles(idio,form);
             return dat;
@@ -2807,7 +2817,7 @@ namespace Logica
         public DataTable insertarIdioma(string idioma, string terminacion)
         {
 
-            D_User llamar = new D_User();
+            Dsql llamar = new Dsql();
 
             DataTable dat = llamar.insertarIdioma(idioma, terminacion);
             return dat;
@@ -2816,7 +2826,7 @@ namespace Logica
         public DataTable ObtenerIdioE(string idioma)
         {
 
-            D_User llamar = new D_User();
+            Dsql llamar = new Dsql();
 
             DataTable dat = llamar.ObtenerIdiomaEsp(idioma);
             return dat;
@@ -2836,13 +2846,13 @@ namespace Logica
 
         public void eliminarIdioma(int i)
         {
-            D_User log = new D_User();
+            Dsql log = new Dsql();
             log.eliminarIdioma(i);
         }
 
         public void editarCont(int id, string cont)
         {
-            D_User datos = new D_User();
+            Dsql datos = new Dsql();
             datos.modificarControles(cont,id);
         }
 
@@ -2872,7 +2882,7 @@ namespace Logica
         public DataTable traerPost(int id)
         {
             DataTable prueba = new DataTable();
-            D_User dato = new D_User();
+            Dsql dato = new Dsql();
             prueba = dato.traerPost(id);
             return prueba;
         }
@@ -2880,7 +2890,7 @@ namespace Logica
         public DataTable traerNoticia(int id)
         {
             DataTable prueba = new DataTable();
-            D_User dato = new D_User();
+            Dsql dato = new Dsql();
             prueba = dato.traerNoticia(id);
             return prueba;
         }

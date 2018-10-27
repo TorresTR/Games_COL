@@ -43,7 +43,7 @@ public partial class View_usuarios_Respuestas : System.Web.UI.Page
 
         L_persistencia per = new L_persistencia();//agregar
 
-        int dato = int.Parse(Session["user_id"].ToString());
+        int dato = int.Parse(Session["id"].ToString());
 
         dat.Id_respuesta = dato;
 
@@ -84,7 +84,7 @@ public partial class View_usuarios_Respuestas : System.Web.UI.Page
         int fila = row.RowIndex;
 
       
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("Label1")).Text;
 
         Session["IdRecogido"] = IdRecogido;

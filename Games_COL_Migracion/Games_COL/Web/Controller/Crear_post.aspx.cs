@@ -44,7 +44,7 @@ public partial class View_Crear_post : System.Web.UI.Page
 
         Response.Cache.SetNoStore();
         L_Usercs dac = new L_Usercs();
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         //DataTable data = dac.obtenerInteraccion(b);
         DataTable datos = per.obtenerUs(b);//agregar
         U_Interaccion iter = new U_Interaccion();
@@ -82,7 +82,7 @@ public partial class View_Crear_post : System.Web.UI.Page
         L_Usercs data_userPost = new L_Usercs();
         L_persistencia log = new L_persistencia();
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         
 
         DataTable regis = log.obtenerUs(b);//agregar
@@ -97,7 +97,7 @@ public partial class View_Crear_post : System.Web.UI.Page
 
         U_Interaccion iter = new U_Interaccion();
 
-        iter.Iteraccion = int.Parse(data.Rows[0]["id"].ToString());
+        iter.Iteraccion = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         iter = data_userPost.validarInteraccion(iter);
 
@@ -135,7 +135,7 @@ public partial class View_Crear_post : System.Web.UI.Page
         per.actualizarUsuario(user_ent);
         //data_userPost.actualizarpuntoUser(b, x);
         Entity_usuario us = new Entity_usuario();
-        us.Nombre = Session["user_id"].ToString();
+        us.Nombre = Session["id"].ToString();
         object post = new object();
         post = datos_creartPost;
         string schema = "usuario";

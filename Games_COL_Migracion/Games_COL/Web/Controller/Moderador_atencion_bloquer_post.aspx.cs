@@ -73,7 +73,7 @@ public partial class View_Moderador_atencion_bloquer_post : System.Web.UI.Page
         Label lblid = (Label)item.FindControl("LB_idPost");
         string ID = lblid.Text;
         Session["IdRecogido"] = ID;
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
 
         string dat = b.ToString();
 
@@ -100,7 +100,7 @@ public partial class View_Moderador_atencion_bloquer_post : System.Web.UI.Page
         actualizar_estado_bloqueo est = new actualizar_estado_bloqueo();
         Entity_post pot = new Entity_post();
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int x = 2;
         int h = int.Parse(ID);
         int z = 1;
@@ -113,7 +113,7 @@ public partial class View_Moderador_atencion_bloquer_post : System.Web.UI.Page
 
         per.borrarActualizar(est);
         per.borrarPost(pot);
-        int t = int.Parse(Session["user_id"].ToString());
+        int t = int.Parse(Session["id"].ToString());
 
         string dat = b.ToString();
        
@@ -130,7 +130,7 @@ public partial class View_Moderador_atencion_bloquer_post : System.Web.UI.Page
     {
 
 
-        int t = int.Parse(Session["user_id"].ToString());
+        int t = int.Parse(Session["id"].ToString());
 
         string dat = t.ToString();
  

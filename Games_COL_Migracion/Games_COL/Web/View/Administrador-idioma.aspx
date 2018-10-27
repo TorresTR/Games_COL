@@ -34,7 +34,7 @@
                         
             <asp:DropDownList ID="DDL_forms" runat="server" DataSourceID="ODS_forms" DataTextField="nombre" DataValueField="id" AutoPostBack="true" ViewStateMode="Enabled" EnableViewState="true" OnSelectedIndexChanged="DDL_lenguaje_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:ObjectDataSource ID="ODS_forms" runat="server" SelectMethod="formularios" TypeName="Datos.D_User"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="ODS_forms" runat="server" SelectMethod="formularios" TypeName="Datos.Dsql"></asp:ObjectDataSource>
                         
         </td>
         <td class="text-center">&nbsp;<asp:Label ID="LB_titElimina" runat="server" ForeColor="Red" Text="Eliminar Idioma"></asp:Label>

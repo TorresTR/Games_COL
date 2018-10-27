@@ -70,7 +70,7 @@ public partial class View_Administrador_ver_pqr : System.Web.UI.Page
         Label lblid = (Label)item.FindControl("LB_muestraId");
         string ID = lblid.Text;
         Session["parametro"] = ID;
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
 
         string ui = b.ToString();
         string par = ID;
@@ -97,7 +97,7 @@ public partial class View_Administrador_ver_pqr : System.Web.UI.Page
         Label lblid = (Label)item.FindControl("LB_muestraId");
         string ID = lblid.Text;
         Int32 id = int.Parse(lblid.Text);
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
 
         L_Usercs user = new L_Usercs();
         U_Datospqr pqr = new U_Datospqr();

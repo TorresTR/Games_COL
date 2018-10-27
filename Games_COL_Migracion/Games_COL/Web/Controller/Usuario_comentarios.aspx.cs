@@ -43,7 +43,7 @@ public partial class View_Default : System.Web.UI.Page
         U_misPost dat = new U_misPost();
 
 
-        int dato = int.Parse(Session["user_id"].ToString());
+        int dato = int.Parse(Session["id"].ToString());
 
         dat.Dato1 = dato;
 
@@ -85,7 +85,7 @@ public partial class View_Default : System.Web.UI.Page
         Label lblid = (Label)item.FindControl("LB_id");
         string ID = lblid.Text;
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         Session["parametro"] = ID;
         string x = b.ToString();
 

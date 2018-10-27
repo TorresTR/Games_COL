@@ -75,7 +75,7 @@ public partial class View_Default : System.Web.UI.Page
         Label lblid = (Label)item.FindControl("LB_id");
         string ID = lblid.Text;
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int h = int.Parse(ID);
 
         dato.Ascenso(h);
@@ -98,7 +98,7 @@ public partial class View_Default : System.Web.UI.Page
         DataListItem item = (DataListItem)btn.NamingContainer;
         Label lblid = (Label)item.FindControl("LB_id");
         string ID = lblid.Text;
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int h = int.Parse(ID);
 
         sol.Id = int.Parse(ID);

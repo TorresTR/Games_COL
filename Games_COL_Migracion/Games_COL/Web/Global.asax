@@ -32,7 +32,7 @@
 
         try
         {
-            i = int.Parse(Session["user_id"].ToString());
+            i = int.Parse(Session["id"].ToString());
             Logica.L_Usercs user = new Logica.L_Usercs();
             user.cerrarSesio(i);
         }

@@ -52,7 +52,7 @@ public partial class View_usuarios_pqr : System.Web.UI.Page
         L_persistencia log = new L_persistencia();
         Entity_pqr ent = new Entity_pqr();
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
 
         DateTime dt = DateTime.Now;
         pqr.Asunto = TB_asunto.Text.ToString();
@@ -73,7 +73,7 @@ public partial class View_usuarios_pqr : System.Web.UI.Page
 
 
         Entity_usuario us = new Entity_usuario();
-        us.Nombre = Session["user_id"].ToString();
+        us.Nombre = Session["id"].ToString();
         object post = new object();
         post = ent;
         string schema = "usuario";

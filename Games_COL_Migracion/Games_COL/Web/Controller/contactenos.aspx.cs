@@ -56,7 +56,7 @@ public partial class View_contactenos : System.Web.UI.Page
         cont.Sugerencia = TB_sugerencias.Text.ToString();
 
         Entity_usuario us = new Entity_usuario();
-        us.Nombre = Session["user_id"].ToString();
+        us.Nombre = Session["id"].ToString();
         object segurity = new object();
         segurity = cont;
         string schema = "usuario";

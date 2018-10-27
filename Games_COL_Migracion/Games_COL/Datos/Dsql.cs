@@ -666,8 +666,8 @@ namespace Datos
             try
             {
                 SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_obtener_miPost", conection);
-                dataAdapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int).Value = id;
-                dataAdapter.SelectCommand.Parameters.Add("@id_user", SqlDbType.Int).Value = user;
+               
+                dataAdapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int).Value = user;
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 

@@ -45,7 +45,7 @@ public partial class View_Default : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
 
         int c = int.Parse(Session["parametro"].ToString());
-        int u = int.Parse(Session["user_id"].ToString());
+        int u = int.Parse(Session["id"].ToString());
 
         doc = dac.obtenerPostparareportar(c);
 
@@ -66,7 +66,7 @@ public partial class View_Default : System.Web.UI.Page
         int b = int.Parse(Session["parametro"].ToString());
         DateTime dt = DateTime.Now;
 
-        int u = int.Parse(Session["user_id"].ToString());
+        int u = int.Parse(Session["id"].ToString());
 
 
         DataTable regis = envio.obtenerPostObservador();

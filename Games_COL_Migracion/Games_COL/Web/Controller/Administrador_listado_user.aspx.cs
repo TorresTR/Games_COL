@@ -141,7 +141,7 @@ public partial class View_Administrador_listado_user : System.Web.UI.Page
         int h = int.Parse(ID);
         U_user dat = new U_user();
 
-        string ui = Session["user_id"].ToString();
+        string ui = Session["id"].ToString();
         Session["parametro"] = ID;
 
 
@@ -161,7 +161,7 @@ public partial class View_Administrador_listado_user : System.Web.UI.Page
         int h = int.Parse(ID);
         U_user dat = new U_user();
 
-        string ui = Session["user_id"].ToString();
+        string ui = Session["id"].ToString();
         Session["parametro"] = ID;
 
 

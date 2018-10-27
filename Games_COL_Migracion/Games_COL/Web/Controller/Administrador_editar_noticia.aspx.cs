@@ -51,7 +51,7 @@ public partial class View_Administrador_editar_noticia : System.Web.UI.Page
 
 
         doc.Id = int.Parse(Session["parametro"].ToString());
-        int x = int.Parse(Session["user_id"].ToString());
+        int x = int.Parse(Session["id"].ToString());
 
         doc = dac.postObservadorNoticias(doc);
 

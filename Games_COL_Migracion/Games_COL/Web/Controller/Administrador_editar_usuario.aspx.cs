@@ -73,7 +73,7 @@ public partial class View_Default : System.Web.UI.Page
         L_persistencia log = new L_persistencia();
         L_Usercs dac = new L_Usercs();
         Entity_usuario user = new Entity_usuario();
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int h = int.Parse(LB_id.Text.ToString());
         DataTable dato = dac.obtenerUsuario(h);
 

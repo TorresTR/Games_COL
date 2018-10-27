@@ -29,13 +29,13 @@
                         <asp:Label ID="LB_titulo" runat="server" Text="Titulo:"></asp:Label>
                         <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
                         <br />
-                        <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id") %>' Visible="False" ></asp:Label>
+                        <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id_post") %>' Visible="False" ></asp:Label>
                         <br />
                         <asp:Label ID="LB_autor" runat="server" Text="Autor:"></asp:Label>
-                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("nick") %>'></asp:Label>
                         <br />
                         <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
-                        <asp:Label ID="LB_etiquetaMuestra" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
+                        <asp:Label ID="LB_etiquetaMuestra" runat="server" Text='<%# Bind("nombre_etiqueta") %>'></asp:Label>
                     </td>
                     <td class="auto-style3">
                         <br />

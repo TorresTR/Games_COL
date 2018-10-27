@@ -131,7 +131,7 @@ public partial class View_Default : System.Web.UI.Page
         datos.Session = Session.SessionID;
         datos = dac.cerrarse(datos);
 
-        Session["user_id"] = null;
+        Session["id"] = null;
 
 
         val.Sesion = null;

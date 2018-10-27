@@ -60,7 +60,7 @@ public partial class View_Moderador_verMasPostReportado : System.Web.UI.Page
     protected void BT_volver_Click(object sender, EventArgs e)
     {
 
-        int t = int.Parse(Session["user_id"].ToString());
+        int t = int.Parse(Session["id"].ToString());
 
         string dat = t.ToString();
 

@@ -55,7 +55,7 @@ public partial class View_Administrador_noticia : System.Web.UI.Page
         L_persistencia per = new L_persistencia();//agregar
         Entity_noticias noti = new Entity_noticias();//agregar
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int g = 1;
         DateTime dt = DateTime.Now;
 
@@ -70,7 +70,7 @@ public partial class View_Administrador_noticia : System.Web.UI.Page
         noti.Autor = b;//AGREGAR
 
         Entity_usuario us = new Entity_usuario();
-        us.Nombre = Session["user_id"].ToString();
+        us.Nombre = Session["id"].ToString();
         object segurity = new object();
         segurity = noti;
         string schema = "usuario";

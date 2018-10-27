@@ -56,9 +56,9 @@ public partial class View_MasterModerador : System.Web.UI.MasterPage
 
         try
         {
-            dato.Sesion = Session["user_id"].ToString();
+            dato.Sesion = Session["id"].ToString();
             dato = log.validarCerrarsesion(dato);
-            dato.Sesion = Session["user_id"].ToString();
+            dato.Sesion = Session["id"].ToString();
         }
         catch (Exception)
         {
@@ -67,7 +67,7 @@ public partial class View_MasterModerador : System.Web.UI.MasterPage
             Response.Redirect(dato.Link);
         }
         
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
 
         L_persistencia per = new L_persistencia();
 
@@ -144,7 +144,7 @@ public partial class View_MasterModerador : System.Web.UI.MasterPage
         datos.Session = Session.SessionID;
         datos = dac.cerrarse(datos);
 
-        Session["user_id"] = null;
+        Session["id"] = null;
         
 
 

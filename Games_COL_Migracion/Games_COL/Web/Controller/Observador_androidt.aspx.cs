@@ -15,7 +15,7 @@ public partial class View_Observador_androidt : System.Web.UI.Page
     string mensaje2;
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["user_id"] = 1;
+        Session["id"] = 1;
         Response.Cache.SetNoStore();
         LB_resulbusq.Visible = false;
         Int32 idioma = 1;

@@ -45,7 +45,7 @@ public partial class View_Moderador_editar_Noticia : System.Web.UI.Page
 
 
         doc.Id = int.Parse(Session["IdRecogido"].ToString());
-        int x = int.Parse(Session["user_id"].ToString());
+        int x = int.Parse(Session["id"].ToString());
 
         doc = dac.postObservadorNoticias(doc);
 

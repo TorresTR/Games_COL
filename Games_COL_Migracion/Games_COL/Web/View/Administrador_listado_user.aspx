@@ -252,7 +252,7 @@
                                         </td>
                                         </b>
                                         <td>
-                                            <asp:Label ID="LB_rango" runat="server" Text='<%# Bind("tipo") %>'></asp:Label>
+                                            <asp:Label ID="LB_rango" runat="server" Text='<%# Bind("id_rango") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp; </td>
                                         <td>

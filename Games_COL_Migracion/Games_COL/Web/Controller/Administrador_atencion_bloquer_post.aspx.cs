@@ -104,7 +104,7 @@ public partial class View_Administrador_atencion_bloquer_post : System.Web.UI.Pa
         actualizar_estado_bloqueo est = new actualizar_estado_bloqueo();
         Entity_post pot = new Entity_post();
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int x = 2;
         int h = int.Parse(ID);
         int z = 1;

@@ -32,7 +32,7 @@
                         
             <asp:DropDownList ID="DDL_forms" runat="server" DataSourceID="ODS_forms" DataTextField="nombre" DataValueField="id" AutoPostBack="true" ViewStateMode="Enabled" EnableViewState="true" OnSelectedIndexChanged="DDL_traduir_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:ObjectDataSource ID="ODS_forms" runat="server" SelectMethod="formularios" TypeName="Datos.D_User"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="ODS_forms" runat="server" SelectMethod="formularios" TypeName="Datos.Dsql"></asp:ObjectDataSource>
                          
                 <br />
                 <asp:Label ID="LB_cont" runat="server" Font-Bold="True" Font-Size="X-Large" Font-Underline="True" ForeColor="White"></asp:Label>

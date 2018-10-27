@@ -38,13 +38,13 @@ public partial class View_Administrador_miNoticia : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
 
 
-        int dato = int.Parse(Session["user_id"].ToString());
+        int dato = int.Parse(Session["id"].ToString());
         DataTable dt = dac.minoticiagv(dato);
 
         L_persistencia per = new L_persistencia();
         Entity_noticias not = new Entity_noticias();
 
-        int dtr = int.Parse(dt.Rows[0]["id"].ToString());
+        int dtr = int.Parse(dt.Rows[0]["id_noticia"].ToString());
 
         DataTable data = dac.ToDataTable(per.obtenerMinoticia(dtr));
         GV_miPost.DataSource = data;
@@ -89,7 +89,7 @@ public partial class View_Administrador_miNoticia : System.Web.UI.Page
         int fila = row.RowIndex;
 
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
         Session["parametro"] = IdRecogido;
         U_user dat = new U_user();
@@ -119,7 +119,7 @@ public partial class View_Administrador_miNoticia : System.Web.UI.Page
         int fila = row.RowIndex;
 
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
         Session["IdRecogido"] = IdRecogido;
         int x = int.Parse(IdRecogido);

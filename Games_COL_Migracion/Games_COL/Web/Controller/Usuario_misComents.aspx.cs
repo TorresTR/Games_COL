@@ -45,7 +45,7 @@ public partial class View_Default : System.Web.UI.Page
 
         doc.Id = int.Parse(Session["parametro"].ToString());
         int dato = int.Parse(Session["parametro"].ToString());
-        int dato2 = int.Parse(Session["user_id"].ToString());
+        int dato2 = int.Parse(Session["id"].ToString());
 
 
        doc =  dac.eliminarMiscomentarios(doc);
@@ -95,8 +95,16 @@ public partial class View_Default : System.Web.UI.Page
         int fila = row.RowIndex;
         coment.Id_comentario = int.Parse(((Label)row.Cells[fila].FindControl("Label1")).Text);
         int h = int.Parse(Session["parametro"].ToString());
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int IdRecogido = int.Parse(((Label)row.Cells[fila].FindControl("Label1")).Text);
+
+        Entity_usuario us = new Entity_usuario();
+        object obj = new object();
+        obj = log.obtenerComent(h);
+        string schema = "usuario";
+        string tabla = "comentarios";
+        us.Nombre = Session["id"].ToString();
+        log.auditoriaEliminar(obj,us,schema,tabla);
 
         log.borrarComentario(coment);
         //dac.dataEliminarcomentaction(IdRecogido);

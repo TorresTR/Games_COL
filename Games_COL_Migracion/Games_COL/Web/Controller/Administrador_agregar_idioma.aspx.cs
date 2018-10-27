@@ -83,7 +83,7 @@ public partial class View_Default : System.Web.UI.Page
         idiom.Estado = 2;
 
         Entity_usuario us = new Entity_usuario();
-        us.Nombre = Session["user_id"].ToString();
+        us.Nombre = Session["id"].ToString();
         object segurity = new object();
         segurity = idiom;
         string schema = "usuario";

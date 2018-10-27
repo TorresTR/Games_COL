@@ -23,7 +23,7 @@ public partial class View_Default : System.Web.UI.Page
         U_token inicio = log.validaToken(cont,var);
 
         LB_mensaje.Text = inicio.Nombre;
-        Session["user_id"] = inicio.Id;
+        Session["id"] = inicio.Id;
         Int32 idioma = 1;
         Int32 id_pagina = 56;
         try
@@ -71,10 +71,10 @@ public partial class View_Default : System.Web.UI.Page
         U_Datos eUser = new U_Datos();
 
 
-        int Id = int.Parse(Session["user_id"].ToString());
+        int Id = int.Parse(Session["id"].ToString());
         eUser.Pass = TB_digite_nueva_contraseña.Text;
 
-        token.Id_usuario = int.Parse(Session["user_id"].ToString());
+        token.Id_usuario = int.Parse(Session["id"].ToString());
         per.borrarRecuperarcontra(token);
         //user.contraseña(eUser);
 

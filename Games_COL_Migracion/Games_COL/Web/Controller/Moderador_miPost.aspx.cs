@@ -39,7 +39,7 @@ public partial class View_Moderador_miPost : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
 
 
-        int dato = int.Parse(Session["user_id"].ToString());
+        int dato = int.Parse(Session["id"].ToString());
 
         mio.Id_mipost = dato;
 
@@ -87,7 +87,7 @@ public partial class View_Moderador_miPost : System.Web.UI.Page
         int fila = row.RowIndex;
 
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
         Session["IdRecogido"] = IdRecogido;
         string dat = b.ToString();
@@ -112,7 +112,7 @@ public partial class View_Moderador_miPost : System.Web.UI.Page
 
 
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
 
         int x = int.Parse(IdRecogido);

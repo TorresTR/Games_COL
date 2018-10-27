@@ -60,9 +60,9 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
 
         try
         {
-            dato.Sesion = Session["user_id"].ToString();
+            dato.Sesion = Session["id"].ToString();
             dato = log.validarCerrarsesion(dato);
-            dato.Sesion = Session["user_id"].ToString();
+            dato.Sesion = Session["id"].ToString();
         }
         catch (Exception)
         {
@@ -72,7 +72,7 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
         }
 
 
-        int b = int.Parse(Session["user_id"].ToString());
+        int b = int.Parse(Session["id"].ToString());
 
 
         //DataTable data = us.CargarUsusarios(b);
@@ -157,7 +157,7 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
   
         dac.cerrarSesio(id_user);
 
-        Session["user_id"] = null;
+        Session["id"] = null;
 
 
         val.Sesion = null;

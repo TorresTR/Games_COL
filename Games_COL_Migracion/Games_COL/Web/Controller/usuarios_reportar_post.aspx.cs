@@ -46,7 +46,7 @@ public partial class View_usuarios_reportar_post : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
 
         int c = int.Parse(Session["parametro"].ToString());
-        int u = int.Parse(Session["user_id"].ToString());
+        int u = int.Parse(Session["id"].ToString());
 
         doc = dac.obtenerPostparareportar(c);
 
@@ -68,7 +68,7 @@ public partial class View_usuarios_reportar_post : System.Web.UI.Page
         int b = int.Parse(Session["parametro"].ToString());
         DateTime dt = DateTime.Now;
 
-        int u = int.Parse(Session["user_id"].ToString());
+        int u = int.Parse(Session["id"].ToString());
 
 
         DataTable regis = envio.obtenerPostObservador();
@@ -98,7 +98,7 @@ public partial class View_usuarios_reportar_post : System.Web.UI.Page
 
 
         Entity_usuario us = new Entity_usuario();
-        us.Nombre = Session["user_id"].ToString();
+        us.Nombre = Session["id"].ToString();
         object segurity = new object();
         segurity = post;
         string schema = "usuario";

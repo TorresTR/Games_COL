@@ -58,7 +58,7 @@ public partial class View_Administrador_verMasPostReportado : System.Web.UI.Page
     {
 
 
-        int t = int.Parse(Session["user_id"].ToString());
+        int t = int.Parse(Session["id"].ToString());
 
         string dat = t.ToString();
  

@@ -65,7 +65,7 @@ public partial class View_Adminsitrador_editar : System.Web.UI.Page
         Entity_post post = new Entity_post();
         //U_userCrearpost post = new U_userCrearpost();
         int a = int.Parse(Session["IdRecogido"].ToString());
-        int user = int.Parse(Session["user_id"].ToString());
+        int user = int.Parse(Session["id"].ToString());
         L_persistencia log = new L_persistencia();
 
         DataTable dato = dac.ToDataTable(log.obtenerMipostmio(a, user));
@@ -73,7 +73,7 @@ public partial class View_Adminsitrador_editar : System.Web.UI.Page
 
         post.Id = int.Parse(Session["IdRecogido"].ToString());
         post.Contenido = Ck_editar.Text.ToString();
-        post.Autor = int.Parse(Session["user_id"].ToString());
+        post.Autor = int.Parse(Session["id"].ToString());
         post.Titulo = dato.Rows[0]["titulo"].ToString();
         post.Fecha = DateTime.Parse(dato.Rows[0]["fecha"].ToString());
         post.Puntos = int.Parse(dato.Rows[0]["puntos"].ToString());
@@ -81,14 +81,25 @@ public partial class View_Adminsitrador_editar : System.Web.UI.Page
         post.Estado_bloqueo = int.Parse(dato.Rows[0]["estado_bloqueo"].ToString());
         post.Num_puntos = int.Parse(dato.Rows[0]["num_puntos"].ToString());
 
-        object objOld = dato;
-        objOld = dato;
+        Entity_post post1 = new Entity_post();
+        post1.Id = int.Parse(dato.Rows[0]["id"].ToString());
+        post1.Contenido = dato.Rows[0]["contenido"].ToString();
+        post1.Autor = int.Parse(dato.Rows[0]["autor"].ToString());
+        post1.Titulo = dato.Rows[0]["titulo"].ToString();
+        post1.Fecha = DateTime.Parse( dato.Rows[0]["fecha"].ToString());
+        post1.Puntos = int.Parse(dato.Rows[0]["puntos"].ToString());
+        post1.Etiqueta = int.Parse(dato.Rows[0]["etiqueta"].ToString());
+        post1.Estado_bloqueo = int.Parse(dato.Rows[0]["estado_bloqueo"].ToString());
+        post1.Num_puntos = int.Parse(dato.Rows[0]["num_puntos"].ToString());
+
+        object objOld = new object();
+        objOld = post1;
         object objNew = new object();
         objNew = post;
         string schema = "usuario";
         string tabla = "post";
         Entity_usuario us = new Entity_usuario();
-        us.Nombre = Session["user_id"].ToString();
+        us.Nombre = Session["id"].ToString();
         log.auditoriaModificar(objNew,objOld,us,schema,tabla);
 
 

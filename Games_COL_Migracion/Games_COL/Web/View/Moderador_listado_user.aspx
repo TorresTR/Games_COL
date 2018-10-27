@@ -52,7 +52,7 @@
                                             </b></td>
                                         </b>
                                         <td>
-                                            <asp:Label ID="LB_rango" runat="server" Text='<%# Bind("tipo") %>'></asp:Label>
+                                            <asp:Label ID="LB_rango" runat="server" Text='<%# Bind("id_rol") %>'></asp:Label>
                                         </td>
                                         <td>
                                             <asp:Button ID="BT_eliminar" runat="server" CssClass="btn btn-outline-warning" OnClick="BT_eliminar_Click" Text="Eliminar" />
