@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="actualizar_estado_bloqueo.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Entity_auditoria.cs" />
     <Compile Include="Entity_noticias.cs" />
     <Compile Include="Entity_puntuacion.cs" />
     <Compile Include="Entity_rango.cs" />

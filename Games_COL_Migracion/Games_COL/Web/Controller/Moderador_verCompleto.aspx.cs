@@ -632,6 +632,14 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         comentario.Id_user = int.Parse(Session["user_id"].ToString());
         comentario.Estado = 1;
 
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["user_id"].ToString();
+        object segurity = new object();
+        segurity = comentario;
+        string schema = "usuario";
+        string tabla = "comentarios";
+        logica.auditoriaInsertar(segurity, us, schema, tabla);
+
         logica.insertarComenatrio(comentario);
 
         DataTable data = dac.ObtenerInteraccion(b);

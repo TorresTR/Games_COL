@@ -83,6 +83,15 @@ public partial class View_Default : System.Web.UI.Page
         coment_rep.Fecha = dt;
         coment_rep.Id_user = u;
 
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["user_id"].ToString();
+        object segurity = new object();
+        segurity = coment_rep;
+        string schema = "usuario";
+        string tabla = "reporte_comentarios";
+        per.auditoriaInsertar(segurity, us, schema, tabla);
+
+
         per.insertarReportecomentar(coment_rep);
         DataTable com = envio.obtenerComentariofinal(b);
         

@@ -55,6 +55,14 @@ public partial class View_contactenos : System.Web.UI.Page
         cont.Correo = TB_correo.Text.ToString();
         cont.Sugerencia = TB_sugerencias.Text.ToString();
 
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["user_id"].ToString();
+        object segurity = new object();
+        segurity = cont;
+        string schema = "usuario";
+        string tabla = "post";
+        per.auditoriaInsertar(segurity, us, schema, tabla);
+
         per.insertarContato(cont);
 
         sugere = user.sugerenciasUsuarios(sugere);

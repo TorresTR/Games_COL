@@ -69,6 +69,15 @@ public partial class View_Moderador_noticia : System.Web.UI.Page
         noti.Fecha = dt;//AGREGAR
         noti.Autor = b;//AGREGAR
 
+
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["user_id"].ToString();
+        object segurity = new object();
+        segurity = noti;
+        string schema = "usuario";
+        string tabla = "noticias";
+        per.auditoriaInsertar(segurity, us, schema, tabla);
+
         per.insertarNoticia(noti);//AGREGAR
 
         //data_userPost.insertarNoticias(datos_creartPost);

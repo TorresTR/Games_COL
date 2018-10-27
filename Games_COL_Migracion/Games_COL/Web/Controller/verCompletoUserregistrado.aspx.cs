@@ -636,6 +636,14 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         comentario.Id_user = int.Parse(Session["user_id"].ToString());
         comentario.Estado = 1;
 
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["user_id"].ToString();
+        object post = new object();
+        post = comentario;
+        string schema = "usuario";
+        string tabla = "comentario";
+        logica.auditoriaInsertar(post, us, schema, tabla);
+
         logica.insertarComenatrio(comentario);
 
         DataTable data =dac.ObtenerInteraccion(b);

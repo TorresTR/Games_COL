@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
+using Persistencia_funciones;
 
 public partial class View_Crear_post : System.Web.UI.Page
 {
@@ -48,6 +49,10 @@ public partial class View_Crear_post : System.Web.UI.Page
         DataTable datos = per.obtenerUs(b);//agregar
         U_Interaccion iter = new U_Interaccion();
 
+        
+
+
+        
         iter.Iteraccion = int.Parse(datos.Rows[0]["interacciones"].ToString());//agregar
         //iter.Iteraccion = int.Parse(data.Rows[0]["id"].ToString());
 
@@ -78,6 +83,7 @@ public partial class View_Crear_post : System.Web.UI.Page
         L_persistencia log = new L_persistencia();
 
         int b = int.Parse(Session["user_id"].ToString());
+        
 
         DataTable regis = log.obtenerUs(b);//agregar
         //DataTable regis = data_userPost.obtenerUsercrear(b);
@@ -128,7 +134,16 @@ public partial class View_Crear_post : System.Web.UI.Page
 
         per.actualizarUsuario(user_ent);
         //data_userPost.actualizarpuntoUser(b, x);
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["user_id"].ToString();
+        object post = new object();
+        post = datos_creartPost;
+        string schema = "usuario";
+        string tabla = "post";
+        log.auditoriaInsertar(post, us,schema,tabla);
+
         log.insertarPost(datos_creartPost);
+
         
             cm.RegisterClientScriptBlock(this.GetType(), "",iter.Mensaje);
        

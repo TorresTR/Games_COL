@@ -8,11 +8,29 @@ using Data;
 using Datos;
 using System.Data;
 using Persistencia_funciones;
+using Data_entity;
 
 namespace Logica
 {
     public class L_persistencia
     {
+        public void auditoriaInsertar(object obj,Entity_usuario us, string schema, string tabla)
+        {
+            DaoAuditoria dao = new DaoAuditoria();
+            dao.insert(obj,us,schema,tabla);
+        }
+
+        public void auditoriaModificar(object obj, object obj1, Entity_usuario us, string schema, string tabla)
+        {
+            DaoAuditoria dao = new DaoAuditoria();
+            dao.update(obj,obj1, us, schema, tabla);
+        }
+
+        public void auditoriaEliminar(object obj, Entity_usuario us, string schema, string tabla)
+        {
+            DaoAuditoria dao = new DaoAuditoria();
+            dao.delete(obj, us, schema, tabla);
+        }
 
         public void insertarPost(Entity_post post)
         {

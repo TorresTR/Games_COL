@@ -81,6 +81,17 @@ public partial class View_Adminsitrador_editar : System.Web.UI.Page
         post.Estado_bloqueo = int.Parse(dato.Rows[0]["estado_bloqueo"].ToString());
         post.Num_puntos = int.Parse(dato.Rows[0]["num_puntos"].ToString());
 
+        object objOld = dato;
+        objOld = dato;
+        object objNew = new object();
+        objNew = post;
+        string schema = "usuario";
+        string tabla = "post";
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["user_id"].ToString();
+        log.auditoriaModificar(objNew,objOld,us,schema,tabla);
+
+
         log.actualizarPost(post);
         //dac.actualizarMispost(post);
     }

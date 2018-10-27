@@ -55,7 +55,6 @@ public partial class View_usuarios_pqr : System.Web.UI.Page
         int b = int.Parse(Session["user_id"].ToString());
 
         DateTime dt = DateTime.Now;
-
         pqr.Asunto = TB_asunto.Text.ToString();
         pqr.Id_pqrestado = int.Parse(DDL_tipoSolicitud.SelectedValue.ToString());
         pqr.Contenido = TB_solicitud.Text.ToString();
@@ -71,6 +70,16 @@ public partial class View_usuarios_pqr : System.Web.UI.Page
         ent.Id_contestador = 0;
         ent.Fecha_respuesta = DateTime.Parse("1990-01-01" );
         ent.Estado_respuesta = 0;
+
+
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["user_id"].ToString();
+        object post = new object();
+        post = ent;
+        string schema = "usuario";
+        string tabla = "pqr";
+        log.auditoriaInsertar(post, us, schema, tabla);
+
 
         log.insertarPQR(ent);
 

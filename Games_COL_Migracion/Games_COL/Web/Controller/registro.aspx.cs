@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
+using Persistencia_funciones;
 
 public partial class View_registro : System.Web.UI.Page
 {
@@ -70,6 +71,15 @@ public partial class View_registro : System.Web.UI.Page
         dato.Puntos = 1;
         dato.Estado = 1;
         dato.Session = "prueba";
+
+
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["user_id"].ToString();
+        object segurity = new object();
+        segurity = dato;
+        string schema = "usuario";
+        string tabla = "usuario";
+        log.auditoriaInsertar(segurity, us, schema, tabla);
 
         log.insertarUsuario(dato);
 

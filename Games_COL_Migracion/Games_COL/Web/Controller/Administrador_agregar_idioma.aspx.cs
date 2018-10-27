@@ -81,6 +81,15 @@ public partial class View_Default : System.Web.UI.Page
         idiom.Nombre = idioma;
         idiom.Terminacion = terminacion;
         idiom.Estado = 2;
+
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["user_id"].ToString();
+        object segurity = new object();
+        segurity = idiom;
+        string schema = "usuario";
+        string tabla = "idioma";
+        per.auditoriaInsertar(segurity, us, schema, tabla);
+
         per.insertarIdioma(idiom);
        // log.insertarIdioma(idioma,terminacion);
 

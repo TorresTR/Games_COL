@@ -50,6 +50,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Mono.Security.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Web\Bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql, Version=4.0.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\Web\packages\Npgsql.4.0.3\lib\net451\Npgsql.dll</HintPath>
     </Reference>
@@ -92,6 +96,7 @@
     <Compile Include="controles.cs">
       <DependentUpon>Modelo1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DaoAuditoria.cs" />
     <Compile Include="daoPost.cs" />
     <Compile Include="estado_bloqueo.cs">
       <DependentUpon>Modelo1.tt</DependentUpon>

@@ -37,6 +37,7 @@ namespace Data
         public DbSet<Entity_puntuacion> puntos { get; set; }
         public DbSet<Entity_rango> rango { get; set; }
         public DbSet<Entity_reporte_comentarios> coment_repo { get; set; }
+        public DbSet<Entity_auditoria> audit { get; set; }
         //public DbSet<Noticia> noticia { get; set; } // agregar
         //public DbSet<Puntuacion> puntuacion { get; set; }//agregar
         //public DbSet<Rango> rango { get; set; }//agregar

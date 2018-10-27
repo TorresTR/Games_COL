@@ -96,6 +96,15 @@ public partial class View_usuarios_reportar_post : System.Web.UI.Page
         post.Estado_bloqueo = 2;//AGREGAR
         post.Num_puntos = int.Parse(dato.Rows[0]["num_puntos"].ToString());//AGREGAR
 
+
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["user_id"].ToString();
+        object segurity = new object();
+        segurity = post;
+        string schema = "usuario";
+        string tabla = "reporte_post";
+        per.auditoriaInsertar(segurity, us, schema, tabla);
+
         per.insertarReportePost(report);//agregar
         //envio.insertarPostaReportar(reporte);
         per.actualizarBloqueoPost(post);//AGREGAR

@@ -77,7 +77,7 @@ public partial class View_Administrador_crear_post : System.Web.UI.Page
 
     protected void BT_guardar_Click(object sender, EventArgs e)
     {
-        U_userCrearpost datos_creartPost = new U_userCrearpost();
+        Entity_post datos_creartPost = new Entity_post();
         L_Usercs data_userPost = new L_Usercs();
         L_persistencia per = new L_persistencia();//agregar
 
@@ -99,16 +99,21 @@ public partial class View_Administrador_crear_post : System.Web.UI.Page
 
         iter = data_userPost.validarInteraccion(iter);
 
+
         datos_creartPost.Titulo = TB_titulo.Text.ToString();
-        datos_creartPost.Contenido1 = Ckeditor1.Text.ToString();
+        datos_creartPost.Contenido = Ckeditor1.Text.ToString();
         datos_creartPost.Fecha = dt;
-        datos_creartPost.Id_user = b;
-        datos_creartPost.Id_etiqueta = int.Parse(DDL_etiquetas.SelectedValue.ToString());
-        datos_creartPost.Interacciones = iter.Contador;
+        datos_creartPost.Autor = b;
+        datos_creartPost.Etiqueta = int.Parse(DDL_etiquetas.SelectedValue.ToString());
+        datos_creartPost.Puntos = 1;
+        datos_creartPost.Estado_bloqueo = 1;
+        datos_creartPost.Num_puntos = 1;
 
         x = x + 1;
 
+
        
+
         Entity_usuario user_ent = new Entity_usuario();
 
         DataTable datat = data_userPost.obtenerUsuario(b);
@@ -128,7 +133,15 @@ public partial class View_Administrador_crear_post : System.Web.UI.Page
 
         per.actualizarUsuario(user_ent);
         //data_userPost.actualizarpuntoUser(b, x);
-        data_userPost.insertarPost(datos_creartPost);
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["user_id"].ToString();
+        object segurity = new object();
+        segurity = datos_creartPost;
+        string schema = "usuario";
+        string tabla = "post";
+        per.auditoriaInsertar(segurity, us, schema, tabla);
+
+        per.insertarPost(datos_creartPost);
 
         cm.RegisterClientScriptBlock(this.GetType(), "", iter.Mensaje);
 
