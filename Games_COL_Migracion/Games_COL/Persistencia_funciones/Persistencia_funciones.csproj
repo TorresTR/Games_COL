@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Web\Bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -42,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
     <Compile Include="actualizar_estado_bloqueo.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Email.cs" />
     <Compile Include="Entity_auditoria.cs" />
     <Compile Include="Entity_noticias.cs" />
     <Compile Include="Entity_puntuacion.cs" />
@@ -51,6 +57,9 @@
     <Compile Include="Entity_reporte_comentarios.cs" />
     <Compile Include="Entity_solicitud.cs" />
     <Compile Include="Entity_token_recuperacion_user.cs" />
+    <Compile Include="FacebookService .cs" />
+    <Compile Include="GoogleProfile.cs" />
+    <Compile Include="Image.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

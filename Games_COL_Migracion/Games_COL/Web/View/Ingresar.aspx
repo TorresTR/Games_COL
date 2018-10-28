@@ -11,7 +11,9 @@
             text-align: right;
         }
     </style>
-</asp:Content>
+   
+</asp:Content> 
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     
@@ -77,6 +79,70 @@
             &nbsp;&nbsp;&nbsp;
                 <asp:Button ID="B_volver" runat="server" CssClass="btn btn-outline-danger" OnClick="B_volver_Click" Text="Volver" />
             </td>
+        </tr>
+        <tr>
+            <td class="auto-style8">
+                <asp:Button ID="BT_gmail" runat="server" OnClick="BT_gmail_Click" Text="Login con Gmail" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="btnLogin" runat="server" OnClick="Login" Text="Login with FaceBook" />
+                <asp:Panel ID="pnlFaceBookUser" runat="server" Visible="false">
+<hr />
+                    <table>
+                        <tr>
+                            <td rowspan="5">
+                                <asp:Image ID="ProfileImage" runat="server" Height="50" Width="50" Visible="false" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><asp:Label ID="lblId" runat="server" Text="" Visible="false"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><asp:Label ID="lblUserName" runat="server" Text="" Visible="false"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><asp:Label ID="lblName" runat="server" Text="" Visible="false"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><asp:Label ID="lblEmail" runat="server" Text=""  Visible="false"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+            </td>
+            <td>
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style8">
+                    <table>
+                        <tr _>
+                            <td rowspan="5">
+                                <asp:Image ID="ProfileImageG" runat="server" Height="50" Width="50" Visible="false" />
+                            </td>
+                        </tr>
+                        <tr >
+                            <td ><asp:Label ID="Lb_idG" runat="server" Visible="False"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr >
+                            <td><asp:Label ID="lblUserNameG" runat="server" Visible="False"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr >
+                            <td ><asp:Label ID="lblNameG" runat="server" Visible="False"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr >
+                            <td ><asp:Label ID="lblEmailG" runat="server"  Visible="False"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+</td>
+            <td>
+                &nbsp;</td>
         </tr>
     </table>
 </asp:Content>

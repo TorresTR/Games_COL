@@ -234,7 +234,7 @@ namespace Logica
 
 
           DataTable dato = llamado.consultaUsuario(nick);
-           int id = int.Parse(dato.Rows[0]["user_id"].ToString());
+           int id = int.Parse(dato.Rows[0]["id"].ToString());
             insertarSesion(id);
             return id;
 
@@ -251,6 +251,21 @@ namespace Logica
             int id = int.Parse(dato.Rows[0]["id"].ToString());
          
             return id;
+
+
+        }
+
+
+        public DataTable consultaUsusariocorreo(string correo)
+        {
+
+            Dsql llamado = new Dsql();
+
+
+            DataTable dato = llamado.consultaUsuarioCorreo(correo);
+
+            
+            return dato;
 
 
         }

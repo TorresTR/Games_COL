@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
-using System.Linq;
 using System.Threading;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
+
 
 public partial class View_Observador : System.Web.UI.Page
 {
@@ -53,8 +50,8 @@ public partial class View_Observador : System.Web.UI.Page
         Response.Cache.SetNoStore();
         LB_resulbusq.Visible = false;
 
+        Session["band2"] = false;
 
-       
 
     }
 
@@ -272,8 +269,5 @@ public partial class View_Observador : System.Web.UI.Page
 
     }
 
-
-
-
-
+    
 }

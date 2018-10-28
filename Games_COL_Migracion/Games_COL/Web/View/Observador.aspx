@@ -17,7 +17,12 @@
         }
     </style>
 </asp:Content>
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+   
+
     <div class="auto-style7">
         &nbsp;&nbsp;
         <asp:Button ID="BT_pc" runat="server" Text="PC" OnClick="BT_pc_Click" CssClass="btn btn-secondary" />&nbsp;&nbsp;
@@ -47,6 +52,8 @@
     &nbsp;&nbsp;
                                 
     </div>
+ 
+</asp:Panel>
     <table class="w-100">
         <tr>
             <td class="auto-style6">
@@ -156,8 +163,10 @@
                 <asp:ObjectDataSource ID="ODS_dataobs" runat="server" SelectMethod="obtenerPost" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
             </td>
             <td>
-                    &nbsp;</td>
+               
+               
         </tr>
+       
     </table>
 </asp:Content>
 

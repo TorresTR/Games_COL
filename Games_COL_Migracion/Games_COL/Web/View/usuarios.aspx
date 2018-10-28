@@ -154,7 +154,12 @@
     <asp:ObjectDataSource ID="ODS_datauser" runat="server" SelectMethod="obtenerPost" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
             </td>
             <td>
-                &nbsp;</td>
+                &nbsp;
+                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Publicar" />
+                <hr />
+            </td>
         </tr>
     </table>
 </asp:Content>

@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [],
+
+
+
+  "services.AddIdentity" "<",
+  "ApplicationUser",
+  "IdentityRole" ">",
+  "().AddEntityFrameworkStores" "<",
+  "ApplicationDbContext" ">",
+  "().AddDefaultTokenProviders();" "services.AddAuthentication().AddFacebook(facebookOptions",
+  "=>" {
+    "facebookOptions.AppId" "=",
+    "Configuration" [ "Authentication:Facebook:AppId" ]
+    ";",
+    "facebookOptions.AppSecret",
+    "=" "Configuration",
+    [ "Authentication:Facebook:AppSecret" ]
+    ";",
+  }
+  ");",
+}

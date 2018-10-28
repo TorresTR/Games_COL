@@ -1533,6 +1533,39 @@ namespace Datos
         }
 
 
+        public DataTable consultaUsuarioCorreo(string correo)
+        {
+            DataTable Post = new DataTable();
+            SqlConnection conection = new SqlConnection(ConfigurationManager.ConnectionStrings["GamesColEntities"].ConnectionString);
+
+            try
+            {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("seguridad.f_traer_usuario_correo", conection);
+                dataAdapter.SelectCommand.Parameters.Add("@correo", SqlDbType.NVarChar).Value = correo;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+
+
+                conection.Open();
+                dataAdapter.Fill(Post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return Post;
+
+        }
+
 
         public DataTable ObtenerNoti()
         {

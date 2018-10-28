@@ -51,6 +51,22 @@ public partial class View_registro : System.Web.UI.Page
         B_volver.Text = compIdioma["B_volver"].ToString();
 
 
+
+        if (Session["band"].Equals(true))
+        {
+            TB_nombre.Text = Session["user_name"].ToString();
+            TB_email.Text = Session["correo"].ToString();
+           
+        }
+        else
+        {
+            TB_nombre.Text = "";
+            TB_email.Text = "";
+        }
+        
+
+
+
     }
 
     protected void B_registrar_Click(object sender, EventArgs e)
@@ -58,10 +74,20 @@ public partial class View_registro : System.Web.UI.Page
         Entity_usuario dato = new Entity_usuario();
         L_persistencia log = new L_persistencia();
         ClientScriptManager cm = this.ClientScript;
-        dato.Nombre = TB_nombre.Text.ToString();
+
+        if (Session["band"].Equals(true))
+        {
+            dato.Nombre = Session["user_name"].ToString();
+            dato.Correo = Session["correo"].ToString();
+            Session["band"] = false;
+        }
+        else
+        {
+            dato.Nombre = TB_nombre.Text.ToString();            
+            dato.Correo = TB_email.Text.ToString();
+        }
         dato.Nick = TB_nick.Text.ToString();
         dato.Contra = TB_pass.Text.ToString();
-        dato.Correo = TB_email.Text.ToString();
         string Confirma = TB_confirmapass.Text.ToString();
         dato.Puntos = 0;
         dato.Id_rol = 1;
@@ -72,7 +98,7 @@ public partial class View_registro : System.Web.UI.Page
         dato.Estado = 1;
         dato.Session = "prueba";
 
-
+        Session["band"] = false;
         Entity_usuario us = new Entity_usuario();
         us.Nombre = Session["id"].ToString();
         object segurity = new object();
@@ -89,7 +115,9 @@ public partial class View_registro : System.Web.UI.Page
         //dat.insertarSesion(id);
         cm.RegisterClientScriptBlock(this.GetType(), "", datos.Mensaje1);
         //LB_mensaje.Text = datos.Mensaje1.ToString();
-
+        Session["band2"] = true;
+        Response.Redirect("Ingresar.aspx");
+        
     }
 
 
@@ -101,5 +129,6 @@ public partial class View_registro : System.Web.UI.Page
 
         inicio = llamado.irInicio();
         Response.Redirect(inicio.Link_demas);
+        Session["band"] = false;
     }
 }

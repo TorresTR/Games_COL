@@ -9,6 +9,9 @@ using System.Web.UI.WebControls;
 using Datos;
 using Logica;
 using Utilitarios;
+using ASPSnippets.FaceBookAPI;
+using System.Web.Script.Serialization;
+
 
 public partial class View_usuarios : System.Web.UI.Page
 {
@@ -44,6 +47,9 @@ public partial class View_usuarios : System.Web.UI.Page
         DL_noticias.DataBind();
         DL_post.DataBind();
         DL_resultado.DataBind();
+
+
+
 
     }
 
@@ -227,5 +233,15 @@ public partial class View_usuarios : System.Web.UI.Page
         Response.Redirect(envioObservador.Link_observador );
     }
 
-    
+
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        string txtMessage = "hola";
+        Dictionary<string, string> data = new Dictionary<string, string>();
+        data.Add("message", txtMessage);
+        FaceBookConnect.Post(ViewState["Code"].ToString(), "me/feed", data);
+        Response.Redirect("http://www.facebook.com/me/");
+    }
+
 }
