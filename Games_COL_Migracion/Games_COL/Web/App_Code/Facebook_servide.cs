@@ -9,7 +9,7 @@ using Utilitarios;
 using Logica;
 using Data;
 using ASPSnippets.FaceBookAPI;
-
+using System.Data;
 
 /// <summary>
 /// Descripción breve de Facebook_servide
@@ -33,7 +33,63 @@ public class Facebook_servide : System.Web.Services.WebService
     [WebMethod]
     public void accedefacebook()
     {
-        //string se = Session["id_facebook"].ToString();
+        
     }
 
+    [WebMethod]
+    public DataTable etiquetas()
+    {
+        L_persistencia per = new L_persistencia();
+        DataTable dato = per.obtenerEtiquetas();
+        return dato;
+    }
+    [WebMethod]
+    public DataTable postpc()
+    {
+        L_persistencia per = new L_persistencia();
+        L_Usercs user = new L_Usercs();
+        DataTable data = new DataTable();
+      
+        data = user.ToDataTable(per.obtenerPostpc());
+             
+        
+        return data;
+    }
+    [WebMethod]
+    public DataTable postxbox()
+    {
+        L_persistencia per = new L_persistencia();
+        L_Usercs user = new L_Usercs();
+        DataTable data = new DataTable();
+
+        data = user.ToDataTable(per.obtenerPostxbox());
+
+
+        return data;
+    }
+    [WebMethod]
+    public DataTable postps()
+    {
+        L_persistencia per = new L_persistencia();
+        L_Usercs user = new L_Usercs();
+        DataTable data = new DataTable();
+
+        data = user.ToDataTable(per.obtenerPostpS());
+
+
+        return data;
+    }
+    [WebMethod]
+    public DataTable postandroid()
+    {
+        L_persistencia per = new L_persistencia();
+        L_Usercs user = new L_Usercs();
+        DataTable data = new DataTable();
+
+        data = user.ToDataTable(per.obtenerPostAndroid());
+
+
+        return data;
+    }
+    
 }
