@@ -248,8 +248,7 @@ public partial class View_usuarios : System.Web.UI.Page
         {
             Response.Redirect(string.Format("https://graph.facebook.com/oauth/authorize?client_id={0}&redirect_uri={1}&scope={2}",app_id,Request.Url.AbsoluteUri, scope));
 
-    }
-        else
+    }else
         {
             Dictionary<string, string> tokens = new Dictionary<string, string>();
             string url = string.Format("https://graph.facebook.com/oauth/acces_token?client_id={0}&redirect_uri={1}&scope={2}&code={3}&client_secret={4}", app_id, Request.Url.AbsoluteUri, scope, Request["code"].ToString(), app_secret);
