@@ -237,42 +237,42 @@ public partial class View_usuarios : System.Web.UI.Page
 
 
 
-    protected void Button1_Click(object sender, EventArgs e)
-    {
+    //protected void Button1_Click(object sender, EventArgs e)
+    //{
 
-        string app_id = "184076195845739";
-        string app_secret = "a0c8d4f1c27d4d3efdfb3b0ee894e12f";
-        string scope = "user_posts,manage_pages";
+    //    string app_id = "184076195845739";
+    //    string app_secret = "a0c8d4f1c27d4d3efdfb3b0ee894e12f";
+    //    string scope = "user_posts,manage_pages";
 
-        if (Request["code"] == null)
-        {
-            Response.Redirect(string.Format("https://graph.facebook.com/oauth/authorize?client_id={0}&redirect_uri={1}&scope={2}",app_id,Request.Url.AbsoluteUri, scope));
+    //    if (Request["code"] == null)
+    //    {
+    //        Response.Redirect(string.Format("https://graph.facebook.com/oauth/authorize?client_id={0}&redirect_uri={1}&scope={2}",app_id,Request.Url.AbsoluteUri, scope));
 
-    }else
-        {
-            Dictionary<string, string> tokens = new Dictionary<string, string>();
-            string url = string.Format("https://graph.facebook.com/oauth/acces_token?client_id={0}&redirect_uri={1}&scope={2}&code={3}&client_secret={4}", app_id, Request.Url.AbsoluteUri, scope, Request["code"].ToString(), app_secret);
-            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+    //}else
+    //    {
+    //        Dictionary<string, string> tokens = new Dictionary<string, string>();
+    //        string url = string.Format("https://graph.facebook.com/oauth/acces_token?client_id={0}&redirect_uri={1}&scope={2}&code={3}&client_secret={4}", app_id, Request.Url.AbsoluteUri, scope, Request["code"].ToString(), app_secret);
+    //        HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
 
-            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
-            {
-                StreamReader reader = new StreamReader(response.GetResponseStream());
-                string vals = reader.ReadToEnd();
-                foreach (string token in vals.Split('&'))
-                {
+    //        using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+    //        {
+    //            StreamReader reader = new StreamReader(response.GetResponseStream());
+    //            string vals = reader.ReadToEnd();
+    //            foreach (string token in vals.Split('&'))
+    //            {
 
-                    tokens.Add(token.Substring(0, token.IndexOf("=")), token.Substring(token.IndexOf("=") + 1, token.Length - token.IndexOf("=")));
-                }
-            }
-            string access_token = tokens["acces_token"];
+    //                tokens.Add(token.Substring(0, token.IndexOf("=")), token.Substring(token.IndexOf("=") + 1, token.Length - token.IndexOf("=")));
+    //            }
+    //        }
+    //        string access_token = tokens["acces_token"];
 
-            var client = new FacebookClient(access_token);
-            client.Post("/me/feed", new { message = "mensaje a publicar" });
+    //        var client = new FacebookClient(access_token);
+    //        client.Post("/me/feed", new { message = "mensaje a publicar" });
 
-        }
+    //    }
 
 
 
-    }
+    //}
 
 }
