@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/View/MasterAdministrador.master" AutoEventWireup="true" CodeFile="~/Controller/Administrador-idioma.aspx.cs" Inherits="View_Default" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -52,6 +53,9 @@
             <asp:Label ID="LB_idEli" runat="server" Visible="False"></asp:Label>
             <br />
             <asp:TextBox ID="TB_cont" runat="server"></asp:TextBox>
+             <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" _-`$'ñ" TargetControlID="TB_cont" />
+                <asp:RequiredFieldValidator ID="RFV_titulo" runat="server" ControlToValidate="TB_cont" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
+               
 &nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="BT_guardar" runat="server" OnClick="BT_guardar_Click" Text="Guardar" CssClass="btn btn-outline-success" />
 &nbsp;&nbsp;

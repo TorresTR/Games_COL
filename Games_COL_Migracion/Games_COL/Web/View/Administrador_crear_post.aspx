@@ -53,7 +53,7 @@
             <td>
                 <asp:TextBox ID="TB_titulo" runat="server" Width="307px" ValidationGroup="1"  onpaste = "return false;"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RFV_titulo" runat="server" ControlToValidate="TB_titulo" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
-    <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_titulo" />
+    <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_- `$'ñ" TargetControlID="TB_titulo" />
      
                 
             </td>

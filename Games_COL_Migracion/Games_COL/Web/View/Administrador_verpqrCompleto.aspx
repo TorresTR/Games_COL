@@ -84,7 +84,7 @@
                 <td class="auto-style2" colspan="2">
                     <asp:TextBox ID="TB_respuestapqr" runat="server" Height="79px"
                         TextMode="MultiLine" Width="344px" ValidationGroup="1" MaxLength="150"  onpaste = "return false;"></asp:TextBox>
-                    <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_respuestapqr" />
+                    <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" _-`$'ñ" TargetControlID="TB_respuestapqr" />
                      <asp:RequiredFieldValidator ID="RFV_respuesta" runat="server" ControlToValidate="TB_respuestapqr" ErrorMessage="*" 
                          ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                       

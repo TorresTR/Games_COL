@@ -33,7 +33,7 @@
             <td class="text-center" colspan="2">
                 <asp:TextBox ID="TB_reporte" runat="server" Height="166px" 
                     TextMode="MultiLine" Width="404px" ValidationGroup="1" MaxLength="60"  onpaste = "return false;"></asp:TextBox>
-                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_reporte" />
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" _-`$'ñ" TargetControlID="TB_reporte" />
       
      
                 <asp:RequiredFieldValidator ID="RFV_reportecontent" runat="server" ControlToValidate="TB_reporte" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>

@@ -26,7 +26,9 @@ public class S_filrado : System.Web.Services.WebService
     [WebMethod]
     public string HelloWorld()
     {
-        return "Hola a todos";
+        CKEditor.NET.CKEditorControlDesigner ck = new CKEditor.NET.CKEditorControlDesigner();
+
+        return "";
     }
     [WebMethod]
     public DataTable etiquetas()
@@ -41,6 +43,7 @@ public class S_filrado : System.Web.Services.WebService
         L_persistencia per = new L_persistencia();
         L_Usercs user = new L_Usercs();
         DataTable data = new DataTable();
+       
         switch (etiqueta)
         {
             case 2:

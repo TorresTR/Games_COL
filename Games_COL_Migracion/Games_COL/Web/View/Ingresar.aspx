@@ -35,7 +35,7 @@
             <td>
                 <asp:TextBox ID="TB_UserName" runat="server" CssClass="exampleInputPassword1" ValidationGroup="1" MaxLength="12" 
              onpaste = "return false;"></asp:TextBox>
-                 <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_UserName" />
+                 <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" _-`$'ñ" TargetControlID="TB_UserName" />
                 <asp:RequiredFieldValidator ID="RFV_username" runat="server" ControlToValidate="TB_UserName" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="validator_username" 
                     runat="server" ControlToValidate="TB_UserName" 
@@ -51,7 +51,7 @@
             <td>
                 <asp:TextBox ID="TB_Contraseña" runat="server" TextMode="Password" ValidationGroup="1" MaxLength="12" 
             onpaste = "return false;"></asp:TextBox>
-                 <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_Contraseña" />
+                 <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" _-`$'ñ" TargetControlID="TB_Contraseña" />
                 <asp:RequiredFieldValidator ID="RFV_Contraseña" runat="server" ControlToValidate="TB_Contraseña" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="Validator_contra" 
                     runat="server" ControlToValidate="TB_Contraseña"

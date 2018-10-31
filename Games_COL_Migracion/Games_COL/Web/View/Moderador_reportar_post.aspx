@@ -34,7 +34,7 @@
             <td class="text-center" colspan="2">
                 <asp:TextBox ID="TB_reporte" runat="server" Height="166px" TextMode="MultiLine" 
                     Width="404px" ValidationGroup="1" MaxLength="50"   onpaste = "return false;"></asp:TextBox>
-                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_reporte" />
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_ -`$'ñ" TargetControlID="TB_reporte" />
                
                 <asp:RegularExpressionValidator ID="REV_max" runat="server"
                     ControlToValidate="TB_reporte" 

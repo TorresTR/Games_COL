@@ -16,11 +16,11 @@
                 <asp:Label ID="LB_terminacion" runat="server" Text="Terminacion"></asp:Label>
                 <br />
                 <asp:TextBox ID="TB_idioma" runat="server"></asp:TextBox>
-                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_idioma" />
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_ -`$'ñ" TargetControlID="TB_idioma" />
 &nbsp;
                  <asp:RequiredFieldValidator ID="RFV_nombre0" runat="server" ControlToValidate="TB_idioma" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:TextBox ID="TB_terminacion" runat="server"></asp:TextBox>
-                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_terminacion" />
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" _-`$'ñ" TargetControlID="TB_terminacion" />
                  <asp:RequiredFieldValidator ID="RFV_nombre1" runat="server" ControlToValidate="TB_terminacion" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
 &nbsp;&nbsp;
                 <asp:Button ID="BT_agregar" runat="server" OnClick="BT_agregar_Click" Text="Agregar" CssClass="btn btn-outline-success" />
