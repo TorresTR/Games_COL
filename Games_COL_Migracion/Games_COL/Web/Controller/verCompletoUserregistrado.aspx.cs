@@ -58,6 +58,20 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         L_Usercs log = new L_Usercs();
         Dsql dac = new Dsql();
         L_persistencia logica = new L_persistencia();
+        U_Datos udato = new U_Datos();
+
+        try
+        {
+            udato.Sesion = Session["id"].ToString();
+            udato = log.validarCerrarsesion(udato);
+            udato.Sesion = Session["id"].ToString();
+        }
+        catch (Exception)
+        {
+
+            udato = log.validarCerrarsesion(udato);
+            Response.Redirect(udato.Link);
+        }
 
         int comparador_idpost = int.Parse(Session["parametro"].ToString());
         int comparador_iduser = int.Parse(Session["id"].ToString());

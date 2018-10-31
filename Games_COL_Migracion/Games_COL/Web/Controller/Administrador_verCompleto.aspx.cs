@@ -43,6 +43,21 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         Session["mensajes"] = compIdioma;
         compIdioma = Idio.hastableIdioma(info, compIdioma);
 
+        U_Datos udato = new U_Datos();
+
+        try
+        {
+            udato.Sesion = Session["id"].ToString();
+            udato = Idio.validarCerrarsesion(udato);
+            udato.Sesion = Session["id"].ToString();
+        }
+        catch (Exception)
+        {
+
+            udato = Idio.validarCerrarsesion(udato);
+            Response.Redirect(udato.Link);
+        }
+
 
         LB_titAutor.Text = compIdioma["LB_titAutor"].ToString();
         LB_titCont.Text = compIdioma["LB_titCont"].ToString();
@@ -55,7 +70,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         U_userCrearpost doc = new U_userCrearpost();
         L_Usercs log = new L_Usercs();
-        D_User dac = new D_User();
+        Dsql dac = new Dsql();
         Entity_puntuacion punto_per = new Entity_puntuacion();
         L_persistencia logica = new L_persistencia();
 
@@ -66,7 +81,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         DataTable regisval = log.ToDataTable(logica.obtenerPuntos(comparador_iduser));
 
         DataTable data = dac.ObtenerInteraccion(comparador_iduser);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        int inter = int.Parse(data.Rows[0]["interacciones"].ToString());
         U_Interaccion inte = new U_Interaccion();
         inte.Iteraccion = inter;
         inte = log.validarInteraccion(inte);
@@ -100,7 +115,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         int b = int.Parse(Session["id"].ToString());
         DataTable regis2 = per.obtenerUs(b);//agregar
         String x = regis2.Rows[0]["nick"].ToString();
-        String z = regis.Rows[0]["autor"].ToString();
+        String z = regis.Rows[0]["nick"].ToString();
 
 
         BT_reporte.Visible = true;

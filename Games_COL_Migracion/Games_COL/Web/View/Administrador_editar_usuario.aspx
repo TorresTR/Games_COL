@@ -26,7 +26,7 @@
           
             <td>
                 <asp:TextBox ID="TB_nombre" runat="server" ValidationGroup="1" MaxLength="30" onpaste = "return false;"></asp:TextBox>
-                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_ -`$'ñ" TargetControlID="TB_nombre" />
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" 'ñ" TargetControlID="TB_nombre" />
             
                         <asp:RequiredFieldValidator ID="RFV_nombre" runat="server" ControlToValidate="TB_nombre" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
             </td>
@@ -40,7 +40,7 @@
             </td>
             <td>
                 <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12" onpaste = "return false;"></asp:TextBox>
-                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_- `$'ñ" TargetControlID="TB_nick" />
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" 'ñ" TargetControlID="TB_nick" />
             
                         <asp:RequiredFieldValidator ID="RFV_nombre0" runat="server" ControlToValidate="TB_nick" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
             </td>
@@ -54,7 +54,7 @@
             </td>
             <td>
                 <asp:TextBox ID="TB_puntos" runat="server" ValidationGroup="1" MaxLength="5"  onpaste = "return false;"></asp:TextBox>
-                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_- `$'ñ" TargetControlID="TB_puntos" />
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" 'ñ" TargetControlID="TB_puntos" />
                  
             
                         <asp:RequiredFieldValidator ID="RFV_nombre1" runat="server" ControlToValidate="TB_puntos" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>

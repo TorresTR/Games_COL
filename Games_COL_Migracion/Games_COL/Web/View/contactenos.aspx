@@ -64,7 +64,7 @@
         <tr>
             <td class="auto-style4" colspan="2">
                 <asp:TextBox ID="TB_sugerencias" runat="server" Height="154px" TextMode="MultiLine" Width="381px" ValidationGroup="1" MaxLength="70"  onpaste = "return false;"></asp:TextBox>
-                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" _-`$'ñ" TargetControlID="TB_sugerencias" />
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" 'ñ" TargetControlID="TB_sugerencias" />
 
             </td>
         </tr>

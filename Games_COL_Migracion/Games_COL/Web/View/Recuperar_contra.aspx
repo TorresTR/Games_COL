@@ -26,7 +26,7 @@
             </td>
             <td>
                 <asp:TextBox ID="TB_digite_nueva_contraseña" runat="server" ValidationGroup="1" onpaste = "return false;"></asp:TextBox>
-                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_ -`$'ñ" TargetControlID="TB_digite_nueva_contraseña" />
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_ -ñ" TargetControlID="TB_digite_nueva_contraseña" />
                 <asp:RequiredFieldValidator ID="RFV_contra" runat="server" ControlToValidate="TB_digite_nueva_contraseña" 
                     ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 
@@ -38,7 +38,7 @@
             </td>
             <td>
                 <asp:TextBox ID="TB_repita_contraseña" runat="server" ValidationGroup="1"  onpaste = "return false;"></asp:TextBox>
-                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_ -`$'ñ" TargetControlID="TB_repita_contraseña" />
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_ -ñ" TargetControlID="TB_repita_contraseña" />
                 <asp:RequiredFieldValidator ID="RFV_repitaContra" runat="server" 
                     ErrorMessage="*" ControlToValidate="TB_repita_contraseña"  ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 

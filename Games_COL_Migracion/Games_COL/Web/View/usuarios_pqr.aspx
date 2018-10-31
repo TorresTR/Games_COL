@@ -57,12 +57,12 @@
             </td>
             <td>
                 <asp:TextBox ID="TB_asunto" runat="server" Width="261px" ValidationGroup="1" MaxLength="20" min="10"  onpaste = "return false;"></asp:TextBox>
-                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" _-`$'ñ" TargetControlID="TB_asunto" />
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" 'ñ" TargetControlID="TB_asunto" />
                 <asp:RequiredFieldValidator ID="RFV_asunto" runat="server" ControlToValidate="TB_asunto" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="validator_asunto" runat="server"
                     ControlToValidate="TB_asunto" 
                     ErrorMessage="*" 
-                    ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                    ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ñÑ']*$" ValidationGroup="1"></asp:RegularExpressionValidator>
             </td>
         </tr>
         <tr>
@@ -93,17 +93,17 @@
                 <asp:RegularExpressionValidator ID="REV_solicitud" runat="server"
                     ControlToValidate="TB_solicitud" 
                     ErrorMessage="*" 
-                    ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ¿?!¡ñÑ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                    ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ¿?!¡ñÑ']*$" ValidationGroup="1"></asp:RegularExpressionValidator>
                 <asp:RegularExpressionValidator ID="REV_max" runat="server"
                     ControlToValidate="TB_solicitud" 
                     ErrorMessage="*" 
-                    ForeColor="Red" ValidationExpression="^[\s\S]{0,150}$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                    ForeColor="Red" ValidationExpression="^[\s\S' ]{0,150}$" ValidationGroup="1"></asp:RegularExpressionValidator>
             </td>
         </tr>
         <tr>
             <td class="auto-style11" colspan="2">
                 <asp:TextBox ID="TB_solicitud" runat="server" Height="200px" TextMode="MultiLine" Width="500px" ValidationGroup="1" MaxLength="150"  onpaste = "return false;"></asp:TextBox>
-                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TB_solicitud" />
+                <cc1:filteredtextboxextender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" 'ñ¿?!¡" TargetControlID="TB_solicitud" />
 
             </td>
         </tr>

@@ -29,7 +29,7 @@
                         <asp:Label ID="LB_digiteNick" runat="server" Text="Digite su nick:"></asp:Label>
                         <asp:TextBox ID="TB_nick" runat="server" ValidationGroup="1" MaxLength="12"
                            onpaste = "return false;"></asp:TextBox>
-                        <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" _-`$'ñ" TargetControlID="TB_nick" />
+                        <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" 'ñ" TargetControlID="TB_nick" />
                        
                         <asp:RequiredFieldValidator ID="RFV_nick" runat="server" ControlToValidate="TB_nick" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                     </td>

@@ -30,6 +30,21 @@ public partial class View_Crear_post : System.Web.UI.Page
         DataTable info = Idio.traducir(id_pagina, idioma);
         L_persistencia per = new L_persistencia();//agregar
 
+        U_Datos udato = new U_Datos();
+
+        try
+        {
+            udato.Sesion = Session["id"].ToString();
+            udato = Idio.validarCerrarsesion(udato);
+            udato.Sesion = Session["id"].ToString();
+        }
+        catch (Exception)
+        {
+
+            udato = Idio.validarCerrarsesion(udato);
+            Response.Redirect(udato.Link);
+        }
+
         Hashtable compIdioma = new Hashtable();
         Session["mensajes"] = compIdioma;
         compIdioma = Idio.hastableIdioma(info, compIdioma);

@@ -16,7 +16,7 @@
         <tr>
             <td class="auto-style2">
                 
-                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id" AutoGenerateColumns="False" OnRowDataBound="GV_Idioma_RowDataBound" >
+                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id_pqr" AutoGenerateColumns="False" OnRowDataBound="GV_Idioma_RowDataBound" >
                                     <Columns>
                                         <asp:TemplateField HeaderText="Reportar">
                                             <HeaderTemplate>
@@ -25,7 +25,7 @@
                                             <ItemTemplate>
                                                 <asp:Button ID="BT_reportar" runat="server" Text="Ver Mas" CommandName="reportar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClick="BT_reportar_Click" CssClass="btn btn-outline-success"/>
                                                 <br />
-                                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>' Visible="False"></asp:Label>
+                                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("id_pqr") %>' Visible="False"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Autor">
@@ -33,7 +33,7 @@
                                                 <asp:Label ID="LB_titAutor" runat="server"></asp:Label>
                                             </HeaderTemplate>
                                             <ItemTemplate>
-                                                <asp:Label ID="LB_autor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                                <asp:Label ID="LB_autor" runat="server" Text='<%# Bind("usuario") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Solicitud">

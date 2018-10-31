@@ -112,14 +112,14 @@
                     <asp:Label ID="LB_comentar" runat="server" Text="Comentar:"></asp:Label>
                     <asp:TextBox ID="TB_comentarios" runat="server" Height="79px" TextMode="MultiLine" Width="224px" MaxLength="50" ValidationGroup="1"
                        onpaste = "return false;"></asp:TextBox>
-                    <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" _-`$'ñ" TargetControlID="TB_comentarios" />
+                    <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" 'ñ" TargetControlID="TB_comentarios" />
                      <asp:RequiredFieldValidator ID="RFV_comentar" runat="server" ControlToValidate="TB_comentarios" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                      <asp:RegularExpressionValidator ID="REV_max" runat="server"
                     ControlToValidate="TB_comentarios" 
                     ErrorMessage="*" 
                     ForeColor="Red" ValidationExpression="^[\s\S]{0,50}$" ValidationGroup="1"></asp:RegularExpressionValidator>
                      <asp:RegularExpressionValidator ID="validator_comentario" runat="server" ControlToValidate="TB_comentarios"
-                         ErrorMessage="*" ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ñÑ]*$"></asp:RegularExpressionValidator>
+                         ErrorMessage="*" ForeColor="Red" ValidationExpression="^[A-Za-z0-9 ñÑ']*$"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>

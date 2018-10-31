@@ -19,8 +19,7 @@ public partial class View_Moderador_crear_post : System.Web.UI.Page
 
         Response.Cache.SetNoStore();
         L_Usercs dac = new L_Usercs();
-        int b = int.Parse(Session["id"].ToString());
-        DataTable data = dac.obtenerInteraccion(b);
+
         U_Interaccion iter = new U_Interaccion();
         Int32 idioma = 1;
         Int32 id_pagina = 32;
@@ -37,6 +36,23 @@ public partial class View_Moderador_crear_post : System.Web.UI.Page
         DataTable info = Idio.traducir(id_pagina, idioma);
         L_persistencia per = new L_persistencia();//agregar
 
+        U_Datos udato = new U_Datos();
+
+        try
+        {
+            udato.Sesion = Session["id"].ToString();
+            udato = Idio.validarCerrarsesion(udato);
+            udato.Sesion = Session["id"].ToString();
+        }
+        catch (Exception)
+        {
+
+            udato = Idio.validarCerrarsesion(udato);
+            Response.Redirect(udato.Link);
+        }
+
+        int b = int.Parse(Session["id"].ToString());
+        DataTable data = dac.obtenerInteraccion(b);
         Hashtable compIdioma = new Hashtable();
         Session["mensajes"] = compIdioma;
         compIdioma = Idio.hastableIdioma(info, compIdioma);

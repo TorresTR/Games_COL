@@ -27,6 +27,20 @@ public partial class View_usuarios_ver_noticias : System.Web.UI.Page
 
         L_Usercs Idio = new L_Usercs();
         DataTable info = Idio.traducir(id_pagina, idioma);
+        U_Datos udato = new U_Datos();
+
+        try
+        {
+            udato.Sesion = Session["id"].ToString();
+            udato = Idio.validarCerrarsesion(udato);
+            udato.Sesion = Session["id"].ToString();
+        }
+        catch (Exception)
+        {
+
+            udato = Idio.validarCerrarsesion(udato);
+            Response.Redirect(udato.Link);
+        }
 
         Hashtable compIdioma = new Hashtable();
         Session["mensajes"] = compIdioma;

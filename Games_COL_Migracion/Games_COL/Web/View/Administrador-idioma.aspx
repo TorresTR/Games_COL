@@ -53,7 +53,7 @@
             <asp:Label ID="LB_idEli" runat="server" Visible="False"></asp:Label>
             <br />
             <asp:TextBox ID="TB_cont" runat="server"></asp:TextBox>
-             <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" _-`$'ñ" TargetControlID="TB_cont" />
+             <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" '_ñ" TargetControlID="TB_cont" />
                 <asp:RequiredFieldValidator ID="RFV_titulo" runat="server" ControlToValidate="TB_cont" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                
 &nbsp;&nbsp;&nbsp;&nbsp;
