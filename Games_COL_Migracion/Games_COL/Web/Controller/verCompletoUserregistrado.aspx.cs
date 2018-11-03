@@ -140,7 +140,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         datos = log.promedioPunt(punt);
         puntos = datos.PuntosA;
         num = datos.Nump;
-        tot = puntos / num;
+        tot = puntos ;
         LB_motrarPuntos.Text = tot.ToString();
 
         datos.Comentarios1 = dato;
@@ -174,7 +174,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
     protected void Bt_uno_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        D_User dac = new D_User();
+        Dsql dac = new Dsql();
         U_userCrearpost puntot = new U_userCrearpost();
 
         int b = int.Parse(Session["id"].ToString());
@@ -199,10 +199,10 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
-        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+        puntot.Autor1 = regis.Rows[0]["nick"].ToString();
 
         DataTable data = dac.ObtenerInteraccion(b);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        int inter = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         L_Usercs llamado = new L_Usercs();
 
@@ -265,7 +265,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
     protected void BT_dos_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        D_User dac = new D_User();
+        Dsql dac = new Dsql();
         U_userCrearpost puntot = new U_userCrearpost();
 
         int b = int.Parse(Session["id"].ToString());
@@ -290,10 +290,10 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
-        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+        puntot.Autor1 = regis.Rows[0]["nick"].ToString();
 
         DataTable data = dac.ObtenerInteraccion(b);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        int inter = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         L_Usercs llamado = new L_Usercs();
 
@@ -356,7 +356,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
     protected void BT_tres_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        D_User dac = new D_User();
+        Dsql dac = new Dsql();
         U_userCrearpost puntot = new U_userCrearpost();
 
         int b = int.Parse(Session["id"].ToString());
@@ -381,10 +381,10 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         DataTable regis2 = per.obtenerUs(b);//agregar;
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
-        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+        puntot.Autor1 = regis.Rows[0]["nick"].ToString();
 
         DataTable data = dac.ObtenerInteraccion(b);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        int inter = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         L_Usercs llamado = new L_Usercs();
 
@@ -447,7 +447,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
     protected void BT_cuatro_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        D_User dac = new D_User();
+        Dsql dac = new Dsql();
         U_userCrearpost puntot = new U_userCrearpost();
 
         int b = int.Parse(Session["id"].ToString());
@@ -472,10 +472,10 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
-        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+        puntot.Autor1 = regis.Rows[0]["nick"].ToString();
 
         DataTable data = dac.ObtenerInteraccion(b);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        int inter = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         L_Usercs llamado = new L_Usercs();
 
@@ -539,7 +539,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
     protected void BT_cinco_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        D_User dac = new D_User();
+        Dsql dac = new Dsql();
         U_userCrearpost puntot = new U_userCrearpost();
 
 
@@ -565,10 +565,10 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
-        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+        puntot.Autor1 = regis.Rows[0]["nick"].ToString();
 
         DataTable data = dac.ObtenerInteraccion(b);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        int inter = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         L_Usercs llamado = new L_Usercs();
 
@@ -661,7 +661,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         logica.insertarComenatrio(comentario);
 
         DataTable data =dac.ObtenerInteraccion(b);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        int inter = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         string mensaje = log.comentar(inter, coment );
         

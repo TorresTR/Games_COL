@@ -67,12 +67,12 @@ public partial class View_Moderador_editar_Noticia : System.Web.UI.Page
         L_persistencia per = new L_persistencia();//agregar
         Entity_noticias noti = new Entity_noticias();//agregar
 
-        post.Id = int.Parse(Session["parametro"].ToString());
+        post.Id = int.Parse(Session["IdRecogido"].ToString());
         post.Contenido1 = Ck_editar.Text.ToString();
 
-        DataTable data = dac.traerNoticia(int.Parse(Session["parametro"].ToString()));//agregar
+        DataTable data = dac.traerNoticia(int.Parse(Session["IdRecogido"].ToString()));//agregar
 
-        noti.Id_noticia = int.Parse(Session["parametro"].ToString());//agregar
+        noti.Id_noticia = int.Parse(Session["IdRecogido"].ToString());//agregar
         noti.Titulo = data.Rows[0]["titulo"].ToString();//agregar
         noti.Contenido = Ck_editar.Text.ToString();//agregar
         noti.Fecha = DateTime.Parse(data.Rows[0]["fecha"].ToString());//agregar

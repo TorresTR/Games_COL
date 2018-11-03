@@ -113,7 +113,7 @@ public partial class View_Moderador_crear_post : System.Web.UI.Page
 
         U_Interaccion iter = new U_Interaccion();
 
-        iter.Iteraccion = int.Parse(data.Rows[0]["id"].ToString());
+        iter.Iteraccion = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         iter = data_userPost.validarInteraccion(iter);
 

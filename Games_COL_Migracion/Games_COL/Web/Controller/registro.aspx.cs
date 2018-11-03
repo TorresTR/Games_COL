@@ -51,18 +51,27 @@ public partial class View_registro : System.Web.UI.Page
         B_volver.Text = compIdioma["B_volver"].ToString();
 
 
+        try
+        {
+            if (Session["band"].Equals(true))
+            {
+                TB_nombre.Text = Session["user_name"].ToString();
+                TB_email.Text = Session["correo"].ToString();
 
-        if (Session["band"].Equals(true))
-        {
-            TB_nombre.Text = Session["user_name"].ToString();
-            TB_email.Text = Session["correo"].ToString();
-           
+            }
+            else
+            {
+                TB_nombre.Text = "";
+                TB_email.Text = "";
+            }
         }
-        else
+        catch (Exception)
         {
+
             TB_nombre.Text = "";
             TB_email.Text = "";
         }
+       
         
 
 
@@ -74,18 +83,27 @@ public partial class View_registro : System.Web.UI.Page
         Entity_usuario dato = new Entity_usuario();
         L_persistencia log = new L_persistencia();
         ClientScriptManager cm = this.ClientScript;
-
-        if (Session["band"].Equals(true))
+        try
         {
-            dato.Nombre = Session["user_name"].ToString();
-            dato.Correo = Session["correo"].ToString();
-            Session["band"] = false;
+            if (Session["band"].Equals(true))
+            {
+                dato.Nombre = Session["user_name"].ToString();
+                dato.Correo = Session["correo"].ToString();
+                Session["band"] = false;
+            }
+            else
+            {
+                dato.Nombre = TB_nombre.Text.ToString();
+                dato.Correo = TB_email.Text.ToString();
+            }
         }
-        else
+        catch (Exception)
         {
-            dato.Nombre = TB_nombre.Text.ToString();            
+
+            dato.Nombre = TB_nombre.Text.ToString();
             dato.Correo = TB_email.Text.ToString();
         }
+       
         dato.Nick = TB_nick.Text.ToString();
         dato.Contra = TB_pass.Text.ToString();
         string Confirma = TB_confirmapass.Text.ToString();

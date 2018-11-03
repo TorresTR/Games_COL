@@ -137,7 +137,7 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         datos = log.promedioPunt(punt);
         puntos = datos.PuntosA;
         num = datos.Nump;
-        tot = puntos / num;
+        tot = puntos ;
         LB_motrarPuntos.Text = tot.ToString();
 
         datos.Comentarios1 = dato;
@@ -170,7 +170,7 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
     protected void Bt_uno_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        D_User dac = new D_User();
+        Dsql dac = new Dsql();
         U_userCrearpost puntot = new U_userCrearpost();
 
         int b = int.Parse(Session["id"].ToString());
@@ -195,10 +195,10 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
-        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+        puntot.Autor1 = regis.Rows[0]["nick"].ToString();
 
         DataTable data = dac.ObtenerInteraccion(b);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        int inter = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         L_Usercs llamado = new L_Usercs();
 
@@ -263,7 +263,7 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
     protected void BT_dos_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        D_User dac = new D_User();
+        Dsql dac = new Dsql();
         U_userCrearpost puntot = new U_userCrearpost();
 
         int b = int.Parse(Session["id"].ToString());
@@ -288,10 +288,10 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
-        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+        puntot.Autor1 = regis.Rows[0]["nick"].ToString();
 
         DataTable data = dac.ObtenerInteraccion(b);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        int inter = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         L_Usercs llamado = new L_Usercs();
 
@@ -356,7 +356,7 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
     protected void BT_tres_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        D_User dac = new D_User();
+        Dsql dac = new Dsql();
         U_userCrearpost puntot = new U_userCrearpost();
 
         int b = int.Parse(Session["id"].ToString());
@@ -381,10 +381,10 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
-        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+        puntot.Autor1 = regis.Rows[0]["nick"].ToString();
 
         DataTable data = dac.ObtenerInteraccion(b);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        int inter = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         L_Usercs llamado = new L_Usercs();
 
@@ -447,7 +447,7 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
     protected void BT_cuatro_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        D_User dac = new D_User();
+        Dsql dac = new Dsql();
         U_userCrearpost puntot = new U_userCrearpost();
 
         int b = int.Parse(Session["id"].ToString());
@@ -472,10 +472,10 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
-        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+        puntot.Autor1 = regis.Rows[0]["nick"].ToString();
 
         DataTable data = dac.ObtenerInteraccion(b);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        int inter = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         L_Usercs llamado = new L_Usercs();
 
@@ -538,7 +538,7 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
     protected void BT_cinco_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        D_User dac = new D_User();
+        Dsql dac = new Dsql();
         U_userCrearpost puntot = new U_userCrearpost();
 
         int b = int.Parse(Session["id"].ToString());
@@ -563,10 +563,10 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         DataTable regis2 = per.obtenerUs(b);//agregar
 
         puntot.Nick = regis2.Rows[0]["nick"].ToString();
-        puntot.Autor1 = regis.Rows[0]["autor"].ToString();
+        puntot.Autor1 = regis.Rows[0]["nick"].ToString();
 
         DataTable data = dac.ObtenerInteraccion(b);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        int inter = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         L_Usercs llamado = new L_Usercs();
 
@@ -633,7 +633,7 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
 
         L_Usercs log = new L_Usercs();
         U_comentarios coment = new U_comentarios();
-        D_User dac = new D_User();
+        Dsql dac = new Dsql();
         L_persistencia logica = new L_persistencia();
         Entity_comentarios comentario = new Entity_comentarios();
 
@@ -658,7 +658,7 @@ public partial class View_Moderador_verCompleto : System.Web.UI.Page
         logica.insertarComenatrio(comentario);
 
         DataTable data = dac.ObtenerInteraccion(b);
-        int inter = int.Parse(data.Rows[0]["id"].ToString());
+        int inter = int.Parse(data.Rows[0]["interacciones"].ToString());
 
         string mensaje = log.comentar(inter, coment);
 

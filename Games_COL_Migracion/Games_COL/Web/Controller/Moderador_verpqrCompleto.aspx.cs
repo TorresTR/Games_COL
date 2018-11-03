@@ -65,7 +65,7 @@ public partial class View_Moderador_verpqrCompleto : System.Web.UI.Page
 
 
         int b = int.Parse(Session["id"].ToString());
-        int q = int.Parse(Session["parametro"].ToString());
+        int q = int.Parse(Session["IdRecogido"].ToString());
         int a = 1;
         DataTable tabla = user.traerPQR(q);
 
