@@ -19,18 +19,24 @@
                 <asp:ScriptManager ID="ScriptManager1" runat="server">
                 </asp:ScriptManager>
                 <br />
-                <asp:DataList ID="DL_usuarios" runat="server" DataSourceID="ODS_usuarios" BorderColor="White" Font-Bold="True" Font-Italic="False" Font-Overline="False" 
-                    Font-Strikeout="False" Font-Underline="False" GridLines="Both" OnItemDataBound="DL_noticias_RowDataBound" OnSelectedIndexChanged="DL_usuarios_SelectedIndexChanged" >
+                <asp:DataList ID="DL_usuarios" runat="server" BorderColor="White" DataSourceID="ODS_usuarios" Font-Bold="True" Font-Italic="False" 
+                    Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" OnItemDataBound="DL_noticias_RowDataBound">
                     <ItemTemplate>
                         <table class="w-100">
-                            <caption> 
+                            <caption>
                                 <h1>
                                     <tr>
                                         <b>
                                         <td>
-                                            <asp:Label ID="LB_titNick" runat="server" Text="Nick:"></asp:Label>
-                                            <br />
+                                            <asp:Label ID="LB_titNombre" runat="server" Text="Nombre:"></asp:Label>
                                             <asp:Label ID="LB_id" runat="server" Text='<%# Eval("id") %>' Visible="False"></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="LB_nombre" runat="server" Text='<%# Bind("nombre") %>'></asp:Label>
+                                        </td>
+                                        <td>&nbsp;&nbsp;</td>
+                                        <td>
+                                            <asp:Label ID="LB_titNick" runat="server" Text="Nick:"></asp:Label>
                                         </td>
                                         </b>
                                         <td>
@@ -38,24 +44,33 @@
                                         </td>
                                         <td>&nbsp;&nbsp;</td>
                                         <b>
-                                        <td><b>
+                                        <td>
                                             <asp:Label ID="LB_titPuntos" runat="server" Text="Puntos:"></asp:Label>
-                                            </b></td>
+                                        </td>
                                         </b>
                                         <td>
                                             <asp:Label ID="LB_puntos" runat="server" Text='<%# Bind("puntos") %>'></asp:Label>
                                         </td>
                                         <td>&nbsp;</td>
                                         <b>
-                                        <td><b>
+                                        <td>
                                             <asp:Label ID="LB_titRango" runat="server" Text="Rango:"></asp:Label>
-                                            </b></td>
+                                        </td>
                                         </b>
                                         <td>
-                                            <asp:Label ID="LB_rango" runat="server" Text='<%# Bind("id_rol") %>'></asp:Label>
+                                            <%--<asp:Label ID="LB_rango" runat="server" Text='<%# Bind("tipo") %>'></asp:Label>--%>
+                                        </td>
+                                        <td>&nbsp; </td>
+                                        <td class="auto-style2">
+                                            <asp:Label ID="LB_titCorreo" runat="server" Text="Correo:"></asp:Label>
                                         </td>
                                         <td>
-                                            <asp:Button ID="BT_eliminar" runat="server" CssClass="btn btn-outline-warning" OnClick="BT_eliminar_Click" Text="Eliminar" />
+                                            <asp:Label ID="LB_correo" runat="server" Text='<%# Bind("correo") %>'></asp:Label>
+                                        </td>
+                                        <td>
+                                            &nbsp;</td>
+                                        <td>
+                                            <asp:Button ID="BT_eliminar" runat="server" CssClass="btn btn-outline-danger" OnClick="BT_eliminar_Click" Text="Eliminar" />
                                         </td>
                                         <caption>
                                             <h1></h1>
@@ -65,10 +80,27 @@
                                         </caption>
                                     </tr>
                                     <tr>
-                                        <td colspan="9">
+                                        <td colspan="14">
                                             <hr />
-                                        </td>
+                                            &nbsp; &nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
                                     </tr>
+                                    <caption>
+                                        <h1></h1>
+                                    </caption>
+                                    <caption>
+                                        <h1></h1>
+                                    </caption>
+                                    <caption>
+                                        <h1></h1>
+                                    </caption>
+                                    <caption>
+                                        <h1></h1>
+                                    </caption>
+                                    <caption>
+                                        <h1></h1>
+                                    </caption>
                                     <caption>
                                         <h1></h1>
                                     </caption>

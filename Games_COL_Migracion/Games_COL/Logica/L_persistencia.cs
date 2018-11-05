@@ -82,10 +82,12 @@ namespace Logica
 
         }
 
-        public List<Entity_usuario> obtenerUsuario()
+        public DataTable obtenerUsuario()
         {
             daoPost dao = new daoPost();
-            return dao.obtenerUsuario();
+            L_Usercs log = new L_Usercs();
+            DataTable dato = log.ToDataTable(dao.obtenerUsuario());
+            return dato;
         }
 
         public List<Entity_usuario> obtenerModerador()

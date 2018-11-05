@@ -300,7 +300,7 @@ namespace Datos
             using (var db = new Mapeo("usuario"))
             {
 
-                var a = db.noticas.ToList<Entity_noticias>().Where(x => x.Id_noticia.Equals(id));
+                var a = db.noticas.ToList<Entity_noticias>().Where(x => x.Autor.Equals(id));
                 return a.ToList<Entity_noticias>();
             }
         }

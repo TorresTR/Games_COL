@@ -46,7 +46,7 @@ public partial class View_Administrador_miNoticia : System.Web.UI.Page
 
         int dtr = int.Parse(dt.Rows[0]["id_noticia"].ToString());
 
-        DataTable data = dac.ToDataTable(per.obtenerMinoticia(dtr));
+        DataTable data = dac.ToDataTable(per.obtenerMinoticia(dato));
         GV_miPost.DataSource = data;
         GV_miPost.DataBind();
 
