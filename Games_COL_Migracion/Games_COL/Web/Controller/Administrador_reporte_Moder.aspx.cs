@@ -53,7 +53,7 @@ public partial class View_Administrador_reporte_Moder : System.Web.UI.Page
         InforR_administrador datos = new InforR_administrador();
         L_persistencia info = new L_persistencia();
         L_Usercs persona = new L_Usercs();
-        DataTable inter = persona.ToDataTable(info.obtenerReportModer());
+        DataTable inter = persona.listarModerAdmin();
         informacion = datos.Tables["Moderador"];
 
         persona.reporteAdministrador(inter, informacion);

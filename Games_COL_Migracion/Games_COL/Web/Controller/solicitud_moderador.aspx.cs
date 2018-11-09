@@ -14,7 +14,7 @@ using Persistencia_funciones;
 
 public partial class View_Default : System.Web.UI.Page
 {
-    D_User dao = new D_User();
+    Dsql dao = new Dsql();
     
     U_Datos datos = new U_Datos();
     string mensaje;

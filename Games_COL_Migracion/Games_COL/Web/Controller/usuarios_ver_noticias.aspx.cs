@@ -65,8 +65,7 @@ public partial class View_usuarios_ver_noticias : System.Web.UI.Page
         LB_verPost.Text = doc.Contenido1.ToString();
         LB_autor.Text = doc.Autor1.ToString();
 
-        GV_comentarios.DataSource = dac.obtenerComentario(x);
-        GV_comentarios.DataBind();
+
 
 
     }

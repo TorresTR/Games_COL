@@ -74,7 +74,7 @@ namespace Logica
         {
             DataTable prueba = new DataTable();
             Dsql pqr = new Dsql();
-            prueba = pqr.obtenerMipost(id,user);
+            prueba = pqr.obtenerMipost(id, user);
             return prueba;
         }
 
@@ -95,7 +95,7 @@ namespace Logica
 
             link.Link_observador = "Ingresar.aspx";
 
-            return link; 
+            return link;
         }
 
         public U_user cerrarse1(U_user datos)
@@ -120,7 +120,7 @@ namespace Logica
             {
                 llamado.Link = "Ingresar.aspx";
             }
-            
+
             return llamado;
         }
 
@@ -233,8 +233,8 @@ namespace Logica
             Dsql llamado = new Dsql();
 
 
-          DataTable dato = llamado.consultaUsuario(nick);
-           int id = int.Parse(dato.Rows[0]["id"].ToString());
+            DataTable dato = llamado.consultaUsuario(nick);
+            int id = int.Parse(dato.Rows[0]["id"].ToString());
             insertarSesion(id);
             return id;
 
@@ -247,9 +247,9 @@ namespace Logica
 
 
             DataTable dato = llamado.consultaUsuario(nick);
-            
+
             int id = int.Parse(dato.Rows[0]["id"].ToString());
-         
+
             return id;
 
 
@@ -264,7 +264,7 @@ namespace Logica
 
             DataTable dato = llamado.consultaUsuarioCorreo(correo);
 
-            
+
             return dato;
 
 
@@ -407,7 +407,7 @@ namespace Logica
                     log.insertarUsuario(datosu);
                     dato.Mensaje1 = "Usuario registrado con exito";
                     dato.Link = "Ingresar.aspx";
-                    
+
 
                 }
                 else
@@ -430,13 +430,13 @@ namespace Logica
         {
             Dsql dato = new Dsql();
             DataTable datos = dato.validarIdioma(c);
-             idioma(datos, c);
+            idioma(datos, c);
 
         }
-        public void idioma(DataTable dat,int c)
+        public void idioma(DataTable dat, int c)
         {
             Dsql datos = new Dsql();
-            int idi=0;
+            int idi = 0;
             if (int.Parse(dat.Rows[0]["id"].ToString()) > 0)
             {
                 idi = c;
@@ -444,7 +444,7 @@ namespace Logica
             }
             else
             {
-                
+
             }
 
         }
@@ -1344,6 +1344,36 @@ namespace Logica
             }
         }
 
+        public void insertarContacto(string correo, string sugerencia)
+        {
+            Dsql dao = new Dsql();
+            dao.insertarContacto(correo,sugerencia);
+        }
+
+        public DataView postPuntuados()
+        {
+            L_persistencia per = new L_persistencia();
+            L_Usercs user = new L_Usercs();
+            DataTable data =user.ToDataTable(per.obtenerPost());
+            DataView vista = new DataView(data);
+            vista.Sort = "puntos DESC";
+            return vista;
+        }
+
+        //public void MetodoBurbuja()
+        //{
+        //    int t;
+        //    for (int a = 1; a < vector.Length; a++)
+        //        for (int b = vector.Length - 1; b >= a; b--)
+        //        {
+        //            if (vector[b - 1] > vector[b])
+        //            {
+        //                t = vector[b - 1];
+        //                vector[b - 1] = vector[b];
+        //                vector[b] = t;
+        //            }
+        //        }
+        //}
 
         public DataTable Busqueda(string busqueda)
         {
@@ -1428,6 +1458,13 @@ namespace Logica
             DataTable datos = data.loggin(user);
             int id =consultaid(user.Nick);
             
+            return datos;
+        }
+        public DataTable validaWS(string nick, string pass)
+        {
+            Dsql data = new Dsql();
+            DataTable datos = data.logginws(nick,pass);
+
             return datos;
         }
 

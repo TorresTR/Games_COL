@@ -87,7 +87,12 @@
              onpaste = "return false;"></asp:TextBox>
                         <cc1:filteredtextboxextender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars=" ñ" TargetControlID="TB_nombre" />
                         <asp:RequiredFieldValidator ID="RFV_nombre" runat="server" ControlToValidate="TB_nombre" ErrorMessage="*" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
-                        
+                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
+                            runat="server" 
+                            ControlToValidate="TB_nombre" 
+                            ErrorMessage="*" 
+                            ForeColor="Red" 
+                            ValidationExpression="^[A-Za-z0-9_-ñÑ']*$" ValidationGroup="1"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>

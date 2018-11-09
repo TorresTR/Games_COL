@@ -44,11 +44,21 @@ public partial class View_Administrador_miNoticia : System.Web.UI.Page
         L_persistencia per = new L_persistencia();
         Entity_noticias not = new Entity_noticias();
 
-        int dtr = int.Parse(dt.Rows[0]["id_noticia"].ToString());
+        
 
-        DataTable data = dac.ToDataTable(per.obtenerMinoticia(dato));
-        GV_miPost.DataSource = data;
-        GV_miPost.DataBind();
+        try
+        {
+            int dtr = int.Parse(dt.Rows[0]["id_noticia"].ToString());
+            DataTable data = dac.ToDataTable(per.obtenerMinoticia(dato));
+            GV_miPost.DataSource = data;
+            GV_miPost.DataBind();
+        }
+        catch (Exception)
+        {
+
+            
+        }
+        
 
     }
 
@@ -82,15 +92,15 @@ public partial class View_Administrador_miNoticia : System.Web.UI.Page
     {
 
 
-        Button bt = (Button)sender;
-        TableCell tableCell = (TableCell)bt.Parent;
-        GridViewRow row = (GridViewRow)tableCell.Parent;
-        GV_miPost.SelectedIndex = row.RowIndex;
-        int fila = row.RowIndex;
-
-
+        //Button bt = (Button)sender;
+        //TableCell tableCell = (TableCell)bt.Parent;
+        //GridViewRow row = (GridViewRow)tableCell.Parent;
+        //GV_miPost.SelectedIndex = row.RowIndex;
+        //int fila = row.RowIndex;
         int b = int.Parse(Session["id"].ToString());
-        string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
+        Button bt = sender as Button;
+        GridViewRow grid = (GridViewRow)bt.NamingContainer;
+        string IdRecogido = ((Label)grid.FindControl("LB_id")).Text;
         Session["parametro"] = IdRecogido;
         U_user dat = new U_user();
         L_Usercs llamar = new L_Usercs();
@@ -110,17 +120,16 @@ public partial class View_Administrador_miNoticia : System.Web.UI.Page
     {
 
 
-        Button bt = (Button)sender;
-        TableCell tableCell = (TableCell)bt.Parent;
-        GridViewRow row = (GridViewRow)tableCell.Parent;
-        GV_miPost.SelectedIndex = row.RowIndex;
+       
         Entity_noticias noti = new Entity_noticias();//agregar
         L_persistencia per = new L_persistencia();//agregar
-        int fila = row.RowIndex;
+        
 
 
         int b = int.Parse(Session["id"].ToString());
-        string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
+        Button bt = sender as Button;
+        GridViewRow grid = (GridViewRow)bt.NamingContainer;
+        string IdRecogido = ((Label)grid.FindControl("LB_id")).Text;
         Session["IdRecogido"] = IdRecogido;
         int x = int.Parse(IdRecogido);
 

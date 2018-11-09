@@ -42,7 +42,7 @@ public partial class View_Administrador_reporteUser : System.Web.UI.Page
         catch (Exception)
         {
 
-            throw;
+           
         }
     }
 
@@ -55,10 +55,10 @@ public partial class View_Administrador_reporteUser : System.Web.UI.Page
 
         InforR_administrador datos = new InforR_administrador();
         L_Usercs persona = new L_Usercs();
-        DataTable inter = persona.ToDataTable(info.obtenerReporteuser());
+        DataTable inter = persona.listarUserAdmin();
         informacion = datos.Tables["User"];
 
-        DataTable intermedio = persona.ToDataTable(info.obtenerReporteuser());
+        //DataTable intermedio = persona.listarUserAdmin();
         persona.reporteAdministrador(inter, informacion);
 
 

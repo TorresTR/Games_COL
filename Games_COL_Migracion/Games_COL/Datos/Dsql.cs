@@ -2067,6 +2067,35 @@ namespace Datos
             return Usuario;
         }
 
+        public DataTable logginws(string nick, string pass)
+        {
+            DataTable Usuario = new DataTable();
+            SqlConnection conection = new SqlConnection(ConfigurationManager.ConnectionStrings["GamesColEntities"].ConnectionString);
+
+            try
+            {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("seguridad.f_loggin", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("@nick", SqlDbType.NVarChar).Value = nick;
+                dataAdapter.SelectCommand.Parameters.Add("@contra", SqlDbType.NVarChar).Value =pass;
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
+
+
         public DataTable validaBloqueo(int id)
         {
             DataTable Usuario = new DataTable();
@@ -2513,6 +2542,36 @@ namespace Datos
                 dataAdapter.SelectCommand.Parameters.Add("@id_user", SqlDbType.Int).Value = datos.Id_user;
                 dataAdapter.SelectCommand.Parameters.Add("@interacciones", SqlDbType.Int).Value = datos.Interaccion;
                 dataAdapter.SelectCommand.Parameters.Add("@fecha", SqlDbType.Date).Value = datos.Fecha;
+
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                conection.Open();
+                dataAdapter.Fill(Documentos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Documentos;
+        }
+
+        public DataTable insertarContacto(string correo,string sugerencia)
+        {
+            DataTable Documentos = new DataTable();
+            SqlConnection conection = new SqlConnection(ConfigurationManager.ConnectionStrings["GamesColEntities"].ConnectionString);
+
+            try
+            {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_insertar_Contacto", conection);
+                dataAdapter.SelectCommand.Parameters.Add("@correo", SqlDbType.NVarChar).Value = correo;
+                dataAdapter.SelectCommand.Parameters.Add("@sugerencia", SqlDbType.NVarChar).Value = sugerencia;
 
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 

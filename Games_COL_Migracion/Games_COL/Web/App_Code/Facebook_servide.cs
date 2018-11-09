@@ -91,5 +91,60 @@ public class Facebook_servide : System.Web.Services.WebService
 
         return data;
     }
-    
+
+    [WebMethod]
+    public DataSet loggin(string nick, string contraseña)
+    {
+        L_Usercs per = new L_Usercs();
+        DataTable dato = new DataTable();
+        DataSet dt = new DataSet();
+        dato = per.validaWS(nick,contraseña);
+        dt.Tables.Add(dato);
+        return dt;
+    }
+
+    [WebMethod]
+    public DataSet buscador(string titulo)
+    {
+        L_Usercs per = new L_Usercs();
+        DataTable dato = new DataTable();
+        DataSet dt = new DataSet();
+        dato = per.Busqueda(titulo);
+        dt.Tables.Add(dato);
+        return dt;
+    }
+
+
+    [WebMethod]
+    public string contactenos(string correo,string sugerencia)
+    {
+        L_Usercs per = new L_Usercs();
+        per.insertarContacto(correo,sugerencia);
+        return "Contacto enviado!";
+        
+    }
+
+    [WebMethod]
+    public DataTable noticias()
+    {
+        L_persistencia per = new L_persistencia();
+        L_Usercs user = new L_Usercs();
+        DataTable dato = new DataTable();
+        dato=user.ToDataTable( per.obtenerNoticia());
+        return dato;
+
+    }
+
+    [WebMethod]
+    public DataTable postMas()
+    {
+        L_persistencia per = new L_persistencia();
+        L_Usercs user = new L_Usercs();
+        DataView dato = new DataView();
+        dato = user.postPuntuados();
+        DataTable dat = dato.ToTable();
+        return dat;
+
+    }
+
 }

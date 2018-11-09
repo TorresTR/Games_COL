@@ -118,7 +118,7 @@ public partial class View_registro : System.Web.UI.Page
 
         Session["band"] = false;
         Entity_usuario us = new Entity_usuario();
-        us.Nombre = Session["id"].ToString();
+        us.Nombre = TB_nombre.Text.ToString();
         object segurity = new object();
         segurity = dato;
         string schema = "usuario";

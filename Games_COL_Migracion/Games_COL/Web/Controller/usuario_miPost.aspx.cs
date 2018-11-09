@@ -45,11 +45,17 @@ public partial class View_usuario_miPost : System.Web.UI.Page
 
         mio.Id_mipost = dato;
 
-        L_persistencia log = new L_persistencia();
-        //log.obtenerMiPost(mio.Id_mipost, dato);
-        DataTable data = dac.ToDataTable(log.obtenerMiPost(dato));
-        GV_miPost.DataSource = data;
-        GV_miPost.DataBind();
+        try
+        {
+            L_persistencia log = new L_persistencia();//agregar
+            DataTable data = dac.ToDataTable(log.obtenerMiPost(dato));//agregar
+            GV_miPost.DataSource = data;//agregar
+            GV_miPost.DataBind();
+        }
+        catch (Exception)
+        {
+
+        }
 
         try
         {
@@ -62,7 +68,7 @@ public partial class View_usuario_miPost : System.Web.UI.Page
         catch (Exception)
         {
 
-            throw;
+            
         }
     }
 

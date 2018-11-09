@@ -40,11 +40,18 @@ public partial class View_Administrador_miPost : System.Web.UI.Page
         int dato = int.Parse(Session["id"].ToString());
 
         mio.Id_mipost = dato;
+        try
+        {
+            L_persistencia log = new L_persistencia();//agregar
+            DataTable data = dac.ToDataTable(log.obtenerMiPost(dato));//agregar
+            GV_miPost.DataSource = data;//agregar
+            GV_miPost.DataBind();
+        }
+        catch (Exception)
+        {
 
-        L_persistencia log = new L_persistencia();//agregar
-        DataTable data = dac.ToDataTable(log.obtenerMiPost(dato));//agregar
-        GV_miPost.DataSource = data;//agregar
-        GV_miPost.DataBind();
+        }
+        
     }
 
     protected void GV_miPost_RowDataBound(object sender, GridViewRowEventArgs e)

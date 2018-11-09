@@ -43,9 +43,17 @@ public partial class View_Moderador_miPost : System.Web.UI.Page
 
         mio.Id_mipost = dato;
 
-        L_persistencia log = new L_persistencia();//agregar
-        DataTable data = dac.ToDataTable(log.obtenerMiPost(dato));//agregar
-        GV_miPost.DataSource = data;//agregar
+        try
+        {
+            L_persistencia log = new L_persistencia();//agregar
+            DataTable data = dac.ToDataTable(log.obtenerMiPost(dato));//agregar
+            GV_miPost.DataSource = data;//agregar
+            GV_miPost.DataBind();
+        }
+        catch (Exception)
+        {
+
+        }
 
     }
 

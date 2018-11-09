@@ -231,6 +231,7 @@ namespace Datos
             }
         }
 
+       
         public List<Entity_contacto> obtenerContactos()
         {
             using (var db = new Mapeo("usuario"))

@@ -114,8 +114,18 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
 
         int b = int.Parse(Session["id"].ToString());
         DataTable regis2 = per.obtenerUs(b);//agregar
-        String x = regis2.Rows[0]["nick"].ToString();
-        String z = regis.Rows[0]["nick"].ToString();
+        string x, z;
+        try
+        {
+            x = regis2.Rows[0]["nick"].ToString();
+            z = regis.Rows[0]["nick"].ToString();
+        }
+        catch (Exception)
+        {
+
+            x = regis2.Rows[0]["nick"].ToString();
+            z = "";
+        }
 
 
         BT_reporte.Visible = true;
@@ -714,16 +724,12 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
     protected void BT_reportar_Click(object sender, EventArgs e)
     {
 
-        Button bt = (Button)sender;
-        TableCell tableCell = (TableCell)bt.Parent;
-        GridViewRow row = (GridViewRow)tableCell.Parent;
-        GV_comentariosuser.SelectedIndex = row.RowIndex;
-        int fila = row.RowIndex;
+        Button bt = sender as Button;
+        GridViewRow grid = (GridViewRow)bt.NamingContainer;
+        string IdRecogido = ((Label)grid.FindControl("Label1")).Text;
 
-        string IdRecogido = ((Label)row.Cells[fila].FindControl("Label1")).Text;
 
-        
-       
+
         Session["IdRecogido"] = IdRecogido;
         
 
