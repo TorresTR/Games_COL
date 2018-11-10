@@ -21,6 +21,7 @@ using System.Data;
 public class Facebook_servide : System.Web.Services.WebService
 {
 
+
     public Facebook_servide()
     {
 
@@ -28,6 +29,11 @@ public class Facebook_servide : System.Web.Services.WebService
         //InitializeComponent(); 
     }
 
+    [WebMethod]
+    public void accedefacebook()
+    {
+
+    }
 
 
     [WebMethod]

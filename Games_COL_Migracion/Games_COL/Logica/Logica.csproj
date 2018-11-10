@@ -61,6 +61,7 @@
     <Compile Include="L_logicaEncriptado.cs" />
     <Compile Include="L_mac.cs" />
     <Compile Include="L_persistencia.cs" />
+    <Compile Include="l_sw.cs" />
     <Compile Include="L_Usercs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
