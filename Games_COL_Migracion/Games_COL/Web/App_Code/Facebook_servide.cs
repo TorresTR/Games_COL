@@ -21,6 +21,7 @@ using System.Data;
 public class Facebook_servide : System.Web.Services.WebService
 {
 
+    public ServiceToken SoapHeader;
 
     public Facebook_servide()
     {
@@ -35,31 +36,79 @@ public class Facebook_servide : System.Web.Services.WebService
 
     }
 
-
     [WebMethod]
-    public void accedefacebook()
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
+    public string AutenticacionCliente()
     {
-        
+        try
+        {
+            if (SoapHeader == null)
+            {
+                return "-1";
+            }
+            if (!SoapHeader.blCredencialesValidas(SoapHeader.sToken))
+            {
+                return "-1";
+            }
+
+            string stToken = Guid.NewGuid().ToString();
+
+            HttpRuntime.Cache.Add(stToken,
+                SoapHeader.sToken,
+                null,
+                System.Web.Caching.Cache.NoAbsoluteExpiration,
+                TimeSpan.FromDays(2),
+                System.Web.Caching.CacheItemPriority.NotRemovable,
+                null);
+
+            return stToken;
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
     }
+
 
     [WebMethod]
     public DataTable etiquetas()
     {
-        L_persistencia per = new L_persistencia();
-        DataTable dato = per.obtenerEtiquetas();
-        return dato;
+       
+            L_persistencia per = new L_persistencia();
+            DataTable dato = per.obtenerEtiquetas();
+            return dato;
+       
+       
     }
     [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
     public DataTable postpc()
     {
-        L_persistencia per = new L_persistencia();
-        L_Usercs user = new L_Usercs();
-        DataTable data = new DataTable();
+        try
+        {
+            if (SoapHeader == null)
+            {
+                throw new Exception("Requiere validacion");
+            }
+            if (!SoapHeader.blCredencialesValidas(SoapHeader))
+            {
+                throw new Exception("Requiere validacion");
+            }
+            L_persistencia per = new L_persistencia();
+            L_Usercs user = new L_Usercs();
+            DataTable data = new DataTable();
       
-        data = user.ToDataTable(per.obtenerPostpc());
+            data = user.ToDataTable(per.obtenerPostpc());
              
         
-        return data;
+            return data;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
     }
     [WebMethod]
     public DataTable postxbox()

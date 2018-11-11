@@ -13,9 +13,14 @@ public class ServiceToken : System.Web.Services.Protocols.SoapHeader
     {
         try
         {
-            l_sw log = new l_sw();
-            bool valida = log.valida(sToken);
-            return valida;
+            if (sToken == DateTime.Now .ToString("yyyyMMdd"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         catch (Exception ex)
         {
@@ -27,11 +32,15 @@ public class ServiceToken : System.Web.Services.Protocols.SoapHeader
     {
         try
         {
-            object soap =SoapHeader;
-            bool soh = string.IsNullOrEmpty(SoapHeader.AutenticacionToken);
-            object http = HttpRuntime.Cache[SoapHeader.AutenticacionToken];
-            bool val=true;
-            return val;
+            if (SoapHeader == null)
+            {
+                return false;
+            }
+            if (!string.IsNullOrEmpty(SoapHeader.AutenticacionToken))
+            {
+                return (HttpRuntime.Cache[SoapHeader.AutenticacionToken] != null);
+            }
+            return false;
         }
         catch (Exception ex)
         {

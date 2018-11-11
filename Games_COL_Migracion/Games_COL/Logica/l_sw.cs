@@ -36,7 +36,8 @@ namespace Logica
                 }
             }
             return false;
-        }
+        }//validasoap
 
-    }
+
+    }//class
 }
