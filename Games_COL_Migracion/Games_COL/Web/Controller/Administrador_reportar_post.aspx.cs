@@ -94,9 +94,25 @@ public partial class View_Default : System.Web.UI.Page
         post.Estado_bloqueo = 2;//AGREGAR
         post.Num_puntos = int.Parse(dato.Rows[0]["num_puntos"].ToString());//AGREGAR
 
+        Entity_usuario us = new Entity_usuario();
+        object segurity = new object();
+        segurity = reporte;
+        string schema = "usuario";
+        string tabla = "reporte_post";
+        per.auditoriaInsertar(segurity, us, schema, tabla);
+
         per.insertarReportePost(report);//agregar
-       // envio.insertarPostaReportar(reporte);
-       per.actualizarBloqueoPost(post);//AGREGAR
+                                        // envio.insertarPostaReportar(reporte);
+
+        object objOld = new object();
+        objOld = dato;
+        object objNew = new object();
+        objNew = post;
+        string table = "post";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaModificar(objNew, objOld, us, schema, table);
+
+        per.actualizarBloqueoPost(post);//AGREGAR
        // envio.bloquear_Post(b);
 
         L_Usercs data = new L_Usercs();

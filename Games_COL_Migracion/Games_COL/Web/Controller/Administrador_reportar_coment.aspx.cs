@@ -81,6 +81,15 @@ public partial class View_Default : System.Web.UI.Page
         coment_rep.Fecha = dt;
         coment_rep.Id_user = u;
 
+
+        Entity_usuario us = new Entity_usuario();
+        object segurity = new object();
+        segurity = coment_rep;
+        string schema = "usuario";
+        string tabla = "reporte_comentarios";
+        per.auditoriaInsertar(segurity, us, schema, tabla);
+
+
         per.insertarReportecomentar(coment_rep);
 
         DataTable com = envio.obtenerComentariofinal(b);
@@ -92,6 +101,15 @@ public partial class View_Default : System.Web.UI.Page
         coment.Comentario= com.Rows[0]["comentario"].ToString();
         coment.Estado = 2;
         //envio.bloquearComent(b);
+
+        object objOld = new object();
+        objOld = regis;
+        object objNew = new object();
+        objNew = coment;
+        string table = "comentarios";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaModificar(objNew, objOld, us, schema, table);
+
         per.actualizarComentario(coment);
 
         string ID = Session["parametro"].ToString();

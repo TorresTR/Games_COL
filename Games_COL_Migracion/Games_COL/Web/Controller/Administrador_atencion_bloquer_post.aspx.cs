@@ -115,7 +115,16 @@ public partial class View_Administrador_atencion_bloquer_post : System.Web.UI.Pa
 
         //dac.actualizarmoderPostreportado(h, b, x,z);
 
+        Entity_usuario us = new Entity_usuario();
+        object obj = new object();
+        obj = est;
+        string schema = "usuario";
+        string tabla = "post";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaEliminar(obj, us, schema, tabla);
+
         per.borrarActualizar(est);
+
         per.borrarPost(pot);
 
 

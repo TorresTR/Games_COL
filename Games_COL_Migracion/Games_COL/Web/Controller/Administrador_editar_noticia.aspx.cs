@@ -84,6 +84,17 @@ public partial class View_Administrador_editar_noticia : System.Web.UI.Page
         noti.Fecha = DateTime.Parse(data.Rows[0]["fecha"].ToString());//agregar
         noti.Autor = int.Parse(data.Rows[0]["autor"].ToString());//agregar
 
+  
+        object objOld = new object();
+        objOld = data;
+        object objNew = new object();
+        objNew = noti;
+        string schema = "usuario";
+        string tabla = "noticia";
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaModificar(objNew, objOld, us, schema, tabla);
+
         per.actualizarMiNoticia(noti);//agregar
 
 

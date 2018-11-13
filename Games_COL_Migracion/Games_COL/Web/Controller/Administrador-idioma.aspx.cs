@@ -128,6 +128,14 @@ public partial class View_Default : System.Web.UI.Page
         U_user datos = new U_user();
         U_Datos val = new U_Datos();
 
+        L_persistencia per = new L_persistencia();
+        Entity_usuario us = new Entity_usuario();
+        object obj = new object();
+        obj = dato;
+        string schema = "idioma";
+        string tabla = "idiomas";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaEliminar(obj, us, schema, tabla);
         datos.Session = Session.SessionID;
         datos = dac.cerrarse(datos);
 
@@ -151,7 +159,19 @@ public partial class View_Default : System.Web.UI.Page
 
         int id = int.Parse(LB_id.Text);
         string cont = TB_cont.Text;
-
+        Entity_idioma_agregar idioma = new Entity_idioma_agregar();
+        idioma.Id = id;
+        idioma.Contenido = cont;
+        L_persistencia per = new L_persistencia();
+        object objOld = new object();
+        objOld = idioma;
+        object objNew = new object();
+        objNew = idioma;
+        string schema = "idioma";
+        string tabla = "idiomas";
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaModificar(objNew, objOld, us, schema, tabla);
         log.editarCont(id,cont);
 
         TB_cont.Text = "";

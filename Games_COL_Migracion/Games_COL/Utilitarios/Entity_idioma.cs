@@ -28,8 +28,7 @@ namespace Utilitarios
         [Column("estado")]
         public int Estado { get => estado; set => estado = value; }
 
-        public virtual Entity_controlesIdioma contidio { get; set; }
-        public virtual Entiry_formularioIdioma formu { get; set; }
+
     }
 
     

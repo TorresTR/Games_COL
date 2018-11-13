@@ -1615,7 +1615,7 @@ namespace Logica
             }
             else
             {
-
+                
                 rol = 0;
                 link = sesion(rol, 0);
                 return link;
@@ -1828,6 +1828,7 @@ namespace Logica
             }
             else
             {
+                inter.Mensaje = "Bienvenido";
                 inter.Contador = inter.Contador + 1;
                 inter.Estado = true;
             }

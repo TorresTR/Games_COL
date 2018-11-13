@@ -91,6 +91,22 @@ public partial class View_Default : System.Web.UI.Page
         user.Fecha_interaccion = DateTime.Parse(dato.Rows[0]["fecha_interaccion"].ToString());
 
         U_user dat = new U_user();
+        int a = int.Parse(Session["parametro"].ToString());
+        L_persistencia per = new L_persistencia();
+        DataTable regis = dac.ToDataTable(per.obtenerUser(a));
+        U_Datos moder = dac.datosModerador(regis);
+
+
+        object objOld = new object();
+        objOld = moder;
+        object objNew = new object();
+        objNew = user;
+        string schema = "usuario";
+        string tabla = "usuario";
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaModificar(objNew, objOld, us, schema, tabla);
+
         log.actualizarUsuario(user);
         //dac.actualizarUser(user);
         dat = dac.listadoUser();

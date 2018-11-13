@@ -78,6 +78,7 @@ public partial class View_Default : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
         U_Datos user = new U_Datos();
         int b = int.Parse(Session["userid"].ToString());
+        int a = int.Parse(Session["parametro"].ToString());
 
         user.Id = int.Parse(LB_id.Text.ToString());
         user.Nombre = TB_nombre.Text.ToString();
@@ -86,6 +87,21 @@ public partial class View_Default : System.Web.UI.Page
         user.Rango = int.Parse(DDL_rango.SelectedValue.ToString());
         user.Correo = TB_correo.Text.ToString();
         U_user dat = new U_user();
+
+        L_persistencia per = new L_persistencia();
+        DataTable regis = dac.ToDataTable(per.obtenerUser(a));
+        U_Datos moder = dac.datosModerador(regis);
+
+        
+        object objOld = new object();
+        objOld = moder;
+        object objNew = new object();
+        objNew = user;
+        string schema = "usuario";
+        string tabla = "usuario";
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaModificar(objNew, objOld, us, schema, tabla);
 
         dac.actualizarUser(user);
         dat = dac.listadoUser();

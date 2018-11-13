@@ -156,13 +156,21 @@ public partial class View_Default : System.Web.UI.Page
 
             L_persistencia per = new L_persistencia();
             L_Usercs log = new L_Usercs();
+
+            Entity_usuario us = new Entity_usuario();
+            object segurity = new object();
+            segurity = contro;
+            string schema = "idioma";
+            string tabla = "controles";
+            per.auditoriaInsertar(segurity, us, schema, tabla);
+
             per.insertarControlTraducido(contro);
             int i = int.Parse(LB_idIdioma.Text);
             log.comparaIdioma(i);
         }
         catch
         {
-            ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Seleccione un control valido');", true);
+            Response.Write("<Script Language='JavaScript'>parent.alert('Seleccione un control valido');</Script>");
         }
         
         LB_cont.Text = "";

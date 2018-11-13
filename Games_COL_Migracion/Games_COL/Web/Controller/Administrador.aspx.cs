@@ -202,6 +202,7 @@ public partial class View_Administrador : System.Web.UI.Page
 
         LB_busq.Visible = dat.Estado;
         LB_busq.Text = dat.Mensaje_Alertaobservador1;
+        Response.Write("<Script Language='JavaScript'>parent.alert('"+ dat.Mensaje_Alertaobservador1 + "');</Script>");
     }
 
     protected void BT_verNoticas_Click(object sender, EventArgs e)

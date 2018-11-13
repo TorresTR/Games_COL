@@ -196,6 +196,16 @@ public partial class View_Administrador_listado_user : System.Web.UI.Page
         user.Interacciones = int.Parse(dato.Rows[0]["interacciones"].ToString());
         user.Fecha_interaccion = DateTime.Parse(dato.Rows[0]["fecha_interaccion"].ToString());
 
+
+        L_persistencia per = new L_persistencia();
+        Entity_usuario us = new Entity_usuario();
+        object obj = new object();
+        obj = user;
+        string schema = "usuario";
+        string tabla = "usuario";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaEliminar(obj, us, schema, tabla);
+
         log.borrarUsuario(user);
 
 

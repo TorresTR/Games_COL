@@ -83,7 +83,8 @@ public partial class View_Crear_post : System.Web.UI.Page
             BT_guardar.Visible = iter.Estado;
             BT_vistaPrevia.Visible = iter.Estado;
             LB_mensaje.Text = iter.Mensaje;
-        
+        Response.Write("<Script Language='JavaScript'>parent.alert('" + iter.Mensaje + "');</Script>");
+
     }
 
     protected void BT_vistaPrevia_Click(object sender, EventArgs e)

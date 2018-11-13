@@ -124,6 +124,15 @@ public partial class View_Administrador_miPost : System.Web.UI.Page
 
         dato.Id_mipost = x;
 
+        L_persistencia per = new L_persistencia();
+        Entity_usuario us = new Entity_usuario();
+        object obj = new object();
+        obj = dato;
+        string schema = "usuario";
+        string tabla = "post";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaEliminar(obj, us, schema, tabla);
+
         dac.eliminarMipost(dato);
 
 

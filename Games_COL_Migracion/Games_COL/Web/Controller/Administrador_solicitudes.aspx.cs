@@ -102,8 +102,14 @@ public partial class View_Default : System.Web.UI.Page
         int h = int.Parse(ID);
 
         sol.Id = int.Parse(ID);
-        
 
+        Entity_usuario us = new Entity_usuario();
+        object obj = new object();
+        obj = sol;
+        string schema = "usuario";
+        string tabla = "solicitud";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaEliminar(obj, us, schema, tabla);
         per.borrarSolicitud(sol);
         //dato.ignorarAscenso(h);
         

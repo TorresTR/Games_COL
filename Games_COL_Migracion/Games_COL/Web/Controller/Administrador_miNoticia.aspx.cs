@@ -135,6 +135,16 @@ public partial class View_Administrador_miNoticia : System.Web.UI.Page
 
         L_Usercs dac = new L_Usercs();
         noti.Id_noticia = x;//agregar
+
+
+        Entity_usuario us = new Entity_usuario();
+        object obj = new object();
+        obj = noti;
+        string schema = "usuario";
+        string tabla = "noticia";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaEliminar(obj, us, schema, tabla);
+
         per.borrarNoticia(noti);//agregar
         //dac.eliminarminoticia(x);
 

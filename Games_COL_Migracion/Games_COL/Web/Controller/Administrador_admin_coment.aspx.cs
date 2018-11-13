@@ -11,6 +11,7 @@ using Utilitarios;
 
 public partial class View_Administrador_admin_coment : System.Web.UI.Page
 {
+    string mensaje;
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
@@ -34,7 +35,7 @@ public partial class View_Administrador_admin_coment : System.Web.UI.Page
         compIdioma = Idio.hastableIdioma(info, compIdioma);
 
 
-        LB_mensaje.Text = compIdioma["LB_mensaje"].ToString();
+        mensaje = compIdioma["LB_mensaje"].ToString();
         DL_coment.DataBind();
         Bt_volver.Text = compIdioma["BT_volver"].ToString();
 
@@ -85,11 +86,27 @@ public partial class View_Administrador_admin_coment : System.Web.UI.Page
         coment.Id_user = int.Parse(com.Rows[0]["id_user"].ToString());
         coment.Estado = 3;
 
+        object objOld = new object();
+        objOld = com;
+        object objNew = new object();
+        objNew = coment;
+        string schema = "usuario";
+        string tabla = "comentarios";
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["id"].ToString();
+        logica.auditoriaModificar(objNew, objOld, us, schema, tabla);
+
         logica.actualizarComentario(coment);
 
 
+        object obj = new object();
+        obj = com;
+        us.Nombre = Session["id"].ToString();
+        string table = "reporte_comentarios";
+        logica.auditoriaEliminar(obj, us, schema, table);
+
         dato.eliminarComent(h);
-        LB_mensaje.Text = "Comentario Bloqueado";
+        Response.Write("<Script Language='JavaScript'>parent.alert('"+mensaje+"');</Script>");
 
         U_user dat = dato.administrarComentario();
 

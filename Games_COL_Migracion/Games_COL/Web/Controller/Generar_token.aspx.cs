@@ -56,8 +56,9 @@ public partial class View_Generar_token : System.Web.UI.Page
         System.Data.DataTable validez = log.genera(valida);
         string mensaje = log.Token(validez,mensaje1,mensaje2,mensaje3);
         
-        L_error.Text =mensaje;
-        
+        //L_error.Text =mensaje;
+        Response.Write("<Script Language='JavaScript'>parent.alert('" + mensaje + "');</Script>");
+
 
     }
 

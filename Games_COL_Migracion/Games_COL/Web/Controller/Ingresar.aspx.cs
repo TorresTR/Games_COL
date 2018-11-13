@@ -101,7 +101,7 @@ public partial class View_Default : System.Web.UI.Page
         }
         if (Request.QueryString["error"] == "access_denied")
         {
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "alert('Access denied.')", true);
+            Response.Write("<Script Language='JavaScript'>parent.alert('Access denied');</Script>");
         }
 
 
@@ -111,7 +111,7 @@ public partial class View_Default : System.Web.UI.Page
         {
             if (Request.QueryString["error"] == "access_denied")
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('User has denied access.')", true);
+                Response.Write("<Script Language='JavaScript'>parent.alert('User has denied access.');</Script>");
                 return;
             }
 
@@ -209,10 +209,11 @@ public partial class View_Default : System.Web.UI.Page
             link = user.loggin(registros, a, usuario.Nick, id);
 
             L_error.Text = link.Mensaje_Alertaobservador1;
+            Response.Write("<Script Language='JavaScript'>parent.alert('" + link.Mensaje_Alertaobservador1 + "');</Script>");
         }
         catch (Exception)
         {
-
+            Response.Write("<Script Language='JavaScript'>parent.alert('Usuario y/o contraseña incorrecta');</Script>");
             Response.Redirect("Ingresar.aspx");
         }
             
