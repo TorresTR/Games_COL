@@ -283,6 +283,7 @@ public class Facebook_servide : System.Web.Services.WebService
     }
 
     [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
     public DataTable noticias()
     {
         try
