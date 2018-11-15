@@ -86,6 +86,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
 
         
         LB_mensaje.Text = inte.Mensaje;
+        Response.Write("<Script Language='JavaScript'>parent.alert('" + inte.Mensaje + "');</Script>");
         TB_comentarios.Visible = inte.Estado;
         LB_comentar.Visible = inte.Estado;
         BT_comentar.Visible = inte.Estado;
@@ -231,6 +232,15 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         Entity_puntuacion pun = new Entity_puntuacion();//agregar
         pun.Id_usuario = b;//agregar
         pun.Id_post = z;//agregar
+
+        Entity_usuario usw = new Entity_usuario();
+        usw.Nombre = Session["id"].ToString();
+        object segurity = new object();
+        segurity = pun;
+        string schema = "usuario";
+        string tabla = "puntuacion";
+        per.auditoriaInsertar(segurity, usw, schema, tabla);
+
         per.insertarPuntuacion(pun);//agregar
         x = x + 1;
 
@@ -255,6 +265,14 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         user_ent.Session = datat.Rows[0]["session"].ToString();
         user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
+
+        object objOld = new object();
+        objOld = datat;
+        object objNew = new object();
+        objNew = user_ent;
+        string table = "usuario";
+        per.auditoriaModificar(objNew, objOld, usw, schema, table);
 
         per.actualizarUsuario(user_ent);
         //dac.actualizarpuntoUser(b, x);
@@ -322,6 +340,15 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         Entity_puntuacion pun = new  Entity_puntuacion();//agregar
         pun.Id_usuario = b;//agregar
         pun.Id_post = z;//agregar
+
+        Entity_usuario usw = new Entity_usuario();
+        usw.Nombre = Session["id"].ToString();
+        object segurity = new object();
+        segurity = pun;
+        string schema = "usuario";
+        string tabla = "puntuacion";
+        per.auditoriaInsertar(segurity, usw, schema, tabla);
+
         per.insertarPuntuacion(pun);//agregar
         x = x + 1;
 
@@ -346,6 +373,13 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         user_ent.Session = datat.Rows[0]["session"].ToString();
         user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
+        object objOld = new object();
+        objOld = datat;
+        object objNew = new object();
+        objNew = user_ent;
+        string table = "usuario";
+        per.auditoriaModificar(objNew, objOld, usw, schema, table);
 
         per.actualizarUsuario(user_ent);
         //dac.actualizarpuntoUser(b, x);
@@ -413,6 +447,15 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         Entity_puntuacion pun = new Entity_puntuacion();//agregar
         pun.Id_usuario = b;//agregar
         pun.Id_post = z;//agregar
+
+        Entity_usuario usw = new Entity_usuario();
+        usw.Nombre = Session["id"].ToString();
+        object segurity = new object();
+        segurity = pun;
+        string schema = "usuario";
+        string tabla = "puntuacion";
+        per.auditoriaInsertar(segurity, usw, schema, tabla);
+
         per.insertarPuntuacion(pun);//agregar
         x = x + 1;
 
@@ -437,6 +480,13 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         user_ent.Session = datat.Rows[0]["session"].ToString();
         user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
+        object objOld = new object();
+        objOld = datat;
+        object objNew = new object();
+        objNew = user_ent;
+        string table = "usuario";
+        per.auditoriaModificar(objNew, objOld, usw, schema, table);
 
         per.actualizarUsuario(user_ent);
         //dac.actualizarpuntoUser(b, x);
@@ -504,6 +554,15 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         Entity_puntuacion pun = new Entity_puntuacion();//agregar
         pun.Id_usuario = b;//agregar
         pun.Id_post = z;//agregar
+
+        Entity_usuario usw = new Entity_usuario();
+        usw.Nombre = Session["id"].ToString();
+        object segurity = new object();
+        segurity = pun;
+        string schema = "usuario";
+        string tabla = "puntuacion";
+        per.auditoriaInsertar(segurity, usw, schema, tabla);
+
         per.insertarPuntuacion(pun);//agregar
         x = x + 1;
 
@@ -528,6 +587,13 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         user_ent.Session = datat.Rows[0]["session"].ToString();
         user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
+        object objOld = new object();
+        objOld = datat;
+        object objNew = new object();
+        objNew = user_ent;
+        string table = "usuario";
+        per.auditoriaModificar(objNew, objOld, usw, schema, table);
 
         per.actualizarUsuario(user_ent);
         //dac.actualizarpuntoUser(b, x);
@@ -597,6 +663,15 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         Entity_puntuacion pun = new Entity_puntuacion();//agregar
         pun.Id_usuario = b;//agregar
         pun.Id_post = z;//agregar
+
+        Entity_usuario usw = new Entity_usuario();
+        usw.Nombre = Session["id"].ToString();
+        object segurity = new object();
+        segurity = pun;
+        string schema = "usuario";
+        string tabla = "puntuacion";
+        per.auditoriaInsertar(segurity, usw, schema, tabla);
+
         per.insertarPuntuacion(pun);//agregar
         x = x + 1;
 
@@ -620,6 +695,13 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         user_ent.Session = datat.Rows[0]["session"].ToString();
         user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
+        object objOld = new object();
+        objOld = datat;
+        object objNew = new object();
+        objNew = user_ent;
+        string table = "usuario";
+        per.auditoriaModificar(objNew, objOld, usw, schema, table);
 
         per.actualizarUsuario(user_ent);
         //dac.actualizarpuntoUser(b, x);

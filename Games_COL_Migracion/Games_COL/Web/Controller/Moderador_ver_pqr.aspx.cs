@@ -102,6 +102,15 @@ public partial class View_Moderador_ver_pqr : System.Web.UI.Page
         pqr.Id_pqr = id;
 
         ent.Id_pqr = id;
+
+        Entity_usuario us = new Entity_usuario();
+        object obj = new object();
+        obj = ent;
+        string schema = "usuario";
+        string tabla = "pqr";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaEliminar(obj, us, schema, tabla);
+
         per.borrarPQR(ent);
         //user.ignorarpqr(pqr);
         Response.Redirect("Moderador_ver_pqr.aspx");

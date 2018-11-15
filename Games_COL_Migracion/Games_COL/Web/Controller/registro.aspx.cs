@@ -59,17 +59,12 @@ public partial class View_registro : System.Web.UI.Page
                 TB_email.Text = Session["correo"].ToString();
 
             }
-            else
-            {
-                TB_nombre.Text = "";
-                TB_email.Text = "";
-            }
+           
         }
         catch (Exception)
         {
 
-            TB_nombre.Text = "";
-            TB_email.Text = "";
+           
         }
        
         

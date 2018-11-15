@@ -82,10 +82,11 @@ public partial class View_Default : System.Web.UI.Page
         sol.Puntos = int.Parse(validez.Rows[0]["puntos"].ToString());
         sol.Fecha= DateTime.Now;
 
-        U_Interaccion inter = per.insertarSolicitud(sol, validez, mensaje, mensaje2); 
+        U_Interaccion inter = per.insertarSolicitud(sol, validez, mensaje, mensaje2);
 
         //log.solicitudModer(datos, validez, mensaje, mensaje2);
-        LB_mensaje.Text = inter.Mensaje;
+        Response.Write("<Script Language='JavaScript'>parent.alert('" + inter.Mensaje + "');</Script>");
+        //LB_mensaje.Text = inter.Mensaje;
         B_solicitud.Visible = inter.Estado;
        
         

@@ -220,7 +220,8 @@ public partial class View_Observador : System.Web.UI.Page
         dat = lugar.busquedaMensaje(dato);
         
         LB_resulbusq.Visible = dat.Estado;
-        LB_resulbusq.Text = dat.Mensaje_Alertaobservador1;
+        Response.Write("<Script Language='JavaScript'>parent.alert('" + dat.Mensaje_Alertaobservador1 + "');</Script>");
+//        LB_resulbusq.Text = dat.Mensaje_Alertaobservador1;
 
 
     }

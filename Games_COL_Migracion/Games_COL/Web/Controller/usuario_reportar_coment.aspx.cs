@@ -102,6 +102,14 @@ public partial class View_Default : System.Web.UI.Page
         comenta.Comentario = com.Rows[0]["comentario"].ToString();
         comenta.Estado = 2;
         //envio.bloquearComent(b);
+        object objOld = new object();
+        objOld = com;
+        object objNew = new object();
+        objNew = comenta;
+        string table = "comentarios";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaModificar(objNew, objOld, us, schema, table);
+
         per.actualizarComentario(comenta);
 
         string ID = Session["parametro"].ToString();

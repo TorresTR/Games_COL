@@ -156,7 +156,7 @@ public partial class View_Moderador_crear_post : System.Web.UI.Page
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
 
         per.actualizarUsuario(user_ent);
-
+        
         //data_userPost.actualizarpuntoUser(b, x);
         per.insertarPost(datos_creartPost);
 

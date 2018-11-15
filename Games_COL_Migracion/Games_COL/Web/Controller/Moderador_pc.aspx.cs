@@ -195,7 +195,8 @@ public partial class View_Moderador_pc : System.Web.UI.Page
         dat = lugar.busquedaMensaje1(dato,mensaje1,mensaje2);
 
         LB_busq.Visible = dat.Estado;
-        LB_busq.Text = dat.Mensaje_Alertaobservador1;
+        Response.Write("<Script Language='JavaScript'>parent.alert('" + dat.Mensaje_Alertaobservador1 + "');</Script>");
+        //LB_busq.Text = dat.Mensaje_Alertaobservador1;
 
 
     }

@@ -106,7 +106,16 @@ public partial class View_usuarios_reportar_post : System.Web.UI.Page
         per.auditoriaInsertar(segurity, us, schema, tabla);
 
         per.insertarReportePost(report);//agregar
-        //envio.insertarPostaReportar(reporte);
+                                        //envio.insertarPostaReportar(reporte);
+
+        object objOld = new object();
+        objOld = dato;
+        object objNew = new object();
+        objNew = post;
+        string table = "post";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaModificar(objNew, objOld, us, schema, table);
+
         per.actualizarBloqueoPost(post);//AGREGAR
        // envio.bloquear_Post(b);
 

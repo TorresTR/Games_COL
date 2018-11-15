@@ -88,6 +88,18 @@ public partial class View_Moderador_verpqrCompleto : System.Web.UI.Page
         ent.Fecha_respuesta = dt;
         ent.Estado_respuesta = 1;
 
+
+        L_persistencia per = new L_persistencia();
+        object objOld = new object();
+        objOld = tabla;
+        object objNew = new object();
+        objNew = ent;
+        string schema = "usuario";
+        string table = "pqr";
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaModificar(objNew, objOld, us, schema, table);
+
         pqr.actualizarPQR(ent);
         string par = q.ToString();
         string ui = b.ToString();

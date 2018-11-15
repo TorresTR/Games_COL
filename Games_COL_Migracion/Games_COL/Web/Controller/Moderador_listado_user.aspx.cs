@@ -95,16 +95,26 @@ public partial class View_Default : System.Web.UI.Page
         Label lblid = (Label)item.FindControl("LB_id");
         string ID = lblid.Text;
         int h = int.Parse(ID);
-
-
-        int b = int.Parse(Session["id"].ToString());
-
-
-
         L_Usercs dac = new L_Usercs();
         U_user data = new U_user();
-       
-       
+
+        int b = int.Parse(Session["id"].ToString());
+        DataTable dato = dac.obtenerUsuario(h);
+
+
+        
+
+        L_persistencia per = new L_persistencia();
+        Entity_usuario us = new Entity_usuario();
+
+        object obj = new object();
+        obj = dato;
+        string schema = "usuario";
+        string tabla = "usuario";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaEliminar(obj, us, schema, tabla);
+
+
         dac.eliminarUsermoderador(h);
 
       

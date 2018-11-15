@@ -75,6 +75,15 @@ public partial class View_Default : System.Web.UI.Page
         eUser.Pass = TB_digite_nueva_contraseña.Text;
 
         token.Id_usuario = int.Parse(Session["id"].ToString());
+
+        Entity_usuario us = new Entity_usuario();
+        object obj = new object();
+        obj = token;
+        string schema = "usuario";
+        string tabla = "token_recuperacon_user";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaEliminar(obj, us, schema, tabla);
+
         per.borrarRecuperarcontra(token);
         //user.contraseña(eUser);
 
@@ -93,9 +102,17 @@ public partial class View_Default : System.Web.UI.Page
         user_ent.Interacciones = int.Parse(data.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(data.Rows[0]["fecha_interaccion"].ToString());
 
-        per.actualizarUsuario(user_ent);
+        object objOld = new object();
+        objOld = data;
+        object objNew = new object();
+        objNew = user_ent;
+        string table = "usuario";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaModificar(objNew, objOld, us, schema, table);
 
-        LB_mensaje.Text = "Su Contraseña ha sido actualizada";
+        per.actualizarUsuario(user_ent);
+        Response.Write("<Script Language='JavaScript'>parent.alert('Su Contraseña ha sido actualizada');</Script>");
+        //LB_mensaje.Text = "Su Contraseña ha sido actualizada";
         
     }
 }

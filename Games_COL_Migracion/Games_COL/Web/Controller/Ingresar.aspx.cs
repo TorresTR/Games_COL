@@ -213,7 +213,7 @@ public partial class View_Default : System.Web.UI.Page
         }
         catch (Exception)
         {
-            Response.Write("<Script Language='JavaScript'>parent.alert('Usuario y/o contraseña incorrecta');</Script>");
+            Response.Write("<Script type='text/javascript'>alert('Usuario y/o contraseña incorrecta');</Script>");
             Response.Redirect("Ingresar.aspx");
         }
             

@@ -12,8 +12,10 @@ using Utilitarios;
 
 public partial class View_Default : System.Web.UI.Page
 {
+    string mensaje;
     protected void Page_Load(object sender, EventArgs e)
     {
+        
         Response.Cache.SetNoStore();
         Int32 idioma = 1;
         Int32 id_pagina = 29;
@@ -33,7 +35,7 @@ public partial class View_Default : System.Web.UI.Page
         Session["mensajes"] = compIdioma;
         compIdioma = Idio.hastableIdioma(info, compIdioma);
 
-
+        mensaje = compIdioma["LB_mensaje"].ToString();
         Bt_volver.Text = compIdioma["BT_volver"].ToString();
         DL_coment.DataBind();
     }
@@ -91,9 +93,21 @@ public partial class View_Default : System.Web.UI.Page
         coment.Id_user = int.Parse(com.Rows[0]["id_user"].ToString());
         coment.Estado = 3;
 
+        object objOld = new object();
+        objOld = com;
+        object objNew = new object();
+        objNew = coment;
+        string schema = "usuario";
+        string tabla = "comentarios";
+        Entity_usuario us = new Entity_usuario();
+        us.Nombre = Session["id"].ToString();
+        logica.auditoriaModificar(objNew, objOld, us, schema, tabla);
+
         logica.actualizarComentario(coment);
 
         dato.eliminarComent(h);
+
+        Response.Write("<Script Language='JavaScript'>parent.alert('" + mensaje + "');</Script>");
 
         U_user data = new U_user();
         L_Usercs llamado = new L_Usercs();

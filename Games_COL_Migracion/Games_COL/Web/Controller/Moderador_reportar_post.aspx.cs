@@ -109,6 +109,15 @@ public partial class View_Default : System.Web.UI.Page
         per.insertarReportePost(report);//agregar
 
         //envio.insertarPostaReportar(reporte);
+
+        object objOld = new object();
+        objOld = dato;
+        object objNew = new object();
+        objNew = post;
+        string table = "post";
+        us.Nombre = Session["id"].ToString();
+        per.auditoriaModificar(objNew, objOld, us, schema, table);
+
         per.actualizarBloqueoPost(post);//AGREGAR
         //envio.bloquear_Post(b);
 
