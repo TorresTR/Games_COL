@@ -202,4 +202,9 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
     {
         Response.Redirect("Administrador-idioma.aspx");
     }
+
+    protected void BT_invitar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Administrador_SWcolegio.aspx");
+    }
 }

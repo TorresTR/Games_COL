@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AutenticacionUsuario">
+        <s:complexType />
+      </s:element>
+      <s:element name="AutenticacionUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AutenticacionUsuarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="clsSeguridadOnce" type="tns:clsSeguridadOnce" />
+      <s:complexType name="clsSeguridadOnce">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="stToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AutenticacionToken" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="Datospersonales">
+        <s:complexType />
+      </s:element>
+      <s:element name="DatospersonalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DatospersonalesResult" type="tns:ArrayOfDatosPersonalesEstOnceVista" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDatosPersonalesEstOnceVista">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DatosPersonalesEstOnceVista" nillable="true" type="tns:DatosPersonalesEstOnceVista" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DatosPersonalesEstOnceVista">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AutenticacionUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:AutenticacionUsuario" />
+  </wsdl:message>
+  <wsdl:message name="AutenticacionUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:AutenticacionUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="AutenticacionUsuarioclsSeguridadOnce">
+    <wsdl:part name="clsSeguridadOnce" element="tns:clsSeguridadOnce" />
+  </wsdl:message>
+  <wsdl:message name="DatospersonalesSoapIn">
+    <wsdl:part name="parameters" element="tns:Datospersonales" />
+  </wsdl:message>
+  <wsdl:message name="DatospersonalesSoapOut">
+    <wsdl:part name="parameters" element="tns:DatospersonalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DatospersonalesclsSeguridadOnce">
+    <wsdl:part name="clsSeguridadOnce" element="tns:clsSeguridadOnce" />
+  </wsdl:message>
+  <wsdl:portType name="WSEstudiantesOnceSoap">
+    <wsdl:operation name="AutenticacionUsuario">
+      <wsdl:input message="tns:AutenticacionUsuarioSoapIn" />
+      <wsdl:output message="tns:AutenticacionUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Datospersonales">
+      <wsdl:input message="tns:DatospersonalesSoapIn" />
+      <wsdl:output message="tns:DatospersonalesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSEstudiantesOnceSoap" type="tns:WSEstudiantesOnceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AutenticacionUsuario">
+      <soap:operation soapAction="http://tempuri.org/AutenticacionUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AutenticacionUsuarioclsSeguridadOnce" part="clsSeguridadOnce" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Datospersonales">
+      <soap:operation soapAction="http://tempuri.org/Datospersonales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DatospersonalesclsSeguridadOnce" part="clsSeguridadOnce" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSEstudiantesOnceSoap12" type="tns:WSEstudiantesOnceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AutenticacionUsuario">
+      <soap12:operation soapAction="http://tempuri.org/AutenticacionUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AutenticacionUsuarioclsSeguridadOnce" part="clsSeguridadOnce" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Datospersonales">
+      <soap12:operation soapAction="http://tempuri.org/Datospersonales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DatospersonalesclsSeguridadOnce" part="clsSeguridadOnce" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSEstudiantesOnce">
+    <wsdl:port name="WSEstudiantesOnceSoap" binding="tns:WSEstudiantesOnceSoap">
+      <soap:address location="http://colegio-leon.ddns.net/WebServices/WSEstudiantesOnce.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WSEstudiantesOnceSoap12" binding="tns:WSEstudiantesOnceSoap12">
+      <soap12:address location="http://colegio-leon.ddns.net/WebServices/WSEstudiantesOnce.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -145,7 +145,41 @@
     <asp:ObjectDataSource ID="ODS_datauser" runat="server" SelectMethod="obtenerPost" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
             </td>
             <td>
-                &nbsp;</td>
+                <asp:GridView ID="GVSW_oferta" runat="server" AutoGenerateColumns="False">
+                    <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Image ID="Image2" runat="server" Height="100px" ImageUrl="<%# Bind('imagen') %>" Width="100px" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Button ID="BT_ir" runat="server" OnClick="BT_ir_Click" Text="visitalos" CssClass="btn btn-outline-warning" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Label ID="LB_nombre" runat="server" Text="<%# Bind('nombre') %>"></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Label ID="LB_desc" runat="server" Text="<%# Bind('descripcion') %>"></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                $<asp:Label ID="LB_precio" runat="server" Text="<%# Bind('precio') %>"></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                -<asp:Label ID="LB_oferta" runat="server" Text="<%# Bind('oferta') %>"></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </td>
         </tr>
 </table>
 </asp:Content>

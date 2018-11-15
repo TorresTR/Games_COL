@@ -2277,7 +2277,7 @@ namespace Logica
                 D_correo correo = new D_correo();
 
 
-                String mensaje = "su link de acceso es: " + "http://18.222.174.227/View/Recuperar_contra.aspx?" + userToken;
+                String mensaje = "su link de acceso es: " + "http://gamescol.ddns.net/View/Recuperar_contra.aspx?" + userToken;
                 correo.enviarCorreo(token.Correo, userToken, mensaje);
 
                 men = r1;

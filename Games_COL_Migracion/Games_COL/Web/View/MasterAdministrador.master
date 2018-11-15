@@ -15,7 +15,7 @@
         }
     </style>
 </head>
-  <%--  <script type="text/javascript">
+<%--  <script type="text/javascript">
 
        
         window.onbeforeunload = comfirmExit;
@@ -50,6 +50,7 @@
               <asp:Button ID="BT_crear_noticia" runat="server" Text="Crear Noticia" class="btn btn-secondary" OnClick="BT_crear_noticia_Click"/>
               <asp:Button ID="BT_mi_noticia" runat="server" Text="Mi noticia" class="btn btn-secondary" OnClick="BT_mi_noticia_Click"/>
               <asp:Button ID="BT_idioma" runat="server" OnClick="BT_idioma_Click" class="btn btn-secondary"  Text="Idioma" />
+              <asp:Button ID="BT_invitar" runat="server"  class="btn btn-secondary"  Text="Invitar" OnClick="BT_invitar_Click" />
           </p>
           <table class="w-100">
               <tr>

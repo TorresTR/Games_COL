@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
+using Newtonsoft.Json;
 using Utilitarios;
 
 public partial class View_Moderador : System.Web.UI.Page
@@ -40,6 +41,35 @@ public partial class View_Moderador : System.Web.UI.Page
         DL_noticias.DataBind();
         DL_post.DataBind();
         DL_resultado.DataBind();
+
+
+        try
+        {
+            ServicioPlatoweb.ServiciosSoapClient men = new ServicioPlatoweb.ServiciosSoapClient();
+            //men.ClientCredentials.UserName.UserName = "";
+
+            ServicioPlatoweb.Seguridad obSeguridad = new ServicioPlatoweb.Seguridad()
+            {
+                stToken = DateTime.Now.ToString("yyyyMMdd")
+            };
+
+            String StToken = men.AutenticationUsuario(obSeguridad);
+            if (StToken.Equals("-1")) throw new Exception("Requiere Validacion");
+
+            obSeguridad.AutenticationToken = StToken;
+
+            String ofertas = men.Ofertas(obSeguridad);
+
+            DataTable ofer = JsonConvert.DeserializeObject<DataTable>(ofertas);
+            GVSW_oferta.DataSource = ofer;
+            GVSW_oferta.DataBind();
+        }
+        catch (Exception ex)
+        {
+            Response.Write("<Script language='JavaScript'>parent.alert('" + ex.Message + "');</Script>");
+        }
+
+
     }
 
     protected void DL_noticias_RowDataBound(object sender, DataListItemEventArgs e)
@@ -223,5 +253,10 @@ public partial class View_Moderador : System.Web.UI.Page
         Response.Redirect(envioObservador.Link_observador );
     }
 
-    
+
+
+    protected void BT_ir_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("http://platoweb.ddns.net/View/Inicio.aspx");
+    }
 }

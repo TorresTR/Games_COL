@@ -111,6 +111,7 @@ public class Facebook_servide : System.Web.Services.WebService
             }
     }
     [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
     public DataTable postxbox()
     {
         try
@@ -141,6 +142,7 @@ public class Facebook_servide : System.Web.Services.WebService
         
     }
     [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
     public DataTable postps()
     {
         try
@@ -170,6 +172,7 @@ public class Facebook_servide : System.Web.Services.WebService
         }
     }
     [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
     public DataTable postandroid()
     {
         try
@@ -200,6 +203,7 @@ public class Facebook_servide : System.Web.Services.WebService
     }
 
     [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
     public DataSet loggin(string nick, string contraseña)
     {
         try
@@ -228,6 +232,7 @@ public class Facebook_servide : System.Web.Services.WebService
     }
 
     [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
     public DataSet buscador(string titulo)
     {
         try
@@ -257,6 +262,7 @@ public class Facebook_servide : System.Web.Services.WebService
 
 
     [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
     public string contactenos(string correo,string sugerencia)
     {
         try
@@ -312,6 +318,7 @@ public class Facebook_servide : System.Web.Services.WebService
     }
 
     [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
     public DataTable postMas()
     {
         try

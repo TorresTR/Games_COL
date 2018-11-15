@@ -13,7 +13,12 @@ public class ServiceToken : System.Web.Services.Protocols.SoapHeader
     {
         try
         {
-            if (sToken == DateTime.Now .ToString("yyyyMMdd"))
+            l_sw val = new l_sw();
+
+            int dat = val.llave(sToken);
+
+           
+            if (dat == 1)
             {
                 return true;
             }

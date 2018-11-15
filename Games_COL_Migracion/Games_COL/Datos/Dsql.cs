@@ -13,8 +13,34 @@ namespace Datos
 {
     public class Dsql
     {
+        public DataTable comparaLlave(string llave)
+        {
+            DataTable Usuario = new DataTable();
+            SqlConnection conection = new SqlConnection(ConfigurationManager.ConnectionStrings["GamesColEntities"].ConnectionString);
 
-       
+            try
+            {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("seguridad.f_validar_llave", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("@llave", SqlDbType.Text).Value = llave;
+
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
+
 
         public DataTable comparaerror(int id)
         {

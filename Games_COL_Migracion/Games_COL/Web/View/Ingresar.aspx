@@ -82,9 +82,9 @@
         </tr>
         <tr>
             <td class="auto-style8">
-                <asp:Button ID="BT_gmail" runat="server" OnClick="BT_gmail_Click" Text="Login con Gmail" />
+                <asp:Button ID="BT_gmail" runat="server" OnClick="BT_gmail_Click" Text="Login con Gmail" CssClass="btn btn-outline-success" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="btnLogin" runat="server" OnClick="Login" Text="Login with FaceBook" />
+                <asp:Button ID="btnLogin" runat="server" OnClick="Login" Text="Login with FaceBook" CssClass="btn btn-outline-success" />
                 <asp:Panel ID="pnlFaceBookUser" runat="server" Visible="false">
 <hr />
                     <table>
