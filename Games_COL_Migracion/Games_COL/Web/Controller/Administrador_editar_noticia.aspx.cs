@@ -72,11 +72,20 @@ public partial class View_Administrador_editar_noticia : System.Web.UI.Page
         U_user link = new U_user();
         L_persistencia per = new L_persistencia();//agregar
         Entity_noticias noti = new Entity_noticias();//agregar
+        Entity_noticias noti2 = new Entity_noticias();//agregar
 
         post.Id = int.Parse(Session["parametro"].ToString());
         post.Contenido1 = Ck_editar.Text.ToString();
 
         DataTable data = dac.traerNoticia(int.Parse(Session["parametro"].ToString()));//agregar
+
+        noti2.Id_noticia = int.Parse(Session["parametro"].ToString());
+        noti2.Titulo = data.Rows[0]["titulo"].ToString();//agregar
+        noti2.Contenido = data.Rows[0]["contenido"].ToString();
+        noti2.Fecha = DateTime.Parse(data.Rows[0]["fecha"].ToString());//agregar
+        noti2.Autor = int.Parse(data.Rows[0]["autor"].ToString());//agregar
+
+
 
         noti.Id_noticia = int.Parse(Session["parametro"].ToString());//agregar
         noti.Titulo = data.Rows[0]["titulo"].ToString();//agregar
