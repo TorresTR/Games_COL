@@ -27,6 +27,8 @@ public partial class View_Default : System.Web.UI.Page
         l_sw corre = new l_sw();
 
         string men = corre.Respuesta(LB_corr.Text,TB_respuesta.Text);
+
+
         llamado.cambiaestadoRespuestacontacto(LB_corr.Text, LB_cargaSugere.Text);
 
         TB_respuesta.Text = "";

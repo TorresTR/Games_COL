@@ -66,6 +66,7 @@ public partial class View_Default : System.Web.UI.Page
         L_persistencia per = new L_persistencia();
         Entity_token_recuperacion_user token = new Entity_token_recuperacion_user();
         Entity_usuario user_ent = new Entity_usuario();
+        Entity_usuario user_ent1 = new Entity_usuario();
 
         L_Usercs user = new L_Usercs();
         U_Datos eUser = new U_Datos();
@@ -102,8 +103,21 @@ public partial class View_Default : System.Web.UI.Page
         user_ent.Interacciones = int.Parse(data.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(data.Rows[0]["fecha_interaccion"].ToString());
 
+        user_ent1.Id = int.Parse(data.Rows[0]["id"].ToString());
+        user_ent1.Nombre = data.Rows[0]["nombre"].ToString();
+        user_ent1.Nick = data.Rows[0]["nick"].ToString();
+        user_ent1.Correo = data.Rows[0]["correo"].ToString();
+        user_ent1.Contra = TB_digite_nueva_contraseña.Text;
+        user_ent1.Puntos = int.Parse(data.Rows[0]["puntos"].ToString());
+        user_ent1.Id_rol = int.Parse(data.Rows[0]["id_rol"].ToString());
+        user_ent1.Id_rango = int.Parse(data.Rows[0]["id_rango"].ToString());
+        user_ent1.Estado = int.Parse(data.Rows[0]["estado"].ToString());
+        user_ent1.Session = data.Rows[0]["session"].ToString();
+        user_ent1.Interacciones = int.Parse(data.Rows[0]["interacciones"].ToString());
+        user_ent1.Fecha_interaccion = DateTime.Parse(data.Rows[0]["fecha_interaccion"].ToString());
+
         object objOld = new object();
-        objOld = data;
+        objOld = user_ent1;
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";

@@ -60,6 +60,7 @@ public partial class View_Administrador_verpqrCompleto : System.Web.UI.Page
         U_Datospqr respuesa = new U_Datospqr();
         L_persistencia pqr = new L_persistencia();
         Entity_pqr ent = new Entity_pqr();
+        Entity_pqr ent1 = new Entity_pqr();
 
 
         int b = int.Parse(Session["id"].ToString());
@@ -86,9 +87,20 @@ public partial class View_Administrador_verpqrCompleto : System.Web.UI.Page
         ent.Fecha_respuesta = dt;
         ent.Estado_respuesta = 1;
 
+        ent1.Id_pqr = q;
+        ent1.Usuario = int.Parse(tabla.Rows[0]["usuario"].ToString());
+        ent1.Solicitud = int.Parse(tabla.Rows[0]["solicitud"].ToString());
+        ent1.Contenido = tabla.Rows[0]["contenido"].ToString();
+        ent1.Asunto = tabla.Rows[0]["asunto"].ToString();
+        ent1.Fecha = DateTime.Parse(tabla.Rows[0]["fecha"].ToString());
+        ent1.Respuesta = TB_respuestapqr.Text.ToString();
+        ent1.Id_contestador = int.Parse(tabla.Rows[0]["id_contestador"].ToString());
+        ent1.Fecha_respuesta = DateTime.Parse(tabla.Rows[0]["fecha_respuesta"].ToString());
+        ent1.Estado_respuesta = int.Parse(tabla.Rows[0]["estado_respuesta"].ToString());
+
         L_persistencia per = new L_persistencia();
         object objOld = new object();
-        objOld = tabla;
+        objOld = ent1;
         object objNew = new object();
         objNew = ent;
         string schema = "usuario";

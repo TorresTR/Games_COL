@@ -66,11 +66,18 @@ public partial class View_Moderador_editar_Noticia : System.Web.UI.Page
         U_userCrearpost post = new U_userCrearpost();
         L_persistencia per = new L_persistencia();//agregar
         Entity_noticias noti = new Entity_noticias();//agregar
+        Entity_noticias noti2 = new Entity_noticias();//agregar
 
         post.Id = int.Parse(Session["IdRecogido"].ToString());
         post.Contenido1 = Ck_editar.Text.ToString();
 
         DataTable data = dac.traerNoticia(int.Parse(Session["IdRecogido"].ToString()));//agregar
+
+        noti2.Id_noticia = int.Parse(Session["parametro"].ToString());
+        noti2.Titulo = data.Rows[0]["titulo"].ToString();//agregar
+        noti2.Contenido = data.Rows[0]["contenido"].ToString();
+        noti2.Fecha = DateTime.Parse(data.Rows[0]["fecha"].ToString());//agregar
+        noti2.Autor = int.Parse(data.Rows[0]["autor"].ToString());//agregar
 
         noti.Id_noticia = int.Parse(Session["IdRecogido"].ToString());//agregar
         noti.Titulo = data.Rows[0]["titulo"].ToString();//agregar
@@ -80,7 +87,7 @@ public partial class View_Moderador_editar_Noticia : System.Web.UI.Page
 
 
         object objOld = new object();
-        objOld = data;
+        objOld = noti2;
         object objNew = new object();
         objNew = noti;
         string schema = "usuario";

@@ -63,6 +63,7 @@ public partial class View_Default : System.Web.UI.Page
         L_Usercs envio = new L_Usercs();
         L_persistencia per = new L_persistencia();//AGREGAR
         Entity_post post = new Entity_post();//AGREGAR
+        Entity_post post1 = new Entity_post();//AGREGAR
 
         actualizar_estado_bloqueo report = new actualizar_estado_bloqueo();//agregar
 
@@ -86,6 +87,16 @@ public partial class View_Default : System.Web.UI.Page
         report.Fecha_reporte = dt;//agregar
         report.User_reportador = u;//agregar
         report.Estado_resuelto = 1;//agregar
+
+        post1.Id = b;//AGREGAR
+        post1.Contenido = dato.Rows[0]["contenido"].ToString();//AGREGAR
+        post1.Autor = int.Parse(dato.Rows[0]["autor"].ToString());//AGREGAR
+        post1.Titulo = dato.Rows[0]["titulo"].ToString();//AGREGAR
+        post1.Fecha = DateTime.Parse(dato.Rows[0]["fecha"].ToString());//AGREGAR
+        post1.Puntos = int.Parse(dato.Rows[0]["puntos"].ToString());//AGREGAR
+        post1.Etiqueta = int.Parse(dato.Rows[0]["etiqueta"].ToString());//AGREGAR
+        post1.Estado_bloqueo = int.Parse(dato.Rows[0]["estado_bloqueo"].ToString());//AGREGAR
+        post1.Num_puntos = int.Parse(dato.Rows[0]["num_puntos"].ToString());//AGREGAR
 
         post.Id = b;//AGREGAR
         post.Contenido = dato.Rows[0]["contenido"].ToString();//AGREGAR
@@ -111,7 +122,7 @@ public partial class View_Default : System.Web.UI.Page
         //envio.insertarPostaReportar(reporte);
 
         object objOld = new object();
-        objOld = dato;
+        objOld = post1;
         object objNew = new object();
         objNew = post;
         string table = "post";

@@ -105,7 +105,7 @@ public partial class View_Default : System.Web.UI.Page
         string tabla = "usuario";
         Entity_usuario us = new Entity_usuario();
         us.Nombre = Session["id"].ToString();
-        per.auditoriaModificar(objNew, objOld, us, schema, tabla);
+        //per.auditoriaModificar(objNew, objOld, us, schema, tabla);
 
         log.actualizarUsuario(user);
         //dac.actualizarUser(user);

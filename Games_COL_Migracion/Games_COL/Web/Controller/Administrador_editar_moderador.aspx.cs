@@ -77,8 +77,24 @@ public partial class View_Default : System.Web.UI.Page
 
         L_Usercs dac = new L_Usercs();
         U_Datos user = new U_Datos();
-        int b = int.Parse(Session["userid"].ToString());
+        int b = int.Parse(Session["id"].ToString());
         int a = int.Parse(Session["parametro"].ToString());
+
+       
+        U_user dat = new U_user();
+
+        L_persistencia per = new L_persistencia();
+        DataTable regis = dac.ToDataTable(per.obtenerUser(a));
+        U_Datos moder = dac.datosModerador(regis);
+        user = dac.datosModerador(regis);
+
+        moder.Id = int.Parse(LB_id.Text.ToString());
+        moder.Nombre = regis.Rows[0]["nombre"].ToString();
+        moder.Nick = regis.Rows[0]["nick"].ToString();
+        moder.Puntos = int.Parse(regis.Rows[0]["puntos"].ToString());
+        moder.Rango = int.Parse(regis.Rows[0]["id_rango"].ToString());
+        moder.Correo = regis.Rows[0]["correo"].ToString();
+
 
         user.Id = int.Parse(LB_id.Text.ToString());
         user.Nombre = TB_nombre.Text.ToString();
@@ -86,22 +102,16 @@ public partial class View_Default : System.Web.UI.Page
         user.Puntos = int.Parse(TB_puntos.Text.ToString());
         user.Rango = int.Parse(DDL_rango.SelectedValue.ToString());
         user.Correo = TB_correo.Text.ToString();
-        U_user dat = new U_user();
 
-        L_persistencia per = new L_persistencia();
-        DataTable regis = dac.ToDataTable(per.obtenerUser(a));
-        U_Datos moder = dac.datosModerador(regis);
-
-        
         object objOld = new object();
         objOld = moder;
         object objNew = new object();
-        objNew = user;
+        objNew = moder;
         string schema = "usuario";
         string tabla = "usuario";
         Entity_usuario us = new Entity_usuario();
         us.Nombre = Session["id"].ToString();
-        per.auditoriaModificar(objNew, objOld, us, schema, tabla);
+        //per.auditoriaModificar(objNew, objOld, us, schema, tabla);
 
         dac.actualizarUser(user);
         dat = dac.listadoUser();

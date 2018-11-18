@@ -266,9 +266,22 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
 
+        Entity_usuario user_ent1 = new Entity_usuario();
+        user_ent1.Id = b;
+        user_ent1.Nombre = datat.Rows[0]["nombre"].ToString();
+        user_ent1.Nick = datat.Rows[0]["nick"].ToString();
+        user_ent1.Correo = datat.Rows[0]["correo"].ToString();
+        user_ent.Contra = datat.Rows[0]["contra"].ToString();
+        user_ent1.Puntos = int.Parse(datat.Rows[0]["puntos"].ToString());
+        user_ent1.Id_rol = int.Parse(datat.Rows[0]["id_rol"].ToString());
+        user_ent1.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
+        user_ent1.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
+        user_ent1.Session = datat.Rows[0]["session"].ToString();
+        user_ent1.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent1.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
 
         object objOld = new object();
-        objOld = datat;
+        objOld = user_ent1;
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
@@ -374,8 +387,22 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
 
+        Entity_usuario user_ent1 = new Entity_usuario();
+        user_ent1.Id = b;
+        user_ent1.Nombre = datat.Rows[0]["nombre"].ToString();
+        user_ent1.Nick = datat.Rows[0]["nick"].ToString();
+        user_ent1.Correo = datat.Rows[0]["correo"].ToString();
+        user_ent.Contra = datat.Rows[0]["contra"].ToString();
+        user_ent1.Puntos = int.Parse(datat.Rows[0]["puntos"].ToString());
+        user_ent1.Id_rol = int.Parse(datat.Rows[0]["id_rol"].ToString());
+        user_ent1.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
+        user_ent1.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
+        user_ent1.Session = datat.Rows[0]["session"].ToString();
+        user_ent1.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent1.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
         object objOld = new object();
-        objOld = datat;
+        objOld = user_ent1;
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
@@ -481,8 +508,22 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
 
+        Entity_usuario user_ent1 = new Entity_usuario();
+        user_ent1.Id = b;
+        user_ent1.Nombre = datat.Rows[0]["nombre"].ToString();
+        user_ent1.Nick = datat.Rows[0]["nick"].ToString();
+        user_ent1.Correo = datat.Rows[0]["correo"].ToString();
+        user_ent.Contra = datat.Rows[0]["contra"].ToString();
+        user_ent1.Puntos = int.Parse(datat.Rows[0]["puntos"].ToString());
+        user_ent1.Id_rol = int.Parse(datat.Rows[0]["id_rol"].ToString());
+        user_ent1.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
+        user_ent1.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
+        user_ent1.Session = datat.Rows[0]["session"].ToString();
+        user_ent1.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent1.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
         object objOld = new object();
-        objOld = datat;
+        objOld = user_ent1;
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
@@ -588,8 +629,22 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
 
+        Entity_usuario user_ent1 = new Entity_usuario();
+        user_ent1.Id = b;
+        user_ent1.Nombre = datat.Rows[0]["nombre"].ToString();
+        user_ent1.Nick = datat.Rows[0]["nick"].ToString();
+        user_ent1.Correo = datat.Rows[0]["correo"].ToString();
+        user_ent.Contra = datat.Rows[0]["contra"].ToString();
+        user_ent1.Puntos = int.Parse(datat.Rows[0]["puntos"].ToString());
+        user_ent1.Id_rol = int.Parse(datat.Rows[0]["id_rol"].ToString());
+        user_ent1.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
+        user_ent1.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
+        user_ent1.Session = datat.Rows[0]["session"].ToString();
+        user_ent1.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent1.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
         object objOld = new object();
-        objOld = datat;
+        objOld = user_ent1;
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
@@ -696,8 +751,22 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         user_ent.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
         user_ent.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
 
+        Entity_usuario user_ent1 = new Entity_usuario();
+        user_ent1.Id = b;
+        user_ent1.Nombre = datat.Rows[0]["nombre"].ToString();
+        user_ent1.Nick = datat.Rows[0]["nick"].ToString();
+        user_ent1.Correo = datat.Rows[0]["correo"].ToString();
+        user_ent.Contra = datat.Rows[0]["contra"].ToString();
+        user_ent1.Puntos = int.Parse(datat.Rows[0]["puntos"].ToString());
+        user_ent1.Id_rol = int.Parse(datat.Rows[0]["id_rol"].ToString());
+        user_ent1.Id_rango = int.Parse(datat.Rows[0]["id_rango"].ToString());
+        user_ent1.Estado = int.Parse(datat.Rows[0]["estado"].ToString());
+        user_ent1.Session = datat.Rows[0]["session"].ToString();
+        user_ent1.Interacciones = int.Parse(datat.Rows[0]["interacciones"].ToString());
+        user_ent1.Fecha_interaccion = DateTime.Parse(datat.Rows[0]["fecha_interaccion"].ToString());
+
         object objOld = new object();
-        objOld = datat;
+        objOld = user_ent1;
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";

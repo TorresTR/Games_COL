@@ -69,6 +69,16 @@ public partial class View_Moderador_editar : System.Web.UI.Page
 
         DataTable dato = dac.ToDataTable(log.obtenerMipostmio(a, user));
 
+        Entity_post post1 = new Entity_post();
+        post1.Id = int.Parse(dato.Rows[0]["id"].ToString());
+        post1.Contenido = dato.Rows[0]["contenido"].ToString();
+        post1.Autor = int.Parse(dato.Rows[0]["autor"].ToString());
+        post1.Titulo = dato.Rows[0]["titulo"].ToString();
+        post1.Fecha = DateTime.Parse(dato.Rows[0]["fecha"].ToString());
+        post1.Puntos = int.Parse(dato.Rows[0]["puntos"].ToString());
+        post1.Etiqueta = int.Parse(dato.Rows[0]["etiqueta"].ToString());
+        post1.Estado_bloqueo = int.Parse(dato.Rows[0]["estado_bloqueo"].ToString());
+        post1.Num_puntos = int.Parse(dato.Rows[0]["num_puntos"].ToString());
 
         post.Id = int.Parse(Session["IdRecogido"].ToString());
         post.Contenido = Ck_editar.Text.ToString();
@@ -82,7 +92,7 @@ public partial class View_Moderador_editar : System.Web.UI.Page
 
 
         object objOld = new object();
-        objOld = dato;
+        objOld = post1;
         object objNew = new object();
         objNew = post;
         string schema = "usuario";

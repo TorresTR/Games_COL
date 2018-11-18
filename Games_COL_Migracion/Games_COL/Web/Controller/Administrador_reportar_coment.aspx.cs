@@ -63,6 +63,7 @@ public partial class View_Default : System.Web.UI.Page
         U_comentarios reporte = new U_comentarios();
         L_Usercs envio = new L_Usercs();
         Entity_comentarios coment = new Entity_comentarios();
+        Entity_comentarios coment1 = new Entity_comentarios();
         L_persistencia per = new L_persistencia();
         Entity_reporte_comentarios coment_rep = new Entity_reporte_comentarios();
 
@@ -75,6 +76,7 @@ public partial class View_Default : System.Web.UI.Page
 
         DataTable regis = envio.obtenerComentario1(b);
 
+        
 
         coment_rep.Id_com_reportado = b;
         coment_rep.Contendio = TB_motivoR.Text.ToString();
@@ -85,6 +87,7 @@ public partial class View_Default : System.Web.UI.Page
         Entity_usuario us = new Entity_usuario();
         object segurity = new object();
         segurity = coment_rep;
+        us.Nombre = Session["id"].ToString();
         string schema = "usuario";
         string tabla = "reporte_comentarios";
         per.auditoriaInsertar(segurity, us, schema, tabla);
@@ -102,8 +105,15 @@ public partial class View_Default : System.Web.UI.Page
         coment.Estado = 2;
         //envio.bloquearComent(b);
 
+
+        coment1.Id_comentario = int.Parse(com.Rows[0]["id_comentario"].ToString());
+        coment1.Id_post = int.Parse(com.Rows[0]["id_post"].ToString());
+        coment1.Id_user = int.Parse(com.Rows[0]["id_user"].ToString());
+        coment1.Comentario = com.Rows[0]["comentario"].ToString();
+        coment1.Estado = int.Parse(com.Rows[0]["estado"].ToString());
+
         object objOld = new object();
-        objOld = regis;
+        objOld = coment1;
         object objNew = new object();
         objNew = coment;
         string table = "comentarios";

@@ -95,7 +95,7 @@ public partial class View_Administrador_editar_noticia : System.Web.UI.Page
 
   
         object objOld = new object();
-        objOld = data;
+        objOld = noti2;
         object objNew = new object();
         objNew = noti;
         string schema = "usuario";

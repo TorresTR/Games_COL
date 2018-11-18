@@ -70,6 +70,7 @@ public partial class View_Administrador_admin_coment : System.Web.UI.Page
         L_Usercs dato = new L_Usercs();
         ClientScriptManager cm = this.ClientScript;
         Entity_comentarios coment = new Entity_comentarios();
+        Entity_comentarios coment1 = new Entity_comentarios();
         L_persistencia logica = new L_persistencia();
 
         Button btn = (Button)sender;
@@ -80,6 +81,13 @@ public partial class View_Administrador_admin_coment : System.Web.UI.Page
 
         DataTable com = dato.ToDataTable(logica.obtenerComentarioesp(h));
 
+        coment1.Id_comentario = h;
+        coment1.Comentario = com.Rows[0]["comentario"].ToString();
+        coment1.Id_post = int.Parse(com.Rows[0]["id_post"].ToString());
+        coment1.Id_user = int.Parse(com.Rows[0]["id_user"].ToString());
+        coment1.Estado = int.Parse(com.Rows[0]["estado"].ToString()); ;
+
+
         coment.Id_comentario = h;
         coment.Comentario = com.Rows[0]["comentario"].ToString();
         coment.Id_post = int.Parse(com.Rows[0]["id_post"].ToString());
@@ -87,7 +95,7 @@ public partial class View_Administrador_admin_coment : System.Web.UI.Page
         coment.Estado = 3;
 
         object objOld = new object();
-        objOld = com;
+        objOld = coment1;
         object objNew = new object();
         objNew = coment;
         string schema = "usuario";
