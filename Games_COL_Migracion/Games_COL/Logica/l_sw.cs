@@ -45,6 +45,27 @@ namespace Logica
             return men;
         }
 
+
+        public string Respuesta(string correol,string respuesta)
+        {
+
+            Dsql dao = new Dsql();
+            string men = "respuesta enviada";
+
+            U_token token = new U_token();
+            token.Correo = correol;
+
+            D_correo correo = new D_correo();
+
+
+            String mensaje = "Tu sugerencia fue contestada: " + respuesta;
+            correo.enviarCorreoinvitado(token.Correo, mensaje);
+
+
+            return men;
+        }
+
+
         private string encriptar(string input)
         {
             SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();

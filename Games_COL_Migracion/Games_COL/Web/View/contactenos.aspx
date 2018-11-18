@@ -74,6 +74,11 @@
                 <asp:Button ID="B_volver" runat="server" CssClass="btn btn-outline-secondary" OnClick="B_volver_Click" Text="Volver" />
             </td>
         </tr>
+        <tr>
+            <td class="auto-style4" colspan="2">
+                <br />
+            </td>
+        </tr>
     </table>
 </asp:Content>
 

@@ -67,7 +67,7 @@ namespace Datos
                 mail.From = new MailAddress("security@security.com", "GAMESCOL");
 
                 //Aquí ponemos el asunto del correo
-                mail.Subject = "Invitacion GamesCol";
+                mail.Subject = "GamesCol";
                 //Aquí ponemos el mensaje que incluirá el correo
                 mail.Body = strBody;
                 //Especificamos a quien enviaremos el Email, no es necesario que sea Gmail, puede ser cualquier otro proveedor

@@ -20,8 +20,13 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
-   
+<!-- Código de instalación Cliengo para gamescol.ddns.net/View/Observador.aspx --> 
+    <script type="text/javascript">(function ()
+{
+    var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true;
+    ldk.src = 'https://s.cliengo.com/weboptimizer/5bf0bc96e4b040fccb7b7fec/5bf0c2b0e4b07dc90b161e01.js'; 
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s);
+})();</script>
 
     <div class="auto-style7">
         &nbsp;&nbsp;

@@ -3647,6 +3647,68 @@ namespace Datos
             return Usuario;
         }
 
+
+        public DataTable traerContactenos()
+        {
+            DataTable Usuario = new DataTable();
+            SqlConnection conection = new SqlConnection(ConfigurationManager.ConnectionStrings["GamesColEntities"].ConnectionString);
+
+            try
+            {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_traer_contactenos", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                
+
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
+
+
+
+        public DataTable cambiaestadoContacto(string correo, string sugerencia)
+        {
+            DataTable Usuario = new DataTable();
+            SqlConnection conection = new SqlConnection(ConfigurationManager.ConnectionStrings["GamesColEntities"].ConnectionString);
+
+            try
+            {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.editar_sugerencia", conection);
+                dataAdapter.SelectCommand.Parameters.Add("@contenido", SqlDbType.NVarChar).Value = sugerencia;
+                dataAdapter.SelectCommand.Parameters.Add("@correo", SqlDbType.NVarChar).Value = correo;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
+
+
     }
 
 

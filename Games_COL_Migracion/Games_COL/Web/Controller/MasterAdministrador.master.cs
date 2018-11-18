@@ -207,4 +207,9 @@ public partial class View_MasterAdministrador : System.Web.UI.MasterPage
     {
         Response.Redirect("Administrador_SWcolegio.aspx");
     }
+
+    protected void BT_contactenos_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Admin_contacto.aspx");
+    }
 }

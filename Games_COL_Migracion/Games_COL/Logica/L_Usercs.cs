@@ -517,7 +517,7 @@ namespace Logica
             Dsql dato = new Dsql();
             U_Sugerencia dat = new U_Sugerencia();
 
-            //dato.insertarSugerenciaUsuario(sugere);
+            dato.insertarSugerenciaUsuario(sugere);
             dat.Mensaje = "<script type='text/javascript'>alert('Solicitud registrada con exito');</script>";
             dat.Link = "observador.aspx";
 
@@ -2948,6 +2948,21 @@ namespace Logica
             return prueba;
         }
 
+        public DataTable traerContactenos()
+        {
+            DataTable prueba = new DataTable();
+            Dsql dato = new Dsql();
+            prueba = dato.traerContactenos();
+            return prueba;
+        }
+
+        public void cambiaestadoRespuestacontacto(string correo,string sugerencia)
+        {
+            DataTable prueba = new DataTable();
+            Dsql dato = new Dsql();
+            prueba = dato.cambiaestadoContacto(correo,sugerencia);
+             
+        }
 
     }
 
