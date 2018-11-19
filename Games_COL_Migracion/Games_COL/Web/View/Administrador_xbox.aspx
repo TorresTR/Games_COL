@@ -87,9 +87,11 @@
                         <br />
                         <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id") %>'  visible="False"></asp:Label>
                         <br />
-                        <asp:Label ID="LB_autor" runat="server" Text="Autor:"></asp:Label>
-                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("contenido") %>'></asp:Label>
+                         <asp:Label ID="LB_autor" runat="server" Text="Autor:"></asp:Label>
+                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
                         <br />
+                        <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
+                        <asp:Label ID="LB_etiquetaMuestra" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
                        
                     </td>
                     <td class="auto-style3">

@@ -129,11 +129,23 @@ public partial class View_Moderador_miPost : System.Web.UI.Page
         U_misPost dato = new U_misPost();
 
         dato.Id_mipost = x;
+        Entity_post post = new Entity_post();
+        DataTable datos = dac.obtenerMiPost(x, b);
+
+        post.Id = x;
+        post.Contenido = datos.Rows[0]["contenido"].ToString();
+        post.Autor = int.Parse(Session["id"].ToString());
+        post.Titulo = datos.Rows[0]["titulo"].ToString();
+        post.Fecha = DateTime.Parse(datos.Rows[0]["fecha"].ToString());
+        post.Puntos = int.Parse(datos.Rows[0]["puntos"].ToString());
+        post.Etiqueta = int.Parse(datos.Rows[0]["etiqueta"].ToString());
+        post.Estado_bloqueo = int.Parse(datos.Rows[0]["estado_bloqueo"].ToString());
+        post.Num_puntos = int.Parse(datos.Rows[0]["num_puntos"].ToString());
 
         L_persistencia per = new L_persistencia();
         Entity_usuario us = new Entity_usuario();
         object obj = new object();
-        obj = dato;
+        obj = post;
         string schema = "usuario";
         string tabla = "post";
         us.Nombre = Session["id"].ToString();

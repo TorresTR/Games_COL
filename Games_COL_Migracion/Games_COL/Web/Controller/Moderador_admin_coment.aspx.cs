@@ -12,7 +12,7 @@ using Utilitarios;
 
 public partial class View_Default : System.Web.UI.Page
 {
-    string mensaje;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         
@@ -35,7 +35,7 @@ public partial class View_Default : System.Web.UI.Page
         Session["mensajes"] = compIdioma;
         compIdioma = Idio.hastableIdioma(info, compIdioma);
 
-        mensaje = compIdioma["LB_mensaje"].ToString();
+        
         Bt_volver.Text = compIdioma["BT_volver"].ToString();
         DL_coment.DataBind();
     }
@@ -114,7 +114,6 @@ public partial class View_Default : System.Web.UI.Page
 
         dato.eliminarComent(h);
 
-        Response.Write("<Script Language='JavaScript'>parent.alert('" + mensaje + "');</Script>");
 
         U_user data = new U_user();
         L_Usercs llamado = new L_Usercs();

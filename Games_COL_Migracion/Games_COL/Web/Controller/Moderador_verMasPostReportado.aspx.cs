@@ -41,8 +41,8 @@ public partial class View_Moderador_verMasPostReportado : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
 
 
-        doc.Id = int.Parse(Session["parametro"].ToString());
-        int x = int.Parse(Session["parametro"].ToString());
+        doc.Id = int.Parse(Session["IdRecogido"].ToString());
+        int x = int.Parse(Session["IdRecogido"].ToString());
 
         doc=dac.obtenerPostObservadorreportadomoder(doc);
 

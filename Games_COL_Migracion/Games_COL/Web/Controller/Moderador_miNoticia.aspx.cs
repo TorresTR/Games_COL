@@ -117,19 +117,24 @@ public partial class View_Moderador_miNoticia : System.Web.UI.Page
       
         Entity_noticias noti = new Entity_noticias();//agregar
         L_persistencia per = new L_persistencia();//agregar
- 
+        L_Usercs log = new L_Usercs();
 
 
         int b = int.Parse(Session["id"].ToString());
         Button bt = sender as Button;
         GridViewRow grid = (GridViewRow)bt.NamingContainer;
         string IdRecogido = ((Label)grid.FindControl("LB_id")).Text;
-
+        U_userCrearpost post = new U_userCrearpost();
         int x = int.Parse(IdRecogido);
-
+        post.Id = x;
+        
+        DataTable noticia = log.traerNoticia(x);
         L_Usercs dac = new L_Usercs();
         noti.Id_noticia = x;//agregar
-
+        noti.Titulo = noticia.Rows[0]["titulo"].ToString();
+        noti.Contenido = noticia.Rows[0]["contenido"].ToString();
+        noti.Fecha = DateTime.Parse(noticia.Rows[0]["fecha"].ToString()) ;
+        noti.Autor = int.Parse(noticia.Rows[0]["autor"].ToString());
         Entity_usuario us = new Entity_usuario();
         object obj = new object();
         obj = noti;

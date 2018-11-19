@@ -118,17 +118,12 @@ public partial class View_usuario_miPost : System.Web.UI.Page
 
     protected void BT_editar_Click(object sender, EventArgs e)
     {
-        Button bt = (Button)sender;
-        TableCell tableCell = (TableCell)bt.Parent;
-        GridViewRow row = (GridViewRow)tableCell.Parent;
-        GV_miPost.SelectedIndex = row.RowIndex;
-        int fila = row.RowIndex;
 
-
-        int b = int.Parse(Session["id"].ToString());
-        string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
+        Button bt = sender as Button;
+        GridViewRow grid = (GridViewRow)bt.NamingContainer;
+        string IdRecogido = ((Label)grid.FindControl("LB_id")).Text;
         Session["IdRecogido"] = IdRecogido;
-         string dat = b.ToString(); 
+         
 
 
         U_user data = new U_user();
@@ -141,20 +136,18 @@ public partial class View_usuario_miPost : System.Web.UI.Page
 
     protected void BT_eliminar_Click(object sender, EventArgs e)
     {
-        Button bt = (Button)sender;
-        TableCell tableCell = (TableCell)bt.Parent;
-        GridViewRow row = (GridViewRow)tableCell.Parent;
+        Button bt = sender as Button;
+        GridViewRow grid = (GridViewRow)bt.NamingContainer;
+        string IdRecogido = ((Label)grid.FindControl("LB_id")).Text;
         L_Usercs dac = new L_Usercs();
         U_misPost dato = new U_misPost();
         Entity_post post = new Entity_post();
         L_persistencia log = new L_persistencia();
 
-        GV_miPost.SelectedIndex = row.RowIndex;
-        int fila = row.RowIndex;
 
 
         int b = int.Parse(Session["id"].ToString());
-        string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
+       
 
         int x = int.Parse(IdRecogido);
         DataTable datos = dac.obtenerMiPost(x, b);

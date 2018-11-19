@@ -35,7 +35,7 @@
                         <br />
                         <asp:Label ID="LB_idPostReport" runat="server" Text="ID post Reportado:" Visible="False"></asp:Label>
                         &nbsp;
-                        <asp:Label ID="LB_idPost" runat="server" Text='<%# Bind("id_post") %>' Visible="False"  ></asp:Label>
+                        <asp:Label ID="LB_idPost" runat="server" Text='<%# Bind("id_post_reportador") %>' Visible="False"  ></asp:Label>
                         <br />
                         <asp:Label ID="LB_titulo" runat="server" Text="Titulo:"></asp:Label>
                         &nbsp;
@@ -43,17 +43,17 @@
                         <br />
                         <asp:Label ID="LB_contenido" runat="server" Text="Contenido:"></asp:Label>
                         &nbsp;
-                        <asp:Label ID="LB_muestraContenido" runat="server" Text='<%# Bind("contenido") %>'></asp:Label>
+                        <asp:Label ID="LB_muestraContenido" runat="server" Text='<%# Bind("contenido_reporte") %>'></asp:Label>
                         <br />
                         <asp:Label ID="LB_userRepo" runat="server" Text="User reportador:"></asp:Label>
                         &nbsp;&nbsp;
                         <asp:Label ID="LB_userReportador" runat="server" Text='<%# Bind("nick") %>'></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:Button ID="BT_vermas" runat="server" Text="Ver mas"  CommandName="vermas" CommandArgument='<%# Eval("id_post") %>' OnClick="BT_vermas_Click" CssClass="btn btn-outline-warning"/>
+                        <asp:Button ID="BT_vermas" runat="server" Text="Ver mas"  CommandName="vermas" CommandArgument='<%# Eval("id_post_reportador") %>' OnClick="BT_vermas_Click" CssClass="btn btn-outline-warning"/>
                         &nbsp;<br />
                         <br />
-                        <asp:Button ID="BT_bloquear" runat="server" Text="Bloquear"  CommandName="Bloquear" CommandArgument='<%# Eval("id_post") %>' CssClass="btn btn-outline-warning" OnClick="BT_bloquear_Click"/>
+                        <asp:Button ID="BT_bloquear" runat="server" Text="Bloquear"  CommandName="Bloquear" CommandArgument='<%# Eval("id_post_reportador") %>' CssClass="btn btn-outline-warning" OnClick="BT_bloquear_Click"/>
                     </td>
                 </tr>
             </table>

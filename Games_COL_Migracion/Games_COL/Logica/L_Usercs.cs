@@ -505,7 +505,7 @@ namespace Logica
             {
 
                 doc.Contenido1 = data.Rows[0]["contenido"].ToString();
-                doc.Autor1 = data.Rows[0]["autor"].ToString();
+                doc.Autor1 = data.Rows[0]["nick"].ToString();
 
             }
 
@@ -1091,6 +1091,18 @@ namespace Logica
 
         }
 
+        public DataTable obtenerpostReportEsp(int id)
+        {
+
+            Dsql datos = new Dsql();
+            DataTable data = new DataTable();
+
+            data = datos.ObtenerpostReportado(id);
+
+            return data;
+
+        }
+
         public DataTable obtenercomnetReport()
         {
 
@@ -1196,6 +1208,7 @@ namespace Logica
             {
                 user.Contenido1 = dat.Rows[0]["contenido"].ToString();
                 user.Autor1 = dat.Rows[0]["nick"].ToString();
+               
             }
 
 

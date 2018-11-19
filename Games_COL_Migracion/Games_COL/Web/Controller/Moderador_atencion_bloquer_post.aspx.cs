@@ -99,17 +99,30 @@ public partial class View_Moderador_atencion_bloquer_post : System.Web.UI.Page
         L_persistencia per = new L_persistencia();
         actualizar_estado_bloqueo est = new actualizar_estado_bloqueo();
         Entity_post pot = new Entity_post();
+        L_Usercs log = new L_Usercs();
+
+        DataTable post = log.obtenerpostReportEsp(int.Parse(ID));
+
+        est.Id_reporte = int.Parse(post.Rows[0]["id_reporte"].ToString());
+        est.Contenido_reporte = post.Rows[0]["contenido_reporte"].ToString();
+        est.Estado_resuelto = int.Parse(post.Rows[0]["estado_resuelto"].ToString());
+        est.Fecha_reporte = DateTime.Parse(post.Rows[0]["fecha_reporte"].ToString());
+        est.User_reportador = int.Parse(post.Rows[0]["user_reportador"].ToString());
 
         int b = int.Parse(Session["id"].ToString());
         int x = 2;
         int h = int.Parse(ID);
         int z = 1;
 
+
+
         est.Id_post_reportador = int.Parse(ID);
         pot.Id = int.Parse(ID);
         L_Usercs dac = new L_Usercs();
 
         //dac.actualizarmoderPostreportado(h, b, x,z);
+
+
         Entity_usuario us = new Entity_usuario();
         object obj = new object();
         obj = est;

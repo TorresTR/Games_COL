@@ -73,7 +73,7 @@ public partial class View_Moderador_editar_Noticia : System.Web.UI.Page
 
         DataTable data = dac.traerNoticia(int.Parse(Session["IdRecogido"].ToString()));//agregar
 
-        noti2.Id_noticia = int.Parse(Session["parametro"].ToString());
+        noti2.Id_noticia = int.Parse(Session["IdRecogido"].ToString());
         noti2.Titulo = data.Rows[0]["titulo"].ToString();//agregar
         noti2.Contenido = data.Rows[0]["contenido"].ToString();
         noti2.Fecha = DateTime.Parse(data.Rows[0]["fecha"].ToString());//agregar

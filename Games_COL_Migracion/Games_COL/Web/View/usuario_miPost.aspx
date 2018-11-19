@@ -44,15 +44,7 @@
                                             <asp:Label ID="LB_titulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Etiqueta">
-                                        <HeaderTemplate>
-                                            <asp:Label ID="LB_eti" runat="server"></asp:Label>
-                                        </HeaderTemplate>
-                                        <ItemTemplate>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <asp:Label ID="LB_etiqueta" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+                                   
                                 </Columns>
                             </asp:GridView>
                     <asp:ScriptManager ID="ScriptManager1" runat="server">

@@ -42,7 +42,7 @@
                                         <asp:Label ID="LB_titulo" runat="server"></asp:Label>
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                        <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="id">
@@ -50,23 +50,7 @@
                                         <asp:Label ID="LB_id" runat="server" Text='<%# Eval("id") %>'></asp:Label>
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:Label ID="LB_muestraId" runat="server" Text='<%# Bind("id") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField>
-                                    <HeaderTemplate>
-                                        <asp:Label ID="LB_etiqueta" runat="server"></asp:Label>
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="LB_muestraEtiqueta" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="autor">
-                                    <HeaderTemplate>
-                                        <asp:Label ID="LB_autor" runat="server"></asp:Label>
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="LB_muestraAut" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                        <asp:Label ID="LB_muestraId" runat="server" Text='<%# Bind("id") %>' Visible="False"></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>

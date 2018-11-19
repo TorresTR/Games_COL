@@ -160,6 +160,38 @@ namespace Datos
 
         }
 
+        public DataTable ObtenerpostReportado(int id)
+        {
+            DataTable Post = new DataTable();
+            SqlConnection conection = new SqlConnection(ConfigurationManager.ConnectionStrings["GamesColEntities"].ConnectionString);
+
+            try
+            {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("usuario.f_obtener_post_reportado", conection);
+                dataAdapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+
+                conection.Open();
+                dataAdapter.Fill(Post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return Post;
+
+        }
+
 
         public DataTable ObtenerSolicitudes()
         {
