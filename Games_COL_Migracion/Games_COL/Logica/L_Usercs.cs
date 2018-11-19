@@ -1780,7 +1780,7 @@ namespace Logica
                 {
                     datos.Nick = dat.Rows[0]["nick"].ToString();
                     datos.Puntos = int.Parse(dat.Rows[0]["puntos"].ToString());
-                    datos.Mensaje1 = dat.Rows[0]["id_rango"].ToString();
+                    datos.Mensaje1 = dat.Rows[0]["contra"].ToString();
                     datos.Id = int.Parse(dat.Rows[0]["id"].ToString());
 
                 }

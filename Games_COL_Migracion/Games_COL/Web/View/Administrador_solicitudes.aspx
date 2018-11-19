@@ -42,10 +42,10 @@
                         <table class="w-100">
                             <tr>
                                 <td class="auto-style3"><strong><span class="auto-style5">
-                                    <asp:Label ID="LB_titUsuario" runat="server" Text=" Id Usuario:"></asp:Label>
+                                    <asp:Label ID="LB_titUsuario" runat="server" Text=" Id Usuario:" Visible ="false"></asp:Label>
 &nbsp;</span></strong></td>
                                 <td>
-                                    <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id_user") %>'></asp:Label>
+                                    <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id_user") %>' Visible="false"></asp:Label>
                                 </td>
                                 <td rowspan="3">
                                     <asp:Button ID="BT_ascender" runat="server" CssClass="btn btn-outline-success" Text="Ascender" OnClick="BT_ascender_Click" />

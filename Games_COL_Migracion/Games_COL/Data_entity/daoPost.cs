@@ -113,8 +113,27 @@ namespace Datos
             using (var db = new Mapeo("usuario"))
             {
 
-                var a = db.usuario.ToList<Entity_usuario>().Where(x => x.Id.Equals(id));
-                return a.ToList<Entity_usuario>();
+                //var a = db.usuario.ToList<Entity_usuario>().Where(x => x.Id.Equals(id));
+                //return a.ToList<Entity_usuario>();
+                return (from user in db.usuario
+                        join rango in db.rango on user.Id_rango equals rango.Id
+                        where user.Id.Equals(id)
+                        select new
+                        {
+                            user.Id,
+                            user.Nick,
+                            user.Puntos,
+                            rango.Tipo
+                        }).ToList().Select(x => new Entity_usuario
+                        {
+                            Id = x.Id,
+                            Nick = x.Nick,
+                            Puntos = x.Puntos,
+                            Contra = x.Tipo
+
+                        }).ToList();
+
+
             }
         }
 
@@ -314,7 +333,7 @@ namespace Datos
 
                 return (from post in db.post
                         join usn in db.usuario on post.Autor equals usn.Id
-                        where post.Estado_bloqueo.Equals(1)
+                        where post.Estado_bloqueo.Equals(1) & post.Autor.Equals(id)
                         select new
                         {
                             post.Titulo,
