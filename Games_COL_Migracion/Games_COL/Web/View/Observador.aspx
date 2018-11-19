@@ -27,7 +27,22 @@
     ldk.src = 'https://s.cliengo.com/weboptimizer/5bf0bc96e4b040fccb7b7fec/5bf0c2b0e4b07dc90b161e01.js'; 
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s);
 })();</script>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
+   <script type="text/javascript">
+      var embed = new Twitch.Embed("twitch-embed", {
+        width: 854,
+        height: 480,
+        channel: "monstercat",
+        layout: "video",
+        autoplay: false
+      });
+
+      embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+        var player = embed.getPlayer();
+        player.play();
+      });
+    </script>
     <div class="auto-style7">
         &nbsp;&nbsp;
         <asp:Button ID="BT_pc" runat="server" Text="PC" OnClick="BT_pc_Click" CssClass="btn btn-secondary" />&nbsp;&nbsp;
@@ -166,6 +181,20 @@
         <tr>
             <td class="auto-style6">
                 <asp:ObjectDataSource ID="ODS_dataobs" runat="server" SelectMethod="obtenerPost" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
+                <br />
+
+<script src= "https://player.twitch.tv/js/embed/v1.js"></script>
+<div id="SamplePlayerDivID"></div>
+<script type="text/javascript">
+  var options = {
+    width: 854,
+    height: 480,
+    channel: "monstercat",
+  };
+  var player = new Twitch.Player("SamplePlayerDivID", options);
+  player.setVolume(0.5);
+</script>
+
             </td>
             <td>
                

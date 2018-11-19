@@ -143,6 +143,18 @@
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="Panel2_CollapsiblePanelExtender" runat="server" BehaviorID="Panel2_CollapsiblePanelExtender" CollapseControlID="HL_post" Collapsed="True" CollapsedSize="30" ExpandControlID="HL_post" ExpandedSize="1000" SuppressPostBack="True" TargetControlID="Panel2" />
     <asp:ObjectDataSource ID="ODS_datauser" runat="server" SelectMethod="obtenerPost" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
+                                <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
+<div id="SamplePlayerDivID"></div>
+<script type="text/javascript">
+  var options = {
+    width: 854,
+    height: 480,
+    channel: "cynicalex",
+  };
+  var player = new Twitch.Player("SamplePlayerDivID", options);
+  player.setVolume(0.5);
+</script>
+                <br />
             </td>
             <td>
                 <asp:GridView ID="GVSW_oferta" runat="server" AutoGenerateColumns="False">

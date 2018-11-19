@@ -82,7 +82,7 @@
                                         <asp:Label ID="LB_coment" runat="server"></asp:Label>
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:Label ID="LB_comentario" runat="server" Text='<%# Bind("comentarios") %>'></asp:Label>
+                                        <asp:Label ID="LB_comentario" runat="server" Text='<%# Bind("comentario") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="id">
@@ -90,7 +90,7 @@
                                         <asp:Label ID="LB_titId" runat="server" Visible="False"></asp:Label>
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id") %>' Visible="False"></asp:Label>
+                                        <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id_comentario") %>' Visible="False"></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>

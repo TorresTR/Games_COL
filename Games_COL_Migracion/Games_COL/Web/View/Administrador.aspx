@@ -150,7 +150,17 @@
     <asp:ObjectDataSource ID="ODS_datauser" runat="server" SelectMethod="obtenerPost" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
             </td>
             <td>
-                &nbsp;</td>
+                                                <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
+<div id="SamplePlayerDivID"></div>
+<script type="text/javascript">
+  var options = {
+    width: 854,
+    height: 480,
+    channel: "ninja",
+  };
+  var player = new Twitch.Player("SamplePlayerDivID", options);
+  player.setVolume(0.5);
+</script>&nbsp;</td>
         </tr>
 </table>
 </asp:Content>
