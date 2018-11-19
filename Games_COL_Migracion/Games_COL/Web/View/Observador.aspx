@@ -92,7 +92,7 @@
                         </ItemTemplate>
                     </asp:DataList>
                 </asp:Panel>
-                <ajaxToolkit:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" CollapsedText="Noticias" TargetControlID="Panel1" TextLabelID="Noticias" Collapsed="True" CollapseControlID="HL_noticias" CollapsedSize="30" ExpandControlID="HL_noticias" ExpandedText="Ultima hora" SuppressPostBack="True" ExpandedSize="500" />
+                <ajaxToolkit:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" CollapsedText="Noticias" TargetControlID="Panel1" TextLabelID="Noticias" Collapsed="True" CollapseControlID="HL_noticias" CollapsedSize="30" ExpandControlID="HL_noticias" ExpandedText="Ultima hora" SuppressPostBack="True" ExpandedSize="1000" />
                 <asp:ObjectDataSource ID="ODS_noticia" runat="server" SelectMethod="obtenerNoticia" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
         <asp:HyperLink ID="HL_post" runat="server">Post</asp:HyperLink>
                         
@@ -125,7 +125,7 @@
                         </ItemTemplate>
                     </asp:DataList>
                 </asp:Panel>
-                <ajaxToolkit:CollapsiblePanelExtender ID="Panel2_CollapsiblePanelExtender" runat="server" BehaviorID="Panel2_CollapsiblePanelExtender" CollapseControlID="HL_post" Collapsed="True" CollapsedSize="30" CollapsedText="Post" ExpandControlID="HL_post" ExpandedSize="500" ExpandedText="prueba" SuppressPostBack="True" TargetControlID="Panel2" TextLabelID="Post" />
+                <ajaxToolkit:CollapsiblePanelExtender ID="Panel2_CollapsiblePanelExtender" runat="server" BehaviorID="Panel2_CollapsiblePanelExtender" CollapseControlID="HL_post" Collapsed="True" CollapsedSize="30" CollapsedText="Post" ExpandControlID="HL_post" ExpandedSize="1000" ExpandedText="prueba" SuppressPostBack="True" TargetControlID="Panel2" TextLabelID="Post" />
                 <br />
                 </td>
        

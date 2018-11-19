@@ -111,10 +111,12 @@ public partial class View_Administrador_miPost : System.Web.UI.Page
         GridViewRow row = (GridViewRow)tableCell.Parent;
         GV_miPost.SelectedIndex = row.RowIndex;
         int fila = row.RowIndex;
+        Entity_post post = new Entity_post();
 
-
-
+        L_persistencia log = new L_persistencia();
         int b = int.Parse(Session["id"].ToString());
+        //int a = int.Parse(Session["IdRecogido"].ToString());
+        int user = int.Parse(Session["id"].ToString());
         string IdRecogido = ((Label)row.Cells[fila].FindControl("LB_id")).Text;
         Session["IdRecogido"] = IdRecogido;
         int x = int.Parse(IdRecogido);
@@ -122,12 +124,25 @@ public partial class View_Administrador_miPost : System.Web.UI.Page
         L_Usercs dac = new L_Usercs();
         U_misPost dato = new U_misPost();
 
+        DataTable datos = dac.ToDataTable(log.obtenerMipostmio(x, user));
+
+
+        //post.Id = int.Parse(Session["IdRecogido"].ToString());
+        post.Contenido = datos.Rows[0]["contenido"].ToString();
+        post.Autor = int.Parse(Session["id"].ToString());
+        post.Titulo = datos.Rows[0]["titulo"].ToString();
+        post.Fecha = DateTime.Parse(datos.Rows[0]["fecha"].ToString());
+        post.Puntos = int.Parse(datos.Rows[0]["puntos"].ToString());
+        post.Etiqueta = int.Parse(datos.Rows[0]["etiqueta"].ToString());
+        post.Estado_bloqueo = int.Parse(datos.Rows[0]["estado_bloqueo"].ToString());
+        post.Num_puntos = int.Parse(datos.Rows[0]["num_puntos"].ToString());
+
         dato.Id_mipost = x;
 
         L_persistencia per = new L_persistencia();
         Entity_usuario us = new Entity_usuario();
         object obj = new object();
-        obj = dato;
+        obj = post;
         string schema = "usuario";
         string tabla = "post";
         us.Nombre = Session["id"].ToString();

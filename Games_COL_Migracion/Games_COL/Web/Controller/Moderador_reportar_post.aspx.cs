@@ -86,7 +86,7 @@ public partial class View_Default : System.Web.UI.Page
         report.Contenido_reporte = TB_reporte.Text.ToString();//agregar
         report.Fecha_reporte = dt;//agregar
         report.User_reportador = u;//agregar
-        report.Estado_resuelto = 1;//agregar
+        report.Estado_resuelto = 0;//agregar
 
         post1.Id = b;//AGREGAR
         post1.Contenido = dato.Rows[0]["contenido"].ToString();//AGREGAR

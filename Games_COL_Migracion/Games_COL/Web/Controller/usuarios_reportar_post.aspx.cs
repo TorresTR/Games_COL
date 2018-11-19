@@ -85,7 +85,7 @@ public partial class View_usuarios_reportar_post : System.Web.UI.Page
         report.Contenido_reporte = TB_reporte.Text.ToString();//agregar
         report.Fecha_reporte = dt;//agregar
         report.User_reportador = u;//agregar
-        report.Estado_resuelto = 1;//agregar
+        report.Estado_resuelto = 0;//agregar
 
         post.Id = b;//AGREGAR
         post.Contenido = dato.Rows[0]["contenido"].ToString();//AGREGAR

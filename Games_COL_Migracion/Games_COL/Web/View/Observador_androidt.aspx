@@ -68,7 +68,7 @@
                             </ItemTemplate>
                         </asp:DataList>
                     </asp:Panel>
-                    <ajaxToolkit:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" TargetControlID="Panel1" CollapseControlID="HL_noticias" Collapsed="True" CollapsedSize="30" CollapsedText="Noticias" ExpandControlID="HL_noticias" ExpandedSize="500" ExpandedText="Ultima hora" SuppressPostBack="True" />
+                    <ajaxToolkit:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" TargetControlID="Panel1" CollapseControlID="HL_noticias" Collapsed="True" CollapsedSize="30" CollapsedText="Noticias" ExpandControlID="HL_noticias" ExpandedSize="1000" ExpandedText="Ultima hora" SuppressPostBack="True" />
                 <asp:ObjectDataSource ID="ODS_noticia" runat="server" SelectMethod="obtenerNoticia" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
         <asp:HyperLink ID="HL_post" runat="server">Post</asp:HyperLink>
                 </td>
@@ -137,7 +137,7 @@
                             </ItemTemplate>
                         </asp:DataList>
                     </asp:Panel>
-                    <ajaxToolkit:CollapsiblePanelExtender ID="Panel2_CollapsiblePanelExtender" runat="server" BehaviorID="Panel2_CollapsiblePanelExtender" CollapseControlID="HL_post" Collapsed="True" CollapsedSize="30" CollapsedText="Post" ExpandControlID="HL_post" ExpandedSize="500" SuppressPostBack="True" TargetControlID="Panel2" />
+                    <ajaxToolkit:CollapsiblePanelExtender ID="Panel2_CollapsiblePanelExtender" runat="server" BehaviorID="Panel2_CollapsiblePanelExtender" CollapseControlID="HL_post" Collapsed="True" CollapsedSize="30" CollapsedText="Post" ExpandControlID="HL_post" ExpandedSize="1000" SuppressPostBack="True" TargetControlID="Panel2" />
     <asp:ObjectDataSource ID="ODS_treaListaData" runat="server" SelectMethod="obtenerPostAndroid" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
 
 

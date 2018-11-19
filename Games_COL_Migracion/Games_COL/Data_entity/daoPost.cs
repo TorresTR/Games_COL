@@ -461,8 +461,36 @@ namespace Datos
             using (var db = new Mapeo("usuario"))
             {
 
-                var a = db.post.ToList<Entity_post>().Where(x => x.Autor.Equals(id)).Where(x => x.Id.Equals(post));
-                return a.ToList<Entity_post>();
+               // var a = db.post.ToList<Entity_post>().Where(x => x.Autor.Equals(id)).Where(x => x.Id.Equals(post));
+               // return a.ToList<Entity_post>();
+                return (from mipost in db.post
+                        where mipost.Estado_bloqueo.Equals(1)
+                        select new
+                        {
+                            mipost.Id,
+                            mipost.Titulo,
+                            mipost.Contenido,
+                            mipost.Fecha,
+                            mipost.Puntos,
+                            mipost.Autor,
+                            mipost.Etiqueta,
+                            mipost.Estado_bloqueo,
+                            mipost.User_bloqueador,
+                            mipost.Num_puntos
+                        }).ToList().Select(x => new Entity_post
+                        {
+                            Titulo = x.Titulo,
+                            Id = x.Id,
+                            Contenido = x.Contenido,
+                            Fecha = x.Fecha,
+                            Puntos = x.Puntos,
+                            Autor = x.Autor,
+                            Etiqueta = x.Etiqueta,
+                            Estado_bloqueo = x.Estado_bloqueo,
+                            User_bloqueador = x.User_bloqueador,
+                            Num_puntos = x.Num_puntos
+
+                        }).ToList();
             }
         }
 

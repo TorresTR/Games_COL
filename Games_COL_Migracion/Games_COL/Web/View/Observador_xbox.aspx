@@ -68,7 +68,7 @@
                             </ItemTemplate>
                         </asp:DataList>
                     </asp:Panel>
-                    <ajaxToolkit:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" CollapseControlID="HL_noticias" Collapsed="True" CollapsedSize="30" ExpandControlID="HL_noticias" ExpandedSize="500" SuppressPostBack="True" TargetControlID="Panel1" />
+                    <ajaxToolkit:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" CollapseControlID="HL_noticias" Collapsed="True" CollapsedSize="30" ExpandControlID="HL_noticias" ExpandedSize="1000" SuppressPostBack="True" TargetControlID="Panel1" />
                 <asp:ObjectDataSource ID="ODS_noticia" runat="server" SelectMethod="obtenerNoticia" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
 
 
@@ -143,7 +143,7 @@
                             </ItemTemplate>
                         </asp:DataList>
                     </asp:Panel>
-                    <ajaxToolkit:CollapsiblePanelExtender ID="Panel2_CollapsiblePanelExtender" runat="server" BehaviorID="Panel2_CollapsiblePanelExtender" CollapseControlID="HL_post" Collapsed="True" CollapsedSize="30" ExpandControlID="HL_post" ExpandedSize="500" SuppressPostBack="True" TargetControlID="Panel2" />
+                    <ajaxToolkit:CollapsiblePanelExtender ID="Panel2_CollapsiblePanelExtender" runat="server" BehaviorID="Panel2_CollapsiblePanelExtender" CollapseControlID="HL_post" Collapsed="True" CollapsedSize="30" ExpandControlID="HL_post" ExpandedSize="1000" SuppressPostBack="True" TargetControlID="Panel2" />
     <asp:ObjectDataSource ID="ODS_treaListaData" runat="server" SelectMethod="obtenerPostxbox" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
 
 

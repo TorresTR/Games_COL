@@ -68,7 +68,7 @@
                             </ItemTemplate>
                         </asp:DataList>
                     </asp:Panel>
-                    <cc1:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" CollapseControlID="HL_noticias" ExpandControlID="HL_noticias" TargetControlID="Panel1" />
+                    <cc1:CollapsiblePanelExtender ID="Panel1_CollapsiblePanelExtender" runat="server" BehaviorID="Panel1_CollapsiblePanelExtender" CollapseControlID="HL_noticias" ExpandControlID="HL_noticias" TargetControlID="Panel1" CollapsedSize="20" ExpandedSize="1000" />
                 <asp:ObjectDataSource ID="ODS_noticia" runat="server" SelectMethod="obtenerNoticia" TypeName="Logica.L_persistencia"></asp:ObjectDataSource>
 
 

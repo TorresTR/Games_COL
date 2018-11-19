@@ -132,14 +132,24 @@ public partial class View_Administrador_miNoticia : System.Web.UI.Page
         string IdRecogido = ((Label)grid.FindControl("LB_id")).Text;
         Session["IdRecogido"] = IdRecogido;
         int x = int.Parse(IdRecogido);
+        Entity_noticias noti2 = new Entity_noticias();//agregar
 
         L_Usercs dac = new L_Usercs();
+        DataTable data = dac.traerNoticia(x);//agregar
+
+        noti2.Id_noticia = x;
+        noti2.Titulo = data.Rows[0]["titulo"].ToString();//agregar
+        noti2.Contenido = data.Rows[0]["contenido"].ToString();
+        noti2.Fecha = DateTime.Parse(data.Rows[0]["fecha"].ToString());//agregar
+        noti2.Autor = int.Parse(data.Rows[0]["autor"].ToString());//agregar
+
+
         noti.Id_noticia = x;//agregar
 
 
         Entity_usuario us = new Entity_usuario();
         object obj = new object();
-        obj = noti;
+        obj = noti2;
         string schema = "usuario";
         string tabla = "noticia";
         us.Nombre = Session["id"].ToString();
