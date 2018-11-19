@@ -23,6 +23,7 @@ namespace Utilitarios
         private int estado_bloqueo;
         private int? user_bloqueador;
         private int num_puntos;
+      
 
         [Key]
         [Column("id_post")]
@@ -45,5 +46,6 @@ namespace Utilitarios
         public int? User_bloqueador { get => user_bloqueador; set => user_bloqueador = value; }
         [Column("num_puntos")]
         public int Num_puntos { get => num_puntos; set => num_puntos = value; }
+        
     }
 }

@@ -56,7 +56,7 @@ public partial class View_Default : System.Web.UI.Page
         //dac.eliminarMiscomentariospuntos(doc);
         L_persistencia per = new L_persistencia();//agregar
 
-        GV_comentariosuser.DataSource = per.obtenerComentUs(dato, dato2);
+        GV_comentariosuser.DataSource = dac.dataEliminarcoment(dato, dato2);
 
         
         GV_comentariosuser.DataBind();

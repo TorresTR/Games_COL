@@ -77,15 +77,9 @@ public partial class View_usuarios_Respuestas : System.Web.UI.Page
     {
 
 
-        Button bt = (Button)sender;
-        TableCell tableCell = (TableCell)bt.Parent;
-        GridViewRow row = (GridViewRow)tableCell.Parent;
-        GV_comentariosuser.SelectedIndex = row.RowIndex;
-        int fila = row.RowIndex;
-
-      
-        int b = int.Parse(Session["id"].ToString());
-        string IdRecogido = ((Label)row.Cells[fila].FindControl("Label1")).Text;
+        Button bt = sender as Button;
+        GridViewRow grid = (GridViewRow)bt.NamingContainer;
+        string IdRecogido = ((Label)grid.FindControl("Label1")).Text;
 
         Session["IdRecogido"] = IdRecogido;
 

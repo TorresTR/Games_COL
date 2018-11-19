@@ -30,8 +30,26 @@ namespace Datos
             using (var db = new Mapeo("usuario"))
             {
                 // var e = db.post.Join(Entity_post, (x=>x.Id),(y=));
-                var a = db.post.ToList<Entity_post>().Where(x => x.Estado_bloqueo.Equals(1));
-                return a.ToList<Entity_post>();
+                //var a = db.post.ToList<Entity_post>().Where(x => x.Estado_bloqueo.Equals(1));
+                //return a.ToList<Entity_post>();
+                return (from post in db.post
+                        join usn in db.usuario on post.Autor equals usn.Id
+                        join eti in db.etiqueta on post.Etiqueta equals eti.Id_etiqueta
+                        where post.Estado_bloqueo.Equals(1)
+                        select new
+                        {
+                            usn.Nick,
+                            post.Titulo,
+                            eti.Nombre_etiqueta,
+                            post.Id
+                        }).ToList().Select(x => new Entity_post
+                        {
+                            Titulo = x.Titulo,
+                            Id = x.Id,
+                            Contenido = x.Nick
+
+                        }).ToList();
+
             }
         }
 
@@ -604,8 +622,22 @@ namespace Datos
             using (var db = new Mapeo("usuario"))
             {
 
-                var a = db.comentario.ToList<Entity_comentarios>().Where(x => x.Estado.Equals(1)).Where(x => x.Id_comentario.Equals(post)).Where(x => x.Id_user.Equals(user));
-                return a.ToList<Entity_comentarios>();
+                //var a = db.comentario.ToList<Entity_comentarios>().Where(x => x.Estado.Equals(1)).Where(x => x.Id_comentario.Equals(post)).Where(x => x.Id_user.Equals(user));
+                //return a.ToList<Entity_comentarios>();
+                return (from com in db.comentario
+                        where
+                        com.Estado.Equals(1) & com.Id_comentario.Equals(post) & com.Id_user.Equals(user)
+                        select new
+                        {
+                            com.Id_comentario,
+                            com.Comentario
+
+
+                        }).ToList().Select(x => new Entity_comentarios {
+                            Id_comentario = x.Id_comentario,
+                            Comentario = x.Comentario
+
+                        }).ToList();
             }
         }
 
@@ -665,6 +697,7 @@ namespace Datos
 
                 var a = db.pqr.ToList<Entity_pqr>().Where(x => x.Id_pqr.Equals(pqr));
                 return a.ToList<Entity_pqr>();
+               
             }
         }
         
@@ -701,8 +734,25 @@ namespace Datos
             using (var db = new Mapeo("usuario"))
             {
 
-                var a = db.pqr.ToList<Entity_pqr>().Where(x => x.Usuario.Equals(id));
-                return a.ToList<Entity_pqr>();
+               // var a = db.pqr.ToList<Entity_pqr>().Where(x => x.Usuario.Equals(id) & x.Id_contestador != 0);
+                //return a.ToList<Entity_pqr>();
+                return (from com in db.pqr
+                        join us in db.usuario on com.Usuario equals us.Id
+
+                        where
+                        com.Usuario.Equals(id) & com.Id_contestador !=0 
+                        select new
+                        {
+                            us.Nick,
+                            com.Id_pqr
+
+
+                        }).ToList().Select(x => new Entity_pqr
+                        {
+                            Contenido = x.Nick,
+                            Id_pqr = x.Id_pqr
+                             
+                        }).ToList();
             }
         }
         public void insertNoticia(Entity_noticias noti)

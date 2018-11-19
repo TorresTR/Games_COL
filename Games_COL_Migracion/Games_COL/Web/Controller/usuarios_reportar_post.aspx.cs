@@ -132,7 +132,7 @@ public partial class View_usuarios_reportar_post : System.Web.UI.Page
         L_Usercs data = new L_Usercs();
         U_user dat = new U_user();
 
-        dat = data.redirigirCompletousuarioregistrado();
+        dat = data.volverUsuariosRegistrado();
 
         Response.Redirect(dat.Link_observador);
     }

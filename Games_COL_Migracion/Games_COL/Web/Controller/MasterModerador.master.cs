@@ -70,9 +70,9 @@ public partial class View_MasterModerador : System.Web.UI.MasterPage
         int b = int.Parse(Session["id"].ToString());
 
         L_persistencia per = new L_persistencia();
-
+        string me = "";
         DataTable data = log.ToDataTable(per.obtenerCarga(b));
-        log.ActualizarRango(data, b);
+        log.ActualizarRango(data, b,me);
         DataTable dat = log.ToDataTable(per.obtenerCarga(b));
         dato = log.cargaDatos(dat, b);
 

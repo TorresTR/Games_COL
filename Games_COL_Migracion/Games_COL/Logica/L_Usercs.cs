@@ -202,6 +202,7 @@ namespace Logica
             Dsql llamado = new Dsql();
             U_misPost dat = new U_misPost();
 
+
             dat.Dato1 = dato1;
             dat.Dato2 = dato2;
 
@@ -1624,7 +1625,7 @@ namespace Logica
 
         }
 
-        public string ActualizarRango(DataTable data, int b)
+        public string ActualizarRango(DataTable data, int b,string m1)
         {
             string mensaje = "";
             if (data.Rows.Count > 0)
@@ -1687,7 +1688,7 @@ namespace Logica
                         user.Id_rango = 6;//agregar
                         per.actualizarUsuario(user);//agregar
                         //us.actualizarRango(dato);
-                        mensaje = "Puedes solicitar tu ascenso a moderador";
+                        mensaje = m1;
                     }
 
                 }

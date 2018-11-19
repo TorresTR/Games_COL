@@ -63,9 +63,7 @@
                                         &nbsp;
                                         <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
                                         <br />
-                                        <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
-                                        &nbsp;
-                                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                      
                                         <br />
                                         <asp:Label ID="LB_id" runat="server" visible="false" Text='<%# Bind("id_noticia") %>'></asp:Label>
                                         <br />
@@ -107,10 +105,9 @@
                         <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id") %>' Visible="false" ></asp:Label>
                         <br />
                         <asp:Label ID="LB_autor" runat="server" Text="Autor:"></asp:Label>
-                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("contenido") %>'></asp:Label>
                         <br />
-                        <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
-                        <asp:Label ID="LB_etiquetaMuestra" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
+                      
                     </td>
                     <td class="auto-style3">
                         <asp:Button ID="BT_vermas" runat="server" Text="Ver mas"  CommandName="vermas" CommandArgument='<%# Eval("id") %>' OnClick="BT_vermas_Click" CssClass="btn btn-outline-info"/>
@@ -140,10 +137,9 @@
                                         <asp:Label ID="LB_id" runat="server" Text='<%# Bind("id") %>' Visible="false" ></asp:Label>
                                         <br />
                                         <asp:Label ID="LB_autor" runat="server" Text="Autor:"></asp:Label>
-                                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("contenido") %>'></asp:Label>
                                         <br />
-                                        <asp:Label ID="LB_etiqueta" runat="server" Text="Etiqueta:"></asp:Label>
-                                        <asp:Label ID="LB_etiquetaMuestra" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
+                                  
                                     </td>
                                     <td class="auto-style3">
                                         <asp:Button ID="BT_vermas" runat="server" Text="Ver mas"  CommandName="vermas" CommandArgument='<%# Eval("id") %>' OnClick="BT_vermas_Click" CssClass="btn btn-outline-info" style="height: 31px"/>

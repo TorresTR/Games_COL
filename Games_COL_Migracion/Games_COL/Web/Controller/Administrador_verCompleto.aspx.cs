@@ -292,7 +292,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
-        per.auditoriaModificar(objNew, objOld, usw, schema, table);
+       // per.auditoriaModificar(objNew, objOld, usw, schema, table);
 
         per.actualizarUsuario(user_ent);
 
@@ -414,7 +414,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
-        per.auditoriaModificar(objNew, objOld, usw, schema, table);
+       // per.auditoriaModificar(objNew, objOld, usw, schema, table);
         per.actualizarUsuario(user_ent);
         //dac.actualizarpuntoUser(b, x);
 
@@ -530,7 +530,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
-        per.auditoriaModificar(objNew, objOld, usw, schema, table);
+        //per.auditoriaModificar(objNew, objOld, usw, schema, table);
         per.actualizarUsuario(user_ent);
         // dac.actualizarpuntoUser(b, x);
 
@@ -648,7 +648,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
-        per.auditoriaModificar(objNew, objOld, usw, schema, table);
+        //per.auditoriaModificar(objNew, objOld, usw, schema, table);
         per.actualizarUsuario(user_ent);
         // dac.actualizarpuntoUser(b, x);
 
@@ -766,7 +766,7 @@ public partial class Plantilla_Administrador_verCompleto : System.Web.UI.Page
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
-        per.auditoriaModificar(objNew, objOld, usw, schema, table);
+       //per.auditoriaModificar(objNew, objOld, usw, schema, table);
         per.actualizarUsuario(user_ent);
         //dac.actualizarpuntoUser(b, x);
 

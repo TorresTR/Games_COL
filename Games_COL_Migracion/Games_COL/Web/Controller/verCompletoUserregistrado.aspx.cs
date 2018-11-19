@@ -285,7 +285,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
-        per.auditoriaModificar(objNew, objOld, usw, schema, table);
+        //per.auditoriaModificar(objNew, objOld, usw, schema, table);
 
         per.actualizarUsuario(user_ent);
         //dac.actualizarpuntoUser(b, x);
@@ -406,7 +406,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
-        per.auditoriaModificar(objNew, objOld, usw, schema, table);
+        //per.auditoriaModificar(objNew, objOld, usw, schema, table);
 
         per.actualizarUsuario(user_ent);
         //dac.actualizarpuntoUser(b, x);
@@ -527,7 +527,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
-        per.auditoriaModificar(objNew, objOld, usw, schema, table);
+        //per.auditoriaModificar(objNew, objOld, usw, schema, table);
 
         per.actualizarUsuario(user_ent);
         //dac.actualizarpuntoUser(b, x);
@@ -602,7 +602,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         segurity = pun;
         string schema = "usuario";
         string tabla = "puntuacion";
-        per.auditoriaInsertar(segurity, usw, schema, tabla);
+        //per.auditoriaInsertar(segurity, usw, schema, tabla);
 
         per.insertarPuntuacion(pun);//agregar
         x = x + 1;
@@ -648,7 +648,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
-        per.auditoriaModificar(objNew, objOld, usw, schema, table);
+        //per.auditoriaModificar(objNew, objOld, usw, schema, table);
 
         per.actualizarUsuario(user_ent);
         //dac.actualizarpuntoUser(b, x);
@@ -770,7 +770,7 @@ public partial class View_verCompletoUserregistrado : System.Web.UI.Page
         object objNew = new object();
         objNew = user_ent;
         string table = "usuario";
-        per.auditoriaModificar(objNew, objOld, usw, schema, table);
+        //per.auditoriaModificar(objNew, objOld, usw, schema, table);
 
         per.actualizarUsuario(user_ent);
         //dac.actualizarpuntoUser(b, x);

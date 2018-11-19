@@ -33,15 +33,15 @@
                                                 <asp:Label ID="LB_titAutor" runat="server"></asp:Label>
                                             </HeaderTemplate>
                                             <ItemTemplate>
-                                                <asp:Label ID="LB_autor" runat="server" Text='<%# Bind("usuario") %>'></asp:Label>
+                                                <asp:Label ID="LB_autor" runat="server" Text='<%# Bind("Contenido") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Solicitud">
                                             <HeaderTemplate>
-                                                <asp:Label ID="LB_titSol" runat="server"></asp:Label>
+                                              
                                             </HeaderTemplate>
                                             <ItemTemplate>
-                                                <asp:Label ID="LB_solicutud" runat="server" Text='<%# Bind("solicitud") %>'></asp:Label>
+                                               
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>

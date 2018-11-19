@@ -47,7 +47,7 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
         LB_nick.Text = compIdioma["LB_nick"].ToString();
         LB_puntos.Text = compIdioma["LB_puntos"].ToString();
         LB_rango.Text = compIdioma["LB_rango"].ToString();
-        LB_mensaje.Text = compIdioma["LB_mensaje"].ToString();
+        string mensaje = compIdioma["LB_mensaje"].ToString();
         BT_cerrar.Text = compIdioma["BT_cerrar"].ToString();
         Session["nick"]= LB_nickMuestra.Text;
 
@@ -74,7 +74,7 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
         L_persistencia per = new L_persistencia();
 
         DataTable data = log.ToDataTable(per.obtenerCarga(b));
-        log.ActualizarRango(data, b);
+        mensaje = log.ActualizarRango(data, b, mensaje);
         DataTable dat = log.ToDataTable(per.obtenerCarga(b));
         dato = log.cargaDatos(dat, b);
 
@@ -82,7 +82,7 @@ public partial class View_MasterUsuario : System.Web.UI.MasterPage
         LB_muestraPuntos.Text = dato.Puntos.ToString();
         LB_muestraRango.Text = dato.Mensaje1;
         LB_muestraID.Text = dato.Id.ToString();
-
+        LB_mensaje.Text = mensaje;
 
     }
 

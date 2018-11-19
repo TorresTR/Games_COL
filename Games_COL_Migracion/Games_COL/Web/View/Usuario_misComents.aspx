@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <td>
-                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id" AutoGenerateColumns="False" OnRowDataBound="GV_Idioma_RowDataBound">
+                                <asp:GridView ID="GV_comentariosuser" runat="server" DataKeyNames="id_comentario" AutoGenerateColumns="False" OnRowDataBound="GV_Idioma_RowDataBound">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Eliminar">
                                             <HeaderTemplate>
@@ -39,7 +39,7 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="LABEL" InsertVisible="False" ShowHeader="False" Visible="False">
                                             <ItemTemplate>
-                                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
+                                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("id_comentario") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Comentarios">
@@ -47,7 +47,7 @@
                                                 <asp:Label ID="LB_coment" runat="server"></asp:Label>
                                             </HeaderTemplate>
                                             <ItemTemplate>
-                                                <asp:Label ID="LB_comentario" runat="server" Text='<%# Bind("comentarios") %>'></asp:Label>
+                                                <asp:Label ID="LB_comentario" runat="server" Text='<%# Bind("comentario") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>

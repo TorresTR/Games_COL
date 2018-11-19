@@ -24,6 +24,7 @@ namespace Utilitarios
         private String link;
         private Int32 Comentarios;
         private string nick;
+        private string etiqueta;
         
 
         public string Titulo { get => titulo; set => titulo = value; }
@@ -41,5 +42,6 @@ namespace Utilitarios
         public string Link { get => link; set => link = value; }
         public int Comentarios1 { get => Comentarios; set => Comentarios = value; }
         public string Nick { get => nick; set => nick = value; }
+        public string Etiqueta { get => etiqueta; set => etiqueta = value; }
     }
 }

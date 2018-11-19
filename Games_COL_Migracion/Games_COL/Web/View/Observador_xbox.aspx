@@ -50,8 +50,7 @@
                                             <asp:Label ID="LB_titulo" runat="server" Text="Titulo"></asp:Label>
                                             <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
                                             <br />
-                                            <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
-                                            <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                           
                                             <br />
                                             <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id_noticia") %>'></asp:Label>
                                             <br />
@@ -92,12 +91,11 @@
                         <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
                         <br />
                         <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
-                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                        <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("contenido") %>'></asp:Label>
                         <br />
                         <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
                         <br />
-                        <asp:Label runat="server" Text="Etiquetas:"></asp:Label>
-                        <asp:Label ID="LB_etiquetas" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
+                        
                         <br />
                     </td>
                     <td>
@@ -125,12 +123,11 @@
                                             <asp:Label ID="LB_muestraTitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label>
                                             <br />
                                             <asp:Label ID="LB_autor" runat="server" Text="autor"></asp:Label>
-                                            <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("autor") %>'></asp:Label>
+                                            <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("contenido") %>'></asp:Label>
                                             <br />
                                             <asp:Label ID="LB_id" runat="server" visible="False" Text='<%# Bind("id") %>'></asp:Label>
                                             <br />
-                                            <asp:Label runat="server" Text="Etiquetas:"></asp:Label>
-                                            <asp:Label ID="LB_etiquetas" runat="server" Text='<%# Bind("etiqueta") %>'></asp:Label>
+                                            
                                             <br />
                                         </td>
                                         <td>
