@@ -333,6 +333,14 @@ namespace Logica
             return dat;
         }
 
+        public DataTable obtenerDatasolicitud(int id)
+        {
+            daoPost dao = new daoPost();
+            L_Usercs user = new L_Usercs();
+            DataTable dat = user.ToDataTable(dao.obtenerSolicitud(id));
+            return dat;
+        }
+
 
         public List<Entity_usuario> obtenerUser(int id)
         {

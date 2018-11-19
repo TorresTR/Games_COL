@@ -545,6 +545,16 @@ namespace Datos
             }
         }
 
+        public List<Entity_solicitud> obtenerSolicitud(int id)
+        {
+            using (var db = new Mapeo("usuario"))
+            {
+                // var e = db.post.Join(Entity_post, (x=>x.Id),(y=));
+                var a = db.solicitud.ToList<Entity_solicitud>().Where(x =>x.Id_user.Equals(id));
+                return a.ToList<Entity_solicitud>();
+            }
+        }
+
         public List<Entity_usuario> obtenerUser(int id)
         {
             using (var db = new Mapeo("usuario"))

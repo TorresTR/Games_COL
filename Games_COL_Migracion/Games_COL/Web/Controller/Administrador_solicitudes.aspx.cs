@@ -101,7 +101,14 @@ public partial class View_Default : System.Web.UI.Page
         int b = int.Parse(Session["id"].ToString());
         int h = int.Parse(ID);
 
-        sol.Id = int.Parse(ID);
+        DataTable solicitud = per.obtenerDatasolicitud(h);
+
+
+        sol.Id = int.Parse(solicitud.Rows[0]["id"].ToString());
+        sol.Id_user =h;
+        sol.Puntos = int.Parse(solicitud.Rows[0]["puntos"].ToString());
+        sol.Nick = solicitud.Rows[0]["nick"].ToString();
+        sol.Fecha = DateTime.Parse(solicitud.Rows[0]["fecha"].ToString());
 
         Entity_usuario us = new Entity_usuario();
         object obj = new object();
