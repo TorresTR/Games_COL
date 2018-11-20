@@ -19,14 +19,14 @@
                         <table class="w-100">
                             <tr>
                                 <td class="auto-style5">
-                                    <asp:Label ID="LB_autor" runat="server" Text="autor:"></asp:Label>
-                                    <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("usuario") %>'></asp:Label>
+                                    <asp:Label ID="LB_autor" runat="server" Text="autor:" Visible="false"></asp:Label>
+                                    <asp:Label ID="LB_muestraAutor" runat="server" Visible="false" Text='<%# Bind("usuario") %>'></asp:Label>
                                     <br />
-                                    <asp:Label ID="LB_idPQR" runat="server" Text="ID PQR:"></asp:Label>
-                                    <asp:Label ID="LB_muestraId" runat="server" Text='<%# Bind("id_pqr") %>'></asp:Label>
+                                    <asp:Label ID="LB_idPQR" runat="server" Text="ID PQR:" Visible="false"></asp:Label>
+                                    <asp:Label ID="LB_muestraId" runat="server" Visible="false" Text='<%# Bind("id_pqr") %>'></asp:Label>
                                     <br />
-                                    <asp:Label ID="LB_tipoSolicitud" runat="server" Text="Tipo de Solicitud:"></asp:Label>
-                                    <asp:Label ID="LB_muestraSolicitud" runat="server" Text='<%# Bind("solicitud") %>'></asp:Label>
+                                    <asp:Label ID="LB_tipoSolicitud" runat="server" Text="Tipo de Solicitud:" Visible="false"></asp:Label>
+                                    <asp:Label ID="LB_muestraSolicitud" runat="server" Visible="false" Text='<%# Bind("solicitud") %>'></asp:Label>
                                     <br />
                                     <asp:Label ID="LB_tituloPost" runat="server" Text="Asunto PQR:"></asp:Label>
                                     <asp:Label ID="LB_muestraAsuntoPQR" runat="server" Text='<%# Bind("asunto") %>'></asp:Label>

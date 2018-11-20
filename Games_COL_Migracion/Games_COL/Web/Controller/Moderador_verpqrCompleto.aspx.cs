@@ -123,8 +123,8 @@ public partial class View_Moderador_verpqrCompleto : System.Web.UI.Page
     protected void B_volver_Click(object sender, EventArgs e)
     {
 
-        string q = Session["id"].ToString();
-        string z = Session["parametro"].ToString();
+       // string q = Session["id"].ToString();
+        //string z = Session["parametro"].ToString();
 
         Response.Redirect("Moderador_ver_pqr.aspx");
 

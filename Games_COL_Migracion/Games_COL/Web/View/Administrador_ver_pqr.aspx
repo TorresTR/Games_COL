@@ -22,17 +22,17 @@
                         <table class="w-100">
                             <tr>
                                 <td class="auto-style5">
-                                    <asp:Label ID="LB_autor" runat="server" Text="autor:"></asp:Label>
+                                    <asp:Label ID="LB_autor" Visible="false" runat="server" Text="autor:"></asp:Label>
                                     &nbsp;
-                                    <asp:Label ID="LB_muestraAutor" runat="server" Text='<%# Bind("usuario") %>'></asp:Label>
+                                    <asp:Label ID="LB_muestraAutor" runat="server" Visible="false" Text='<%# Bind("usuario") %>'></asp:Label>
                                     <br />
                                     <asp:Label ID="LB_idPQR" runat="server" Text="ID PQR:" Visible="False"></asp:Label>
                                     &nbsp;
-                                    <asp:Label ID="LB_muestraId" runat="server" Text='<%# Bind("id_pqr") %>' Visible="False"></asp:Label>
+                                    <asp:Label ID="LB_muestraId" runat="server"  Text='<%# Bind("id_pqr") %>' Visible="False"></asp:Label>
                                     <br />
-                                    <asp:Label ID="LB_tipoSolicitud" runat="server" Text="Tipo de Solicitud:"></asp:Label>
+                                    <asp:Label ID="LB_tipoSolicitud" runat="server"  Visible="false" Text="Tipo de Solicitud:"></asp:Label>
                                     &nbsp;
-                                    <asp:Label ID="LB_muestraSolicitud" runat="server" Text='<%# Bind("solicitud") %>'></asp:Label>
+                                    <asp:Label ID="LB_muestraSolicitud" runat="server" Visible="false" Text='<%# Bind("solicitud") %>'></asp:Label>
                                     <br />
                                     <asp:Label ID="LB_tituloPost" runat="server" Text="Asunto PQR:"></asp:Label>
                                     &nbsp;
