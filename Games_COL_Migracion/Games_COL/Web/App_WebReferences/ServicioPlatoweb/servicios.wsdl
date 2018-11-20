@@ -20,6 +20,16 @@
         </s:sequence>
         <s:anyAttribute />
       </s:complexType>
+      <s:element name="AutenticationUsuari">
+        <s:complexType />
+      </s:element>
+      <s:element name="AutenticationUsuariResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AutenticationUsuariResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="LMenu">
         <s:complexType />
       </s:element>
@@ -184,6 +194,15 @@
   <wsdl:message name="AutenticationUsuarioSeguridad">
     <wsdl:part name="Seguridad" element="tns:Seguridad" />
   </wsdl:message>
+  <wsdl:message name="AutenticationUsuariSoapIn">
+    <wsdl:part name="parameters" element="tns:AutenticationUsuari" />
+  </wsdl:message>
+  <wsdl:message name="AutenticationUsuariSoapOut">
+    <wsdl:part name="parameters" element="tns:AutenticationUsuariResponse" />
+  </wsdl:message>
+  <wsdl:message name="AutenticationUsuariSeguridad">
+    <wsdl:part name="Seguridad" element="tns:Seguridad" />
+  </wsdl:message>
   <wsdl:message name="LMenuSoapIn">
     <wsdl:part name="parameters" element="tns:LMenu" />
   </wsdl:message>
@@ -252,6 +271,10 @@
       <wsdl:input message="tns:AutenticationUsuarioSoapIn" />
       <wsdl:output message="tns:AutenticationUsuarioSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="AutenticationUsuari">
+      <wsdl:input message="tns:AutenticationUsuariSoapIn" />
+      <wsdl:output message="tns:AutenticationUsuariSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="LMenu">
       <wsdl:input message="tns:LMenuSoapIn" />
       <wsdl:output message="tns:LMenuSoapOut" />
@@ -288,6 +311,16 @@
       <wsdl:input>
         <soap:body use="literal" />
         <soap:header message="tns:AutenticationUsuarioSeguridad" part="Seguridad" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutenticationUsuari">
+      <soap:operation soapAction="http://tempuri.org/AutenticationUsuari" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AutenticationUsuariSeguridad" part="Seguridad" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -371,6 +404,16 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:AutenticationUsuarioSeguridad" part="Seguridad" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutenticationUsuari">
+      <soap12:operation soapAction="http://tempuri.org/AutenticationUsuari" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AutenticationUsuariSeguridad" part="Seguridad" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
